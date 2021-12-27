@@ -35,11 +35,6 @@ if (NOT isMultiConfig)
     endif()
 endif()
 
-if(NOT TARGET check_build)
-    # This will build wxCLib.lib and wxWidgets.lib
-    add_subdirectory(wxSnapshot)
-endif()
-
 add_compile_definitions($<$<CONFIG:Release>:NDEBUG>)
 
 include(src/ui/wxui_code.cmake)  # This will set ${wxue_generated_code} with list of generated files
