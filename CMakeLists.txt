@@ -35,8 +35,10 @@ if (NOT isMultiConfig)
     endif()
 endif()
 
-# This will build wxCLib.lib and wxWidgets.lib
-add_subdirectory(wxSnapshot)
+if(NOT TARGET check_build)
+    # This will build wxCLib.lib and wxWidgets.lib
+    add_subdirectory(wxSnapshot)
+endif()
 
 add_compile_definitions($<$<CONFIG:Release>:NDEBUG>)
 
