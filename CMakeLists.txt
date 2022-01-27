@@ -35,6 +35,9 @@ if (NOT isMultiConfig)
     endif()
 endif()
 
+# This will build wxCLib.lib and wxWidgets.lib
+add_subdirectory(wxSnapshot)
+
 add_compile_definitions($<$<CONFIG:Release>:NDEBUG>)
 
 include(src/ui/wxui_code.cmake)  # This will set ${wxue_generated_code} with list of generated files
@@ -65,7 +68,11 @@ add_library(check_build STATIC EXCLUDE_FROM_ALL
     ${wxue_generated_code}
 )
 
-target_link_libraries(wxUiTesting PRIVATE wxCLib wxWidgets)
+if (WIN32)
+    target_link_libraries(wxUiTesting PRIVATE wxWidgets wxCLib comctl32 Imm32 Shlwapi Version UxTheme)
+else()
+    target_link_libraries(wxUiTesting PRIVATE wxWidgets wxCLib)
+endif()
 
 if (MSVC)
     # /GL -- combined with the Linker flag /LTCG to perform whole program optimization in Release build
@@ -98,10 +105,4 @@ target_include_directories(check_build PRIVATE
     ${setup_dir}
     src/
     src/ui
-)
-target_link_libraries(wxUiTesting PRIVATE wxCLib wxWidgets)
-
-target_link_directories(wxUiTesting PRIVATE
-    $<$<CONFIG:Debug>:${CMAKE_CURRENT_LIST_DIR}/../wxSnapshot/build/Debug>
-    $<$<CONFIG:Release>:${CMAKE_CURRENT_LIST_DIR}/../wxSnapshot/build/Release>
 )
