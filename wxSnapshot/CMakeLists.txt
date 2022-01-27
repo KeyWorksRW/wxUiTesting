@@ -21,6 +21,13 @@ if (MSVC)
 
     string(REPLACE "/Zi" "/Z7" z_seven ${CMAKE_C_FLAGS_DEBUG})
     set(CMAKE_C_FLAGS_DEBUG ${z_seven} CACHE STRING "C Debug flags" FORCE)
+else()
+    # This should work for gcc and clang (including xcode which is based on clang)
+    # -O2 can result in faster code than -O3 due to CPU caching.
+    string(REPLACE "-O3" "-O2" cl_optimize ${CMAKE_CXX_FLAGS_RELEASE})
+    set(CMAKE_CXX_FLAGS_RELEASE ${cl_optimize} CACHE STRING "C++ Release flags" FORCE)
+    string(REPLACE "-O3" "-O2" cl_optimize ${CMAKE_C_FLAGS_RELEASE})
+    set(CMAKE_C_FLAGS_RELEASE ${cl_optimize} CACHE STRING "C Release flags" FORCE)
 endif()
 
 get_property(isMultiConfig GLOBAL
@@ -47,11 +54,15 @@ add_library(wxWidgets STATIC ${wxWidget_sources} )
 add_library(wxCLib STATIC ${wxCLib_sources} )
 
 if (MSVC)
+    # /GL -- combined with the Linker flag /LTCG allows whole program optimization in Release build
+    target_compile_options(wxWidgets PRIVATE "$<$<CONFIG:Release>:/GL>")
+endif()
+
+if (WIN32)
     target_compile_definitions(wxWidgets PRIVATE
         __WXMSW__
         WIN32
     )
-    target_compile_options(wxWidgets PRIVATE "$<$<CONFIG:Release>:/GL>")
 endif()
 
 target_compile_definitions(wxWidgets PRIVATE
@@ -67,11 +78,13 @@ target_compile_definitions(wxWidgets PRIVATE
 
 target_precompile_headers(wxWidgets PRIVATE "include/wx/wxprec.h")
 
+if (WIN32)
+    set(setup_dir win)
+endif()
+
 target_include_directories(wxWidgets PRIVATE
     include
-    if (WIN32)
-        win
-    endif()
+    ${setup_dir}
     src/tiff/libtiff
     src/jpeg
     src/png
@@ -87,9 +100,7 @@ target_include_directories(wxWidgets PRIVATE
 
 target_include_directories(wxCLib PRIVATE
     include
-    if (WIN32)
-        win
-    endif()
+    ${setup_dir}
     src/tiff/libtiff
     src/jpeg
     src/zlib
