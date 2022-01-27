@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <wxUiEditorData
-  data_version="12">
+  data_version="13">
   <node
     class="Project"
     art_directory="../art"
@@ -131,7 +131,7 @@
           flags="wxEXPAND">
           <node
             class="wxInfoBar"
-            show_effect="wxSHOW_EFFECT_EXPAND"
+            show_effect="expand"
             flags="wxEXPAND" />
         </node>
         <node
@@ -331,7 +331,7 @@
             contents="&quot;Button zero &quot; &quot;Button one &quot; &quot;Button two &quot;"
             label="Radio Box"
             selection="1"
-            style="wxRA_SPECIFY_ROWS"
+            style="rows"
             validator_variable="m_valRadio"
             wxEVT_RADIOBOX="OnRadioBox" />
           <node

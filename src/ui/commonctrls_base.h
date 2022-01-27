@@ -53,6 +53,18 @@ public:
 
 protected:
 
+    // Virtual event handlers -- override them in your derived class
+
+    virtual void OnCheckBox(wxCommandEvent& event) { event.Skip(); }
+    virtual void OnChoice(wxCommandEvent& event) { event.Skip(); }
+    virtual void OnListBox(wxCommandEvent& event) { event.Skip(); }
+    virtual void OnListChecked(wxCommandEvent& event) { event.Skip(); }
+    virtual void OnPopupBtn(wxCommandEvent& event) { event.Skip(); }
+    virtual void OnRadio(wxCommandEvent& event) { event.Skip(); }
+    virtual void OnRadioBox(wxCommandEvent& event) { event.Skip(); }
+    virtual void OnSlider(wxCommandEvent& event) { event.Skip(); }
+    void OnContextMenu(wxContextMenuEvent& event);
+
     // Validator variables
 
     int m_valRadio { 1 };
@@ -98,16 +110,4 @@ protected:
     wxTextCtrl* m_textCtrl;
     wxToggleButton* m_toggleBtn;
     wxue_ctrl::SplitButton* m_split_button;  // control with button + menu
-
-    // Virtual event handlers -- override them in your derived class
-
-    virtual void OnCheckBox(wxCommandEvent& event) { event.Skip(); }
-    virtual void OnChoice(wxCommandEvent& event) { event.Skip(); }
-    virtual void OnListBox(wxCommandEvent& event) { event.Skip(); }
-    virtual void OnListChecked(wxCommandEvent& event) { event.Skip(); }
-    virtual void OnPopupBtn(wxCommandEvent& event) { event.Skip(); }
-    virtual void OnRadio(wxCommandEvent& event) { event.Skip(); }
-    virtual void OnRadioBox(wxCommandEvent& event) { event.Skip(); }
-    virtual void OnSlider(wxCommandEvent& event) { event.Skip(); }
-    void OnContextMenu(wxContextMenuEvent& event);
 };

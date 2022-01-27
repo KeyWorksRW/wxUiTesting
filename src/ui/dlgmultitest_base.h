@@ -43,6 +43,10 @@ public:
 
 protected:
 
+    // Virtual event handlers -- override them in your derived class
+
+    virtual void OnInit(wxInitDialogEvent& event) { event.Skip(); }
+
     // Class member variables
 
     wxBannerWindow* m_banner;
@@ -64,10 +68,6 @@ protected:
     wxStaticText* m_staticText_3;
     wxStaticText* m_staticText_5;
     wxToggleButton* m_toggleBtn;
-
-    // Virtual event handlers -- override them in your derived class
-
-    virtual void OnInit(wxInitDialogEvent& event) { event.Skip(); }
 };
 
 namespace wxue_img
