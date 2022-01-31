@@ -40,7 +40,8 @@ add_subdirectory(wxSnapshot)
 
 add_compile_definitions($<$<CONFIG:Release>:NDEBUG>)
 
-include(src/ui/wxui_code.cmake)  # This will set ${wxue_generated_code} with list of generated files
+include(src/ui/wxui_code.cmake)  # This will set ${wxue_generated_code} with a list of generated files
+include(src/file_list.cmake)     # This will set ${file_list} with a list of files
 
 add_executable(wxUiTesting WIN32
     ${file_list}

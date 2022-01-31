@@ -10,6 +10,7 @@ set (file_list
     ${CMAKE_CURRENT_LIST_DIR}/imports/crafter_base.cpp
     ${CMAKE_CURRENT_LIST_DIR}/imports/crafter_bitmaps.cpp
     ${CMAKE_CURRENT_LIST_DIR}/imports/import_crafter_base.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/imports/import_crafter_base.cpp
 
     ${CMAKE_CURRENT_LIST_DIR}/custom_ctrls/split_button.cpp  # Split Button Custom widget (button + menu)
 
