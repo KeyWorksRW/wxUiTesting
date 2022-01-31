@@ -686,7 +686,7 @@
     </node>
     <node
       class="ToolBar"
-      base_file="form_toolbar"
+      base_file="form_toolbar_base"
       size="-1,32">
       <node
         class="tool"
@@ -1571,7 +1571,7 @@
       class_name="ImportTest"
       derived_class_name="ImportTest"
       derived_file="../imports/import_test.cpp"
-      inserted_hdr_code="void OnImportPageChanged(wxAuiNotebookEvent&amp; event);@@void OnFormPageChanged(wxAuiNotebookEvent&amp; event);@@"
+      inserted_hdr_code="void OnImportPageChanged(wxAuiNotebookEvent&amp; event);@@void OnImportCrafterPageChanged(wxAuiNotebookEvent&amp; event);@@void OnFormPageChanged(wxAuiNotebookEvent&amp; event);@@void OnCrafterPageChanged(wxAuiNotebookEvent&amp; event);@@"
       title="wxFormBuilder comparison"
       use_derived_class="false"
       wxEVT_INIT_DIALOG="OnInit">

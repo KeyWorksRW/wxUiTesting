@@ -10,7 +10,7 @@
 #include <wx/icon.h>
 #include <wx/image.h>
 
-#include "form_toolbar.h"
+#include "form_toolbar_base.h"
 
 #if !(__cplusplus >= 201703L || (defined(_MSVC_LANG) && _MSVC_LANG >= 201703L))
     #error "A C++17 or later compatible compiler is required."
