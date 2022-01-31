@@ -8,6 +8,7 @@ set (wxue_generated_code
     ${CMAKE_CURRENT_LIST_DIR}/commonctrls_base.cpp
     ${CMAKE_CURRENT_LIST_DIR}/dlgmultitest_base.cpp
     ${CMAKE_CURRENT_LIST_DIR}/form_toolbar.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/import_test_base.cpp
     ${CMAKE_CURRENT_LIST_DIR}/listbook_base.cpp
     ${CMAKE_CURRENT_LIST_DIR}/mainframe_base.cpp
     ${CMAKE_CURRENT_LIST_DIR}/notebook_base.cpp

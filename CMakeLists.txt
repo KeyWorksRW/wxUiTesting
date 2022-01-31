@@ -46,6 +46,11 @@ add_executable(wxUiTesting WIN32
     src/wxUiTesting.rc
     src/mainapp.cpp
 
+    src/import_test.cpp   # Import Test Dialog
+
+    src/imports/form_base.cpp
+    src/imports/import_form_base.cpp
+
     src/custom_ctrls/split_button.cpp  # Split Button Custom widget (button + menu)
 
     src/ui/mainframe.cpp       # Main window

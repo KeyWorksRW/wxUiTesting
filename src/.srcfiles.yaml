@@ -29,6 +29,11 @@ Files:
 
     custom_ctrls/split_button.cpp  # Split Button Custom widget (button + menu)
 
+    import_test.cpp  # Import Test Dialog
+
+    imports/form_base.cpp
+    imports/import_formbase.cpp
+
     ui/mainframe.cpp       # Main window
     ui/mainframe_base.cpp  # wxUiEditor generated file
 
