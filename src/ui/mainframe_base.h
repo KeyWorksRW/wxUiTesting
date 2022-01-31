@@ -22,15 +22,11 @@ public:
 
 protected:
 
-    // Class member variables
-
-    wxStatusBar* m_statusBar;
-    wxToolBar* m_toolBar;
-
     // Virtual event handlers -- override them in your derived class
 
     virtual void OnChoicebook(wxCommandEvent& event) { event.Skip(); }
     virtual void OnCommonDialog(wxCommandEvent& event) { event.Skip(); }
+    virtual void OnImportTest(wxCommandEvent& event) { event.Skip(); }
     virtual void OnListbook(wxCommandEvent& event) { event.Skip(); }
     virtual void OnMultiTestDialog(wxCommandEvent& event) { event.Skip(); }
     virtual void OnNotebook(wxCommandEvent& event) { event.Skip(); }
@@ -40,4 +36,9 @@ protected:
     virtual void OnToolbook(wxCommandEvent& event) { event.Skip(); }
     virtual void OnTreebook(wxCommandEvent& event) { event.Skip(); }
     virtual void OnWizard(wxCommandEvent& event) { event.Skip(); }
+
+    // Class member variables
+
+    wxStatusBar* m_statusBar;
+    wxToolBar* m_toolBar;
 };

@@ -29,15 +29,15 @@ public:
 
 protected:
 
+    // Virtual event handlers -- override them in your derived class
+
+    virtual void OnBeforeChange(wxWizardEvent& event) { event.Skip(); }
+
     // Class member variables
 
     wxStaticText* m_staticText2;
     wxStaticText* m_staticText3;
     wxStaticText* m_staticText;
-
-    // Virtual event handlers -- override them in your derived class
-
-    virtual void OnBeforeChange(wxWizardEvent& event) { event.Skip(); }
 };
 
 namespace wxue_img

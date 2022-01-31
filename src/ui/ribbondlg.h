@@ -11,6 +11,5 @@
 class RibbonDlg : public RibbonDlgBase
 {
 public:
-	RibbonDlg(wxWindow* parent = nullptr);
-
+    RibbonDlg(wxWindow* parent = nullptr);
 };

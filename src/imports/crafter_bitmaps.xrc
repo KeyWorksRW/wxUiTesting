@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resource xmlns="http://www.wxwidgets.org/wxxrc">
+  <!-- Handler Generation is ON -->
+  <object class="wxBitmap" name="french">..\art\french.png</object>
+  <object class="wxBitmap" name="redo">..\art\redo.png</object>
+  <object class="wxBitmap" name="ribbon_button_hybrid">..\art\ribbon_button_hybrid.png</object>
+  <object class="wxBitmap" name="toggle_button">..\art\toggle_button.png</object>
+  <object class="wxBitmap" name="undo">..\art\undo.png</object>
+</resource>

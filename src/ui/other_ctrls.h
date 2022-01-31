@@ -11,6 +11,5 @@
 class OtherCtrlsDlg : public OtherCtrlsBase
 {
 public:
-	OtherCtrlsDlg(wxWindow* parent = nullptr);
-
+    OtherCtrlsDlg(wxWindow* parent = nullptr);
 };

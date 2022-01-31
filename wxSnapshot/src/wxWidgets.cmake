@@ -1,4 +1,164 @@
 
+if (WIN32)
+    set(msw_files
+        ${CMAKE_CURRENT_LIST_DIR}/msw/aboutdlg.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/accel.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/anybutton.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/app.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/appprogress.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/artmsw.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/basemsw.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/bitmap.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/bmpbuttn.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/bmpcbox.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/brush.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/button.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/calctrl.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/caret.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/checkbox.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/checklst.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/choice.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/clipbrd.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/colordlg.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/colour.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/combo.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/combobox.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/commandlinkbutton.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/control.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/crashrpt.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/cursor.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/customdraw.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/data.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/datecontrols.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/datectrl.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/datetimectrl.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/dc.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/dcclient.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/dcmemory.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/dcprint.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/dcscreen.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/dde.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/debughlp.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/dialog.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/dialup.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/dib.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/dir.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/dirdlg.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/display.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/dlmsw.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/dragimag.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/enhmeta.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/evtloop.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/evtloopconsole.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/fdrepdlg.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/filedlg.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/font.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/fontdlg.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/fontenum.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/fontutil.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/frame.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/fswatcher.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/gauge.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/gdiimage.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/gdiobj.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/gdiplus.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/graphics.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/graphicsd2d.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/headerctrl.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/helpbest.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/helpchm.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/helpwin.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/hyperlink.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/icon.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/imaglist.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/iniconf.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/joystick.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/listbox.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/listctrl.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/main.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/mdi.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/menu.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/menuitem.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/metafile.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/mimetype.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/minifram.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/msgdlg.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/nativdlg.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/nativewin.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/nonownedwnd.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/notebook.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/notifmsg.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/ole/access.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/ole/activex.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/ole/automtn.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/ole/comimpl.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/ole/dataobj.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/ole/dropsrc.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/ole/droptgt.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/ole/oleutils.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/ole/safearray.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/ole/uuid.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/ownerdrw.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/palette.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/pen.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/popupwin.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/power.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/printdlg.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/printwin.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/progdlg.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/radiobox.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/radiobut.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/regconf.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/region.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/registry.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/renderer.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/richmsgdlg.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/richtooltip.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/rt/notifmsgrt.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/rt/utilsrt.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/scrolbar.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/secretstore.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/settings.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/slider.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/snglinst.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/sockmsw.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/sound.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/spinbutt.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/spinctrl.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/stackwalk.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/statbmp.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/statbox.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/statline.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/stattext.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/statusbar.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/stdpaths.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/systhemectrl.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/taskbar.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/taskbarbutton.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/textctrl.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/textentry.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/textmeasure.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/tglbtn.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/thread.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/timectrl.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/timer.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/toolbar.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/tooltip.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/toplevel.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/treectrl.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/uiaction.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/utils.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/utilsexc.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/utilsgui.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/utilswin.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/uxtheme.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/volume.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/webview_edge.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/webview_ie.cpp
+        ${CMAKE_CURRENT_LIST_DIR}/msw/window.cpp
+    )
+endif()
+
 set (wxWidget_sources
     # wx_core
     ${CMAKE_CURRENT_LIST_DIR}/common/accelcmn.cpp
@@ -59,7 +219,7 @@ set (wxWidget_sources
     ${CMAKE_CURRENT_LIST_DIR}/common/fontpickercmn.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/fontutilcmn.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/framecmn.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/common/fs_mem.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/ftp.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/gaugecmn.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/gbsizer.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/gdicmn.cpp
@@ -70,6 +230,7 @@ set (wxWidget_sources
     ${CMAKE_CURRENT_LIST_DIR}/common/headercolcmn.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/headerctrlcmn.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/helpbase.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/http.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/hyperlnkcmn.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/iconbndl.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/imagall.cpp
@@ -106,6 +267,7 @@ set (wxWidget_sources
     ${CMAKE_CURRENT_LIST_DIR}/common/popupcmn.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/preferencescmn.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/prntbase.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/protocol.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/quantize.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/radiobtncmn.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/radiocmn.cpp
@@ -113,10 +275,15 @@ set (wxWidget_sources
     ${CMAKE_CURRENT_LIST_DIR}/common/rendcmn.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/rgncmn.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/richtooltipcmn.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/sckaddr.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/sckfile.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/sckipc.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/sckstrm.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/scrolbarcmn.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/settcmn.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/sizer.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/slidercmn.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/socket.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/spinbtncmn.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/spinctrlcmn.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/srchcmn.cpp
@@ -134,6 +301,7 @@ set (wxWidget_sources
     ${CMAKE_CURRENT_LIST_DIR}/common/toplvcmn.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/treebase.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/uiactioncmn.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/url.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/utilscmn.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/valgen.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/validate.cpp
@@ -215,138 +383,6 @@ set (wxWidget_sources
     ${CMAKE_CURRENT_LIST_DIR}/generic/vlbox.cpp
     ${CMAKE_CURRENT_LIST_DIR}/generic/vscroll.cpp
     ${CMAKE_CURRENT_LIST_DIR}/generic/wizard.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/aboutdlg.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/accel.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/anybutton.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/app.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/appprogress.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/artmsw.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/bitmap.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/bmpbuttn.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/bmpcbox.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/brush.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/button.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/calctrl.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/caret.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/checkbox.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/checklst.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/choice.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/clipbrd.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/colordlg.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/colour.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/combo.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/combobox.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/commandlinkbutton.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/control.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/cursor.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/customdraw.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/data.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/datecontrols.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/datectrl.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/datetimectrl.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/dc.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/dcclient.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/dcmemory.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/dcprint.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/dcscreen.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/dialog.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/dialup.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/dib.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/dirdlg.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/display.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/dragimag.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/enhmeta.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/evtloop.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/fdrepdlg.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/filedlg.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/font.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/fontdlg.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/fontenum.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/fontutil.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/frame.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/gauge.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/gdiimage.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/gdiobj.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/gdiplus.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/graphics.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/graphicsd2d.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/headerctrl.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/helpchm.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/helpwin.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/hyperlink.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/icon.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/imaglist.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/iniconf.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/joystick.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/listbox.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/listctrl.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/main.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/mdi.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/menu.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/menuitem.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/metafile.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/minifram.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/msgdlg.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/nativdlg.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/nativewin.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/nonownedwnd.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/notebook.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/notifmsg.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/ole/access.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/ole/activex.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/ole/automtn.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/ole/comimpl.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/ole/dataobj.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/ole/dropsrc.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/ole/droptgt.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/ole/oleutils.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/ole/safearray.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/ole/uuid.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/ownerdrw.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/palette.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/pen.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/popupwin.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/printdlg.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/printwin.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/progdlg.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/radiobox.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/radiobut.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/region.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/renderer.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/richmsgdlg.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/richtooltip.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/rt/notifmsgrt.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/rt/utilsrt.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/scrolbar.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/settings.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/slider.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/sound.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/spinbutt.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/spinctrl.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/statbmp.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/statbox.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/statline.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/stattext.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/statusbar.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/systhemectrl.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/taskbar.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/taskbarbutton.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/textctrl.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/textentry.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/textmeasure.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/tglbtn.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/timectrl.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/toolbar.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/tooltip.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/toplevel.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/treectrl.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/uiaction.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/utilsgui.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/utilswin.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/uxtheme.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/volume.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/window.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/xrc/xmlreshandler.cpp
 
     # wx_aui
     ${CMAKE_CURRENT_LIST_DIR}/aui/auibar.cpp
@@ -358,8 +394,6 @@ set (wxWidget_sources
     ${CMAKE_CURRENT_LIST_DIR}/aui/tabart.cpp
     ${CMAKE_CURRENT_LIST_DIR}/aui/tabartmsw.cpp
     ${CMAKE_CURRENT_LIST_DIR}/aui/tabmdi.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/xrc/xh_aui.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/xrc/xh_auitoolb.cpp
 
     # wx_html
     ${CMAKE_CURRENT_LIST_DIR}/generic/htmllbox.cpp
@@ -388,7 +422,6 @@ set (wxWidget_sources
     ${CMAKE_CURRENT_LIST_DIR}/html/m_tables.cpp
     ${CMAKE_CURRENT_LIST_DIR}/html/styleparams.cpp
     ${CMAKE_CURRENT_LIST_DIR}/html/winpars.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/helpbest.cpp
 
     # wx_propgrid
     ${CMAKE_CURRENT_LIST_DIR}/propgrid/advprops.cpp
@@ -411,7 +444,6 @@ set (wxWidget_sources
     ${CMAKE_CURRENT_LIST_DIR}/ribbon/page.cpp
     ${CMAKE_CURRENT_LIST_DIR}/ribbon/panel.cpp
     ${CMAKE_CURRENT_LIST_DIR}/ribbon/toolbar.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/xrc/xh_ribbon.cpp
 
     # wx_stc (Scintilla)
     ${CMAKE_CURRENT_LIST_DIR}/stc/PlatWX.cpp
@@ -575,19 +607,90 @@ set (wxWidget_sources
     ${CMAKE_CURRENT_LIST_DIR}/richtext/richtextstyles.cpp
     ${CMAKE_CURRENT_LIST_DIR}/richtext/richtextsymboldlg.cpp
     ${CMAKE_CURRENT_LIST_DIR}/richtext/richtextxml.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/xrc/xh_richtext.cpp
 
     # wx_xml (required by wx_richtext)
     ${CMAKE_CURRENT_LIST_DIR}/common/xtixml.cpp
     ${CMAKE_CURRENT_LIST_DIR}/xml/xml.cpp
 
+    # wx_xrc
+    ${CMAKE_CURRENT_LIST_DIR}/xrc/xh_aui.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/xrc/xh_auitoolb.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/xrc/xh_activityindicator.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/xrc/xh_animatctrl.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/xrc/xh_bannerwindow.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/xrc/xh_bmp.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/xrc/xh_bmpbt.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/xrc/xh_bmpcbox.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/xrc/xh_bttn.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/xrc/xh_cald.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/xrc/xh_chckb.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/xrc/xh_chckl.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/xrc/xh_choic.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/xrc/xh_choicbk.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/xrc/xh_clrpicker.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/xrc/xh_cmdlinkbn.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/xrc/xh_collpane.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/xrc/xh_combo.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/xrc/xh_comboctrl.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/xrc/xh_dataview.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/xrc/xh_datectrl.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/xrc/xh_dirpicker.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/xrc/xh_dlg.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/xrc/xh_editlbox.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/xrc/xh_filectrl.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/xrc/xh_filepicker.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/xrc/xh_fontpicker.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/xrc/xh_frame.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/xrc/xh_gauge.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/xrc/xh_gdctl.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/xrc/xh_grid.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/xrc/xh_html.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/xrc/xh_htmllbox.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/xrc/xh_hyperlink.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/xrc/xh_infobar.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/xrc/xh_listb.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/xrc/xh_listbk.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/xrc/xh_listc.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/xrc/xh_mdi.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/xrc/xh_menu.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/xrc/xh_notbk.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/xrc/xh_odcombo.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/xrc/xh_panel.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/xrc/xh_propdlg.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/xrc/xh_radbt.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/xrc/xh_radbx.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/xrc/xh_ribbon.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/xrc/xh_richtext.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/xrc/xh_scrol.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/xrc/xh_scwin.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/xrc/xh_simplebook.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/xrc/xh_sizer.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/xrc/xh_slidr.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/xrc/xh_spin.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/xrc/xh_split.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/xrc/xh_srchctrl.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/xrc/xh_statbar.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/xrc/xh_stbmp.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/xrc/xh_stbox.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/xrc/xh_stlin.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/xrc/xh_sttxt.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/xrc/xh_text.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/xrc/xh_tglbtn.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/xrc/xh_timectrl.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/xrc/xh_toolb.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/xrc/xh_toolbk.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/xrc/xh_tree.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/xrc/xh_treebk.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/xrc/xh_unkwn.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/xrc/xh_wizrd.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/xrc/xmlres.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/xrc/xmlreshandler.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/xrc/xmlrsall.cpp
+
     # wx_webview
     ${CMAKE_CURRENT_LIST_DIR}/common/webview.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/webviewarchivehandler.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/webviewfshandler.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/webview_edge.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/webview_ie.cpp
-
 
     # wxBase (these files are normally compiled into base library)
     ${CMAKE_CURRENT_LIST_DIR}/common/any.cpp
@@ -621,6 +724,7 @@ set (wxWidget_sources
     ${CMAKE_CURRENT_LIST_DIR}/common/fmapbase.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/fs_arc.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/fs_filter.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/fs_inet.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/fs_mem.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/fswatchercmn.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/hash.cpp
@@ -679,27 +783,8 @@ set (wxWidget_sources
     ${CMAKE_CURRENT_LIST_DIR}/common/zipstrm.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/zstream.cpp
     ${CMAKE_CURRENT_LIST_DIR}/generic/fswatcherg.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/basemsw.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/crashrpt.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/dde.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/debughlp.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/dir.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/dlmsw.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/evtloopconsole.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/fswatcher.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/mimetype.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/power.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/regconf.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/registry.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/secretstore.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/snglinst.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/stackwalk.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/stdpaths.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/thread.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/timer.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/utils.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/utilsexc.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/msw/volume.cpp
+
+    ${msw_files}
 
 )
 

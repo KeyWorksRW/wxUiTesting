@@ -1,11 +1,12 @@
 <?xml version="1.0"?>
 <wxUiEditorData
-  data_version="12">
+  data_version="13">
   <node
     class="Project"
     art_directory="../art"
     local_pch_file="pch.h"
-    generate_cmake="true">
+    generate_cmake="true"
+    compiler_standard="C++ 17">
     <node
       class="wxFrame"
       class_name="MainFrameBase"
@@ -38,6 +39,10 @@
             label="DlgMulitTest..."
             var_name="menuItem"
             wxEVT_MENU="OnMultiTestDialog" />
+          <node
+            class="wxMenuItem"
+            label="Import Tests"
+            wxEVT_MENU="OnImportTest" />
           <node
             class="wxMenuItem"
             label="Other Controls Dialog..."
@@ -107,6 +112,14 @@
           statusbar="Launch DlgMultiTest Dialog"
           tooltip="Launch DlgMultiTest Dialog"
           wxEVT_TOOL="OnMultiTestDialog" />
+        <node
+          class="tool"
+          bitmap="Art;wxART_FULL_SCREEN|wxART_TOOLBAR;[-1,-1]"
+          label="ImportTest"
+          statusbar="Import Test"
+          tooltip="Import Test"
+          var_name="tool_3"
+          wxEVT_TOOL="OnImportTest" />
       </node>
       <node
         class="wxStatusBar" />
@@ -131,7 +144,7 @@
           flags="wxEXPAND">
           <node
             class="wxInfoBar"
-            show_effect="wxSHOW_EFFECT_EXPAND"
+            show_effect="expand"
             flags="wxEXPAND" />
         </node>
         <node
@@ -331,7 +344,7 @@
             contents="&quot;Button zero &quot; &quot;Button one &quot; &quot;Button two &quot;"
             label="Radio Box"
             selection="1"
-            style="wxRA_SPECIFY_ROWS"
+            style="rows"
             validator_variable="m_valRadio"
             wxEVT_RADIOBOX="OnRadioBox" />
           <node
@@ -673,7 +686,7 @@
     </node>
     <node
       class="ToolBar"
-      base_file="form_toolbar"
+      base_file="form_toolbar_base"
       size="-1,32">
       <node
         class="tool"
@@ -1548,6 +1561,62 @@
           Close="true"
           OK="false"
           default_button="Close"
+          flags="wxEXPAND" />
+      </node>
+    </node>
+    <node
+      class="wxDialog"
+      base_file="import_test_base"
+      base_hdr_includes="#include &lt;wx/aui/auibook.h>@@"
+      class_name="ImportTest"
+      derived_class_name="ImportTest"
+      derived_file="../imports/import_test.cpp"
+      inserted_hdr_code="void OnImportPageChanged(wxAuiNotebookEvent&amp; event);@@void OnImportCrafterPageChanged(wxAuiNotebookEvent&amp; event);@@void OnFormPageChanged(wxAuiNotebookEvent&amp; event);@@void OnCrafterPageChanged(wxAuiNotebookEvent&amp; event);@@"
+      title="wxFormBuilder comparison"
+      use_derived_class="false"
+      wxEVT_INIT_DIALOG="OnInit">
+      <node
+        class="wxBoxSizer"
+        orientation="wxVERTICAL"
+        var_name="dlg_sizer"
+        flags="wxEXPAND">
+        <node
+          class="wxSplitterWindow">
+          <node
+            class="wxPanel"
+            class_access="protected:"
+            var_name="m_panel_import_fb"
+            derived_class="ImportFormBuilder"
+            derived_header="../imports/import_form_base.h"
+            window_style="wxTAB_TRAVERSAL" />
+          <node
+            class="wxPanel"
+            class_access="protected:"
+            var_name="m_panel_formbuilder"
+            derived_class="FormBuilderBase"
+            derived_header="../imports/form_base.h"
+            window_style="wxTAB_TRAVERSAL" />
+        </node>
+        <node
+          class="wxSplitterWindow"
+          var_name="m_splitter_2">
+          <node
+            class="wxPanel"
+            class_access="protected:"
+            var_name="m_panel_import_crafter"
+            derived_class="ImportCrafterBase"
+            derived_header="../imports/import_crafter_base.h"
+            window_style="wxTAB_TRAVERSAL" />
+          <node
+            class="wxPanel"
+            class_access="protected:"
+            var_name="m_panel_crafter"
+            derived_class="CrafterBase"
+            derived_header="../imports/crafter_base.hpp"
+            window_style="wxTAB_TRAVERSAL" />
+        </node>
+        <node
+          class="wxStdDialogButtonSizer"
           flags="wxEXPAND" />
       </node>
     </node>

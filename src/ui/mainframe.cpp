@@ -5,8 +5,6 @@
 // License:   Apache License -- see ../../LICENSE
 /////////////////////////////////////////////////////////////////////////////
 
-#include "pch.h"
-
 #include "mainframe.h"  // auto-generated: ui/mainframe_base.h and ui/mainframe_base.cpp
 
 #include "commonctrls.h"   // CommonCtrls -- Common controls dialog
@@ -20,6 +18,8 @@
 #include "ui/notebook_base.h"
 #include "ui/toolbook_base.h"
 #include "ui/treebook_base.h"
+
+#include "ui/import_test_base.h"
 
 MainFrame::MainFrame(wxWindow* parent) : MainFrameBase(parent) {}
 
@@ -87,4 +87,17 @@ void MainFrame::OnToolbook(wxCommandEvent& WXUNUSED(event))
 {
     ToolbookBase dlg(this);
     dlg.ShowModal();
+}
+
+void MainFrame::OnImportTest(wxCommandEvent& WXUNUSED(event))
+{
+    ImportTest dlg;
+    if (dlg.Create(this))
+    {
+        dlg.ShowModal();
+    }
+    else
+    {
+        wxMessageBox("Unable to create ImportTest dialog!");
+    }
 }

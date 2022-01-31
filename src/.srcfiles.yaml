@@ -27,15 +27,18 @@ Files:
     wxUiTesting.rc
     mainapp.cpp
 
+    import_test.cpp  # Import Test Dialog
+
     custom_ctrls/split_button.cpp  # Split Button Custom widget (button + menu)
 
-    ui/mainframe.cpp       # Main window
-    ui/mainframe_base.cpp  # wxUiEditor generated file
+    imports/form_base.cpp
+    imports/import_formbase.cpp
 
-    ui/commonctrls.cpp
-    ui/dlgmultitest.cpp
+    ui/commonctrls.cpp   # Common controls dialog
+    ui/dlgmultitest.cpp  # Multiple Tests dialog
+    ui/mainframe.cpp     # Main window
     ui/other_ctrls.cpp
-    ui/popupwin.cpp
+    ui/popupwin.cpp      # Popup Window
     ui/ribbondlg.cpp
     ui/wizard.cpp
 
@@ -45,6 +48,3 @@ XPM:
     art/english.png: art/english.xpm
     art/french.png: art/french.xpm
     art/japanese.png: art/japanese.xpm
-
-Other:
-    ui/wxui_code.cmake

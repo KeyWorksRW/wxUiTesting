@@ -81,6 +81,7 @@ bool OtherCtrlsBase::Create(wxWindow *parent, wxWindowID id, const wxString &tit
     parent_sizer3->Add(m_spinCtrlDouble, wxSizerFlags().Border(wxALL));
 
     m_spinBtn = new wxSpinButton(m_panel2);
+    m_spinBtn->SetRange(0, 10);
     parent_sizer3->Add(m_spinBtn, wxSizerFlags().Border(wxALL));
 
     m_panel2->SetSizerAndFit(parent_sizer3);
@@ -114,14 +115,13 @@ bool OtherCtrlsBase::Create(wxWindow *parent, wxWindowID id, const wxString &tit
 
     m_scintilla = new wxStyledTextCtrl(m_panel5, wxID_ANY);
     {
-        m_scintilla->SetProperty("fold", "1");
-        m_scintilla->SetMarginType(1, wxSTC_MARGIN_SYMBOL);
-        m_scintilla->SetMarginMask(1, wxSTC_MASK_FOLDERS);
-        m_scintilla->SetMarginWidth(1, 16);
-        m_scintilla->SetMarginSensitive(1, true);
-        m_scintilla->SetFoldFlags(wxSTC_FOLDFLAG_LINEBEFORE_CONTRACTED | wxSTC_FOLDFLAG_LINEAFTER_CONTRACTED);
-        m_scintilla->SetMarginType(0, wxSTC_MARGIN_NUMBER);
-        m_scintilla->SetMarginWidth(0, m_scintilla->TextWidth(wxSTC_STYLE_LINENUMBER, "_99999"));
+        m_scintilla->SetLexer(wxSTC_LEX_CPP);
+        m_scintilla->SetEOLMode(wxSTC_EOL_LF);
+        // Sets text margin scaled appropriately for the current DPI on Windows,
+        // 5 on wxGTK or wxOSX
+        m_scintilla->SetMarginLeft(wxSizerFlags::GetDefaultBorder());
+        m_scintilla->SetMarginRight(wxSizerFlags::GetDefaultBorder());
+        m_scintilla->SetMarginWidth(1, 0);  // Remove default margin
         m_scintilla->SetBackSpaceUnIndents(true);
     }
     parent_sizer6->Add(m_scintilla, wxSizerFlags(1).Expand().Border(wxALL));
@@ -139,7 +139,7 @@ bool OtherCtrlsBase::Create(wxWindow *parent, wxWindowID id, const wxString &tit
     m_toggleBtn = new wxToggleButton(m_panel6, wxID_ANY, "Toggle");
     box_sizer->Add(m_toggleBtn, wxSizerFlags().Border(wxALL));
 
-    m_hyperlink = new wxHyperlinkCtrl(m_panel6, wxID_ANY, "GitHub Website", "https://github.com/", wxDefaultPosition, wxDefaultSize,
+    m_hyperlink = new wxHyperlinkCtrl(m_panel6, wxID_ANY, "Hyperlink", wxEmptyString, wxDefaultPosition, wxDefaultSize,
         wxHL_DEFAULT_STYLE);
     box_sizer->Add(m_hyperlink, wxSizerFlags().Center().Border(wxALL));
 

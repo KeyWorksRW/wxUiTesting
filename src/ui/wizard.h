@@ -11,6 +11,5 @@
 class Wizard : public WizardBase
 {
 public:
-	Wizard(wxWindow* parent);
-
+    Wizard(wxWindow* parent);
 };

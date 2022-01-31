@@ -6,10 +6,6 @@
 
 #include "pch.h"
 
-
 #include "ribbondlg.h"  // auto-generated: ribbondlgBase.h and ribbondlgBase.cpp
 
-RibbonDlg::RibbonDlg(wxWindow* parent) : RibbonDlgBase(parent)
-{
-
-}
+RibbonDlg::RibbonDlg(wxWindow* parent) : RibbonDlgBase(parent) {}

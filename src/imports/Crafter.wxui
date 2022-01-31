@@ -1,0 +1,354 @@
+<?xml version="1.0"?>
+<wxUiEditorData
+  data_version="13">
+  <node
+    class="Project"
+    base_directory="."
+    internationalize="true"
+    compiler_standard="C++ 17">
+    <node
+      class="PanelForm"
+      base_file="import_crafter_base"
+      class_name="ImportCrafterBase"
+      size="500,300">
+      <node
+        class="wxBoxSizer"
+        orientation="wxVERTICAL"
+        var_name="parent_sizer"
+        border_size="0"
+        colspan="0"
+        rowspan="0">
+        <node
+          class="wxAuiNotebook"
+          class_access="public:"
+          var_name="m_auinotebook1"
+          colspan="0"
+          flags="wxEXPAND"
+          proportion="1"
+          rowspan="0">
+          <node
+            class="BookPage"
+            label="Common"
+            var_name="m_panel1"
+            window_style="wxTAB_TRAVERSAL"
+            border_size="0"
+            colspan="0"
+            rowspan="0">
+            <node
+              class="wxGridBagSizer"
+              var_name="parent_sizer1"
+              border_size="0"
+              colspan="0"
+              rowspan="0">
+              <node
+                class="wxInfoBar"
+                class_access="public:"
+                var_name="m_infoCtrl1"
+                minimum_size="-1,-1"
+                colspan="3"
+                flags="wxEXPAND" />
+              <node
+                class="wxRadioBox"
+                contents="&quot;First&quot; &quot;Second&quot; &quot;Third&quot;"
+                label="wxRadioBox"
+                majorDimension="1"
+                selection="1"
+                var_name="m_radioBox1"
+                row="1" />
+              <node
+                class="wxCollapsiblePane"
+                collapsed="true"
+                var_name="m_collPane4"
+                minimum_size="-1,-1"
+                column="1"
+                row="1">
+                <node
+                  class="wxBoxSizer"
+                  orientation="wxVERTICAL"
+                  var_name="boxSizer8"
+                  minimum_size="-1,-1"
+                  flags="wxEXPAND"
+                  proportion="1">
+                  <node
+                    class="wxStaticText"
+                    label="これは日本語の文章です。"
+                    var_name="m_staticText10"
+                    minimum_size="-1,-1" />
+                  <node
+                    class="wxStaticBitmap"
+                    bitmap="Art;wxART_GO_UP|wxART_BUTTON;[-1,-1]"
+                    var_name="m_bitmap2"
+                    minimum_size="-1,-1" />
+                </node>
+              </node>
+              <node
+                class="wxTextCtrl"
+                value="initial"
+                var_name="m_textCtrlWithValidator"
+                column="2"
+                row="1" />
+              <node
+                class="wxChoice"
+                contents="&quot;First&quot; &quot;Second&quot; &quot;Third&quot;"
+                selection_int="1"
+                var_name="m_choice1"
+                row="2" />
+              <node
+                class="wxStaticBitmap"
+                bitmap="Embed;../art/french.png;[-1,-1]"
+                var_name="m_bitmap21"
+                column="1"
+                row="2" />
+              <node
+                class="wxSlider"
+                style="wxSL_LABELS"
+                var_name="m_slider1"
+                column="2"
+                row="2" />
+            </node>
+          </node>
+          <node
+            class="BookPage"
+            label="Data"
+            var_name="m_panel12"
+            window_style="wxTAB_TRAVERSAL"
+            border_size="0"
+            colspan="0"
+            rowspan="0">
+            <node
+              class="wxFlexGridSizer"
+              cols="1"
+              var_name="fgSizer1"
+              border_size="0"
+              colspan="0"
+              rowspan="0">
+              <node
+                class="wxBoxSizer"
+                var_name="bSizer6"
+                colspan="0"
+                flags="wxEXPAND"
+                proportion="1"
+                rowspan="0">
+                <node
+                  class="wxPropertyGridManager"
+                  style="wxPG_AUTO_SORT"
+                  var_name="m_propertyGridManager1"
+                  minimum_size="-1,-1">
+                  <node
+                    class="propGridPage"
+                    label="">
+                    <node
+                      class="propGridItem"
+                      help="String property item"
+                      label="String"
+                      var_name="m_propertyGridItem1" />
+                    <node
+                      class="propGridItem"
+                      label="Edit Enum"
+                      var_name="m_propertyGridItem2" />
+                  </node>
+                </node>
+                <node
+                  class="wxGrid"
+                  cols="3"
+                  rows="3"
+                  var_name="m_grid1"
+                  colspan="0"
+                  rowspan="0" />
+              </node>
+              <node
+                class="wxRibbonBar"
+                var_name="m_ribbonBar1"
+                minimum_size="-1,-1">
+                <node
+                  class="wxRibbonPage"
+                  var_name="m_ribbonPage1"
+                  minimum_size="-1,-1">
+                  <node
+                    class="wxRibbonPanel"
+                    label="Toolbar"
+                    var_name="m_ribbonPanel1"
+                    minimum_size="-1,-1">
+                    <node
+                      class="wxRibbonToolBar"
+                      var_name="m_ribbonToolBar1"
+                      minimum_size="-1,-1">
+                      <node
+                        class="ribbonTool"
+                        bitmap="Embed;../art/undo.png;[-1,-1]"
+                        help="Help String"
+                        id="wxID_ANY" />
+                      <node
+                        class="ribbonTool"
+                        bitmap="Embed;../art/redo.png;[-1,-1]"
+                        help="Help String"
+                        id="wxID_ANY"
+                        kind="wxRIBBON_BUTTON_DROPDOWN" />
+                      <node
+                        class="ribbonTool"
+                        bitmap="Embed;../art/toggle_button.png;[-1,-1]"
+                        help="Help String"
+                        id="wxID_ANY"
+                        kind="wxRIBBON_BUTTON_TOGGLE" />
+                      <node
+                        class="ribbonTool"
+                        bitmap="Embed;../art/ribbon_button_hybrid.png;[-1,-1]"
+                        help="Help String"
+                        id="wxID_ANY"
+                        kind="wxRIBBON_BUTTON_HYBRID" />
+                    </node>
+                  </node>
+                  <node
+                    class="wxRibbonPanel"
+                    label="RibbonButton"
+                    var_name="m_ribbonPanel2"
+                    minimum_size="-1,-1">
+                    <node
+                      class="wxRibbonButtonBar"
+                      var_name="m_ribbonButtonBar1"
+                      minimum_size="-1,-1">
+                      <node
+                        class="ribbonButton"
+                        bitmap="Embed;../art/undo.png;[-1,-1]"
+                        help="Help String"
+                        label="Undo" />
+                      <node
+                        class="ribbonButton"
+                        bitmap="Embed;../art/redo.png;[-1,-1]"
+                        help="Help String"
+                        kind="wxRIBBON_BUTTON_DROPDOWN"
+                        label="Drop" />
+                      <node
+                        class="ribbonButton"
+                        bitmap="Embed;../art/toggle_button.png;[-1,-1]"
+                        help="Help String"
+                        kind="wxRIBBON_BUTTON_TOGGLE"
+                        label="Toggle" />
+                      <node
+                        class="ribbonButton"
+                        bitmap="Embed;../art/ribbon_button_hybrid.png;[-1,-1]"
+                        help="Help String"
+                        kind="wxRIBBON_BUTTON_HYBRID"
+                        label="Hybrid" />
+                    </node>
+                  </node>
+                  <node
+                    class="wxRibbonPanel"
+                    label="Gallery"
+                    var_name="m_ribbonPanel3"
+                    minimum_size="-1,-1">
+                    <node
+                      class="wxRibbonGallery"
+                      var_name="m_ribbonGallery62"
+                      minimum_size="-1,-1">
+                      <node
+                        class="ribbonGalleryItem"
+                        bitmap="Embed;../art/undo.png;[-1,-1]"
+                        minimum_size="-1,-1" />
+                      <node
+                        class="ribbonGalleryItem"
+                        bitmap="Embed;../art/redo.png;[-1,-1]"
+                        minimum_size="-1,-1" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+          <node
+            class="BookPage"
+            label="Additional"
+            var_name="m_panel3"
+            window_style="wxTAB_TRAVERSAL"
+            border_size="0"
+            colspan="0"
+            rowspan="0">
+            <node
+              class="wxBoxSizer"
+              orientation="wxVERTICAL"
+              var_name="bSizer3"
+              border_size="0"
+              colspan="0"
+              rowspan="0">
+              <node
+                class="wxBoxSizer"
+                var_name="bSizer4"
+                colspan="0"
+                rowspan="0">
+                <node
+                  class="wxToggleButton"
+                  var_name="m_toggleBtn1"
+                  colspan="0"
+                  rowspan="0" />
+                <node
+                  class="wxSearchCtrl"
+                  var_name="m_searchCtrl1"
+                  colspan="0"
+                  rowspan="0" />
+                <node
+                  class="wxColourPickerCtrl"
+                  colour="wxSYS_COLOUR_HIGHLIGHT"
+                  var_name="m_colourPicker1"
+                  colspan="0"
+                  rowspan="0" />
+              </node>
+              <node
+                class="wxBoxSizer"
+                var_name="bSizer5"
+                colspan="0"
+                rowspan="0">
+                <node
+                  class="wxSpinCtrl"
+                  initial="5"
+                  var_name="m_spinCtrl1"
+                  colspan="0"
+                  rowspan="0" />
+                <node
+                  class="wxHyperlinkCtrl"
+                  label="wxFB Website"
+                  url="http://www.wxformbuilder.org"
+                  var_name="m_hyperlink1"
+                  font="Arial,9,,,swiss"
+                  colspan="0"
+                  rowspan="0" />
+                <node
+                  class="spacer"
+                  colspan="0"
+                  flags="wxEXPAND"
+                  proportion="1"
+                  rowspan="0" />
+                <node
+                  class="wxAnimationCtrl"
+                  animation="Embed;../art/clr_hourglass.gif;[-1,-1]"
+                  play="true"
+                  var_name="m_animCtrl1"
+                  colspan="0"
+                  rowspan="0" />
+              </node>
+              <node
+                class="wxStaticBoxSizer"
+                label="Static Box"
+                orientation="wxHORIZONTAL"
+                var_name="sbSizer1"
+                colspan="0"
+                flags="wxEXPAND"
+                proportion="1"
+                rowspan="0">
+                <node
+                  class="wxRichTextCtrl"
+                  value="wxRichTextCtrl!"
+                  var_name="m_richText1"
+                  minimum_size="200,100d"
+                  window_style="wxWANTS_CHARS|wxBORDER_NONE|wxHSCROLL|wxVSCROLL"
+                  colspan="0"
+                  flags="wxEXPAND"
+                  proportion="1"
+                  rowspan="0" />
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+  </node>
+</wxUiEditorData>
