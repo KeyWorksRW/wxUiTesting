@@ -2,4 +2,5 @@
 ./src/debugging
 ./testing/src/ui/*_base.*
 ./src/ui/ui_images.*
-./src/import/rapidjson
+./src/imports/*.*
+./src/art/*.*

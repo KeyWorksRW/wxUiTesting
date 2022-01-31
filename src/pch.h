@@ -45,9 +45,9 @@
 #if (wxMAJOR_VERSION < 4) && (wxMINOR_VERSION < 2) && (wxRELEASE_NUMBER < 16)
 
     // We include these here so that C4244 and C4267 get disabled
+    #include <wx/choicebk.h>                 // conversion from 'int' to 'wxTextAttrDimensionFlags', possible loss of data
     #include <wx/richtext/richtextbuffer.h>  // conversion from 'int' to 'wxTextAttrDimensionFlags', possible loss of data
-    #include <wx/richtext/richtextctrl.h>  // conversion from 'int' to 'wxTextAttrDimensionFlags', possible loss of data
-    #include <wx/choicebk.h>  // conversion from 'int' to 'wxTextAttrDimensionFlags', possible loss of data
+    #include <wx/richtext/richtextctrl.h>    // conversion from 'int' to 'wxTextAttrDimensionFlags', possible loss of data
 
 #endif
 

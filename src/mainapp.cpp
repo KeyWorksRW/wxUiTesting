@@ -34,11 +34,11 @@ wxIMPLEMENT_APP(MainApp);
 
 #if defined(_WIN32) && defined(_DEBUG)
 
-// Because of the extensive use of share_ptrs and the number of classes that are created during initialization and never destroyed,
-// both the original wxFormBuilder as well as this code base will have a lot of shared_ptrs that are completely dereferenced when
-// the app exits, leading to a long and time-comsuming display of "leaked" memory when run under a Microsoft debugger. While it
-// would be ideal if all those shared_ptrs were freed, it's a low priority to write a bunch of code to walk through all the maps and
-// vectors in order to free the pointers.
+// Because of the extensive use of share_ptrs and the number of classes that are created during initialization and never
+// destroyed, both the original wxFormBuilder as well as this code base will have a lot of shared_ptrs that are completely
+// dereferenced when the app exits, leading to a long and time-comsuming display of "leaked" memory when run under a
+// Microsoft debugger. While it would be ideal if all those shared_ptrs were freed, it's a low priority to write a bunch of
+// code to walk through all the maps and vectors in order to free the pointers.
 
 // Uncomment the following to turn on a memory leak dump on exit.
 // #define USE_CRT_MEMORY_DUMP

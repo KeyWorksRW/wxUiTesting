@@ -21,7 +21,8 @@ void ImportTest::OnInit(wxInitDialogEvent& event)
     m_panel_crafter->GetInfoCtrl1()->ShowMessage("wxCrafter version");
 
     m_panel_import_fb->m_auinotebook1->Bind(wxEVT_AUINOTEBOOK_PAGE_CHANGED, &ImportTest::OnImportPageChanged, this);
-    m_panel_import_crafter->m_auinotebook1->Bind(wxEVT_AUINOTEBOOK_PAGE_CHANGED, &ImportTest::OnImportCrafterPageChanged, this);
+    m_panel_import_crafter->m_auinotebook1->Bind(wxEVT_AUINOTEBOOK_PAGE_CHANGED, &ImportTest::OnImportCrafterPageChanged,
+                                                 this);
     m_panel_formbuilder->m_auinotebook1->Bind(wxEVT_AUINOTEBOOK_PAGE_CHANGED, &ImportTest::OnFormPageChanged, this);
     m_panel_crafter->GetAuinotebook1()->Bind(wxEVT_AUINOTEBOOK_PAGE_CHANGED, &ImportTest::OnCrafterPageChanged, this);
 
