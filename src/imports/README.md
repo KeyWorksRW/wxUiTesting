@@ -41,8 +41,10 @@ Be _very_ careful when modifying the ribbon panel in the Data page. Save early a
 
 **wxFormBuilder** does not initialize validators. So, for example, if you set the `value` property of a text control which also has a validator, then the text control will be blank because the validator didn't get initialized. Our import code does initialize the value, so they _will_ look different. This will be true of all validators that have initial values set -- it will work when imported and generated, and will be broken in the wxFormbuild-generated version.
 
-# wxCrafter
+# wxCrafter project notes
 
-## Other Importers
+While wxCrafter has an import wxFormBuilder function, it doesn't work very well, so a lot of controls will be missing. You'll have to add them by hand to get the same control layout as wxFormBuilder.
 
-In theory, one could import the wxFormBuilder project into **wxCrafter**, have crafter generate files and compare those as well. However, currently **wxCrafter** cannot correctly import the **wxFormBuilder** project we've created -- it can't import the wxInfoBar or wxCollapsible controls, so the "Common" book page is missing so much as to be essentially worthless. The "Data" book page isn't much better -- it doesn't import the wxPropertyGridManager, and the wxGrid is completely empty.
+wxCrafter doesn't allow you to change the access of class members. We need to directly access m_auinotebook1 and m_infoCtrl1. We call the function that wxCrafter creates for it's generated code, but for our imported code we have to change the access of these two variables to `public:`.
+
+**wxCrafter** doesn't generate any code to set the animation file for a wxAnimationCtrl. It does set the property, so it works in the imported version, but not the wxCrafter generated version.

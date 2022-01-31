@@ -12,7 +12,9 @@
 #include <wx/panel.h>
 #include <wx/splitter.h>
 
+class CrafterBase;
 class FormBuilderBase;
+class ImportCrafterBase;
 class ImportFormBuilder;
 
 #include <wx/aui/auibook.h>
@@ -33,7 +35,9 @@ public:
         long style = wxDEFAULT_DIALOG_STYLE, const wxString &name = wxDialogNameStr);
 
     void OnImportPageChanged(wxAuiNotebookEvent& event);
+    void OnImportCrafterPageChanged(wxAuiNotebookEvent& event);
     void OnFormPageChanged(wxAuiNotebookEvent& event);
+    void OnCrafterPageChanged(wxAuiNotebookEvent& event);
 
 protected:
 
@@ -43,7 +47,10 @@ protected:
 
     // Class member variables
 
+    CrafterBase* m_panel_crafter;
     FormBuilderBase* m_panel_formbuilder;
-    ImportFormBuilder* m_panel_import;
+    ImportCrafterBase* m_panel_import_crafter;
+    ImportFormBuilder* m_panel_import_fb;
     wxSplitterWindow* m_splitter;
+    wxSplitterWindow* m_splitter_2;
 };

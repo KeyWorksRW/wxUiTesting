@@ -50,6 +50,9 @@ add_executable(wxUiTesting WIN32
 
     src/imports/form_base.cpp
     src/imports/import_form_base.cpp
+    src/imports/crafter_base.cpp
+    src/imports/crafter_bitmaps.cpp
+    src/imports/import_crafter_base.cpp
 
     src/custom_ctrls/split_button.cpp  # Split Button Custom widget (button + menu)
 

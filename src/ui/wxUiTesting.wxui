@@ -1585,7 +1585,7 @@
           <node
             class="wxPanel"
             class_access="protected:"
-            var_name="m_panel_import"
+            var_name="m_panel_import_fb"
             derived_class="ImportFormBuilder"
             derived_header="../imports/import_form_base.h"
             window_style="wxTAB_TRAVERSAL" />
@@ -1595,6 +1595,24 @@
             var_name="m_panel_formbuilder"
             derived_class="FormBuilderBase"
             derived_header="../imports/form_base.h"
+            window_style="wxTAB_TRAVERSAL" />
+        </node>
+        <node
+          class="wxSplitterWindow"
+          var_name="m_splitter_2">
+          <node
+            class="wxPanel"
+            class_access="protected:"
+            var_name="m_panel_import_crafter"
+            derived_class="ImportCrafterBase"
+            derived_header="../imports/import_crafter_base.h"
+            window_style="wxTAB_TRAVERSAL" />
+          <node
+            class="wxPanel"
+            class_access="protected:"
+            var_name="m_panel_crafter"
+            derived_class="CrafterBase"
+            derived_header="../imports/crafter_base.hpp"
             window_style="wxTAB_TRAVERSAL" />
         </node>
         <node
