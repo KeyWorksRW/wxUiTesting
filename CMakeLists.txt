@@ -43,31 +43,8 @@ add_compile_definitions($<$<CONFIG:Release>:NDEBUG>)
 include(src/ui/wxui_code.cmake)  # This will set ${wxue_generated_code} with list of generated files
 
 add_executable(wxUiTesting WIN32
-    src/wxUiTesting.rc
-    src/mainapp.cpp
-
-    src/import_test.cpp   # Import Test Dialog
-
-    src/imports/form_base.cpp
-    src/imports/import_form_base.cpp
-    src/imports/crafter_base.cpp
-    src/imports/crafter_bitmaps.cpp
-    src/imports/import_crafter_base.cpp
-
-    src/custom_ctrls/split_button.cpp  # Split Button Custom widget (button + menu)
-
-    src/ui/mainframe.cpp       # Main window
-    src/ui/mainframe_base.cpp  # wxUiEditor generated file
-
-    src/ui/commonctrls.cpp
-    src/ui/dlgmultitest.cpp
-    src/ui/other_ctrls.cpp
-    src/ui/popupwin.cpp
-    src/ui/ribbondlg.cpp
-    src/ui/wizard.cpp
-
+    ${file_list}
     ${wxue_generated_code}
-
 )
 
 # This is just used by a github action to confirm that all the source code can be compiled
