@@ -1,6 +1,4 @@
-./src/ui/*_base.*
-./src/debugging
-./testing/src/ui/*_base.*
+./src/wxui_generated/*.*
 ./src/ui/ui_images.*
 ./src/imports/*.*
 ./src/art/*.*

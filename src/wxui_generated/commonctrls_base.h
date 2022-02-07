@@ -33,26 +33,25 @@
 
 namespace wxue_ctrl
 {
-class SplitButton;
+    class SplitButton;
 }
 
 class CommonCtrlsBase : public wxDialog
 {
 public:
     CommonCtrlsBase() {}
-    CommonCtrlsBase(wxWindow *parent, wxWindowID id = wxID_ANY, const wxString& title = "Common controls",
-        const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize,
-        long style = wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER, const wxString &name = wxDialogNameStr)
+    CommonCtrlsBase(wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = "Common controls",
+                    const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize,
+                    long style = wxDEFAULT_DIALOG_STYLE | wxRESIZE_BORDER, const wxString& name = wxDialogNameStr)
     {
         Create(parent, id, title, pos, size, style, name);
     }
 
-    bool Create(wxWindow *parent, wxWindowID id = wxID_ANY, const wxString& title = "Common controls",
-        const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize,
-        long style = wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER, const wxString &name = wxDialogNameStr);
+    bool Create(wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = "Common controls",
+                const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize,
+                long style = wxDEFAULT_DIALOG_STYLE | wxRESIZE_BORDER, const wxString& name = wxDialogNameStr);
 
 protected:
-
     // Virtual event handlers -- override them in your derived class
 
     virtual void OnCheckBox(wxCommandEvent& event) { event.Skip(); }

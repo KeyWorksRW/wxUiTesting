@@ -10,9 +10,8 @@
 
 #include "mypanel_base.h"
 
-MyPanelBase::MyPanelBase(wxWindow* parent, wxWindowID id,
-		const wxPoint& pos, const wxSize& size, long style) :
-	wxPanel(parent, id, pos, size, style)
+MyPanelBase::MyPanelBase(wxWindow* parent, wxWindowID id, const wxPoint& pos, const wxSize& size, long style) :
+    wxPanel(parent, id, pos, size, style)
 {
     auto parent_sizer = new wxBoxSizer(wxVERTICAL);
 

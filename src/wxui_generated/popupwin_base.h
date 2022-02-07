@@ -16,8 +16,8 @@ class PopupWinBase : public wxPopupTransientWindow
 {
 public:
     PopupWinBase(wxWindow* parent, int style = wxBORDER_RAISED);
-protected:
 
+protected:
     // Class member variables
 
     wxStaticText* m_staticText;
