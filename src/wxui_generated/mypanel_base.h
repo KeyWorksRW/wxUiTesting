@@ -14,11 +14,10 @@
 class MyPanelBase : public wxPanel
 {
 public:
-    MyPanelBase(wxWindow* parent, wxWindowID id = wxID_ANY, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize(500, 300),
-        long style = wxTAB_TRAVERSAL);
+    MyPanelBase(wxWindow* parent, wxWindowID id = wxID_ANY, const wxPoint& pos = wxDefaultPosition,
+                const wxSize& size = wxSize(500, 300), long style = wxTAB_TRAVERSAL);
 
 protected:
-
     // Class member variables
 
     wxSplitterWindow* m_splitter;

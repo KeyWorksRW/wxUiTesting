@@ -21,8 +21,8 @@
 #include "../art/french.xpm"
 #include "../art/japanese.xpm"
 
-bool ToolbookBase::Create(wxWindow *parent, wxWindowID id, const wxString &title,
-        const wxPoint&pos, const wxSize& size, long style, const wxString &name)
+bool ToolbookBase::Create(wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size,
+                          long style, const wxString& name)
 {
     if (!wxDialog::Create(parent, id, title, pos, size, style, name))
         return false;
@@ -76,7 +76,7 @@ bool ToolbookBase::Create(wxWindow *parent, wxWindowID id, const wxString &title
 
     page_3->SetSizerAndFit(parent_sizer_3);
 
-    auto stdBtn = CreateStdDialogButtonSizer(wxCLOSE|wxNO_DEFAULT);
+    auto stdBtn = CreateStdDialogButtonSizer(wxCLOSE | wxNO_DEFAULT);
     stdBtn->GetCancelButton()->SetDefault();
     box_sizer->Add(CreateSeparatedSizer(stdBtn), wxSizerFlags().Expand().Border(wxALL));
 

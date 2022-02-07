@@ -15,21 +15,21 @@
 #include <wx/settings.h>
 #include <wx/sizer.h>
 
-#include "listbook_base.h"
+#include "notebook_base.h"
 
 #include "../art/english.xpm"
 #include "../art/french.xpm"
 #include "../art/japanese.xpm"
 
-bool ListbookBase::Create(wxWindow *parent, wxWindowID id, const wxString &title,
-        const wxPoint&pos, const wxSize& size, long style, const wxString &name)
+bool NotebookBase::Create(wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size,
+                          long style, const wxString& name)
 {
     if (!wxDialog::Create(parent, id, title, pos, size, style, name))
         return false;
 
     auto box_sizer = new wxBoxSizer(wxVERTICAL);
 
-    m_listbook = new wxListbook(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxLB_LEFT);
+    m_notebook = new wxNotebook(this, wxID_ANY);
     {
         auto img_list = new wxImageList(16, 16);
         auto img_0 = wxImage(english_xpm);
@@ -38,13 +38,13 @@ bool ListbookBase::Create(wxWindow *parent, wxWindowID id, const wxString &title
         img_list->Add(img_1.Scale(16, 16));
         auto img_2 = wxImage(japanese_xpm);
         img_list->Add(img_2.Scale(16, 16));
-        m_listbook->AssignImageList(img_list);
+        m_notebook->AssignImageList(img_list);
     }
-    m_listbook->SetMinSize(wxSize(400, 400));
-    box_sizer->Add(m_listbook, wxSizerFlags().Border(wxALL));
+    m_notebook->SetMinSize(wxSize(400, 400));
+    box_sizer->Add(m_notebook, wxSizerFlags().Expand().Border(wxALL));
 
-    auto page = new wxPanel(m_listbook, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL);
-    m_listbook->AddPage(page, "English", false, 0);
+    auto page = new wxPanel(m_notebook, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL);
+    m_notebook->AddPage(page, "English", false, 0);
     page->SetBackgroundColour(wxSystemSettings::GetColour(wxSYS_COLOUR_BTNFACE));
 
     auto parent_sizer = new wxBoxSizer(wxVERTICAL);
@@ -54,8 +54,8 @@ bool ListbookBase::Create(wxWindow *parent, wxWindowID id, const wxString &title
 
     page->SetSizerAndFit(parent_sizer);
 
-    auto page_2 = new wxPanel(m_listbook, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL);
-    m_listbook->AddPage(page_2, wxString::FromUTF8("Français"), false, 1);
+    auto page_2 = new wxPanel(m_notebook, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL);
+    m_notebook->AddPage(page_2, wxString::FromUTF8("Français"), false, 1);
     page_2->SetBackgroundColour(wxSystemSettings::GetColour(wxSYS_COLOUR_BTNFACE));
 
     auto parent_sizer_2 = new wxBoxSizer(wxVERTICAL);
@@ -65,8 +65,8 @@ bool ListbookBase::Create(wxWindow *parent, wxWindowID id, const wxString &title
 
     page_2->SetSizerAndFit(parent_sizer_2);
 
-    auto page_3 = new wxPanel(m_listbook, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL);
-    m_listbook->AddPage(page_3, wxString::FromUTF8("日本語"), false, 2);
+    auto page_3 = new wxPanel(m_notebook, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL);
+    m_notebook->AddPage(page_3, wxString::FromUTF8("日本語"), false, 2);
     page_3->SetBackgroundColour(wxSystemSettings::GetColour(wxSYS_COLOUR_BTNFACE));
 
     auto parent_sizer_3 = new wxBoxSizer(wxVERTICAL);
@@ -76,7 +76,7 @@ bool ListbookBase::Create(wxWindow *parent, wxWindowID id, const wxString &title
 
     page_3->SetSizerAndFit(parent_sizer_3);
 
-    auto stdBtn = CreateStdDialogButtonSizer(wxCLOSE|wxNO_DEFAULT);
+    auto stdBtn = CreateStdDialogButtonSizer(wxCLOSE | wxNO_DEFAULT);
     stdBtn->GetCancelButton()->SetDefault();
     box_sizer->Add(CreateSeparatedSizer(stdBtn), wxSizerFlags().Expand().Border(wxALL));
 

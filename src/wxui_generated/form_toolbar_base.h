@@ -13,11 +13,10 @@
 class MyToolBarBase : public wxToolBar
 {
 public:
-    MyToolBarBase(wxWindow* parent, wxWindowID id = wxID_ANY, const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize(-1, 32),
-        long style = wxTB_HORIZONTAL);
+    MyToolBarBase(wxWindow* parent, wxWindowID id = wxID_ANY, const wxPoint& pos = wxDefaultPosition,
+                  const wxSize& size = wxSize(-1, 32), long style = wxTB_HORIZONTAL);
 
 protected:
-
     // Class member variables
 
     wxComboBox* m_comboBox;
@@ -30,4 +29,4 @@ namespace wxue_img
     extern const unsigned char english_png[541];
     extern const unsigned char french_png[252];
     extern const unsigned char japanese_png[377];
-}
+}  // namespace wxue_img

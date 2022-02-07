@@ -40,18 +40,18 @@ add_subdirectory(wxSnapshot)
 
 add_compile_definitions($<$<CONFIG:Release>:NDEBUG>)
 
-include(src/ui/wxui_code.cmake)  # This will set ${wxue_generated_code} with a list of generated files
+include(src/wxui_generated/wxui_generated.cmake)  # This will set ${wxue_generated_code} with a list of generated files
 include(src/file_list.cmake)     # This will set ${file_list} with a list of files
 
 add_executable(wxUiTesting WIN32
     ${file_list}
-    ${wxue_generated_code}
+    ${wxui_generated}
 )
 
 # This is just used by a github action to confirm that all the source code can be compiled
 add_library(check_build STATIC EXCLUDE_FROM_ALL
     ${file_list}
-    ${wxue_generated_code}
+    ${wxui_generated}
 )
 
 if (WIN32)
@@ -84,6 +84,7 @@ target_include_directories(wxUiTesting PRIVATE
     ${setup_dir}
     src/
     src/ui
+    src/wxui_generated
 )
 
 target_include_directories(check_build PRIVATE
@@ -91,4 +92,5 @@ target_include_directories(check_build PRIVATE
     ${setup_dir}
     src/
     src/ui
+    src/wxui_generated
 )

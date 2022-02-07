@@ -13,13 +13,13 @@
 #include "ribbondlg.h"     // RibbonDlg
 #include "wizard.h"        // Wizard
 
-#include "ui/choicebook_base.h"
-#include "ui/listbook_base.h"
-#include "ui/notebook_base.h"
-#include "ui/toolbook_base.h"
-#include "ui/treebook_base.h"
+#include "choicebook_base.h"
+#include "listbook_base.h"
+#include "notebook_base.h"
+#include "toolbook_base.h"
+#include "treebook_base.h"
 
-#include "ui/import_test_base.h"
+#include "import_test_base.h"
 
 MainFrame::MainFrame(wxWindow* parent) : MainFrameBase(parent) {}
 

@@ -11,7 +11,7 @@
 #include "imports/crafter_base.hpp"
 #include "imports/import_crafter_base.h"
 
-#include "ui/import_test_base.h"
+#include "import_test_base.h"
 
 void ImportTest::OnInit(wxInitDialogEvent& event)
 {

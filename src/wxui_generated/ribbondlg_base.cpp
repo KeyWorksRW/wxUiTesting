@@ -19,23 +19,23 @@
 #include "../art/english.xpm"
 #include "../art/french.xpm"
 
-bool RibbonDlgBase::Create(wxWindow *parent, wxWindowID id, const wxString &title,
-        const wxPoint&pos, const wxSize& size, long style, const wxString &name)
+bool RibbonDlgBase::Create(wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size,
+                           long style, const wxString& name)
 {
     if (!wxDialog::Create(parent, id, title, pos, size, style, name))
         return false;
 
     auto parent_sizer = new wxBoxSizer(wxVERTICAL);
 
-    m_rbnBar = new wxRibbonBar(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxRIBBON_BAR_SHOW_PAGE_LABELS|wxRIBBON_BAR_SHOW_PAGE_ICONS|wxRIBBON_BAR_FLOW_HORIZONTAL);
+    m_rbnBar = new wxRibbonBar(this, wxID_ANY, wxDefaultPosition, wxDefaultSize,
+                               wxRIBBON_BAR_SHOW_PAGE_LABELS | wxRIBBON_BAR_SHOW_PAGE_ICONS | wxRIBBON_BAR_FLOW_HORIZONTAL);
     m_rbnBar->SetArtProvider(new wxRibbonAUIArtProvider);
     parent_sizer->Add(m_rbnBar, wxSizerFlags().Expand().Border(wxALL));
 
     auto rbnPage = new wxRibbonPage(m_rbnBar, wxID_ANY, "First");
     m_rbnBar->SetActivePage(rbnPage);
 
-    auto rbnPanel = new wxRibbonPanel(rbnPage, wxID_ANY, "English",
-    wxImage(english_xpm));
+    auto rbnPanel = new wxRibbonPanel(rbnPage, wxID_ANY, "English", wxImage(english_xpm));
 
     auto first_parent_sizer = new wxBoxSizer(wxVERTICAL);
 
@@ -51,8 +51,7 @@ bool RibbonDlgBase::Create(wxWindow *parent, wxWindowID id, const wxString &titl
 
     rbnPanel->SetSizerAndFit(first_parent_sizer);
 
-    auto rbnPanel_2 = new wxRibbonPanel(rbnPage, wxID_ANY, "French",
-    wxImage(french_xpm));
+    auto rbnPanel_2 = new wxRibbonPanel(rbnPage, wxID_ANY, "French", wxImage(french_xpm));
     rbnPanel_2->SetBackgroundColour(wxSystemSettings::GetColour(wxSYS_COLOUR_MENU));
 
     auto first_parent_sizer_2 = new wxBoxSizer(wxVERTICAL);
@@ -71,15 +70,16 @@ bool RibbonDlgBase::Create(wxWindow *parent, wxWindowID id, const wxString &titl
 
     auto ribbonPage2 = new wxRibbonPage(m_rbnBar, wxID_ANY, "Second");
 
-    auto ribbonPanel2 = new wxRibbonPanel(ribbonPage2, wxID_ANY, "Button Panel",
-        wxNullBitmap, wxDefaultPosition, wxDefaultSize,
-        wxRIBBON_PANEL_DEFAULT_STYLE|wxRIBBON_PANEL_STRETCH);
+    auto ribbonPanel2 = new wxRibbonPanel(ribbonPage2, wxID_ANY, "Button Panel", wxNullBitmap, wxDefaultPosition,
+                                          wxDefaultSize, wxRIBBON_PANEL_DEFAULT_STYLE | wxRIBBON_PANEL_STRETCH);
 
     auto rbnBtnBar = new wxRibbonButtonBar(ribbonPanel2, wxID_ANY);
 
-    rbnBtnBar->AddButton(wxID_ANY, "Forward", wxArtProvider::GetBitmap(wxART_GO_FORWARD, wxART_OTHER), wxEmptyString, wxRIBBON_BUTTON_NORMAL);
+    rbnBtnBar->AddButton(wxID_ANY, "Forward", wxArtProvider::GetBitmap(wxART_GO_FORWARD, wxART_OTHER), wxEmptyString,
+                         wxRIBBON_BUTTON_NORMAL);
 
-    rbnBtnBar->AddButton(wxID_ANY, "Backward", wxArtProvider::GetBitmap(wxART_GO_BACK, wxART_OTHER), wxEmptyString, wxRIBBON_BUTTON_NORMAL);
+    rbnBtnBar->AddButton(wxID_ANY, "Backward", wxArtProvider::GetBitmap(wxART_GO_BACK, wxART_OTHER), wxEmptyString,
+                         wxRIBBON_BUTTON_NORMAL);
 
     auto ribbonPage_2 = new wxRibbonPage(m_rbnBar, wxID_ANY, "Third");
 
@@ -87,8 +87,10 @@ bool RibbonDlgBase::Create(wxWindow *parent, wxWindowID id, const wxString &titl
 
     auto rbnToolBar = new wxRibbonToolBar(ribbonPanel_2, wxID_ANY);
     {
-        rbnToolBar->AddTool(wxID_FILE1, wxArtProvider::GetBitmap(wxART_GOTO_FIRST, wxART_TOOLBAR), wxEmptyString, wxRIBBON_BUTTON_NORMAL);
-        rbnToolBar->AddTool(wxID_FILE9, wxArtProvider::GetBitmap(wxART_GOTO_LAST, wxART_TOOLBAR), wxEmptyString, wxRIBBON_BUTTON_NORMAL);
+        rbnToolBar->AddTool(wxID_FILE1, wxArtProvider::GetBitmap(wxART_GOTO_FIRST, wxART_TOOLBAR), wxEmptyString,
+                            wxRIBBON_BUTTON_NORMAL);
+        rbnToolBar->AddTool(wxID_FILE9, wxArtProvider::GetBitmap(wxART_GOTO_LAST, wxART_TOOLBAR), wxEmptyString,
+                            wxRIBBON_BUTTON_NORMAL);
     }
     rbnToolBar->Realize();
     m_rbnBar->Realize();
@@ -109,7 +111,7 @@ bool RibbonDlgBase::Create(wxWindow *parent, wxWindowID id, const wxString &titl
     }
     box_sizer_3->Add(m_scintilla, wxSizerFlags().Expand().Border(wxALL));
 
-    auto stdBtn = CreateStdDialogButtonSizer(wxOK|wxCANCEL);
+    auto stdBtn = CreateStdDialogButtonSizer(wxOK | wxCANCEL);
     parent_sizer->Add(CreateSeparatedSizer(stdBtn), wxSizerFlags().Expand().Border(wxALL));
 
     SetSizerAndFit(parent_sizer);
@@ -117,15 +119,17 @@ bool RibbonDlgBase::Create(wxWindow *parent, wxWindowID id, const wxString &titl
 
     // Event handlers
     m_btn->Bind(wxEVT_BUTTON,
-        [this](wxCommandEvent&)
-        {
-            m_scintilla->ClearAll();  m_scintilla->AddTextRaw("This is a sentence in English.");
-        } );
+                [this](wxCommandEvent&)
+                {
+                    m_scintilla->ClearAll();
+                    m_scintilla->AddTextRaw("This is a sentence in English.");
+                });
     m_btn_2->Bind(wxEVT_BUTTON,
-        [this](wxCommandEvent&)
-        {
-            m_scintilla->ClearAll();  m_scintilla->AddTextRaw("Ceci est une phrase en français.");
-        } );
+                  [this](wxCommandEvent&)
+                  {
+                      m_scintilla->ClearAll();
+                      m_scintilla->AddTextRaw("Ceci est une phrase en français.");
+                  });
 
     return true;
 }

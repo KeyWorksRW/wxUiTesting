@@ -16,19 +16,18 @@ class ChoiceBookBase : public wxDialog
 {
 public:
     ChoiceBookBase() {}
-    ChoiceBookBase(wxWindow *parent, wxWindowID id = wxID_ANY, const wxString& title = "Choicebook",
-        const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize,
-        long style = wxDEFAULT_DIALOG_STYLE, const wxString &name = wxDialogNameStr)
+    ChoiceBookBase(wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = "Choicebook",
+                   const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize,
+                   long style = wxDEFAULT_DIALOG_STYLE, const wxString& name = wxDialogNameStr)
     {
         Create(parent, id, title, pos, size, style, name);
     }
 
-    bool Create(wxWindow *parent, wxWindowID id = wxID_ANY, const wxString& title = "Choicebook",
-        const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize,
-        long style = wxDEFAULT_DIALOG_STYLE, const wxString &name = wxDialogNameStr);
+    bool Create(wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = "Choicebook",
+                const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize,
+                long style = wxDEFAULT_DIALOG_STYLE, const wxString& name = wxDialogNameStr);
 
 protected:
-
     // Class member variables
 
     wxChoicebook* m_choicebook;
