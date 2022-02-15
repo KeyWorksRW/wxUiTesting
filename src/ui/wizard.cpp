@@ -4,8 +4,6 @@
 // The code is generated only once. You can now modify the code as needed.
 ///////////////////////////////////////////////////////////////////////////
 
-#include "pch.h"
-
 #include "wizard.h"  // auto-generated: wizardBase.h and wizardBase.cpp
 
 Wizard::Wizard(wxWindow* parent) : WizardBase(parent) {}

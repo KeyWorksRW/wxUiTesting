@@ -32,7 +32,11 @@ Files:
     custom_ctrls/split_button.cpp  # Split Button Custom widget (button + menu)
 
     imports/form_base.cpp
-    imports/import_formbase.cpp
+    imports/import_form_base.cpp
+    imports/crafter_base.cpp
+    imports/crafter_bitmaps.cpp
+    imports/import_crafter_base.cpp
+    imports/import_crafter_base.cpp
 
     ui/commonctrls.cpp   # Common controls dialog
     ui/dlgmultitest.cpp  # Multiple Tests dialog
@@ -43,6 +47,7 @@ Files:
     ui/wizard.cpp
 
     ui/wxui_code.cmake
+    wxui_generated/wxui_generated.cmake
 
 XPM:
     art/english.png: art/english.xpm

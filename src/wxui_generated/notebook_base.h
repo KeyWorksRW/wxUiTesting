@@ -15,18 +15,19 @@ class NotebookBase : public wxDialog
 {
 public:
     NotebookBase() {}
-    NotebookBase(wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = "Notebook",
-                 const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize,
-                 long style = wxDEFAULT_DIALOG_STYLE, const wxString& name = wxDialogNameStr)
+    NotebookBase(wxWindow *parent, wxWindowID id = wxID_ANY, const wxString& title = "Notebook",
+        const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize,
+        long style = wxDEFAULT_DIALOG_STYLE, const wxString &name = wxDialogNameStr)
     {
         Create(parent, id, title, pos, size, style, name);
     }
 
-    bool Create(wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = "Notebook",
-                const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize,
-                long style = wxDEFAULT_DIALOG_STYLE, const wxString& name = wxDialogNameStr);
+    bool Create(wxWindow *parent, wxWindowID id = wxID_ANY, const wxString& title = "Notebook",
+        const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize,
+        long style = wxDEFAULT_DIALOG_STYLE, const wxString &name = wxDialogNameStr);
 
 protected:
+
     // Class member variables
 
     wxNotebook* m_notebook;

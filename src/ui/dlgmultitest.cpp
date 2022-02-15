@@ -5,8 +5,6 @@
 // License:   Apache License -- see ../../LICENSE
 /////////////////////////////////////////////////////////////////////////////
 
-#include "pch.h"
-
 #include "dlgmultitest.h"  // auto-generated: dlgmultitest_base.h and dlgmultitest_base.cpp
 
 DlgMultiTest::DlgMultiTest(wxWindow* parent) : DlgMultiTestBase(parent) {}

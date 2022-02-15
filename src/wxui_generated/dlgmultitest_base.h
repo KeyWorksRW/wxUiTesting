@@ -30,18 +30,19 @@ class DlgMultiTestBase : public wxDialog
 {
 public:
     DlgMultiTestBase() {}
-    DlgMultiTestBase(wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = "Widgets Testing",
-                     const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize,
-                     long style = wxDEFAULT_DIALOG_STYLE | wxRESIZE_BORDER, const wxString& name = wxDialogNameStr)
+    DlgMultiTestBase(wxWindow *parent, wxWindowID id = wxID_ANY, const wxString& title = "Widgets Testing",
+        const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize,
+        long style = wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER, const wxString &name = wxDialogNameStr)
     {
         Create(parent, id, title, pos, size, style, name);
     }
 
-    bool Create(wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = "Widgets Testing",
-                const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize,
-                long style = wxDEFAULT_DIALOG_STYLE | wxRESIZE_BORDER, const wxString& name = wxDialogNameStr);
+    bool Create(wxWindow *parent, wxWindowID id = wxID_ANY, const wxString& title = "Widgets Testing",
+        const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize,
+        long style = wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER, const wxString &name = wxDialogNameStr);
 
 protected:
+
     // Virtual event handlers -- override them in your derived class
 
     virtual void OnInit(wxInitDialogEvent& event) { event.Skip(); }
@@ -76,4 +77,4 @@ namespace wxue_img
     extern const unsigned char disabled_png[437];
     extern const unsigned char focus_png[517];
     extern const unsigned char normal_png[508];
-}  // namespace wxue_img
+}

@@ -24,18 +24,19 @@ class RibbonDlgBase : public wxDialog
 {
 public:
     RibbonDlgBase() {}
-    RibbonDlgBase(wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = "Ribbon Dialog",
-                  const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize,
-                  long style = wxDEFAULT_DIALOG_STYLE | wxRESIZE_BORDER, const wxString& name = wxDialogNameStr)
+    RibbonDlgBase(wxWindow *parent, wxWindowID id = wxID_ANY, const wxString& title = "Ribbon Dialog",
+        const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize,
+        long style = wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER, const wxString &name = wxDialogNameStr)
     {
         Create(parent, id, title, pos, size, style, name);
     }
 
-    bool Create(wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = "Ribbon Dialog",
-                const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize,
-                long style = wxDEFAULT_DIALOG_STYLE | wxRESIZE_BORDER, const wxString& name = wxDialogNameStr);
+    bool Create(wxWindow *parent, wxWindowID id = wxID_ANY, const wxString& title = "Ribbon Dialog",
+        const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize,
+        long style = wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER, const wxString &name = wxDialogNameStr);
 
 protected:
+
     // Class member variables
 
     wxButton* m_btn;

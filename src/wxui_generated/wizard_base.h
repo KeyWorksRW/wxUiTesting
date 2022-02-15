@@ -20,12 +20,15 @@
 class WizardBase : public wxWizard
 {
 public:
-    WizardBase(wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = "Wizard Tests",
-               const wxPoint& pos = wxDefaultPosition, long style = wxDEFAULT_DIALOG_STYLE);
+    WizardBase(wxWindow* parent, wxWindowID id = wxID_ANY,
+        const wxString& title = "Wizard Tests",
+        const wxPoint& pos = wxDefaultPosition,
+        long style = wxDEFAULT_DIALOG_STYLE);
 
     bool Run() { return RunWizard((wxWizardPage*) GetPageAreaSizer()->GetItem((size_t) 0)->GetWindow()); }
 
 protected:
+
     // Virtual event handlers -- override them in your derived class
 
     virtual void OnBeforeChange(wxWizardEvent& event) { event.Skip(); }
@@ -43,4 +46,4 @@ namespace wxue_img
 
     extern const unsigned char wiztest2_png[6797];
     extern const unsigned char wiztest_png[1239];
-}  // namespace wxue_img
+}

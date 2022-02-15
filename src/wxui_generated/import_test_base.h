@@ -23,16 +23,16 @@ class ImportTest : public wxDialog
 {
 public:
     ImportTest() {}
-    ImportTest(wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = "wxFormBuilder comparison",
-               const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize,
-               long style = wxDEFAULT_DIALOG_STYLE, const wxString& name = wxDialogNameStr)
+    ImportTest(wxWindow *parent, wxWindowID id = wxID_ANY, const wxString& title = "wxFormBuilder comparison",
+        const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize,
+        long style = wxDEFAULT_DIALOG_STYLE, const wxString &name = wxDialogNameStr)
     {
         Create(parent, id, title, pos, size, style, name);
     }
 
-    bool Create(wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = "wxFormBuilder comparison",
-                const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize,
-                long style = wxDEFAULT_DIALOG_STYLE, const wxString& name = wxDialogNameStr);
+    bool Create(wxWindow *parent, wxWindowID id = wxID_ANY, const wxString& title = "wxFormBuilder comparison",
+        const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize,
+        long style = wxDEFAULT_DIALOG_STYLE, const wxString &name = wxDialogNameStr);
 
     void OnImportPageChanged(wxAuiNotebookEvent& event);
     void OnImportCrafterPageChanged(wxAuiNotebookEvent& event);
@@ -40,6 +40,7 @@ public:
     void OnCrafterPageChanged(wxAuiNotebookEvent& event);
 
 protected:
+
     // Event handlers
 
     void OnInit(wxInitDialogEvent& event);

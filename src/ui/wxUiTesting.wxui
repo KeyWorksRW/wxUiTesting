@@ -5,7 +5,6 @@
     class="Project"
     art_directory="../art"
     base_directory="../wxui_generated"
-    local_pch_file="pch.h"
     cmake_file="../wxui_generated/wxui_generated.cmake"
     cmake_varname="wxui_generated"
     generate_cmake="true"

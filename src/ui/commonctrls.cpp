@@ -5,8 +5,6 @@
 // License:   Apache License -- see ../../LICENSE
 /////////////////////////////////////////////////////////////////////////////
 
-#include "pch.h"
-
 #include <wx/artprov.h>
 
 #include "commonctrls.h"  // auto-generated: commonctrls_base.h and commonctrls_base.cpp
