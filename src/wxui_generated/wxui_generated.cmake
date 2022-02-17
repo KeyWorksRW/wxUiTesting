@@ -4,19 +4,19 @@
 
 set (wxui_generated
 
-    ${CMAKE_CURRENT_LIST_DIR}/../wxui_generated/choicebook_base.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/../wxui_generated/commonctrls_base.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/../wxui_generated/dlgmultitest_base.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/../wxui_generated/form_toolbar_base.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/../wxui_generated/import_test_base.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/../wxui_generated/listbook_base.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/../wxui_generated/mainframe_base.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/../wxui_generated/notebook_base.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/../wxui_generated/other_ctrls_base.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/../wxui_generated/popupwin_base.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/../wxui_generated/ribbondlg_base.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/../wxui_generated/toolbook_base.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/../wxui_generated/treebook_base.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/../wxui_generated/wizard_base.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/choicebook_base.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/commonctrls_base.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/dlgmultitest_base.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/form_toolbar_base.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/import_test_base.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/listbook_base.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/mainframe_base.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/notebook_base.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/other_ctrls_base.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/popupwin_base.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/ribbondlg_base.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/toolbook_base.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/treebook_base.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/wizard_base.cpp
 
 )
