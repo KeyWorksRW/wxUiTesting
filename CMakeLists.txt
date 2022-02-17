@@ -46,6 +46,10 @@ if (INTERNAL_WIDGETS_SOURCES)
 
     # This will build wxCLib.lib and wxWidgets.lib
     add_subdirectory(../wxWidgets/bld ${CMAKE_CURRENT_LIST_DIR}/../wxWidgets/bld/build)
+
+    # Add preprocessor definition that can be used to conditionalize code based on whether the
+    # internal wxWidgets libraries are being used.
+    add_compile_definitions(INTERNAL_WIDGETS)
 else()
     # wxSnapshot is dev release (currently 3.1.15)
     set (widget_dir ${CMAKE_CURRENT_LIST_DIR}/wxSnapshot)
