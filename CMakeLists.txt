@@ -35,8 +35,26 @@ if (NOT isMultiConfig)
     endif()
 endif()
 
-# This will build wxCLib.lib and wxWidgets.lib
-add_subdirectory(wxSnapshot)
+option(INTERNAL_WIDGETS_SOURCES "Build with internal forked wxWidgets sources" )
+
+if (INTERNAL_WIDGETS_SOURCES)
+    # This uses a private forked version of wxWidgets containing current sources
+    message(NOTICE "Building with internal forked wxWidget libraries")
+    set (widget_dir ${CMAKE_CURRENT_LIST_DIR}/../wxWidgets)
+    set (widget_lib_dir ${CMAKE_CURRENT_LIST_DIR}/../wxWidgets/bld/build)
+    set (widget_cmake_dir ${CMAKE_CURRENT_LIST_DIR}/../wxWidgets/bld)
+
+    # This will build wxCLib.lib and wxWidgets.lib
+    add_subdirectory(../wxWidgets/bld ${CMAKE_CURRENT_LIST_DIR}/../wxWidgets/bld/build)
+else()
+    # wxSnapshot is dev release (currently 3.1.15)
+    set (widget_dir ${CMAKE_CURRENT_LIST_DIR}/wxSnapshot)
+    set (widget_lib_dir ${CMAKE_CURRENT_LIST_DIR}/wxSnapshot/build)
+    set (widget_cmake_dir ${CMAKE_CURRENT_LIST_DIR}/wxSnapshot)
+
+    # This will build wxCLib.lib and wxWidgets.lib
+    add_subdirectory(${widget_cmake_dir})
+endif()
 
 add_compile_definitions($<$<CONFIG:Release>:NDEBUG>)
 
@@ -76,11 +94,11 @@ target_precompile_headers(wxUiTesting PRIVATE "src/pch.h")
 target_precompile_headers(check_build PRIVATE "src/pch.h")
 
 if (WIN32)
-    set(setup_dir wxSnapshot/win)
+    set(setup_dir ${widget_cmake_dir}/win)
 endif()
 
 target_include_directories(wxUiTesting PRIVATE
-    wxSnapshot/include
+    ${widget_dir}/include
     ${setup_dir}
     src/
     src/ui
@@ -88,7 +106,7 @@ target_include_directories(wxUiTesting PRIVATE
 )
 
 target_include_directories(check_build PRIVATE
-    wxSnapshot/include
+    ${widget_dir}/include
     ${setup_dir}
     src/
     src/ui
