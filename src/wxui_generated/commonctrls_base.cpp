@@ -215,7 +215,7 @@ bool CommonCtrlsBase::Create(wxWindow* parent, wxWindowID id, const wxString& ti
     flex_grid_sizer->Add(m_bmpComboBox, wxSizerFlags().Border(wxALL));
 
     m_checkPlayAnimation = new wxCheckBox(this, wxID_ANY, "Play Animation");
-    auto static_box_2 = new wxStaticBoxSizer(new wxStaticBox(this, wxID_ANY, m_checkPlayAnimation), wxVERTICAL);
+    auto static_box_2 = new wxStaticBoxSizer(new wxStaticBox(this, wxID_ANY,m_checkPlayAnimation), wxVERTICAL);
     flex_grid_sizer->Add(static_box_2, wxSizerFlags().Border(wxALL));
 
     m_toggleBtn = new wxToggleButton(static_box_2->GetStaticBox(), wxID_ANY, "Play Animation", wxDefaultPosition, wxDefaultSize,

@@ -87,7 +87,7 @@ bool DlgMultiTestBase::Create(wxWindow* parent, wxWindowID id, const wxString& t
     box_sizer_3->Add(box_sizer_7, wxSizerFlags().Border(wxALL));
 
     m_btn_5 = new wxCommandLinkButton(page_2, wxID_ANY, "Command", "wxCommandLinkButton");
-    m_btn_5->SetBitmap(wxArtProvider::GetBitmap(wxART_GO_FORWARD, wxART_OTHER));
+    m_btn_5->SetBitmap(wxArtProvider::GetBitmapBundle(wxART_GO_FORWARD, wxART_OTHER));
     m_btn_5->SetToolTip("The bitmap for this is from Art Provider.");
     box_sizer_7->Add(m_btn_5, wxSizerFlags().Border(wxALL));
 
