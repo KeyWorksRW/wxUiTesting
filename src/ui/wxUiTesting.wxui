@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <wxUiEditorData
-  data_version="13">
+  data_version="14">
   <node
     class="Project"
     art_directory="../art"
@@ -8,7 +8,8 @@
     cmake_file="../wxui_generated/wxui_generated.cmake"
     cmake_varname="wxui_generated"
     generate_cmake="true"
-    compiler_standard="C++ 17">
+    compiler_standard="C++ 17"
+    wxWidgets_version="3.2">
     <node
       class="wxFrame"
       class_name="MainFrameBase"
