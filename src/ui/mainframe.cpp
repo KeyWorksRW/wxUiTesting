@@ -1,11 +1,11 @@
 /////////////////////////////////////////////////////////////////////////////
 // Purpose:   Main window
 // Author:    Ralph Walden
-// Copyright: Copyright (c) 2020 KeyWorks Software (Ralph Walden)
+// Copyright: Copyright (c) 2020-2022 KeyWorks Software (Ralph Walden)
 // License:   Apache License -- see ../../LICENSE
 /////////////////////////////////////////////////////////////////////////////
 
-#include "mainframe.h"  // auto-generated: ui/mainframe_base.h and ui/mainframe_base.cpp
+#include "mainframe.h"  // auto-generated: ../wxui_generated/mainframe_base.h and ../wxui_generated/mainframe_base.cpp
 
 #include "commonctrls.h"   // CommonCtrls -- Common controls dialog
 #include "dlgmultitest.h"  // DlgMultiTest -- Multiple Tests dialog
