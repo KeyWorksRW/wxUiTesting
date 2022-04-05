@@ -48,9 +48,17 @@ if (NOT isMultiConfig)
     endif()
 endif()
 
-include(src/wxWidgets.cmake)  # This will set ${wxWidget_sources} and ${wxCLib_sources} with list of files
+include(src/wxWidgets.cmake) # This will set ${common_sources}, ${msw_sources}, ${unix_sources} and ${osx_sources}
+include(src/wxCLib.cmake)    # This will set ${wxCLib_sources} with list of files
 
-add_library(wxWidgets STATIC ${wxWidget_sources} )
+if (WIN32)
+    add_library(wxWidgets STATIC ${common_sources} ${msw_sources} )
+elseif (APPLE)
+    add_library(wxWidgets STATIC ${common_sources} ${osx_sources} )
+elseif (UNIX)
+    add_library(wxWidgets STATIC ${common_sources} ${unix_sources} )
+endif()
+
 add_library(wxCLib STATIC ${wxCLib_sources} )
 
 if (MSVC)
@@ -76,6 +84,32 @@ target_compile_definitions(wxWidgets PRIVATE
     LINK_LEXERS
 )
 
+if (WIN32)
+    target_compile_definitions(wxCLib PRIVATE
+        PCRE2_CODE_UNIT_WIDTH=16
+        NEWLINE_DEFAULT=2
+        LINK_SIZE=2
+        PARENS_NEST_LIMIT=250
+        HEAP_LIMIT=20000000
+        MATCH_LIMIT=10000000
+        MATCH_LIMIT_DEPTH=10000000
+        MAX_NAME_COUNT=10000
+        MAX_NAME_SIZE=32
+    )
+    else()
+        target_compile_definitions(wxCLib PRIVATE
+        PCRE2_CODE_UNIT_WIDTH=8
+        NEWLINE_DEFAULT=2
+        LINK_SIZE=2
+        PARENS_NEST_LIMIT=250
+        HEAP_LIMIT=20000000
+        MATCH_LIMIT=10000000
+        MATCH_LIMIT_DEPTH=10000000
+        MAX_NAME_COUNT=10000
+        MAX_NAME_SIZE=32
+    )
+endif()
+
 target_precompile_headers(wxWidgets PRIVATE "include/wx/wxprec.h")
 
 if (WIN32)
@@ -87,6 +121,7 @@ target_include_directories(wxWidgets PRIVATE
     ${setup_dir}
     src/tiff/libtiff
     src/jpeg
+    src/pcre/wx
     src/png
     src/zlib
     src/regex
@@ -103,6 +138,7 @@ target_include_directories(wxCLib PRIVATE
     ${setup_dir}
     src/tiff/libtiff
     src/jpeg
+    src/pcre/wx
     src/zlib
     src/expat/expat/lib
 )

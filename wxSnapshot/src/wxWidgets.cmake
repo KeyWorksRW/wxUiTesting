@@ -1,177 +1,30 @@
-
-if (WIN32)
-    set(msw_files
-        ${CMAKE_CURRENT_LIST_DIR}/msw/aboutdlg.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/accel.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/anybutton.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/app.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/appprogress.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/artmsw.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/basemsw.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/bitmap.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/bmpbuttn.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/bmpcbox.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/brush.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/button.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/calctrl.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/caret.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/checkbox.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/checklst.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/choice.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/clipbrd.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/colordlg.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/colour.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/combo.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/combobox.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/commandlinkbutton.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/control.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/crashrpt.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/cursor.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/customdraw.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/data.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/datecontrols.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/datectrl.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/datetimectrl.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/dc.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/dcclient.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/dcmemory.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/dcprint.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/dcscreen.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/dde.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/debughlp.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/dialog.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/dialup.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/dib.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/dir.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/dirdlg.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/display.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/dlmsw.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/dragimag.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/enhmeta.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/evtloop.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/evtloopconsole.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/fdrepdlg.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/filedlg.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/font.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/fontdlg.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/fontenum.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/fontutil.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/frame.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/fswatcher.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/gauge.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/gdiimage.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/gdiobj.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/gdiplus.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/graphics.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/graphicsd2d.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/headerctrl.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/helpbest.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/helpchm.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/helpwin.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/hyperlink.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/icon.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/imaglist.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/iniconf.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/joystick.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/listbox.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/listctrl.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/main.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/mdi.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/menu.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/menuitem.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/metafile.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/mimetype.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/minifram.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/msgdlg.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/nativdlg.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/nativewin.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/nonownedwnd.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/notebook.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/notifmsg.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/ole/access.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/ole/activex.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/ole/automtn.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/ole/comimpl.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/ole/dataobj.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/ole/dropsrc.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/ole/droptgt.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/ole/oleutils.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/ole/safearray.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/ole/uuid.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/ownerdrw.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/palette.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/pen.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/popupwin.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/power.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/printdlg.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/printwin.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/progdlg.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/radiobox.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/radiobut.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/regconf.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/region.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/registry.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/renderer.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/richmsgdlg.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/richtooltip.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/rt/notifmsgrt.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/rt/utilsrt.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/scrolbar.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/secretstore.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/settings.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/slider.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/snglinst.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/sockmsw.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/sound.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/spinbutt.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/spinctrl.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/stackwalk.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/statbmp.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/statbox.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/statline.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/stattext.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/statusbar.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/stdpaths.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/systhemectrl.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/taskbar.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/taskbarbutton.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/textctrl.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/textentry.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/textmeasure.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/tglbtn.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/thread.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/timectrl.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/timer.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/toolbar.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/tooltip.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/toplevel.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/treectrl.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/uiaction.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/utils.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/utilsexc.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/utilsgui.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/utilswin.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/uxtheme.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/volume.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/webview_edge.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/webview_ie.cpp
-        ${CMAKE_CURRENT_LIST_DIR}/msw/window.cpp
-    )
-endif()
-
-set (wxWidget_sources
-    # wx_core
+set (common_sources
+    ${CMAKE_CURRENT_LIST_DIR}/aui/auibar.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/aui/auibook.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/aui/dockart.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/aui/floatpane.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/aui/framemanager.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/aui/tabart.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/aui/tabmdi.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/accelcmn.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/accesscmn.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/addremovectrl.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/affinematrix2d.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/anidecod.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/animatecmn.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/any.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/appbase.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/appcmn.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/arcall.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/arcfind.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/archive.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/arrstr.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/artprov.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/artstd.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/arttango.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/base64.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/bmpbase.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/bmpbndl.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/bmpbtncmn.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/bmpcboxcmn.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/bookctrl.cpp
@@ -182,21 +35,30 @@ set (wxWidget_sources
     ${CMAKE_CURRENT_LIST_DIR}/common/checklstcmn.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/choiccmn.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/clipcmn.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/clntdata.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/clrpickercmn.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/cmdline.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/cmdproc.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/cmndata.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/colourcmn.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/colourdata.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/combocmn.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/config.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/containr.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/convauto.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/cshelp.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/ctrlcmn.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/ctrlsub.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/datavcmn.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/datetime.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/datetimefmt.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/datstrm.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/dcbase.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/dcbufcmn.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/dcgraph.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/dcsvg.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/debugrpt.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/dircmn.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/dirctrlcmn.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/dlgcmn.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/dndcmn.cpp
@@ -205,13 +67,27 @@ set (wxWidget_sources
     ${CMAKE_CURRENT_LIST_DIR}/common/docview.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/dpycmn.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/dseldlg.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/dynlib.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/dynload.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/effects.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/encconv.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/event.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/evtloopcmn.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/fddlgcmn.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/ffile.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/file.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/fileback.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/fileconf.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/filectrlcmn.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/filefn.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/filehistorycmn.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/filename.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/filepickercmn.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/filesys.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/filtall.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/filtfind.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/fldlgcmn.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/fmapbase.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/fontcmn.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/fontdata.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/fontenumcmn.cpp
@@ -219,14 +95,22 @@ set (wxWidget_sources
     ${CMAKE_CURRENT_LIST_DIR}/common/fontpickercmn.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/fontutilcmn.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/framecmn.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/fs_arc.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/fs_filter.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/fs_inet.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/fs_mem.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/fswatchercmn.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/ftp.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/gaugecmn.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/gbsizer.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/gdicmn.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/geometry.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/gifdecod.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/glcmn.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/graphcmn.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/gridcmn.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/hash.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/hashmap.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/headercolcmn.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/headerctrlcmn.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/helpbase.cpp
@@ -246,17 +130,32 @@ set (wxWidget_sources
     ${CMAKE_CURRENT_LIST_DIR}/common/imagtga.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/imagtiff.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/imagxpm.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/init.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/intl.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/ipcbase.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/languageinfo.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/layout.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/lboxcmn.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/list.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/listctrlcmn.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/log.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/longlong.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/lzmastream.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/markupparser.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/matrix.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/mediactrlcmn.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/memory.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/menucmn.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/mimecmn.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/modalhook.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/module.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/mousemanager.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/msgout.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/mstream.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/nbkbase.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/notifmsgcmn.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/numformatter.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/object.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/odcombocmn.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/overlaycmn.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/ownerdrwcmn.cpp
@@ -264,14 +163,18 @@ set (wxWidget_sources
     ${CMAKE_CURRENT_LIST_DIR}/common/paper.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/persist.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/pickerbase.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/platinfo.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/popupcmn.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/powercmn.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/preferencescmn.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/prntbase.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/process.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/protocol.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/quantize.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/radiobtncmn.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/radiocmn.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/rearrangectrl.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/regex.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/rendcmn.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/rgncmn.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/richtooltipcmn.cpp
@@ -280,6 +183,7 @@ set (wxWidget_sources
     ${CMAKE_CURRENT_LIST_DIR}/common/sckipc.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/sckstrm.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/scrolbarcmn.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/secretstore.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/settcmn.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/sizer.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/slidercmn.cpp
@@ -287,55 +191,92 @@ set (wxWidget_sources
     ${CMAKE_CURRENT_LIST_DIR}/common/spinbtncmn.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/spinctrlcmn.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/srchcmn.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/sstream.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/statbar.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/statbmpcmn.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/statboxcmn.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/statlinecmn.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/stattextcmn.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/stdpbase.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/stdstream.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/stockitem.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/common/taskbarcmn.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/stopwatch.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/strconv.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/stream.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/string.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/stringimpl.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/stringops.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/strvararg.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/sysopt.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/tarstrm.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/tbarbase.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/textbuf.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/textcmn.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/textentrycmn.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/textfile.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/textmeasurecmn.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/threadinfo.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/time.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/timercmn.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/timerimpl.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/tokenzr.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/toplvcmn.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/translation.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/treebase.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/txtstrm.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/uiactioncmn.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/uilocale.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/unichar.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/uri.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/url.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/ustring.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/utilscmn.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/valgen.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/validate.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/valnum.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/valtext.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/variant.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/webrequest.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/webrequest_curl.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/webview.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/webviewarchivehandler.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/webviewfshandler.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/wfstream.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/wincmn.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/windowid.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/wrapsizer.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/wxcrt.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/wxprintf.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/xlocale.cpp
     ${CMAKE_CURRENT_LIST_DIR}/common/xpmdecod.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/xti.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/xtistrm.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/xtixml.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/zipstrm.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/zstream.cpp
     ${CMAKE_CURRENT_LIST_DIR}/generic/aboutdlgg.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/generic/activityindicator.cpp
     ${CMAKE_CURRENT_LIST_DIR}/generic/animateg.cpp
     ${CMAKE_CURRENT_LIST_DIR}/generic/bannerwindow.cpp
     ${CMAKE_CURRENT_LIST_DIR}/generic/bmpcboxg.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/generic/bmpsvg.cpp
     ${CMAKE_CURRENT_LIST_DIR}/generic/busyinfo.cpp
     ${CMAKE_CURRENT_LIST_DIR}/generic/buttonbar.cpp
     ${CMAKE_CURRENT_LIST_DIR}/generic/calctrlg.cpp
     ${CMAKE_CURRENT_LIST_DIR}/generic/choicbkg.cpp
     ${CMAKE_CURRENT_LIST_DIR}/generic/choicdgg.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/generic/clrpickerg.cpp
     ${CMAKE_CURRENT_LIST_DIR}/generic/collheaderctrlg.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/generic/collpaneg.cpp
     ${CMAKE_CURRENT_LIST_DIR}/generic/combog.cpp
     ${CMAKE_CURRENT_LIST_DIR}/generic/commandlinkbuttong.cpp
     ${CMAKE_CURRENT_LIST_DIR}/generic/creddlgg.cpp
     ${CMAKE_CURRENT_LIST_DIR}/generic/datavgen.cpp
     ${CMAKE_CURRENT_LIST_DIR}/generic/datectlg.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/generic/dbgrptg.cpp
     ${CMAKE_CURRENT_LIST_DIR}/generic/dcpsg.cpp
     ${CMAKE_CURRENT_LIST_DIR}/generic/dirctrlg.cpp
     ${CMAKE_CURRENT_LIST_DIR}/generic/dragimgg.cpp
     ${CMAKE_CURRENT_LIST_DIR}/generic/editlbox.cpp
     ${CMAKE_CURRENT_LIST_DIR}/generic/filectrlg.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/generic/filepickerg.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/generic/fontpickerg.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/generic/fswatcherg.cpp
     ${CMAKE_CURRENT_LIST_DIR}/generic/graphicc.cpp
     ${CMAKE_CURRENT_LIST_DIR}/generic/grid.cpp
     ${CMAKE_CURRENT_LIST_DIR}/generic/gridctrl.cpp
@@ -343,6 +284,7 @@ set (wxWidget_sources
     ${CMAKE_CURRENT_LIST_DIR}/generic/gridsel.cpp
     ${CMAKE_CURRENT_LIST_DIR}/generic/headerctrlg.cpp
     ${CMAKE_CURRENT_LIST_DIR}/generic/helpext.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/generic/htmllbox.cpp
     ${CMAKE_CURRENT_LIST_DIR}/generic/hyperlinkg.cpp
     ${CMAKE_CURRENT_LIST_DIR}/generic/infobar.cpp
     ${CMAKE_CURRENT_LIST_DIR}/generic/laywin.cpp
@@ -355,7 +297,6 @@ set (wxWidget_sources
     ${CMAKE_CURRENT_LIST_DIR}/generic/odcombo.cpp
     ${CMAKE_CURRENT_LIST_DIR}/generic/preferencesg.cpp
     ${CMAKE_CURRENT_LIST_DIR}/generic/printps.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/generic/prntdlgg.cpp
     ${CMAKE_CURRENT_LIST_DIR}/generic/progdlgg.cpp
     ${CMAKE_CURRENT_LIST_DIR}/generic/propdlg.cpp
     ${CMAKE_CURRENT_LIST_DIR}/generic/renderg.cpp
@@ -371,7 +312,6 @@ set (wxWidget_sources
     ${CMAKE_CURRENT_LIST_DIR}/generic/srchctlg.cpp
     ${CMAKE_CURRENT_LIST_DIR}/generic/statbmpg.cpp
     ${CMAKE_CURRENT_LIST_DIR}/generic/stattextg.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/generic/statusbr.cpp
     ${CMAKE_CURRENT_LIST_DIR}/generic/textdlgg.cpp
     ${CMAKE_CURRENT_LIST_DIR}/generic/timectrlg.cpp
     ${CMAKE_CURRENT_LIST_DIR}/generic/tipdlg.cpp
@@ -383,20 +323,6 @@ set (wxWidget_sources
     ${CMAKE_CURRENT_LIST_DIR}/generic/vlbox.cpp
     ${CMAKE_CURRENT_LIST_DIR}/generic/vscroll.cpp
     ${CMAKE_CURRENT_LIST_DIR}/generic/wizard.cpp
-
-    # wx_aui
-    ${CMAKE_CURRENT_LIST_DIR}/aui/auibar.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/aui/auibook.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/aui/barartmsw.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/aui/dockart.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/aui/floatpane.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/aui/framemanager.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/aui/tabart.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/aui/tabartmsw.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/aui/tabmdi.cpp
-
-    # wx_html
-    ${CMAKE_CURRENT_LIST_DIR}/generic/htmllbox.cpp
     ${CMAKE_CURRENT_LIST_DIR}/html/chm.cpp
     ${CMAKE_CURRENT_LIST_DIR}/html/helpctrl.cpp
     ${CMAKE_CURRENT_LIST_DIR}/html/helpdata.cpp
@@ -422,8 +348,6 @@ set (wxWidget_sources
     ${CMAKE_CURRENT_LIST_DIR}/html/m_tables.cpp
     ${CMAKE_CURRENT_LIST_DIR}/html/styleparams.cpp
     ${CMAKE_CURRENT_LIST_DIR}/html/winpars.cpp
-
-    # wx_propgrid
     ${CMAKE_CURRENT_LIST_DIR}/propgrid/advprops.cpp
     ${CMAKE_CURRENT_LIST_DIR}/propgrid/editors.cpp
     ${CMAKE_CURRENT_LIST_DIR}/propgrid/manager.cpp
@@ -432,11 +356,8 @@ set (wxWidget_sources
     ${CMAKE_CURRENT_LIST_DIR}/propgrid/propgridiface.cpp
     ${CMAKE_CURRENT_LIST_DIR}/propgrid/propgridpagestate.cpp
     ${CMAKE_CURRENT_LIST_DIR}/propgrid/props.cpp
-
-    # wx_ribbon
     ${CMAKE_CURRENT_LIST_DIR}/ribbon/art_aui.cpp
     ${CMAKE_CURRENT_LIST_DIR}/ribbon/art_internal.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/ribbon/art_msw.cpp
     ${CMAKE_CURRENT_LIST_DIR}/ribbon/bar.cpp
     ${CMAKE_CURRENT_LIST_DIR}/ribbon/buttonbar.cpp
     ${CMAKE_CURRENT_LIST_DIR}/ribbon/control.cpp
@@ -444,18 +365,137 @@ set (wxWidget_sources
     ${CMAKE_CURRENT_LIST_DIR}/ribbon/page.cpp
     ${CMAKE_CURRENT_LIST_DIR}/ribbon/panel.cpp
     ${CMAKE_CURRENT_LIST_DIR}/ribbon/toolbar.cpp
-
-    # wx_stc (Scintilla)
+    ${CMAKE_CURRENT_LIST_DIR}/richtext/richtextbuffer.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/richtext/richtextctrl.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/richtext/richtextformatdlg.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/richtext/richtexthtml.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/richtext/richtextimagedlg.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/richtext/richtextprint.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/richtext/richtextstyledlg.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/richtext/richtextstyles.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/richtext/richtextsymboldlg.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/richtext/richtextxml.cpp
     ${CMAKE_CURRENT_LIST_DIR}/stc/PlatWX.cpp
     ${CMAKE_CURRENT_LIST_DIR}/stc/ScintillaWX.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/stc/stc.cpp
-
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexA68k.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexAPDL.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexASY.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexAU3.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexAVE.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexAVS.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexAbaqus.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexAda.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexAsm.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexAsn1.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexBaan.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexBash.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexBasic.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexBatch.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexBibTeX.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexBullant.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexCLW.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexCOBOL.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexCPP.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexCSS.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexCaml.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexCmake.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexCoffeeScript.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexConf.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexCrontab.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexCsound.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexD.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexDMAP.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexDMIS.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexDiff.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexECL.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexEDIFACT.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexEScript.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexEiffel.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexErlang.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexErrorList.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexFlagship.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexForth.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexFortran.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexGAP.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexGui4Cli.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexHTML.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexHaskell.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexHex.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexInno.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexJSON.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexKVIrc.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexKix.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexLaTeX.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexLisp.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexLout.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexLua.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexMMIXAL.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexMPT.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexMSSQL.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexMagik.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexMake.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexMarkdown.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexMatlab.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexMetapost.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexModula.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexMySQL.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexNimrod.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexNsis.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexNull.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexOScript.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexOpal.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexPB.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexPLM.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexPO.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexPOV.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexPS.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexPascal.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexPerl.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexPowerPro.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexPowerShell.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexProgress.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexProps.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexPython.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexR.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexRebol.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexRegistry.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexRuby.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexRust.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexSML.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexSQL.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexSTTXT.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexScriptol.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexSmalltalk.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexSorcus.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexSpecman.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexSpice.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexTACL.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexTADS3.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexTAL.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexTCL.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexTCMD.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexTeX.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexTxt2tags.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexVB.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexVHDL.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexVerilog.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexVisualProlog.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexYAML.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexlib/Accessor.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexlib/CharacterCategory.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexlib/CharacterSet.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexlib/LexerBase.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexlib/LexerModule.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexlib/LexerNoExceptions.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexlib/LexerSimple.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexlib/PropSetSimple.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexlib/StyleContext.cxx
+    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexlib/WordList.cxx
     ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/src/AutoComplete.cxx
     ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/src/CallTip.cxx
     ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/src/CaseConvert.cxx
     ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/src/CaseFolder.cxx
     ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/src/Catalogue.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/src/CellBuffer.cxx
     ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/src/CellBuffer.cxx
     ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/src/CharClassify.cxx
     ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/src/ContractionState.cxx
@@ -479,144 +519,12 @@ set (wxWidget_sources
     ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/src/UniConversion.cxx
     ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/src/ViewStyle.cxx
     ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/src/XPM.cxx
-
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexlib/Accessor.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexlib/CharacterCategory.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexlib/CharacterSet.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexlib/LexerBase.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexlib/LexerModule.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexlib/LexerNoExceptions.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexlib/LexerSimple.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexlib/PropSetSimple.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexlib/StyleContext.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexlib/WordList.cxx
-
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexA68k.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexAbaqus.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexAda.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexAPDL.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexAsm.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexAsn1.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexASY.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexAU3.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexAVE.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexAVS.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexBaan.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexBash.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexBasic.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexBatch.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexBibTeX.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexBullant.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexCaml.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexCLW.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexCmake.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexCOBOL.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexCoffeeScript.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexConf.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexCPP.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexCrontab.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexCsound.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexCSS.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexD.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexDiff.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexDMAP.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexDMIS.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexECL.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexEDIFACT.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexEiffel.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexErlang.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexErrorList.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexEScript.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexFlagship.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexForth.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexFortran.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexGAP.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexGui4Cli.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexHaskell.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexHex.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexHTML.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexInno.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexJSON.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexKix.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexKVIrc.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexLaTeX.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexLisp.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexLout.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexLua.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexMagik.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexMake.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexMarkdown.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexMatlab.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexMetapost.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexMMIXAL.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexModula.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexMPT.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexMSSQL.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexMySQL.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexNimrod.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexNsis.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexNull.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexOpal.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexOScript.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexPascal.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexPB.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexPerl.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexPLM.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexPO.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexPOV.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexPowerPro.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexPowerShell.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexProgress.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexProps.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexPS.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexPython.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexR.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexRebol.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexRegistry.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexRuby.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexRust.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexScriptol.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexSmalltalk.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexSML.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexSorcus.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexSpecman.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexSpice.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexSQL.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexSTTXT.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexTACL.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexTADS3.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexTAL.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexTCL.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexTCMD.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexTeX.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexTxt2tags.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexVB.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexVerilog.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexVHDL.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexVisualProlog.cxx
-    ${CMAKE_CURRENT_LIST_DIR}/stc/scintilla/lexers/LexYAML.cxx
-
-    # wx_richtext
-    ${CMAKE_CURRENT_LIST_DIR}/richtext/richtextbuffer.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/richtext/richtextctrl.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/richtext/richtextformatdlg.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/richtext/richtexthtml.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/richtext/richtextimagedlg.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/richtext/richtextprint.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/richtext/richtextstyledlg.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/richtext/richtextstyles.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/richtext/richtextsymboldlg.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/richtext/richtextxml.cpp
-
-    # wx_xml (required by wx_richtext)
-    ${CMAKE_CURRENT_LIST_DIR}/common/xtixml.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/stc/stc.cpp
     ${CMAKE_CURRENT_LIST_DIR}/xml/xml.cpp
-
-    # wx_xrc
-    ${CMAKE_CURRENT_LIST_DIR}/xrc/xh_aui.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/xrc/xh_auitoolb.cpp
     ${CMAKE_CURRENT_LIST_DIR}/xrc/xh_activityindicator.cpp
     ${CMAKE_CURRENT_LIST_DIR}/xrc/xh_animatctrl.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/xrc/xh_aui.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/xrc/xh_auitoolb.cpp
     ${CMAKE_CURRENT_LIST_DIR}/xrc/xh_bannerwindow.cpp
     ${CMAKE_CURRENT_LIST_DIR}/xrc/xh_bmp.cpp
     ${CMAKE_CURRENT_LIST_DIR}/xrc/xh_bmpbt.cpp
@@ -674,6 +582,7 @@ set (wxWidget_sources
     ${CMAKE_CURRENT_LIST_DIR}/xrc/xh_stbox.cpp
     ${CMAKE_CURRENT_LIST_DIR}/xrc/xh_stlin.cpp
     ${CMAKE_CURRENT_LIST_DIR}/xrc/xh_sttxt.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/xrc/xh_styledtextctrl.cpp
     ${CMAKE_CURRENT_LIST_DIR}/xrc/xh_text.cpp
     ${CMAKE_CURRENT_LIST_DIR}/xrc/xh_tglbtn.cpp
     ${CMAKE_CURRENT_LIST_DIR}/xrc/xh_timectrl.cpp
@@ -686,111 +595,418 @@ set (wxWidget_sources
     ${CMAKE_CURRENT_LIST_DIR}/xrc/xmlres.cpp
     ${CMAKE_CURRENT_LIST_DIR}/xrc/xmlreshandler.cpp
     ${CMAKE_CURRENT_LIST_DIR}/xrc/xmlrsall.cpp
-
-    # wx_webview
-    ${CMAKE_CURRENT_LIST_DIR}/common/webview.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/common/webviewarchivehandler.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/common/webviewfshandler.cpp
-
-    # wxBase (these files are normally compiled into base library)
-    ${CMAKE_CURRENT_LIST_DIR}/common/any.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/common/appbase.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/common/arcall.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/common/arcfind.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/common/archive.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/common/arrstr.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/common/base64.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/common/clntdata.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/common/cmdline.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/common/config.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/common/convauto.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/common/datetime.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/common/datetimefmt.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/common/datstrm.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/common/dircmn.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/common/dynlib.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/common/dynload.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/common/encconv.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/common/evtloopcmn.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/common/ffile.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/common/file.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/common/fileback.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/common/fileconf.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/common/filefn.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/common/filename.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/common/filesys.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/common/filtall.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/common/filtfind.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/common/fmapbase.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/common/fs_arc.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/common/fs_filter.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/common/fs_inet.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/common/fs_mem.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/common/fswatchercmn.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/common/hash.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/common/hashmap.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/common/init.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/common/intl.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/common/ipcbase.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/common/languageinfo.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/common/list.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/common/log.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/common/longlong.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/common/lzmastream.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/common/memory.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/common/mimecmn.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/common/module.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/common/msgout.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/common/mstream.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/common/numformatter.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/common/object.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/common/platinfo.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/common/powercmn.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/common/process.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/common/regex.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/common/secretstore.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/common/sstream.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/common/stdpbase.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/common/stdstream.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/common/stopwatch.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/common/strconv.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/common/stream.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/common/string.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/common/stringimpl.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/common/stringops.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/common/strvararg.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/common/sysopt.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/common/tarstrm.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/common/textbuf.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/common/textfile.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/common/threadinfo.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/common/time.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/common/timercmn.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/common/timerimpl.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/common/tokenzr.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/common/translation.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/common/txtstrm.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/common/unichar.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/common/uri.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/common/ustring.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/common/variant.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/common/wfstream.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/common/wxcrt.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/common/wxprintf.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/common/xlocale.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/common/xti.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/common/xtistrm.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/common/zipstrm.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/common/zstream.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/generic/fswatcherg.cpp
-
-    ${msw_files}
-
 )
 
+set (msw_sources
+    ${CMAKE_CURRENT_LIST_DIR}/aui/barartmsw.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/aui/tabartmsw.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/taskbarcmn.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/generic/activityindicator.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/generic/clrpickerg.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/generic/collpaneg.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/generic/filepickerg.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/generic/fontpickerg.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/generic/prntdlgg.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/generic/statusbr.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/aboutdlg.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/accel.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/anybutton.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/app.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/appprogress.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/artmsw.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/basemsw.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/bitmap.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/bmpbndl.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/bmpbuttn.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/bmpcbox.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/brush.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/button.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/calctrl.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/caret.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/checkbox.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/checklst.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/choice.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/clipbrd.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/colordlg.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/colour.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/combo.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/combobox.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/commandlinkbutton.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/control.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/crashrpt.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/cursor.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/customdraw.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/data.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/datecontrols.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/datectrl.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/datetimectrl.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/dc.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/dcclient.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/dcmemory.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/dcprint.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/dcscreen.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/dde.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/debughlp.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/dialog.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/dialup.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/dib.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/dir.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/dirdlg.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/display.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/dlmsw.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/dragimag.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/enhmeta.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/evtloop.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/evtloopconsole.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/fdrepdlg.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/filedlg.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/font.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/fontdlg.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/fontenum.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/fontutil.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/frame.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/fswatcher.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/gauge.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/gdiimage.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/gdiobj.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/gdiplus.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/glcanvas.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/graphics.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/graphicsd2d.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/headerctrl.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/helpbest.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/helpchm.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/helpwin.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/hyperlink.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/icon.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/imaglist.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/iniconf.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/joystick.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/listbox.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/listctrl.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/main.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/mdi.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/mediactrl_am.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/mediactrl_qt.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/mediactrl_wmp10.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/menu.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/menuitem.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/metafile.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/mimetype.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/minifram.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/msgdlg.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/nativdlg.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/nativewin.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/nonownedwnd.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/notebook.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/notifmsg.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/ole/access.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/ole/activex.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/ole/automtn.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/ole/comimpl.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/ole/dataobj.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/ole/dropsrc.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/ole/droptgt.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/ole/oleutils.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/ole/safearray.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/ole/uuid.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/ownerdrw.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/palette.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/pen.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/popupwin.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/power.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/printdlg.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/printwin.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/progdlg.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/radiobox.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/radiobut.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/regconf.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/region.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/registry.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/renderer.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/richmsgdlg.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/richtooltip.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/rt/notifmsgrt.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/rt/utilsrt.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/scrolbar.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/secretstore.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/settings.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/slider.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/snglinst.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/sockmsw.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/sound.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/spinbutt.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/spinctrl.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/stackwalk.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/statbmp.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/statbox.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/statline.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/stattext.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/statusbar.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/stdpaths.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/systhemectrl.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/taskbar.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/taskbarbutton.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/textctrl.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/textentry.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/textmeasure.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/tglbtn.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/thread.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/timectrl.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/timer.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/toolbar.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/tooltip.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/toplevel.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/treectrl.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/uiaction.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/uilocale.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/urlmsw.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/utils.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/utilsexc.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/utilsgui.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/utilswin.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/uxtheme.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/volume.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/webrequest_winhttp.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/webview_edge.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/webview_ie.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/msw/window.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/ribbon/art_msw.cpp
+)
+
+set (unix_sources
+    ${CMAKE_CURRENT_LIST_DIR}/aui/tabartgtk.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/fdiodispatcher.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/selectdispatcher.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/socketiohandler.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/common/taskbarcmn.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/generic/accel.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/generic/activityindicator.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/generic/caret.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/generic/clrpickerg.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/generic/collpaneg.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/generic/colrdlgg.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/generic/dirdlgg.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/generic/fdrepdlg.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/generic/filedlgg.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/generic/filepickerg.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/generic/fontdlgg.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/generic/fontpickerg.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/generic/imaglist.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/generic/listctrl.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/generic/prntdlgg.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/generic/statusbr.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/gtk/aboutdlg.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/gtk/activityindicator.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/gtk/animate.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/gtk/anybutton.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/gtk/artgtk.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/gtk/bmpbuttn.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/gtk/bmpcbox.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/gtk/button.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/gtk/calctrl.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/gtk/checkbox.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/gtk/checklst.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/gtk/choice.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/gtk/clrpicker.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/gtk/collpane.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/gtk/colordlg.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/gtk/combobox.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/gtk/control.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/gtk/dataview.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/gtk/dialog.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/gtk/dirdlg.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/gtk/filedlg.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/gtk/filepicker.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/gtk/fontdlg.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/gtk/fontpicker.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/gtk/frame.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/gtk/gauge.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/gtk/glcanvas.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/gtk/gnome/gvfs.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/gtk/hyperlink.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/gtk/infobar.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/gtk/listbox.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/gtk/mdi.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/gtk/menu.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/gtk/mnemonics.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/gtk/msgdlg.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/gtk/nativewin.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/gtk/notebook.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/gtk/notifmsg.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/gtk/print.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/gtk/radiobox.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/gtk/radiobut.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/gtk/scrolbar.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/gtk/scrolwin.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/gtk/slider.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/gtk/spinbutt.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/gtk/spinctrl.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/gtk/srchctrl.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/gtk/statbmp.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/gtk/statbox.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/gtk/statline.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/gtk/stattext.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/gtk/taskbar.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/gtk/textctrl.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/gtk/textentry.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/gtk/tglbtn.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/gtk/toolbar.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/gtk/webview_webkit.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/gtk/webview_webkit2.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/gtk/webview_webkit2_extension.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/gtk1/bmpbuttn.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/gtk1/button.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/gtk1/checkbox.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/gtk1/checklst.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/gtk1/choice.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/gtk1/combobox.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/gtk1/control.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/gtk1/dialog.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/gtk1/filedlg.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/gtk1/fontdlg.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/gtk1/frame.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/gtk1/gauge.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/gtk1/listbox.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/gtk1/mdi.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/gtk1/menu.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/gtk1/mnemonics.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/gtk1/notebook.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/gtk1/radiobox.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/gtk1/radiobut.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/gtk1/scrolbar.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/gtk1/scrolwin.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/gtk1/slider.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/gtk1/spinbutt.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/gtk1/spinctrl.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/gtk1/statbmp.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/gtk1/statbox.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/gtk1/statline.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/gtk1/stattext.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/gtk1/taskbar.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/gtk1/textctrl.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/gtk1/tglbtn.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/gtk1/toolbar.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/unix/apptraits.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/unix/appunix.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/unix/dir.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/unix/dlunix.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/unix/epolldispatcher.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/unix/evtloopunix.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/unix/fdiounix.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/unix/fontenum.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/unix/fontutil.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/unix/fswatcher_kqueue.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/unix/glegl.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/unix/glx11.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/unix/mediactrl.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/unix/mediactrl_gstplayer.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/unix/snglinst.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/unix/sockunix.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/unix/sound_sdl.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/unix/stackwalk.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/unix/threadpsx.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/unix/timerunx.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/unix/utilsunx.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/unix/wakeuppipe.cpp
+)
+
+set (osx_sources
+    ${CMAKE_CURRENT_LIST_DIR}/generic/caret.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/generic/clrpickerg.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/generic/collpaneg.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/generic/colrdlgg.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/generic/dirdlgg.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/generic/fdrepdlg.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/generic/filedlgg.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/generic/filepickerg.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/generic/fontdlgg.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/generic/fontpickerg.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/generic/icon.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/generic/imaglist.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/generic/listctrl.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/generic/prntdlgg.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/generic/statusbr.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/generic/textmeasure.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/osx/accel.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/osx/anybutton_osx.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/osx/artmac.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/osx/bmpbuttn_osx.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/osx/brush.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/osx/button_osx.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/osx/carbon/app.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/osx/carbon/clipbrd.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/osx/carbon/control.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/osx/carbon/cursor.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/osx/carbon/dataobj.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/osx/carbon/dcclient.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/osx/carbon/dcprint.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/osx/carbon/dcscreen.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/osx/carbon/font.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/osx/carbon/fontdlg.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/osx/carbon/frame.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/osx/carbon/gdiobj.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/osx/carbon/graphics.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/osx/carbon/mdi.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/osx/carbon/metafile.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/osx/carbon/popupwin.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/osx/carbon/region.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/osx/carbon/renderer.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/osx/carbon/statbrma.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/osx/checkbox_osx.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/osx/checklst_osx.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/osx/choice_osx.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/osx/combobox_osx.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/osx/core/bitmap.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/osx/core/cfstring.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/osx/core/colour.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/osx/core/dcmemory.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/osx/core/evtloop_cf.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/osx/core/fontenum.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/osx/core/hid.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/osx/core/mimetype.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/osx/core/printmac.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/osx/core/secretstore.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/osx/core/sockosx.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/osx/core/strconv_cf.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/osx/core/timer.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/osx/core/utilsexc_cf.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/osx/dialog_osx.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/osx/dnd_osx.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/osx/fontutil.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/osx/fswatcher_fsevents.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/osx/gauge_osx.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/osx/glcanvas_osx.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/osx/listbox_osx.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/osx/menu_osx.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/osx/menuitem_osx.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/osx/minifram.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/osx/nonownedwnd_osx.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/osx/notebook_osx.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/osx/palette.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/osx/pen.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/osx/printdlg_osx.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/osx/radiobox_osx.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/osx/radiobut_osx.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/osx/scrolbar_osx.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/osx/slider_osx.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/osx/spinbutt_osx.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/osx/srchctrl_osx.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/osx/statbmp_osx.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/osx/statbox_osx.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/osx/statline_osx.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/osx/stattext_osx.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/osx/textctrl_osx.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/osx/textentry_osx.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/osx/tglbtn_osx.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/osx/toolbar_osx.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/osx/toplevel_osx.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/osx/uiaction_osx.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/osx/utils_osx.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/osx/window_osx.cpp
+)
 
 set (wxCLib_sources
-    # wx_wxjpeg
     ${CMAKE_CURRENT_LIST_DIR}/jpeg/jaricom.c
     ${CMAKE_CURRENT_LIST_DIR}/jpeg/jcapimin.c
     ${CMAKE_CURRENT_LIST_DIR}/jpeg/jcapistd.c
@@ -837,8 +1053,6 @@ set (wxCLib_sources
     ${CMAKE_CURRENT_LIST_DIR}/jpeg/jquant1.c
     ${CMAKE_CURRENT_LIST_DIR}/jpeg/jquant2.c
     ${CMAKE_CURRENT_LIST_DIR}/jpeg/jutils.c
-
-    # wx_wxtiff
     ${CMAKE_CURRENT_LIST_DIR}/tiff/libtiff/tif_aux.c
     ${CMAKE_CURRENT_LIST_DIR}/tiff/libtiff/tif_close.c
     ${CMAKE_CURRENT_LIST_DIR}/tiff/libtiff/tif_codec.c
@@ -880,8 +1094,6 @@ set (wxCLib_sources
     ${CMAKE_CURRENT_LIST_DIR}/tiff/libtiff/tif_write.c
     ${CMAKE_CURRENT_LIST_DIR}/tiff/libtiff/tif_zip.c
     ${CMAKE_CURRENT_LIST_DIR}/tiff/libtiff/tif_zstd.c
-
-    # wx_wxpng
     ${CMAKE_CURRENT_LIST_DIR}/png/png.c
     ${CMAKE_CURRENT_LIST_DIR}/png/pngerror.c
     ${CMAKE_CURRENT_LIST_DIR}/png/pngget.c
@@ -902,8 +1114,6 @@ set (wxCLib_sources
     ${CMAKE_CURRENT_LIST_DIR}/png/arm/palette_neon_intrinsics.c
     ${CMAKE_CURRENT_LIST_DIR}/png/intel/intel_init.c
     ${CMAKE_CURRENT_LIST_DIR}/png/intel/filter_sse2_intrinsics.c
-
-    # wx_wxzlib
     ${CMAKE_CURRENT_LIST_DIR}/zlib/adler32.c
     ${CMAKE_CURRENT_LIST_DIR}/zlib/compress.c
     ${CMAKE_CURRENT_LIST_DIR}/zlib/crc32.c
@@ -919,18 +1129,12 @@ set (wxCLib_sources
     ${CMAKE_CURRENT_LIST_DIR}/zlib/trees.c
     ${CMAKE_CURRENT_LIST_DIR}/zlib/uncompr.c
     ${CMAKE_CURRENT_LIST_DIR}/zlib/zutil.c
-
-    # wx_wxregex
     ${CMAKE_CURRENT_LIST_DIR}/regex/regcomp.c
     ${CMAKE_CURRENT_LIST_DIR}/regex/regerror.c
     ${CMAKE_CURRENT_LIST_DIR}/regex/regexec.c
     ${CMAKE_CURRENT_LIST_DIR}/regex/regfree.c
-
-    # wx_wxexpat
     ${CMAKE_CURRENT_LIST_DIR}/expat/expat/lib/xmlparse.c
     ${CMAKE_CURRENT_LIST_DIR}/expat/expat/lib/xmlrole.c
     ${CMAKE_CURRENT_LIST_DIR}/expat/expat/lib/xmltok.c
-
-    # wxBase
     ${CMAKE_CURRENT_LIST_DIR}/common/extended.c
 )
