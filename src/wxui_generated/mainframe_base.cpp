@@ -22,12 +22,12 @@ MainFrameBase::MainFrameBase(wxWindow* parent, wxWindowID id, const wxString& ti
 
     auto menuItem_2 = new wxMenuItem(menuDialogs, wxID_ANY, "Common Controls...",
         "Common controls", wxITEM_NORMAL);
-    menuItem_2->SetBitmap(wxArtProvider::GetBitmap(wxART_LIST_VIEW, wxART_MENU));
+    menuItem_2->SetBitmap(wxArtProvider::GetBitmapBundle(wxART_LIST_VIEW, wxART_MENU));
     menuDialogs->Append(menuItem_2);
 
     auto menuItem = new wxMenuItem(menuDialogs, wxID_ANY, "DlgMulitTest...",
         "Launch DlgMultiTest Dialog", wxITEM_NORMAL);
-    menuItem->SetBitmap(wxArtProvider::GetBitmap(wxART_REPORT_VIEW, wxART_MENU));
+    menuItem->SetBitmap(wxArtProvider::GetBitmapBundle(wxART_REPORT_VIEW, wxART_MENU));
     menuDialogs->Append(menuItem);
 
     auto menu_item = new wxMenuItem(menuDialogs, wxID_ANY, "Import Tests");
@@ -69,12 +69,12 @@ MainFrameBase::MainFrameBase(wxWindow* parent, wxWindowID id, const wxString& ti
     SetMenuBar(menubar);
 
     m_toolBar = CreateToolBar();
-    auto tool_2 = m_toolBar->AddTool(wxID_ANY, "Common Controls...", wxArtProvider::GetBitmap(wxART_LIST_VIEW, wxART_TOOLBAR));
+    auto tool_2 = m_toolBar->AddTool(wxID_ANY, "Common Controls...", wxArtProvider::GetBitmapBundle(wxART_LIST_VIEW, wxART_TOOLBAR));
 
-    auto tool = m_toolBar->AddTool(wxID_ANY, "DlgMulitTest...", wxArtProvider::GetBitmap(wxART_REPORT_VIEW, wxART_TOOLBAR), wxNullBitmap, wxITEM_NORMAL, 
+    auto tool = m_toolBar->AddTool(wxID_ANY, "DlgMulitTest...", wxArtProvider::GetBitmapBundle(wxART_REPORT_VIEW, wxART_TOOLBAR), wxNullBitmap, wxITEM_NORMAL, 
             "Launch DlgMultiTest Dialog", "Launch DlgMultiTest Dialog");
 
-    auto tool_3 = m_toolBar->AddTool(wxID_ANY, "ImportTest", wxArtProvider::GetBitmap(wxART_FULL_SCREEN, wxART_TOOLBAR), wxNullBitmap, wxITEM_NORMAL, 
+    auto tool_3 = m_toolBar->AddTool(wxID_ANY, "ImportTest", wxArtProvider::GetBitmapBundle(wxART_FULL_SCREEN, wxART_TOOLBAR), wxNullBitmap, wxITEM_NORMAL, 
             "Import Test", "Import Test");
 
     m_toolBar->Realize();
