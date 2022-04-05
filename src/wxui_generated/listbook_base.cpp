@@ -29,13 +29,13 @@ bool ListbookBase::Create(wxWindow* parent, wxWindowID id, const wxString& title
 
     m_listbook = new wxListbook(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxLB_LEFT);
     {
-        auto img_list = new wxImageList(16, 16);
+        auto img_list = new wxImageList;
         auto img_0 = wxImage(english_xpm);
-        img_list->Add(img_0.Scale(16, 16));
+        img_list->Add(img_0);
         auto img_1 = wxImage(french_xpm);
-        img_list->Add(img_1.Scale(16, 16));
+        img_list->Add(img_1);
         auto img_2 = wxImage(japanese_xpm);
-        img_list->Add(img_2.Scale(16, 16));
+        img_list->Add(img_2);
         m_listbook->AssignImageList(img_list);
     }
     m_listbook->SetMinSize(wxSize(400, 400));

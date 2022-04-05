@@ -5,6 +5,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #include <wx/artprov.h>
+#include <wx/bmpbndl.h>
 #include <wx/event.h>
 #include <wx/menu.h>
 #include <wx/sizer.h>
@@ -22,7 +23,8 @@
 #include "../art/empty.xpm"
 
 #include <wx/animate.h>
-#include <wx/mstream.h>  // Memory stream classes
+
+#include <wx/mstream.h>  // memory stream classes
 
 // Convert a data array into a wxAnimation
 inline wxAnimation GetAnimFromHdr(const unsigned char* data, size_t size_data)
@@ -208,7 +210,7 @@ bool CommonCtrlsBase::Create(wxWindow* parent, wxWindowID id, const wxString& ti
     m_radioBox->SetValidator(wxGenericValidator(&m_valRadio));
     flex_grid_sizer->Add(m_radioBox, wxSizerFlags().Border(wxALL));
 
-    auto bmp = new wxStaticBitmap(this, wxID_ANY, wxBitmap(wxArtProvider::GetBitmap(wxART_GO_HOME, wxART_OTHER)));
+    auto bmp = new wxStaticBitmap(this, wxID_ANY, wxArtProvider::GetBitmapBundle(wxART_GO_HOME, wxART_OTHER));
     flex_grid_sizer->Add(bmp, wxSizerFlags().Border(wxALL));
 
     m_bmpComboBox = new wxBitmapComboBox(this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0, nullptr, wxCB_READONLY);

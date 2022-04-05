@@ -28,6 +28,5 @@ namespace wxue_img
     // Images declared in this class module:
 
     extern const unsigned char english_png[541];
-    extern const unsigned char french_png[252];
     extern const unsigned char japanese_png[377];
 }

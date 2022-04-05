@@ -8,7 +8,6 @@
     cmake_file="../wxui_generated/wxui_generated.cmake"
     cmake_varname="wxui_generated"
     generate_cmake="true"
-    compiler_standard="C++ 17"
     wxWidgets_version="3.2">
     <node
       class="wxFrame"
@@ -30,14 +29,14 @@
           var_name="menuDialogs">
           <node
             class="wxMenuItem"
-            bitmap="Art;wxART_LIST_VIEW|wxART_MENU;[-1,-1]"
+            bitmap="Art;wxART_LIST_VIEW|wxART_MENU"
             help="Common controls"
             label="Common Controls..."
             var_name="menuItem_2"
             wxEVT_MENU="OnCommonDialog" />
           <node
             class="wxMenuItem"
-            bitmap="Art;wxART_REPORT_VIEW|wxART_MENU;[-1,-1]"
+            bitmap="Art;wxART_REPORT_VIEW|wxART_MENU"
             help="Launch DlgMultiTest Dialog"
             label="DlgMulitTest..."
             var_name="menuItem"
@@ -104,20 +103,20 @@
         class="wxToolBar">
         <node
           class="tool"
-          bitmap="Art;wxART_LIST_VIEW|wxART_TOOLBAR;[-1,-1]"
+          bitmap="Art;wxART_LIST_VIEW|wxART_TOOLBAR"
           label="Common Controls..."
           var_name="tool_2"
           wxEVT_TOOL="OnCommonDialog" />
         <node
           class="tool"
-          bitmap="Art;wxART_REPORT_VIEW|wxART_TOOLBAR;[-1,-1]"
+          bitmap="Art;wxART_REPORT_VIEW|wxART_TOOLBAR"
           label="DlgMulitTest..."
           statusbar="Launch DlgMultiTest Dialog"
           tooltip="Launch DlgMultiTest Dialog"
           wxEVT_TOOL="OnMultiTestDialog" />
         <node
           class="tool"
-          bitmap="Art;wxART_FULL_SCREEN|wxART_TOOLBAR;[-1,-1]"
+          bitmap="Art;wxART_FULL_SCREEN|wxART_TOOLBAR"
           label="ImportTest"
           statusbar="Import Test"
           tooltip="Import Test"
@@ -352,7 +351,7 @@
             wxEVT_RADIOBOX="OnRadioBox" />
           <node
             class="wxStaticBitmap"
-            bitmap="Art; wxART_GO_HOME|wxART_OTHER; [-1,-1]" />
+            bitmap="Art;wxART_GO_HOME|wxART_OTHER" />
           <node
             class="wxBitmapComboBox"
             style="wxCB_READONLY" />
@@ -370,8 +369,8 @@
               wxEVT_TOGGLEBUTTON="[this](wxCommandEvent&amp;)@@{@@if (m_toggleBtn->GetValue()) @@{@@    m_animation_ctrl->Play();@@    m_checkPlayAnimation->SetValue(true);@@}@@else @@{  @@    m_animation_ctrl->Stop();@@    m_checkPlayAnimation->SetValue(false);@@}@@@@m_infoBar->ShowMessage(&quot;wxEVT_TOGGLEBUTTON event&quot;);@@Fit();@@}" />
             <node
               class="wxAnimationCtrl"
-              animation="Header; ..\art\clr_hourglass_gif.hxx"
-              inactive_bitmap="XPM; ..\art\empty.xpm; [-1,-1]" />
+              animation="Header;../art/clr_hourglass_gif.hxx"
+              inactive_bitmap="XPM;../art/empty.xpm" />
           </node>
           <node
             class="CustomControl"
@@ -480,7 +479,7 @@
             select="true">
             <node
               class="wxRibbonPanel"
-              bitmap="XPM; ..\art\english.xpm; [-1,-1]"
+              bitmap="XPM;../art/english.xpm"
               label="English">
               <node
                 class="wxBoxSizer"
@@ -506,7 +505,7 @@
             </node>
             <node
               class="wxRibbonPanel"
-              bitmap="XPM; ..\art\french.xpm; [-1,-1]"
+              bitmap="XPM;../art/french.xpm"
               label="French"
               var_name="rbnPanel_2"
               background_colour="wxSYS_COLOUR_MENU">
@@ -549,11 +548,11 @@
                 class="wxRibbonButtonBar">
                 <node
                   class="ribbonButton"
-                  bitmap="Art; wxART_GO_FORWARD|wxART_OTHER; [-1,-1]"
+                  bitmap="Art;wxART_GO_FORWARD|wxART_OTHER"
                   label="Forward" />
                 <node
                   class="ribbonButton"
-                  bitmap="Art; wxART_GO_BACK|wxART_OTHER; [-1,-1]"
+                  bitmap="Art;wxART_GO_BACK|wxART_OTHER"
                   label="Backward" />
               </node>
             </node>
@@ -570,11 +569,11 @@
                 class="wxRibbonToolBar">
                 <node
                   class="ribbonTool"
-                  bitmap="Art; wxART_GOTO_FIRST|wxART_TOOLBAR; [-1,-1]"
+                  bitmap="Art;wxART_GOTO_FIRST|wxART_TOOLBAR"
                   id="wxID_FILE1" />
                 <node
                   class="ribbonTool"
-                  bitmap="Art; wxART_GOTO_LAST|wxART_TOOLBAR; [-1,-1]"
+                  bitmap="Art;wxART_GOTO_LAST|wxART_TOOLBAR"
                   id="wxID_FILE9" />
               </node>
             </node>
@@ -636,7 +635,7 @@
     </node>
     <node
       class="wxWizard"
-      bitmap="Embed;../art/wiztest.png;[-1,-1]"
+      bitmap="Embed;../art/wiztest.png"
       bmp_background_colour="wxSYS_COLOUR_WINDOWTEXT"
       bmp_min_width="150"
       border="15"
@@ -670,7 +669,7 @@
       </node>
       <node
         class="wxWizardPageSimple"
-        bitmap="Embed;../art/wiztest2.png;[-1,-1]"
+        bitmap="Embed;../art/wiztest2.png"
         var_name="m_wizPage3">
         <node
           class="wxBoxSizer"
@@ -693,19 +692,20 @@
       size="-1,32">
       <node
         class="tool"
-        bitmap="Embed;../art/english.png;[32,32]"
+        bitmap="Embed;../art/english.png"
         kind="wxITEM_RADIO"
         label=""
         var_name="english" />
       <node
         class="tool"
-        bitmap="Embed;../art/french.png;[32,32]"
+        bitmap="Header;../art/french_png.h_img"
         kind="wxITEM_RADIO"
         label=""
+        var_comment="Uses header file"
         var_name="french" />
       <node
         class="tool"
-        bitmap="Embed;../art/japanese.png;[32,32]"
+        bitmap="Embed;../art/japanese.png"
         kind="wxITEM_RADIO"
         label=""
         var_name="Japanese" />
@@ -741,7 +741,7 @@
             wxEVT_BUTTON="[this](wxCommandEvent&amp;)@@{@@m_choicebook->SetSelection(2);@@}" />
           <node
             class="BookPage"
-            bitmap="XPM; ..\art\english.xpm; [-1,-1]"
+            bitmap="XPM;../art/english.xpm"
             label="English"
             background_colour="wxSYS_COLOUR_BTNFACE"
             window_style="wxTAB_TRAVERSAL">
@@ -768,7 +768,7 @@
           </node>
           <node
             class="BookPage"
-            bitmap="XPM; ..\art\french.xpm; [-1,-1]"
+            bitmap="XPM;../art/french.xpm"
             label="Français"
             var_name="page_2"
             background_colour="wxSYS_COLOUR_BTNFACE"
@@ -795,7 +795,7 @@
           </node>
           <node
             class="BookPage"
-            bitmap="XPM; ..\art\japanese.xpm; [-1,-1]"
+            bitmap="XPM;../art/japanese.xpm"
             label="日本語"
             var_name="page_3"
             background_colour="wxSYS_COLOUR_BTNFACE"
@@ -844,12 +844,11 @@
         <node
           class="wxNotebook"
           display_images="true"
-          image_size="19,15"
           minimum_size="400,400"
           flags="wxEXPAND">
           <node
             class="BookPage"
-            bitmap="XPM; ..\art\english.xpm; [-1,-1]"
+            bitmap="XPM;../art/english.xpm"
             label="English"
             background_colour="wxSYS_COLOUR_BTNFACE"
             window_style="wxTAB_TRAVERSAL">
@@ -864,7 +863,7 @@
           </node>
           <node
             class="BookPage"
-            bitmap="XPM; ..\art\french.xpm; [-1,-1]"
+            bitmap="XPM;../art/french.xpm"
             label="Français"
             var_name="page_2"
             background_colour="wxSYS_COLOUR_BTNFACE"
@@ -880,7 +879,7 @@
           </node>
           <node
             class="BookPage"
-            bitmap="XPM; ..\art\japanese.xpm; [-1,-1]"
+            bitmap="XPM;../art/japanese.xpm"
             label="日本語"
             var_name="page_3"
             background_colour="wxSYS_COLOUR_BTNFACE"
@@ -920,7 +919,7 @@
           minimum_size="400,400">
           <node
             class="BookPage"
-            bitmap="XPM; ..\art\english.xpm; [-1,-1]"
+            bitmap="XPM;../art/english.xpm"
             label="English"
             background_colour="wxSYS_COLOUR_BTNFACE"
             window_style="wxTAB_TRAVERSAL">
@@ -935,7 +934,7 @@
           </node>
           <node
             class="BookPage"
-            bitmap="XPM; ..\art\french.xpm; [-1,-1]"
+            bitmap="XPM;../art/french.xpm"
             label="Français"
             var_name="page_2"
             background_colour="wxSYS_COLOUR_BTNFACE"
@@ -951,7 +950,7 @@
           </node>
           <node
             class="BookPage"
-            bitmap="XPM; ..\art\japanese.xpm; [-1,-1]"
+            bitmap="XPM;../art/japanese.xpm"
             label="日本語"
             var_name="page_3"
             background_colour="wxSYS_COLOUR_BTNFACE"
@@ -990,7 +989,7 @@
           minimum_size="400,400">
           <node
             class="BookPage"
-            bitmap="XPM; ..\art\english.xpm; [-1,-1]"
+            bitmap="XPM;../art/english.xpm"
             label="English"
             background_colour="wxSYS_COLOUR_BTNFACE"
             window_style="wxTAB_TRAVERSAL">
@@ -1004,7 +1003,7 @@
             </node>
             <node
               class="BookPage"
-              bitmap="Embed;../art/re.png;[-1,-1]"
+              bitmap="Embed;../art/re.png"
               label="British"
               var_name="page_4"
               background_colour="wxSYS_COLOUR_BTNFACE"
@@ -1021,7 +1020,7 @@
             </node>
             <node
               class="BookPage"
-              bitmap="Embed;../art/er.png;[-1,-1]"
+              bitmap="Embed;../art/er.png"
               label="United States"
               var_name="page_5"
               background_colour="wxSYS_COLOUR_BTNFACE"
@@ -1039,7 +1038,7 @@
           </node>
           <node
             class="BookPage"
-            bitmap="XPM; ..\art\french.xpm; [-1,-1]"
+            bitmap="XPM;../art/french.xpm"
             label="Français"
             var_name="page_2"
             background_colour="wxSYS_COLOUR_BTNFACE"
@@ -1055,7 +1054,7 @@
           </node>
           <node
             class="BookPage"
-            bitmap="XPM; ..\art\japanese.xpm; [-1,-1]"
+            bitmap="XPM;../art/japanese.xpm"
             label="日本語"
             var_name="page_3"
             background_colour="wxSYS_COLOUR_BTNFACE"
@@ -1093,7 +1092,7 @@
           minimum_size="400,400">
           <node
             class="BookPage"
-            bitmap="XPM; ..\art\english.xpm; [-1,-1]"
+            bitmap="XPM;../art/english.xpm"
             label="English"
             background_colour="wxSYS_COLOUR_BTNFACE"
             window_style="wxTAB_TRAVERSAL">
@@ -1108,7 +1107,7 @@
           </node>
           <node
             class="BookPage"
-            bitmap="XPM; ..\art\french.xpm; [-1,-1]"
+            bitmap="XPM;../art/french.xpm"
             label="Français"
             var_name="page_2"
             background_colour="wxSYS_COLOUR_BTNFACE"
@@ -1124,7 +1123,7 @@
           </node>
           <node
             class="BookPage"
-            bitmap="XPM; ..\art\japanese.xpm; [-1,-1]"
+            bitmap="XPM;../art/japanese.xpm"
             label="日本語"
             var_name="page_3"
             background_colour="wxSYS_COLOUR_BTNFACE"
@@ -1183,12 +1182,11 @@
         var_name="parent_sizer">
         <node
           class="wxNotebook"
-          image_size="24,24"
           flags="wxEXPAND"
           proportion="1">
           <node
             class="BookPage"
-            bitmap="Art; wxART_FILE_OPEN|wxART_OTHER; [-1,-1]"
+            bitmap="Art;wxART_FILE_OPEN|wxART_OTHER"
             label="Pickers"
             window_style="wxBORDER_THEME|wxTAB_TRAVERSAL">
             <node
@@ -1221,7 +1219,7 @@
           </node>
           <node
             class="BookPage"
-            bitmap="Art; wxART_HELP_SIDE_PANEL|wxART_OTHER; [-1,-1]"
+            bitmap="Art;wxART_HELP_SIDE_PANEL|wxART_OTHER"
             label="Spinners"
             select="true"
             var_name="m_panel2"
@@ -1245,7 +1243,7 @@
           </node>
           <node
             class="BookPage"
-            bitmap="Art; wxART_GO_HOME|wxART_OTHER; [-1,-1]"
+            bitmap="Art;wxART_GO_HOME|wxART_OTHER"
             label="HTML"
             select="true"
             var_name="m_panel3"
@@ -1261,7 +1259,7 @@
           </node>
           <node
             class="BookPage"
-            bitmap="Art; wxART_HELP_PAGE|wxART_OTHER; [-1,-1]"
+            bitmap="Art;wxART_HELP_PAGE|wxART_OTHER"
             label="RTF"
             var_name="m_panel4"
             window_style="wxTAB_TRAVERSAL">
@@ -1280,7 +1278,7 @@
           </node>
           <node
             class="BookPage"
-            bitmap="Art; wxART_EXECUTABLE_FILE|wxART_OTHER; [-1,-1]"
+            bitmap="Art;wxART_EXECUTABLE_FILE|wxART_OTHER"
             label="Scintilla"
             var_name="m_panel5"
             window_style="wxTAB_TRAVERSAL">
@@ -1296,7 +1294,7 @@
           </node>
           <node
             class="BookPage"
-            bitmap="Art; wxART_REPORT_VIEW|wxART_OTHER; [-1,-1]"
+            bitmap="Art;wxART_REPORT_VIEW|wxART_OTHER"
             label="Misc"
             var_name="m_panel6"
             window_style="wxTAB_TRAVERSAL">
@@ -1382,16 +1380,16 @@
                   class="wxButton"
                   label="Bitmaps"
                   var_name="m_btn_bitmaps"
-                  bitmap="Embed;../art/normal.png;[-1,-1]"
-                  current="Embed;../art/focus.png;[-1,-1]"
-                  disabled_bmp="Embed;../art/disabled.png;[-1,-1]"
+                  bitmap="Embed;../art/normal.png"
+                  current="Embed;../art/focus.png"
+                  disabled_bmp="Embed;../art/no_hour.png"
                   tooltip="Bitmap should change when mouse is over button, or button is disabled."
                   column="2" />
                 <node
                   class="wxButton"
                   label="Right"
                   var_name="m_btn_4"
-                  bitmap="Embed;../art/normal.png;[-1,-1]"
+                  bitmap="Embed;../art/normal.png"
                   position="wxRIGHT"
                   tooltip="Bitmap should be on the right side."
                   column="3" />
@@ -1418,7 +1416,7 @@
                   main_label="Command"
                   note="wxCommandLinkButton"
                   var_name="m_btn_5"
-                  bitmap="Art; wxART_GO_FORWARD|wxART_OTHER; [-1,-1]"
+                  bitmap="Art;wxART_GO_FORWARD|wxART_OTHER"
                   tooltip="The bitmap for this is from Art Provider."
                   row="1" />
               </node>
@@ -1461,7 +1459,7 @@
                 var_name="box_sizer_9">
                 <node
                   class="wxBannerWindow"
-                  bitmap="Embed;../art/wiztest.png;[-1,-1]"
+                  bitmap="Embed;../art/wiztest.png"
                   direction="wxLEFT"
                   title="This is a long title" />
               </node>
