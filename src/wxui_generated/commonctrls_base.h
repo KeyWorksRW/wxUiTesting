@@ -106,8 +106,16 @@ protected:
     wxStaticText* m_staticText8;
     wxStaticText* m_staticText9;
     wxStaticText* m_staticText;
+    wxStaticText* m_staticText_2;
     wxTextCtrl* m_textCtrl2;
     wxTextCtrl* m_textCtrl;
     wxToggleButton* m_toggleBtn;
     wxue_ctrl::SplitButton* m_split_button;  // control with button + menu
 };
+
+namespace wxue_img
+{
+    // Images declared in this class module:
+
+    extern const unsigned char face_smile_svg[1781];
+}

@@ -350,8 +350,17 @@
             validator_variable="m_valRadio"
             wxEVT_RADIOBOX="OnRadioBox" />
           <node
-            class="wxStaticBitmap"
-            bitmap="Art;wxART_GO_HOME|wxART_OTHER" />
+            class="wxBoxSizer"
+            orientation="wxVERTICAL"
+            var_name="box_sizer_2">
+            <node
+              class="wxStaticBitmap"
+              bitmap="SVG;../art/face-smile.svg;[64,64]" />
+            <node
+              class="wxStaticText"
+              label="SVG image"
+              var_name="m_staticText_2" />
+          </node>
           <node
             class="wxBitmapComboBox"
             style="wxCB_READONLY" />
