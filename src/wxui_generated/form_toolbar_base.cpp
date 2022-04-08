@@ -15,7 +15,7 @@
 #include <wx/mstream.h>  // memory stream classes
 
 // Convert a data array into a wxImage
-inline wxImage GetImageFromArray(const unsigned char* data, size_t size_data)
+inline wxImage wxueImage(const unsigned char* data, size_t size_data)
 {
     wxMemoryInputStream strm(data, size_data);
     wxImage image;
@@ -30,11 +30,11 @@ MyToolBarBase::MyToolBarBase(wxWindow* parent, wxWindowID id,
     if (!wxImage::FindHandler(wxBITMAP_TYPE_PNG))
         wxImage::AddHandler(new wxPNGHandler);
 
-    AddTool(wxID_ANY, wxEmptyString, GetImageFromArray(wxue_img::english_png, sizeof(wxue_img::english_png)), wxEmptyString, wxITEM_RADIO);
+    AddTool(wxID_ANY, wxEmptyString, wxBitmapBundle::FromBitmap(wxueImage(wxue_img::english_png, sizeof(wxue_img::english_png))), wxEmptyString, wxITEM_RADIO);
 
-    AddTool(wxID_ANY, wxEmptyString, GetImageFromArray(french_png, sizeof(french_png)), wxEmptyString, wxITEM_RADIO);
+    AddTool(wxID_ANY, wxEmptyString, wxBitmapBundle::FromBitmap(wxueImage(french_png, sizeof(french_png))), wxEmptyString, wxITEM_RADIO);
 
-    AddTool(wxID_ANY, wxEmptyString, GetImageFromArray(wxue_img::japanese_png, sizeof(wxue_img::japanese_png)), wxEmptyString, wxITEM_RADIO);
+    AddTool(wxID_ANY, wxEmptyString, wxBitmapBundle::FromBitmap(wxueImage(wxue_img::japanese_png, sizeof(wxue_img::japanese_png))), wxEmptyString, wxITEM_RADIO);
 
     m_comboBox = new wxComboBox(this, wxID_ANY, wxEmptyString);
     m_comboBox->Append("English");

@@ -27,7 +27,7 @@
 #include <wx/mstream.h>  // memory stream classes
 
 // Convert a data array into a wxAnimation
-inline wxAnimation GetAnimFromHdr(const unsigned char* data, size_t size_data)
+inline wxAnimation wxueAnimation(const unsigned char* data, size_t size_data)
 {
     wxMemoryInputStream strm(data, size_data);
     wxAnimation animation;
@@ -224,7 +224,7 @@ bool CommonCtrlsBase::Create(wxWindow* parent, wxWindowID id, const wxString& ti
         wxBU_EXACTFIT);
     static_box_2->Add(m_toggleBtn, wxSizerFlags().Border(wxALL));
 
-    m_animation_ctrl = new wxAnimationCtrl(static_box_2->GetStaticBox(), wxID_ANY, GetAnimFromHdr(clr_hourglass_gif, sizeof(clr_hourglass_gif)));
+    m_animation_ctrl = new wxAnimationCtrl(static_box_2->GetStaticBox(), wxID_ANY, wxueAnimation(clr_hourglass_gif, sizeof(clr_hourglass_gif)));
     m_animation_ctrl->SetInactiveBitmap(wxImage(empty_xpm));
     static_box_2->Add(m_animation_ctrl, wxSizerFlags().Border(wxALL));
 

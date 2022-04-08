@@ -22,7 +22,7 @@
 #include <wx/mstream.h>  // memory stream classes
 
 // Convert a data array into a wxImage
-inline wxImage GetImageFromArray(const unsigned char* data, size_t size_data)
+inline wxImage wxueImage(const unsigned char* data, size_t size_data)
 {
     wxMemoryInputStream strm(data, size_data);
     wxImage image;
@@ -43,18 +43,11 @@ bool TreebookBase::Create(wxWindow* parent, wxWindowID id, const wxString& title
 
     m_treebook = new wxTreebook(this, wxID_ANY);
     {
-        auto img_list = new wxImageList;
-        auto img_0 = wxImage(english_xpm);
-        img_list->Add(img_0);
-        auto img_1 = GetImageFromArray(wxue_img::re_png, sizeof(wxue_img::re_png));
-        img_list->Add(img_1);
-        auto img_2 = GetImageFromArray(wxue_img::er_png, sizeof(wxue_img::er_png));
-        img_list->Add(img_2);
-        auto img_3 = wxImage(french_xpm);
-        img_list->Add(img_3);
-        auto img_4 = wxImage(japanese_xpm);
-        img_list->Add(img_4);
-        m_treebook->AssignImageList(img_list);
+        wxBookCtrlBase::Images bundle_list;
+        bundle_list.push_back(wxBitmapBundle::FromBitmap(wxImage(english_xpm)));
+        bundle_list.push_back(wxBitmapBundle::FromBitmap(wxImage(french_xpm)));
+        bundle_list.push_back(wxBitmapBundle::FromBitmap(wxImage(japanese_xpm)));
+        m_treebook->SetImages(bundle_list);
     }
     m_treebook->SetMinSize(wxSize(400, 400));
     box_sizer->Add(m_treebook, wxSizerFlags().Border(wxALL));

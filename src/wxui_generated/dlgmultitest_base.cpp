@@ -15,7 +15,7 @@
 #include <wx/mstream.h>  // memory stream classes
 
 // Convert a data array into a wxImage
-inline wxImage GetImageFromArray(const unsigned char* data, size_t size_data)
+inline wxImage wxueImage(const unsigned char* data, size_t size_data)
 {
     wxMemoryInputStream strm(data, size_data);
     wxImage image;
@@ -60,15 +60,17 @@ bool DlgMultiTestBase::Create(wxWindow* parent, wxWindowID id, const wxString& t
     grid_bag_sizer->Add(m_btn_2, wxGBPosition(0, 1), wxGBSpan(1, 1), wxALL, 5);
 
     m_btn_bitmaps = new wxButton(page_2, wxID_ANY, "Bitmaps");
-    m_btn_bitmaps->SetBitmap(GetImageFromArray(wxue_img::normal_png, sizeof(wxue_img::normal_png)));
-    m_btn_bitmaps->SetBitmapDisabled(GetImageFromArray(wxue_img::no_hour_png, sizeof(wxue_img::no_hour_png)));
-    m_btn_bitmaps->SetBitmapCurrent(GetImageFromArray(wxue_img::focus_png, sizeof(wxue_img::focus_png)));
+    {
+        m_btn_bitmaps->SetBitmap(wxBitmapBundle::FromBitmap(wxueImage(wxue_img::normal_png, sizeof(wxue_img::normal_png))));
+        m_btn_bitmaps->SetBitmapDisabled(wxBitmapBundle::FromBitmap(wxueImage(wxue_img::no_hour_png, sizeof(wxue_img::no_hour_png))));
+        m_btn_bitmaps->SetBitmapCurrent(wxBitmapBundle::FromBitmap(wxueImage(wxue_img::focus_png, sizeof(wxue_img::focus_png))));
+    }
     m_btn_bitmaps->SetToolTip("Bitmap should change when mouse is over button, or button is disabled.");
     grid_bag_sizer->Add(m_btn_bitmaps, wxGBPosition(0, 2), wxGBSpan(1, 1), wxALL, 5);
 
     m_btn_4 = new wxButton(page_2, wxID_ANY, "Right");
-    m_btn_4->SetBitmap(GetImageFromArray(wxue_img::normal_png, sizeof(wxue_img::normal_png)));
     m_btn_4->SetBitmapPosition(wxRIGHT);
+        m_btn_4->SetBitmap(wxBitmapBundle::FromBitmap(wxueImage(wxue_img::normal_png, sizeof(wxue_img::normal_png))));
     m_btn_4->SetToolTip("Bitmap should be on the right side.");
     grid_bag_sizer->Add(m_btn_4, wxGBPosition(0, 3), wxGBSpan(1, 1), wxALL, 5);
 
@@ -83,7 +85,7 @@ bool DlgMultiTestBase::Create(wxWindow* parent, wxWindowID id, const wxString& t
     box_sizer_3->Add(box_sizer_7, wxSizerFlags().Border(wxALL));
 
     m_btn_5 = new wxCommandLinkButton(page_2, wxID_ANY, "Command", "wxCommandLinkButton");
-    m_btn_5->SetBitmap(wxArtProvider::GetBitmapBundle(wxART_GO_FORWARD, wxART_OTHER));
+        m_btn_5->SetBitmap(wxArtProvider::GetBitmapBundle(wxART_GO_FORWARD, wxART_OTHER));
     m_btn_5->SetToolTip("The bitmap for this is from Art Provider.");
     box_sizer_7->Add(m_btn_5, wxSizerFlags().Border(wxALL));
 
@@ -118,7 +120,7 @@ bool DlgMultiTestBase::Create(wxWindow* parent, wxWindowID id, const wxString& t
     box_sizer_4->Add(box_sizer_9, wxSizerFlags().Border(wxALL));
 
     m_banner = new wxBannerWindow(page_3, wxLEFT);
-    m_banner->SetBitmap(GetImageFromArray(wxue_img::wiztest_png, sizeof(wxue_img::wiztest_png)));
+        m_banner->SetBitmap(wxBitmapBundle::FromBitmap(wxueImage(wxue_img::wiztest_png, sizeof(wxue_img::wiztest_png))));
     m_banner->SetText("This is a long title",
         wxEmptyString);
     box_sizer_9->Add(m_banner, wxSizerFlags().Border(wxALL));

@@ -9,7 +9,7 @@
 #include <wx/mstream.h>  // memory stream classes
 
 // Convert a data array into a wxImage
-inline wxImage GetImageFromArray(const unsigned char* data, size_t size_data)
+inline wxImage wxueImage(const unsigned char* data, size_t size_data)
 {
     wxMemoryInputStream strm(data, size_data);
     wxImage image;
@@ -20,13 +20,13 @@ inline wxImage GetImageFromArray(const unsigned char* data, size_t size_data)
 WizardBase::WizardBase(wxWindow* parent, wxWindowID id, const wxString& title,
         const wxPoint& pos, long style) : wxWizard()
 {
+    SetExtraStyle(wxWIZARD_EX_HELPBUTTON);
+    SetBorder(15);
+
     if (!wxImage::FindHandler(wxBITMAP_TYPE_PNG))
         wxImage::AddHandler(new wxPNGHandler);
 
-    SetExtraStyle(wxWIZARD_EX_HELPBUTTON);
-    SetBorder(15);
-    Create(parent, id, title, GetImageFromArray(wxue_img::wiztest_png, sizeof(wxue_img::wiztest_png)), pos, style);
-
+    Create(parent, id, title, wxBitmapBundle::FromBitmap(wxueImage(wxue_img::wiztest_png, sizeof(wxue_img::wiztest_png))), pos, style);
     auto wizPage = new wxWizardPageSimple(this);
 
     auto box_sizer = new wxBoxSizer(wxHORIZONTAL);
@@ -45,7 +45,7 @@ WizardBase::WizardBase(wxWindow* parent, wxWindowID id, const wxString& title,
 
     m_wizPage2->SetSizerAndFit(box_sizer2);
 
-    auto m_wizPage3 = new wxWizardPageSimple(this, nullptr, nullptr, GetImageFromArray(wxue_img::wiztest2_png, sizeof(wxue_img::wiztest2_png)));
+    auto m_wizPage3 = new wxWizardPageSimple(this, nullptr, nullptr, wxBitmapBundle::FromBitmap(wxueImage(wxue_img::wiztest2_png, sizeof(wxue_img::wiztest2_png))));
 
     auto box_sizer3 = new wxBoxSizer(wxHORIZONTAL);
 
