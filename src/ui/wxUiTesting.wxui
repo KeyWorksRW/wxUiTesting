@@ -1,13 +1,13 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <wxUiEditorData
-  data_version="14">
+  data_version="15">
   <node
     class="Project"
     art_directory="../art"
-    base_directory="../wxui_generated"
     cmake_file="../wxui_generated/wxui_generated.cmake"
     cmake_varname="wxui_generated"
-    generate_cmake="true"
+    generate_cmake="1"
+    base_directory="../wxui_generated"
     wxWidgets_version="3.2">
     <node
       class="wxFrame"
@@ -367,7 +367,7 @@
           <node
             class="StaticCheckboxBoxSizer"
             checkbox_var_name="m_checkPlayAnimation"
-            checked="false"
+            checked="0"
             label="Play Animation"
             var_name="static_box_2"
             wxEVT_CHECKBOX="[this](wxCommandEvent&amp;)@@{@@if (m_checkPlayAnimation->GetValue()) @@{@@    m_animation_ctrl->Play();@@}@@else @@{  @@    m_animation_ctrl->Stop();@@}@@@@}">
@@ -425,7 +425,7 @@
         </node>
         <node
           class="wxStdDialogButtonSizer"
-          Help="true"
+          Help="1"
           flags="wxEXPAND" />
       </node>
       <node
@@ -485,7 +485,7 @@
           <node
             class="wxRibbonPage"
             label="First"
-            select="true">
+            select="1">
             <node
               class="wxRibbonPanel"
               bitmap="XPM;../art/english.xpm"
@@ -832,9 +832,9 @@
         </node>
         <node
           class="wxStdDialogButtonSizer"
-          Cancel="false"
-          Close="true"
-          OK="false"
+          Cancel="0"
+          Close="1"
+          OK="0"
           default_button="Close"
           flags="wxEXPAND" />
       </node>
@@ -852,7 +852,7 @@
         orientation="wxVERTICAL">
         <node
           class="wxNotebook"
-          display_images="true"
+          display_images="1"
           minimum_size="400,400"
           flags="wxEXPAND">
           <node
@@ -905,9 +905,9 @@
         </node>
         <node
           class="wxStdDialogButtonSizer"
-          Cancel="false"
-          Close="true"
-          OK="false"
+          Cancel="0"
+          Close="1"
+          OK="0"
           default_button="Close"
           flags="wxEXPAND" />
       </node>
@@ -923,7 +923,7 @@
         orientation="wxVERTICAL">
         <node
           class="wxListbook"
-          display_images="true"
+          display_images="1"
           style="wxLB_LEFT"
           minimum_size="400,400">
           <node
@@ -976,9 +976,9 @@
         </node>
         <node
           class="wxStdDialogButtonSizer"
-          Cancel="false"
-          Close="true"
-          OK="false"
+          Cancel="0"
+          Close="1"
+          OK="0"
           default_button="Close"
           flags="wxEXPAND" />
       </node>
@@ -994,7 +994,7 @@
         orientation="wxVERTICAL">
         <node
           class="wxTreebook"
-          display_images="true"
+          display_images="1"
           minimum_size="400,400">
           <node
             class="BookPage"
@@ -1080,9 +1080,9 @@
         </node>
         <node
           class="wxStdDialogButtonSizer"
-          Cancel="false"
-          Close="true"
-          OK="false"
+          Cancel="0"
+          Close="1"
+          OK="0"
           default_button="Close"
           flags="wxEXPAND" />
       </node>
@@ -1149,9 +1149,9 @@
         </node>
         <node
           class="wxStdDialogButtonSizer"
-          Cancel="false"
-          Close="true"
-          OK="false"
+          Cancel="0"
+          Close="1"
+          OK="0"
           default_button="Close"
           flags="wxEXPAND" />
       </node>
@@ -1181,7 +1181,7 @@
       derived_class_name="OtherCtrlsDlg"
       derived_file="other_ctrls"
       minimum_size="-1,-1"
-      persist="true"
+      persist="1"
       size="-1,-1"
       style="wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER"
       title="NoteBook Dialog">
@@ -1230,7 +1230,7 @@
             class="BookPage"
             bitmap="Art;wxART_HELP_SIDE_PANEL|wxART_OTHER"
             label="Spinners"
-            select="true"
+            select="1"
             var_name="m_panel2"
             window_style="wxBORDER_RAISED|wxTAB_TRAVERSAL">
             <node
@@ -1254,7 +1254,7 @@
             class="BookPage"
             bitmap="Art;wxART_GO_HOME|wxART_OTHER"
             label="HTML"
-            select="true"
+            select="1"
             var_name="m_panel3"
             window_style="wxTAB_TRAVERSAL">
             <node
@@ -1381,7 +1381,7 @@
                 <node
                   class="wxButton"
                   label="&lt;b>&lt;span foreground='red'>Markup&lt;/span>&lt;/b>"
-                  markup="true"
+                  markup="1"
                   var_name="m_btn_2"
                   tooltip="Text should be Bold and Red."
                   column="1" />
@@ -1567,9 +1567,9 @@
         </node>
         <node
           class="wxStdDialogButtonSizer"
-          Cancel="false"
-          Close="true"
-          OK="false"
+          Cancel="0"
+          Close="1"
+          OK="0"
           default_button="Close"
           flags="wxEXPAND" />
       </node>
@@ -1583,7 +1583,7 @@
       derived_file="../imports/import_test.cpp"
       inserted_hdr_code="void OnImportPageChanged(wxAuiNotebookEvent&amp; event);@@void OnImportCrafterPageChanged(wxAuiNotebookEvent&amp; event);@@void OnFormPageChanged(wxAuiNotebookEvent&amp; event);@@void OnCrafterPageChanged(wxAuiNotebookEvent&amp; event);@@"
       title="wxFormBuilder comparison"
-      use_derived_class="false"
+      use_derived_class="0"
       wxEVT_INIT_DIALOG="OnInit">
       <node
         class="wxBoxSizer"
