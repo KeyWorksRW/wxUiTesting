@@ -1,0 +1,3 @@
+[submodule "wxSnapshot"]
+	path = wxSnapshot
+	url = https://github.com/KeyWorksRW/wxSnapshot.git
