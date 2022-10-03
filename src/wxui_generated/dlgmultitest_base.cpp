@@ -37,17 +37,17 @@ bool DlgMultiTestBase::Create(wxWindow* parent, wxWindowID id, const wxString& t
     if (!wxImage::FindHandler(wxBITMAP_TYPE_PNG))
         wxImage::AddHandler(new wxPNGHandler);
 
-    auto box_sizer_2 = new wxBoxSizer(wxVERTICAL);
+    auto* box_sizer_2 = new wxBoxSizer(wxVERTICAL);
 
     m_notebook = new wxNotebook(this, wxID_ANY);
     box_sizer_2->Add(m_notebook, wxSizerFlags(1).Expand().Border(wxALL));
 
-    auto page_2 = new wxPanel(m_notebook, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL);
+    auto* page_2 = new wxPanel(m_notebook, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL);
     m_notebook->AddPage(page_2, "Buttons");
 
-    auto box_sizer_3 = new wxBoxSizer(wxVERTICAL);
+    auto* box_sizer_3 = new wxBoxSizer(wxVERTICAL);
 
-    auto grid_bag_sizer = new wxGridBagSizer();
+    auto* grid_bag_sizer = new wxGridBagSizer();
     box_sizer_3->Add(grid_bag_sizer, wxSizerFlags().Border(wxALL));
 
     m_btn = new wxButton(page_2, wxID_ANY, "Normal");
@@ -78,10 +78,10 @@ bool DlgMultiTestBase::Create(wxWindow* parent, wxWindowID id, const wxString& t
     m_toggleBtn->SetToolTip("Style set to exact fit, so it should be a bit smaller than usual.");
     grid_bag_sizer->Add(m_toggleBtn, wxGBPosition(0, 4), wxGBSpan(1, 1), wxALL, 5);
 
-    auto disable_bitmaps = new wxCheckBox(page_2, wxID_ANY, "Disable");
+    auto* disable_bitmaps = new wxCheckBox(page_2, wxID_ANY, "Disable");
     grid_bag_sizer->Add(disable_bitmaps, wxGBPosition(2, 2), wxGBSpan(1, 1), wxALL, 5);
 
-    auto box_sizer_7 = new wxBoxSizer(wxHORIZONTAL);
+    auto* box_sizer_7 = new wxBoxSizer(wxHORIZONTAL);
     box_sizer_3->Add(box_sizer_7, wxSizerFlags().Border(wxALL));
 
     m_btn_5 = new wxCommandLinkButton(page_2, wxID_ANY, "Command", "wxCommandLinkButton");
@@ -91,12 +91,12 @@ bool DlgMultiTestBase::Create(wxWindow* parent, wxWindowID id, const wxString& t
 
     page_2->SetSizerAndFit(box_sizer_3);
 
-    auto page_3 = new wxPanel(m_notebook, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL);
+    auto* page_3 = new wxPanel(m_notebook, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL);
     m_notebook->AddPage(page_3, "Banners");
 
-    auto box_sizer_4 = new wxBoxSizer(wxVERTICAL);
+    auto* box_sizer_4 = new wxBoxSizer(wxVERTICAL);
 
-    auto box_sizer_8 = new wxBoxSizer(wxHORIZONTAL);
+    auto* box_sizer_8 = new wxBoxSizer(wxHORIZONTAL);
     box_sizer_4->Add(box_sizer_8, wxSizerFlags(1).Border(wxALL));
 
     m_banner_left = new wxBannerWindow(page_3, wxLEFT);
@@ -116,7 +116,7 @@ bool DlgMultiTestBase::Create(wxWindow* parent, wxWindowID id, const wxString& t
         wxEmptyString);
     box_sizer_8->Add(m_banner_right, wxSizerFlags().Border(wxALL));
 
-    auto box_sizer_9 = new wxBoxSizer(wxHORIZONTAL);
+    auto* box_sizer_9 = new wxBoxSizer(wxHORIZONTAL);
     box_sizer_4->Add(box_sizer_9, wxSizerFlags().Border(wxALL));
 
     m_banner = new wxBannerWindow(page_3, wxLEFT);
@@ -127,15 +127,15 @@ bool DlgMultiTestBase::Create(wxWindow* parent, wxWindowID id, const wxString& t
 
     page_3->SetSizerAndFit(box_sizer_4);
 
-    auto page_4 = new wxPanel(m_notebook, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL);
+    auto* page_4 = new wxPanel(m_notebook, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL);
     m_notebook->AddPage(page_4, "Lists");
 
-    auto box_sizer_5 = new wxBoxSizer(wxVERTICAL);
+    auto* box_sizer_5 = new wxBoxSizer(wxVERTICAL);
 
-    auto flex_grid_sizer = new wxFlexGridSizer(2, 0, 0);
+    auto* flex_grid_sizer = new wxFlexGridSizer(2, 0, 0);
     box_sizer_5->Add(flex_grid_sizer, wxSizerFlags().Border(wxALL));
 
-    auto box_sizer_10 = new wxBoxSizer(wxVERTICAL);
+    auto* box_sizer_10 = new wxBoxSizer(wxVERTICAL);
     flex_grid_sizer->Add(box_sizer_10, wxSizerFlags().Border(wxALL));
 
     m_staticText_2 = new wxStaticText(page_4, wxID_ANY, "wxRearrangeCtrl");
@@ -144,16 +144,16 @@ bool DlgMultiTestBase::Create(wxWindow* parent, wxWindowID id, const wxString& t
     m_rearrange = new wxRearrangeCtrl(page_4, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxArrayInt(), wxArrayString());
     box_sizer_10->Add(m_rearrange, wxSizerFlags().Border(wxALL));
 
-    auto box_sizer_11 = new wxBoxSizer(wxVERTICAL);
+    auto* box_sizer_11 = new wxBoxSizer(wxVERTICAL);
     flex_grid_sizer->Add(box_sizer_11, wxSizerFlags().Border(wxALL));
 
-    auto staticText_3 = new wxStaticText(page_4, wxID_ANY, "wxCheckListBox");
+    auto* staticText_3 = new wxStaticText(page_4, wxID_ANY, "wxCheckListBox");
     box_sizer_11->Add(staticText_3, wxSizerFlags().Expand().Border(wxALL));
 
     m_checkList = new wxCheckListBox(page_4, wxID_ANY);
     box_sizer_11->Add(m_checkList, wxSizerFlags().Border(wxALL));
 
-    auto box_sizer_12 = new wxBoxSizer(wxVERTICAL);
+    auto* box_sizer_12 = new wxBoxSizer(wxVERTICAL);
     flex_grid_sizer->Add(box_sizer_12, wxSizerFlags().Border(wxALL));
 
     m_staticText_3 = new wxStaticText(page_4, wxID_ANY, "wxListView");
@@ -175,7 +175,7 @@ bool DlgMultiTestBase::Create(wxWindow* parent, wxWindowID id, const wxString& t
     m_listview->SetToolTip("Separate content columns with a semi-colon (;)");
     box_sizer_12->Add(m_listview, wxSizerFlags().Border(wxALL));
 
-    auto box_sizer_13 = new wxBoxSizer(wxHORIZONTAL);
+    auto* box_sizer_13 = new wxBoxSizer(wxHORIZONTAL);
     flex_grid_sizer->Add(box_sizer_13, wxSizerFlags().Border(wxALL));
 
     m_edit_listbox = new wxEditableListBox(page_4, wxID_ANY, "My Editable ListBox", wxDefaultPosition, wxDefaultSize,
@@ -184,10 +184,10 @@ bool DlgMultiTestBase::Create(wxWindow* parent, wxWindowID id, const wxString& t
 
     page_4->SetSizerAndFit(box_sizer_5);
 
-    auto page_5 = new wxPanel(m_notebook, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL);
+    auto* page_5 = new wxPanel(m_notebook, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL);
     m_notebook->AddPage(page_5, "Tab 4");
 
-    auto box_sizer_6 = new wxBoxSizer(wxVERTICAL);
+    auto* box_sizer_6 = new wxBoxSizer(wxVERTICAL);
 
     m_staticText_5 = new wxStaticText(page_5, wxID_ANY, "TODO: replace this control with something more useful...");
     m_staticText_5->Wrap(200);
@@ -195,10 +195,10 @@ bool DlgMultiTestBase::Create(wxWindow* parent, wxWindowID id, const wxString& t
 
     page_5->SetSizerAndFit(box_sizer_6);
 
-    auto page = new wxPanel(m_notebook, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL);
+    auto* page = new wxPanel(m_notebook, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL);
     m_notebook->AddPage(page, "Tab 5");
 
-    auto box_sizer = new wxBoxSizer(wxVERTICAL);
+    auto* box_sizer = new wxBoxSizer(wxVERTICAL);
 
     m_staticText = new wxStaticText(page, wxID_ANY, "TODO: replace this control with something more useful...");
     m_staticText->Wrap(200);
@@ -206,7 +206,7 @@ bool DlgMultiTestBase::Create(wxWindow* parent, wxWindowID id, const wxString& t
 
     page->SetSizerAndFit(box_sizer);
 
-    auto stdBtn = CreateStdDialogButtonSizer(wxCLOSE|wxNO_DEFAULT);
+    auto* stdBtn = CreateStdDialogButtonSizer(wxCLOSE|wxNO_DEFAULT);
     stdBtn->GetCancelButton()->SetDefault();
     box_sizer_2->Add(CreateSeparatedSizer(stdBtn), wxSizerFlags().Expand().Border(wxALL));
 

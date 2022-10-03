@@ -39,7 +39,7 @@ bool TreebookBase::Create(wxWindow* parent, wxWindowID id, const wxString& title
     if (!wxImage::FindHandler(wxBITMAP_TYPE_PNG))
         wxImage::AddHandler(new wxPNGHandler);
 
-    auto box_sizer = new wxBoxSizer(wxVERTICAL);
+    auto* box_sizer = new wxBoxSizer(wxVERTICAL);
 
     m_treebook = new wxTreebook(this, wxID_ANY);
     {
@@ -52,62 +52,62 @@ bool TreebookBase::Create(wxWindow* parent, wxWindowID id, const wxString& title
     m_treebook->SetMinSize(wxSize(400, 400));
     box_sizer->Add(m_treebook, wxSizerFlags().Border(wxALL));
 
-    auto page = new wxPanel(m_treebook, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL);
+    auto* page = new wxPanel(m_treebook, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL);
     m_treebook->AddPage(page, "English", false, 0);
     page->SetBackgroundColour(wxSystemSettings::GetColour(wxSYS_COLOUR_BTNFACE));
 
-    auto parent_sizer = new wxBoxSizer(wxVERTICAL);
+    auto* parent_sizer = new wxBoxSizer(wxVERTICAL);
 
     m_staticText = new wxStaticText(page, wxID_ANY, "This is a sentence in English.");
     parent_sizer->Add(m_staticText, wxSizerFlags().Border(wxALL));
 
     page->SetSizerAndFit(parent_sizer);
 
-    auto page_4 = new wxPanel(m_treebook, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL);
+    auto* page_4 = new wxPanel(m_treebook, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL);
     m_treebook->AddSubPage(page_4, "British", false, 1);
     page_4->SetBackgroundColour(wxSystemSettings::GetColour(wxSYS_COLOUR_BTNFACE));
 
-    auto page_sizer = new wxBoxSizer(wxVERTICAL);
+    auto* page_sizer = new wxBoxSizer(wxVERTICAL);
 
     m_staticText_2 = new wxStaticText(page_4, wxID_ANY, "Theatre");
     page_sizer->Add(m_staticText_2, wxSizerFlags().Border(wxALL));
 
     page_4->SetSizerAndFit(page_sizer);
 
-    auto page_5 = new wxPanel(m_treebook, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL);
+    auto* page_5 = new wxPanel(m_treebook, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL);
     m_treebook->AddSubPage(page_5, "United States", false, 2);
     page_5->SetBackgroundColour(wxSystemSettings::GetColour(wxSYS_COLOUR_BTNFACE));
 
-    auto page_sizer_2 = new wxBoxSizer(wxVERTICAL);
+    auto* page_sizer_2 = new wxBoxSizer(wxVERTICAL);
 
     m_staticText_3 = new wxStaticText(page_5, wxID_ANY, "Theater");
     page_sizer_2->Add(m_staticText_3, wxSizerFlags().Border(wxALL));
 
     page_5->SetSizerAndFit(page_sizer_2);
 
-    auto page_2 = new wxPanel(m_treebook, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL);
+    auto* page_2 = new wxPanel(m_treebook, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL);
     m_treebook->AddPage(page_2, wxString::FromUTF8("Français"), false, 3);
     page_2->SetBackgroundColour(wxSystemSettings::GetColour(wxSYS_COLOUR_BTNFACE));
 
-    auto parent_sizer_2 = new wxBoxSizer(wxVERTICAL);
+    auto* parent_sizer_2 = new wxBoxSizer(wxVERTICAL);
 
     m_staticText = new wxStaticText(page_2, wxID_ANY, wxString::FromUTF8("Ceci est une phrase en français."));
     parent_sizer_2->Add(m_staticText, wxSizerFlags().Border(wxALL));
 
     page_2->SetSizerAndFit(parent_sizer_2);
 
-    auto page_3 = new wxPanel(m_treebook, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL);
+    auto* page_3 = new wxPanel(m_treebook, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL);
     m_treebook->AddPage(page_3, wxString::FromUTF8("日本語"), false, 4);
     page_3->SetBackgroundColour(wxSystemSettings::GetColour(wxSYS_COLOUR_BTNFACE));
 
-    auto parent_sizer_3 = new wxBoxSizer(wxVERTICAL);
+    auto* parent_sizer_3 = new wxBoxSizer(wxVERTICAL);
 
     m_staticText = new wxStaticText(page_3, wxID_ANY, wxString::FromUTF8("これは日本語の文章です。"));
     parent_sizer_3->Add(m_staticText, wxSizerFlags().Border(wxALL));
 
     page_3->SetSizerAndFit(parent_sizer_3);
 
-    auto stdBtn = CreateStdDialogButtonSizer(wxCLOSE|wxNO_DEFAULT);
+    auto* stdBtn = CreateStdDialogButtonSizer(wxCLOSE|wxNO_DEFAULT);
     stdBtn->GetCancelButton()->SetDefault();
     box_sizer->Add(CreateSeparatedSizer(stdBtn), wxSizerFlags().Expand().Border(wxALL));
 

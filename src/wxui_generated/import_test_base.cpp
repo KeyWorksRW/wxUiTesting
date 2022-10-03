@@ -20,7 +20,7 @@ bool ImportTest::Create(wxWindow* parent, wxWindowID id, const wxString& title,
     if (!wxDialog::Create(parent, id, title, pos, size, style, name))
         return false;
 
-    auto dlg_sizer = new wxBoxSizer(wxVERTICAL);
+    auto* dlg_sizer = new wxBoxSizer(wxVERTICAL);
 
     m_splitter = new wxSplitterWindow(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxSP_3D);
     m_splitter->SetSashGravity(0.0);
@@ -43,7 +43,7 @@ bool ImportTest::Create(wxWindow* parent, wxWindowID id, const wxString& title,
     m_panel_crafter = new CrafterBase(m_splitter_2, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL);
     m_splitter_2->SplitVertically(m_panel_import_crafter, m_panel_crafter);
 
-    auto stdBtn = CreateStdDialogButtonSizer(wxOK|wxCANCEL);
+    auto* stdBtn = CreateStdDialogButtonSizer(wxOK|wxCANCEL);
     dlg_sizer->Add(CreateSeparatedSizer(stdBtn), wxSizerFlags().Expand().Border(wxALL));
 
     SetSizerAndFit(dlg_sizer);

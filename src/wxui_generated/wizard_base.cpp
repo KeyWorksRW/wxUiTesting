@@ -27,27 +27,27 @@ WizardBase::WizardBase(wxWindow* parent, wxWindowID id, const wxString& title,
         wxImage::AddHandler(new wxPNGHandler);
 
     Create(parent, id, title, wxBitmapBundle::FromBitmap(wxueImage(wxue_img::wiztest_png, sizeof(wxue_img::wiztest_png))), pos, style);
-    auto wizPage = new wxWizardPageSimple(this);
+    auto* wizPage = new wxWizardPageSimple(this);
 
-    auto box_sizer = new wxBoxSizer(wxHORIZONTAL);
+    auto* box_sizer = new wxBoxSizer(wxHORIZONTAL);
 
     m_staticText = new wxStaticText(wizPage, wxID_ANY, "This is the first Wizard page");
     box_sizer->Add(m_staticText, wxSizerFlags().Border(wxALL));
 
     wizPage->SetSizerAndFit(box_sizer);
 
-    auto m_wizPage2 = new wxWizardPageSimple(this);
+    auto* m_wizPage2 = new wxWizardPageSimple(this);
 
-    auto box_sizer2 = new wxBoxSizer(wxHORIZONTAL);
+    auto* box_sizer2 = new wxBoxSizer(wxHORIZONTAL);
 
     m_staticText2 = new wxStaticText(m_wizPage2, wxID_ANY, "This is the second Wizard page which is wider.");
     box_sizer2->Add(m_staticText2, wxSizerFlags().Border(wxALL));
 
     m_wizPage2->SetSizerAndFit(box_sizer2);
 
-    auto m_wizPage3 = new wxWizardPageSimple(this, nullptr, nullptr, wxBitmapBundle::FromBitmap(wxueImage(wxue_img::wiztest2_png, sizeof(wxue_img::wiztest2_png))));
+    auto* m_wizPage3 = new wxWizardPageSimple(this, nullptr, nullptr, wxBitmapBundle::FromBitmap(wxueImage(wxue_img::wiztest2_png, sizeof(wxue_img::wiztest2_png))));
 
-    auto box_sizer3 = new wxBoxSizer(wxHORIZONTAL);
+    auto* box_sizer3 = new wxBoxSizer(wxHORIZONTAL);
 
     m_staticText3 = new wxStaticText(m_wizPage3, wxID_ANY, "This is the final Wizard page");
     box_sizer3->Add(m_staticText3, wxSizerFlags().Border(wxALL));

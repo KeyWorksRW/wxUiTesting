@@ -23,17 +23,17 @@ bool OtherCtrlsBase::Create(wxWindow* parent, wxWindowID id, const wxString& tit
     if (!wxDialog::Create(parent, id, title, pos, size, style, name))
         return false;
 
-    auto parent_sizer = new wxBoxSizer(wxVERTICAL);
+    auto* parent_sizer = new wxBoxSizer(wxVERTICAL);
 
     m_notebook = new wxNotebook(this, wxID_ANY);
     parent_sizer->Add(m_notebook, wxSizerFlags(1).Expand().Border(wxALL));
 
-    auto page = new wxPanel(m_notebook, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxBORDER_THEME|wxTAB_TRAVERSAL);
+    auto* page = new wxPanel(m_notebook, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxBORDER_THEME|wxTAB_TRAVERSAL);
     m_notebook->AddPage(page, "Pickers");
 
-    auto parent_sizer2 = new wxBoxSizer(wxVERTICAL);
+    auto* parent_sizer2 = new wxBoxSizer(wxVERTICAL);
 
-    auto static_box = new wxStaticBoxSizer(wxVERTICAL, page, "Pickers");
+    auto* static_box = new wxStaticBoxSizer(wxVERTICAL, page, "Pickers");
     parent_sizer2->Add(static_box, wxSizerFlags().Expand().Border(wxALL));
 
     m_filePicker = new wxFilePickerCtrl(static_box->GetStaticBox(), wxID_ANY, wxEmptyString, wxFileSelectorPromptStr, 
@@ -61,10 +61,10 @@ bool OtherCtrlsBase::Create(wxWindow* parent, wxWindowID id, const wxString& tit
 
     page->SetSizerAndFit(parent_sizer2);
 
-    auto m_panel2 = new wxPanel(m_notebook, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxBORDER_RAISED|wxTAB_TRAVERSAL);
+    auto* m_panel2 = new wxPanel(m_notebook, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxBORDER_RAISED|wxTAB_TRAVERSAL);
     m_notebook->AddPage(m_panel2, "Spinners", true);
 
-    auto parent_sizer3 = new wxBoxSizer(wxVERTICAL);
+    auto* parent_sizer3 = new wxBoxSizer(wxVERTICAL);
 
     m_scrollBar = new wxScrollBar(m_panel2, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxSB_HORIZONTAL);
     m_scrollBar->SetScrollbar(0, 1, 100, 1);
@@ -84,30 +84,30 @@ bool OtherCtrlsBase::Create(wxWindow* parent, wxWindowID id, const wxString& tit
 
     m_panel2->SetSizerAndFit(parent_sizer3);
 
-    auto m_panel3 = new wxPanel(m_notebook, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL);
+    auto* m_panel3 = new wxPanel(m_notebook, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL);
     m_notebook->AddPage(m_panel3, "HTML", true);
 
-    auto parent_sizer4 = new wxBoxSizer(wxVERTICAL);
+    auto* parent_sizer4 = new wxBoxSizer(wxVERTICAL);
 
     m_htmlWin = new wxHtmlWindow(m_panel3);
     parent_sizer4->Add(m_htmlWin, wxSizerFlags().Border(wxALL));
 
     m_panel3->SetSizerAndFit(parent_sizer4);
 
-    auto m_panel4 = new wxPanel(m_notebook, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL);
+    auto* m_panel4 = new wxPanel(m_notebook, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL);
     m_notebook->AddPage(m_panel4, "RTF");
 
-    auto parent_sizer5 = new wxBoxSizer(wxVERTICAL);
+    auto* parent_sizer5 = new wxBoxSizer(wxVERTICAL);
 
     m_richText = new wxRichTextCtrl(m_panel4, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxRE_MULTILINE|wxVSCROLL | wxHSCROLL | wxNO_BORDER | wxWANTS_CHARS);
     parent_sizer5->Add(m_richText, wxSizerFlags(1).Expand().Border(wxALL));
 
     m_panel4->SetSizerAndFit(parent_sizer5);
 
-    auto m_panel5 = new wxPanel(m_notebook, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL);
+    auto* m_panel5 = new wxPanel(m_notebook, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL);
     m_notebook->AddPage(m_panel5, "Scintilla");
 
-    auto parent_sizer6 = new wxBoxSizer(wxVERTICAL);
+    auto* parent_sizer6 = new wxBoxSizer(wxVERTICAL);
 
     m_scintilla = new wxStyledTextCtrl(m_panel5, wxID_ANY);
     {
@@ -124,12 +124,12 @@ bool OtherCtrlsBase::Create(wxWindow* parent, wxWindowID id, const wxString& tit
 
     m_panel5->SetSizerAndFit(parent_sizer6);
 
-    auto m_panel6 = new wxPanel(m_notebook, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL);
+    auto* m_panel6 = new wxPanel(m_notebook, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL);
     m_notebook->AddPage(m_panel6, "Misc");
 
-    auto parent_sizer7 = new wxBoxSizer(wxVERTICAL);
+    auto* parent_sizer7 = new wxBoxSizer(wxVERTICAL);
 
-    auto box_sizer = new wxBoxSizer(wxHORIZONTAL);
+    auto* box_sizer = new wxBoxSizer(wxHORIZONTAL);
     parent_sizer7->Add(box_sizer, wxSizerFlags().Expand().Border(wxALL));
 
     m_toggleBtn = new wxToggleButton(m_panel6, wxID_ANY, "Toggle");
@@ -143,7 +143,7 @@ bool OtherCtrlsBase::Create(wxWindow* parent, wxWindowID id, const wxString& tit
     m_searchCtrl->ShowSearchButton(true);
     box_sizer->Add(m_searchCtrl, wxSizerFlags(1).Border(wxALL));
 
-    auto box_sizer2 = new wxBoxSizer(wxHORIZONTAL);
+    auto* box_sizer2 = new wxBoxSizer(wxHORIZONTAL);
     parent_sizer7->Add(box_sizer2, wxSizerFlags(1).Expand().Border(wxALL));
 
     m_calendar = new wxCalendarCtrl(m_panel6, wxID_ANY);
