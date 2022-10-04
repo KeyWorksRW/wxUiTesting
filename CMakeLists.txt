@@ -52,9 +52,7 @@ if (INTERNAL_WIDGETS_SOURCES)
 endif()
 
 set (widget_dir ${CMAKE_CURRENT_LIST_DIR}/wxSnapshot)
-set (widget_lib_dir ${CMAKE_CURRENT_LIST_DIR}/wxSnapshot/build)
 set (widget_cmake_dir ${CMAKE_CURRENT_LIST_DIR}/wxSnapshot)
-
 add_subdirectory(${widget_cmake_dir})
 
 add_compile_definitions($<$<CONFIG:Release>:NDEBUG>)
