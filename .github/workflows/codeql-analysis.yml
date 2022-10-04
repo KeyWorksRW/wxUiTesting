@@ -40,10 +40,9 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
       with:
-        submodules: false
+        submodules: true
 
     - run: mkdir ${{github.workspace}}/build/Debug
-    - run: mkdir ${{github.workspace}}/build/wxSnapshot/Debug
 
     - name: Configure CMake
       run: cmake -G "Visual Studio 16 2019" -B ${{github.workspace}}/build -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
