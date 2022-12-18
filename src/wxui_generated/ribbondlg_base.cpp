@@ -33,7 +33,7 @@ bool RibbonDlgBase::Create(wxWindow* parent, wxWindowID id, const wxString& titl
     m_rbnBar->SetActivePage(rbnPage);
 
     auto* rbnPanel = new wxRibbonPanel(rbnPage, wxID_ANY, "English",
-    wxImage(english_xpm));
+        wxImage(english_xpm));
 
     auto* first_parent_sizer = new wxBoxSizer(wxVERTICAL);
 
@@ -50,7 +50,7 @@ bool RibbonDlgBase::Create(wxWindow* parent, wxWindowID id, const wxString& titl
     rbnPanel->SetSizerAndFit(first_parent_sizer);
 
     auto* rbnPanel_2 = new wxRibbonPanel(rbnPage, wxID_ANY, "French",
-    wxImage(french_xpm));
+        wxImage(french_xpm));
     rbnPanel_2->SetBackgroundColour(wxSystemSettings::GetColour(wxSYS_COLOUR_MENU));
 
     auto* first_parent_sizer_2 = new wxBoxSizer(wxVERTICAL);
@@ -58,7 +58,8 @@ bool RibbonDlgBase::Create(wxWindow* parent, wxWindowID id, const wxString& titl
     auto* box_sizer_2 = new wxBoxSizer(wxVERTICAL);
     first_parent_sizer_2->Add(box_sizer_2, wxSizerFlags(1).Expand().Border(wxALL));
 
-    m_staticText_2 = new wxStaticText(rbnPanel_2, wxID_ANY, wxString::FromUTF8("Ceci est une phrase en français."));
+    m_staticText_2 = new wxStaticText(rbnPanel_2, wxID_ANY,
+        wxString::FromUTF8("Ceci est une phrase en français."));
     m_staticText_2->Wrap(200);
     box_sizer_2->Add(m_staticText_2, wxSizerFlags().Border(wxALL));
 
@@ -70,7 +71,7 @@ bool RibbonDlgBase::Create(wxWindow* parent, wxWindowID id, const wxString& titl
     auto* ribbonPage2 = new wxRibbonPage(m_rbnBar, wxID_ANY, "Second");
 
     auto* ribbonPanel2 = new wxRibbonPanel(ribbonPage2, wxID_ANY, "Button Panel",
-        wxNullBitmap, wxDefaultPosition, wxDefaultSize,
+            wxNullBitmap, wxDefaultPosition, wxDefaultSize,
         wxRIBBON_PANEL_DEFAULT_STYLE|wxRIBBON_PANEL_STRETCH);
 
     auto* rbnBtnBar = new wxRibbonButtonBar(ribbonPanel2, wxID_ANY);

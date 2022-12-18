@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <wxUiEditorData
-  data_version="15">
+  data_version="17">
   <node
     class="Project"
     art_directory="../art"
+    wxWidgets_version="3.2"
+    base_directory="../wxui_generated"
     cmake_file="../wxui_generated/wxui_generated.cmake"
     cmake_varname="wxui_generated"
-    generate_cmake="1"
-    base_directory="../wxui_generated"
-    wxWidgets_version="3.2">
+    generate_cmake="1">
     <node
       class="wxFrame"
       class_name="MainFrameBase"
@@ -128,12 +128,12 @@
     </node>
     <node
       class="wxDialog"
-      base_file="../wxui_generated/commonctrls_base"
       class_name="CommonCtrlsBase"
-      derived_class_name="CommonCtrls"
-      derived_file="commonctrls"
       style="wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER"
       title="Common controls"
+      base_file="../wxui_generated/commonctrls_base"
+      derived_class_name="CommonCtrls"
+      derived_file="commonctrls"
       wxEVT_CONTEXT_MENU="OnContextMenu">
       <node
         class="wxBoxSizer"
@@ -465,13 +465,13 @@
     </node>
     <node
       class="wxDialog"
-      base_file="../wxui_generated/ribbondlg_base"
       class_name="RibbonDlgBase"
-      derived_class_name="RibbonDlg"
-      derived_file="ribbondlg"
-      size="-1,-1"
       style="wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER"
-      title="Ribbon Dialog">
+      title="Ribbon Dialog"
+      size="-1,-1"
+      base_file="../wxui_generated/ribbondlg_base"
+      derived_class_name="RibbonDlg"
+      derived_file="ribbondlg">
       <node
         class="wxBoxSizer"
         orientation="wxVERTICAL"
@@ -725,10 +725,10 @@
     </node>
     <node
       class="wxDialog"
-      base_file="../wxui_generated/choicebook_base"
       class_name="ChoiceBookBase"
-      derived_class_name="ChoiceBook"
-      title="Choicebook">
+      title="Choicebook"
+      base_file="../wxui_generated/choicebook_base"
+      derived_class_name="ChoiceBook">
       <node
         class="wxBoxSizer"
         orientation="wxVERTICAL"
@@ -840,12 +840,12 @@
     </node>
     <node
       class="wxDialog"
-      base_file="../wxui_generated/notebook_base"
       class_name="NotebookBase"
-      derived_class_name="Notebook"
+      title="Notebook"
       minimum_size="-1,-1"
       size="-1,-1"
-      title="Notebook">
+      base_file="../wxui_generated/notebook_base"
+      derived_class_name="Notebook">
       <node
         class="wxBoxSizer"
         orientation="wxVERTICAL">
@@ -913,10 +913,10 @@
     </node>
     <node
       class="wxDialog"
-      base_file="../wxui_generated/listbook_base"
       class_name="ListbookBase"
-      derived_class_name="Listbook"
-      title="Listbook">
+      title="Listbook"
+      base_file="../wxui_generated/listbook_base"
+      derived_class_name="Listbook">
       <node
         class="wxBoxSizer"
         orientation="wxVERTICAL">
@@ -984,10 +984,10 @@
     </node>
     <node
       class="wxDialog"
-      base_file="../wxui_generated/treebook_base"
       class_name="TreebookBase"
-      derived_class_name="Treebook"
-      title="Treebook">
+      title="Treebook"
+      base_file="../wxui_generated/treebook_base"
+      derived_class_name="Treebook">
       <node
         class="wxBoxSizer"
         orientation="wxVERTICAL">
@@ -1088,10 +1088,10 @@
     </node>
     <node
       class="wxDialog"
-      base_file="../wxui_generated/toolbook_base"
       class_name="ToolbookBase"
-      derived_class_name="Toolbook"
-      title="wxToolbook">
+      title="wxToolbook"
+      base_file="../wxui_generated/toolbook_base"
+      derived_class_name="Toolbook">
       <node
         class="wxBoxSizer"
         orientation="wxVERTICAL">
@@ -1175,15 +1175,15 @@
     </node>
     <node
       class="wxDialog"
-      base_file="../wxui_generated/other_ctrls_base"
       class_name="OtherCtrlsBase"
-      derived_class_name="OtherCtrlsDlg"
-      derived_file="other_ctrls"
-      minimum_size="-1,-1"
       persist="1"
-      size="-1,-1"
       style="wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER"
-      title="NoteBook Dialog">
+      title="NoteBook Dialog"
+      minimum_size="-1,-1"
+      size="-1,-1"
+      base_file="../wxui_generated/other_ctrls_base"
+      derived_class_name="OtherCtrlsDlg"
+      derived_file="other_ctrls">
       <node
         class="wxBoxSizer"
         orientation="wxVERTICAL"
@@ -1343,14 +1343,14 @@
     </node>
     <node
       class="wxDialog"
-      base_file="../wxui_generated/dlgmultitest_base"
       class_name="DlgMultiTestBase"
-      derived_class_name="DlgMultiTest"
-      derived_file="dlgmultitest"
-      minimum_size="-1,-1"
-      size="-1,-1"
       style="wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER"
       title="Widgets Testing"
+      minimum_size="-1,-1"
+      size="-1,-1"
+      base_file="../wxui_generated/dlgmultitest_base"
+      derived_class_name="DlgMultiTest"
+      derived_file="dlgmultitest"
       wxEVT_INIT_DIALOG="OnInit">
       <node
         class="wxBoxSizer"
@@ -1574,13 +1574,13 @@
     </node>
     <node
       class="wxDialog"
+      class_name="ImportTest"
+      title="wxFormBuilder comparison"
       base_file="../wxui_generated/import_test_base"
       base_hdr_includes="#include &lt;wx/aui/auibook.h>@@"
-      class_name="ImportTest"
       derived_class_name="ImportTest"
       derived_file="../imports/import_test.cpp"
       inserted_hdr_code="void OnImportPageChanged(wxAuiNotebookEvent&amp; event);@@void OnImportCrafterPageChanged(wxAuiNotebookEvent&amp; event);@@void OnFormPageChanged(wxAuiNotebookEvent&amp; event);@@void OnCrafterPageChanged(wxAuiNotebookEvent&amp; event);@@"
-      title="wxFormBuilder comparison"
       use_derived_class="0"
       wxEVT_INIT_DIALOG="OnInit">
       <node
