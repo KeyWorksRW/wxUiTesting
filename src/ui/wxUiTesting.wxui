@@ -12,6 +12,15 @@
     wxWidgets_version="3.2"
     python_output_folder="../python">
     <node
+      class="Images">
+      <node
+        class="embedded_image"
+        bitmap="Embed;../art/wiztest.png" />
+      <node
+        class="embedded_image"
+        bitmap="Embed;../art/wiztest2.png" />
+    </node>
+    <node
       class="wxFrame"
       class_name="MainFrameBase"
       title="wxUiTesting"

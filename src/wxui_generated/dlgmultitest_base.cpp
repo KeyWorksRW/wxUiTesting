@@ -10,6 +10,8 @@
 #include <wx/panel.h>
 #include <wx/sizer.h>
 
+#include "..\ui\my_images.h"
+
 #include "dlgmultitest_base.h"
 
 #include <wx/mstream.h>  // memory stream classes
@@ -117,7 +119,7 @@ bool DlgMultiTestBase::Create(wxWindow* parent, wxWindowID id, const wxString& t
     box_sizer_4->Add(box_sizer_9, wxSizerFlags().Border(wxALL));
 
     m_banner = new wxBannerWindow(page_3, wxLEFT);
-        m_banner->SetBitmap(wxBitmapBundle::FromBitmap(wxueImage(wxue_img::wiztest_png, sizeof(wxue_img::wiztest_png))));
+        m_banner->SetBitmap(wxue_img::bundle_wiztest_png());
     m_banner->SetText("This is a long title", wxEmptyString);
     box_sizer_9->Add(m_banner, wxSizerFlags().Border(wxALL));
 

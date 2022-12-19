@@ -11,6 +11,7 @@ set (wxui_generated
     ${CMAKE_CURRENT_LIST_DIR}/import_test_base.cpp
     ${CMAKE_CURRENT_LIST_DIR}/listbook_base.cpp
     ${CMAKE_CURRENT_LIST_DIR}/mainframe_base.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/my_images.cpp
     ${CMAKE_CURRENT_LIST_DIR}/notebook_base.cpp
     ${CMAKE_CURRENT_LIST_DIR}/other_ctrls_base.cpp
     ${CMAKE_CURRENT_LIST_DIR}/popupwin_base.cpp
