@@ -55,7 +55,7 @@ bool OtherCtrlsBase::Create(wxWindow* parent, wxWindowID id, const wxString& tit
     static_box->Add(m_timePicker, wxSizerFlags().Border(wxALL));
 
         m_fontPicker = new wxFontPickerCtrl(static_box->GetStaticBox(), wxID_ANY, 
-            wxFont(wxNORMAL_FONT->GetPointSize(), wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, "Comic Sans MS"), wxDefaultPosition, wxDefaultSize,
+                wxFont(wxNORMAL_FONT->GetPointSize(), wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, "Comic Sans MS"), wxDefaultPosition, wxDefaultSize,
         wxFNTP_DEFAULT_STYLE|wxFNTP_USE_TEXTCTRL);
     static_box->Add(m_fontPicker, wxSizerFlags().Border(wxALL));
 
@@ -70,8 +70,8 @@ bool OtherCtrlsBase::Create(wxWindow* parent, wxWindowID id, const wxString& tit
     m_scrollBar->SetScrollbar(0, 1, 100, 1);
     parent_sizer3->Add(m_scrollBar, wxSizerFlags().Expand().Border(wxALL));
 
-    m_spinCtrl = new wxSpinCtrl(m_panel2, wxID_ANY, wxEmptyString,
-            wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 10, 4);
+        m_spinCtrl = new wxSpinCtrl(m_panel2, wxID_ANY, wxEmptyString,
+                wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0, 10, 4);
     m_spinCtrl->SetValidator(wxGenericValidator(&m_spinValidate));
     parent_sizer3->Add(m_spinCtrl, wxSizerFlags().Border(wxALL));
 
@@ -146,10 +146,11 @@ bool OtherCtrlsBase::Create(wxWindow* parent, wxWindowID id, const wxString& tit
     auto* box_sizer2 = new wxBoxSizer(wxHORIZONTAL);
     parent_sizer7->Add(box_sizer2, wxSizerFlags(1).Expand().Border(wxALL));
 
-    m_calendar = new wxCalendarCtrl(m_panel6, wxID_ANY);
+    m_calendar = new wxCalendarCtrl(m_panel6, wxID_ANY, wxDefaultDateTime, wxDefaultPosition, wxDefaultSize,
+        wxCAL_SHOW_HOLIDAYS);
     box_sizer2->Add(m_calendar, wxSizerFlags().Border(wxALL));
 
-    m_genericDirCtrl = new wxGenericDirCtrl(m_panel6, wxID_ANY, wxDirDialogDefaultFolderStr, wxDefaultPosition, wxDefaultSize, wxDIRCTRL_3D_INTERNAL|wxSUNKEN_BORDER);
+        m_genericDirCtrl = new wxGenericDirCtrl(m_panel6, wxID_ANY, wxDirDialogDefaultFolderStr, wxDefaultPosition, wxDefaultSize, wxDIRCTRL_3D_INTERNAL|wxSUNKEN_BORDER);
     box_sizer2->Add(m_genericDirCtrl, wxSizerFlags(1).Expand().Border(wxALL));
 
     m_panel6->SetSizerAndFit(parent_sizer7);

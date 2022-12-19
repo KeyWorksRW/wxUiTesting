@@ -49,7 +49,8 @@ bool ChoiceBookBase::Create(wxWindow* parent, wxWindowID id, const wxString& tit
     auto* box_sizer = new wxBoxSizer(wxVERTICAL);
     parent_sizer_2->Add(box_sizer, wxSizerFlags().Border(wxALL));
 
-    m_staticText_2 = new wxStaticText(page, wxID_ANY, "The First and Last buttons above are children of the wcChoicebook. They are added using choicebook->GetControlSizer() which allows them to share the layout space for the wxChoice control.");
+    m_staticText_2 = new wxStaticText(page, wxID_ANY,
+        "The First and Last buttons above are children of the wcChoicebook. They are added using choicebook->GetControlSizer() which allows them to share the layout space for the wxChoice control.");
     m_staticText_2->Wrap(380);
     box_sizer->Add(m_staticText_2, wxSizerFlags().Expand().Border(wxALL));
 
@@ -67,7 +68,8 @@ bool ChoiceBookBase::Create(wxWindow* parent, wxWindowID id, const wxString& tit
     auto* box_sizer_3 = new wxBoxSizer(wxVERTICAL);
     parent_sizer__2->Add(box_sizer_3, wxSizerFlags().Border(wxALL));
 
-    m_staticText__3 = new wxStaticText(page_2, wxID_ANY, "The First and Last buttons above are children of the wcChoicebook. They are added using choicebook->GetControlSizer() which allows them to share the layout space for the wxChoice control.");
+    m_staticText__3 = new wxStaticText(page_2, wxID_ANY,
+        "The First and Last buttons above are children of the wcChoicebook. They are added using choicebook->GetControlSizer() which allows them to share the layout space for the wxChoice control.");
     m_staticText__3->Wrap(390);
     box_sizer_3->Add(m_staticText__3, wxSizerFlags().Expand().Border(wxALL));
 
@@ -85,7 +87,8 @@ bool ChoiceBookBase::Create(wxWindow* parent, wxWindowID id, const wxString& tit
     auto* box_sizer_2 = new wxBoxSizer(wxVERTICAL);
     parent_sizer_3->Add(box_sizer_2, wxSizerFlags().Border(wxALL));
 
-    m_staticText__2 = new wxStaticText(page_3, wxID_ANY, "The First and Last buttons above are children of the wcChoicebook. They are added using choicebook->GetControlSizer() which allows them to share the layout space for the wxChoice control.");
+    m_staticText__2 = new wxStaticText(page_3, wxID_ANY,
+        "The First and Last buttons above are children of the wcChoicebook. They are added using choicebook->GetControlSizer() which allows them to share the layout space for the wxChoice control.");
     m_staticText__2->Wrap(390);
     box_sizer_2->Add(m_staticText__2, wxSizerFlags().Expand().Border(wxALL));
 

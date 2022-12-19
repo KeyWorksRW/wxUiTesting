@@ -13,6 +13,7 @@
 #include "ribbondlg.h"     // RibbonDlg
 #include "wizard.h"        // Wizard
 
+#include "../wxui_generated/python_dlg_base.h"
 #include "choicebook_base.h"
 #include "listbook_base.h"
 #include "notebook_base.h"
@@ -100,4 +101,10 @@ void MainFrame::OnImportTest(wxCommandEvent& WXUNUSED(event))
     {
         wxMessageBox("Unable to create ImportTest dialog!");
     }
+}
+
+void MainFrame::OnPythonDlg(wxCommandEvent& WXUNUSED(event))
+{
+    PythonDlgBase dlg(this);
+    dlg.ShowModal();
 }

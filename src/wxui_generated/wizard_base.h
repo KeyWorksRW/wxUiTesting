@@ -6,12 +6,9 @@
 
 #pragma once
 
-#include <wx/bitmap.h>
 #include <wx/colour.h>
 #include <wx/event.h>
 #include <wx/gdicmn.h>
-#include <wx/icon.h>
-#include <wx/image.h>
 #include <wx/settings.h>
 #include <wx/sizer.h>
 #include <wx/stattext.h>
@@ -39,11 +36,3 @@ protected:
     wxStaticText* m_staticText3;
     wxStaticText* m_staticText;
 };
-
-namespace wxue_img
-{
-    // Images declared in this class module:
-
-    extern const unsigned char wiztest2_png[6797];
-    extern const unsigned char wiztest_png[1239];
-}

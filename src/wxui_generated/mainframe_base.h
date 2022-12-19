@@ -31,6 +31,7 @@ protected:
     virtual void OnMultiTestDialog(wxCommandEvent& event) { event.Skip(); }
     virtual void OnNotebook(wxCommandEvent& event) { event.Skip(); }
     virtual void OnOtherCtrls(wxCommandEvent& event) { event.Skip(); }
+    virtual void OnPythonDlg(wxCommandEvent& event) { event.Skip(); }
     virtual void OnQuit(wxCommandEvent& event) { event.Skip(); }
     virtual void OnRibbonDialog(wxCommandEvent& event) { event.Skip(); }
     virtual void OnToolbook(wxCommandEvent& event) { event.Skip(); }
@@ -42,3 +43,12 @@ protected:
     wxStatusBar* m_statusBar;
     wxToolBar* m_toolBar;
 };
+
+namespace wxue_img
+{
+    // Images declared in this class module:
+
+    extern const unsigned char wxPython_1_5x_png[765];
+    extern const unsigned char wxPython_2x_png[251];
+    extern const unsigned char wxPython_png[399];
+}

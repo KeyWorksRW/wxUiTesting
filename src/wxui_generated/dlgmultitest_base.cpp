@@ -10,6 +10,8 @@
 #include <wx/panel.h>
 #include <wx/sizer.h>
 
+#include "..\ui\my_images.h"
+
 #include "dlgmultitest_base.h"
 
 #include <wx/mstream.h>  // memory stream classes
@@ -55,7 +57,7 @@ bool DlgMultiTestBase::Create(wxWindow* parent, wxWindowID id, const wxString& t
     grid_bag_sizer->Add(m_btn, wxGBPosition(0, 0), wxGBSpan(1, 1), wxALL, 5);
 
     m_btn_2 = new wxButton(page_2, wxID_ANY);
-    m_btn_2->SetLabelMarkup("<b><span foreground='red'>Markup</span></b>");
+    m_btn_2->SetLabelMarkup("<b><span foreground=\'red\'>Markup</span></b>");
     m_btn_2->SetToolTip("Text should be Bold and Red.");
     grid_bag_sizer->Add(m_btn_2, wxGBPosition(0, 1), wxGBSpan(1, 1), wxALL, 5);
 
@@ -100,29 +102,25 @@ bool DlgMultiTestBase::Create(wxWindow* parent, wxWindowID id, const wxString& t
     box_sizer_4->Add(box_sizer_8, wxSizerFlags(1).Border(wxALL));
 
     m_banner_left = new wxBannerWindow(page_3, wxLEFT);
-    m_banner_left->SetText("Left Banner",
-        wxEmptyString);
+    m_banner_left->SetText("Left Banner", wxEmptyString);
     box_sizer_8->Add(m_banner_left, wxSizerFlags().Border(wxALL));
 
     m_banner_top = new wxBannerWindow(page_3, wxTOP);
     m_banner_top->SetGradient(wxSystemSettings::GetColour(wxSYS_COLOUR_INACTIVECAPTION),
         wxSystemSettings::GetColour(wxSYS_COLOUR_HIGHLIGHT));
-    m_banner_top->SetText("Top Banner",
-        "This is the top banner message");
+    m_banner_top->SetText("Top Banner", "This is the top banner message");
     box_sizer_8->Add(m_banner_top, wxSizerFlags().Border(wxALL));
 
     m_banner_right = new wxBannerWindow(page_3, wxRIGHT);
-    m_banner_right->SetText("Right Banner",
-        wxEmptyString);
+    m_banner_right->SetText("Right Banner", wxEmptyString);
     box_sizer_8->Add(m_banner_right, wxSizerFlags().Border(wxALL));
 
     auto* box_sizer_9 = new wxBoxSizer(wxHORIZONTAL);
     box_sizer_4->Add(box_sizer_9, wxSizerFlags().Border(wxALL));
 
     m_banner = new wxBannerWindow(page_3, wxLEFT);
-        m_banner->SetBitmap(wxBitmapBundle::FromBitmap(wxueImage(wxue_img::wiztest_png, sizeof(wxue_img::wiztest_png))));
-    m_banner->SetText("This is a long title",
-        wxEmptyString);
+        m_banner->SetBitmap(wxue_img::bundle_wiztest_png());
+    m_banner->SetText("This is a long title", wxEmptyString);
     box_sizer_9->Add(m_banner, wxSizerFlags().Border(wxALL));
 
     page_3->SetSizerAndFit(box_sizer_4);

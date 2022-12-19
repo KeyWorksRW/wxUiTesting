@@ -21,5 +21,6 @@ set (file_list
     ${CMAKE_CURRENT_LIST_DIR}/ui/popupwin.cpp
     ${CMAKE_CURRENT_LIST_DIR}/ui/ribbondlg.cpp
     ${CMAKE_CURRENT_LIST_DIR}/ui/wizard.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/ui/python_dlg.cpp
 
 )

@@ -60,16 +60,18 @@ bool CommonCtrlsBase::Create(wxWindow* parent, wxWindowID id, const wxString& ti
     parent_sizer->Add(box_sizer6, wxSizerFlags().Expand().Border(wxALL));
 
     m_infoBar = new wxInfoBar(this);
-    m_infoBar->SetShowHideEffects(wxSHOW_EFFECT_EXPAND, wxSHOW_EFFECT_NONE);
+        m_infoBar->SetShowHideEffects(wxSHOW_EFFECT_EXPAND, wxSHOW_EFFECT_NONE);
     box_sizer6->Add(m_infoBar, wxSizerFlags().Expand().Border(wxALL));
 
     auto* box_sizer = new wxBoxSizer(wxHORIZONTAL);
     parent_sizer->Add(box_sizer, wxSizerFlags().Expand().Border(wxALL));
 
     m_staticText = new wxStaticText(this, wxID_ANY, "Text:");
-    box_sizer->Add(m_staticText, wxSizerFlags().Center().Border(wxLEFT|wxTOP|wxBOTTOM, wxSizerFlags::GetDefaultBorder()));
+    box_sizer->Add(m_staticText,
+        wxSizerFlags().Center().Border(wxLEFT|wxTOP|wxBOTTOM, wxSizerFlags::GetDefaultBorder()));
 
-    m_textCtrl = new wxTextCtrl(this, wxID_ANY, "Text \"ctrl\"", wxDefaultPosition, wxDefaultSize, wxTE_PROCESS_ENTER);
+    m_textCtrl = new wxTextCtrl(this, wxID_ANY, "Text \"ctrl\"", wxDefaultPosition, wxDefaultSize,
+        wxTE_PROCESS_ENTER);
     {
         wxArrayString tmp_array;
         tmp_array.push_back(wxString::FromUTF8("foo"));
@@ -81,7 +83,8 @@ bool CommonCtrlsBase::Create(wxWindow* parent, wxWindowID id, const wxString& ti
     box_sizer->Add(m_textCtrl, wxSizerFlags().Border(wxALL));
 
     m_staticText2 = new wxStaticText(this, wxID_ANY, "More text:");
-    box_sizer->Add(m_staticText2, wxSizerFlags().Center().Border(wxLEFT|wxTOP|wxBOTTOM, wxSizerFlags::GetDefaultBorder()));
+    box_sizer->Add(m_staticText2,
+        wxSizerFlags().Center().Border(wxLEFT|wxTOP|wxBOTTOM, wxSizerFlags::GetDefaultBorder()));
 
     m_textCtrl2 = new wxTextCtrl(this, wxID_ANY, "Another ctrl");
     box_sizer->Add(m_textCtrl2, wxSizerFlags().Border(wxALL));
@@ -119,7 +122,7 @@ bool CommonCtrlsBase::Create(wxWindow* parent, wxWindowID id, const wxString& ti
     m_staticText3 = new wxStaticText(static_box_sizer2->GetStaticBox(), wxID_ANY, "Unsorted");
     static_box_sizer2->Add(m_staticText3, wxSizerFlags().Border(wxALL));
 
-    m_comboBox = new wxComboBox(static_box_sizer2->GetStaticBox(), wxID_ANY, wxEmptyString);
+    m_comboBox = new wxComboBox(static_box_sizer2->GetStaticBox(), wxID_ANY);
     m_comboBox->Append("item #1");
     m_comboBox->Append("item #2");
     m_comboBox->Append("item #0");
@@ -130,7 +133,8 @@ bool CommonCtrlsBase::Create(wxWindow* parent, wxWindowID id, const wxString& ti
     m_staticText4 = new wxStaticText(static_box_sizer2->GetStaticBox(), wxID_ANY, "Sorted");
     static_box_sizer2->Add(m_staticText4, wxSizerFlags().Border(wxALL));
 
-    m_comboBox2 = new wxComboBox(static_box_sizer2->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0, nullptr, wxCB_SORT);
+    m_comboBox2 = new wxComboBox(static_box_sizer2->GetStaticBox(), wxID_ANY, wxEmptyString, wxDefaultPosition,
+        wxDefaultSize, 0, nullptr, wxCB_SORT);
     m_comboBox2->Append("item #1");
     m_comboBox2->Append("item #2");
     m_comboBox2->Append("item #0");
@@ -155,7 +159,8 @@ bool CommonCtrlsBase::Create(wxWindow* parent, wxWindowID id, const wxString& ti
     m_staticText6 = new wxStaticText(static_box_sizer3->GetStaticBox(), wxID_ANY, "Sorted");
     static_box_sizer3->Add(m_staticText6, wxSizerFlags().Border(wxALL));
 
-    m_choice2 = new wxChoice(static_box_sizer3->GetStaticBox(), wxID_ANY, wxDefaultPosition, wxDefaultSize, 0, nullptr, wxCB_SORT);
+    m_choice2 = new wxChoice(static_box_sizer3->GetStaticBox(), wxID_ANY, wxDefaultPosition, wxDefaultSize,
+        0, nullptr, wxCB_SORT);
     m_choice2->Append("item #1");
     m_choice2->Append("item #2");
     m_choice2->Append("item #0");
@@ -191,34 +196,31 @@ bool CommonCtrlsBase::Create(wxWindow* parent, wxWindowID id, const wxString& ti
     static_box_sizer5->Add(m_staticText9, wxSizerFlags().Border(wxALL));
 
     m_checkList = new wxCheckListBox(static_box_sizer5->GetStaticBox(), wxID_ANY);
-    m_checkList->Append("item #1");
-    m_checkList->Append("item #2");
-    m_checkList->Append("item #0");
+    m_checkList->Append("\"item #1\" \"item #2\" \"item #0\"");
     static_box_sizer5->Add(m_checkList, wxSizerFlags().Border(wxALL));
 
     m_staticText10 = new wxStaticText(static_box_sizer5->GetStaticBox(), wxID_ANY, "Sorted");
     static_box_sizer5->Add(m_staticText10, wxSizerFlags().Border(wxALL));
 
     m_checkList2 = new wxCheckListBox(static_box_sizer5->GetStaticBox(), wxID_ANY, wxDefaultPosition, wxDefaultSize, 0, nullptr, wxLB_SINGLE|wxLB_SORT);
-    m_checkList2->Append("item #1");
-    m_checkList2->Append("item #2");
-    m_checkList2->Append("item #0");
+    m_checkList2->Append("\"item #1\" \"item #2\" \"item #0\"");
     static_box_sizer5->Add(m_checkList2, wxSizerFlags().Border(wxALL));
 
     auto* flex_grid_sizer = new wxFlexGridSizer(4, 0, 0);
     parent_sizer->Add(flex_grid_sizer, wxSizerFlags().Expand().Border(wxALL));
 
-    m_staticText11 = new wxStaticText(this, wxID_ANY, "On Windows 10, the items may be be clipped unless they have a trailing space.");
+    m_staticText11 = new wxStaticText(this, wxID_ANY,
+        "On Windows 10, the items may be be clipped unless they have a trailing space.");
     m_staticText11->Wrap(200);
     flex_grid_sizer->Add(m_staticText11, wxSizerFlags().Border(wxALL));
 
-    wxString radioBox_choices[] = {
+        wxString radioBox_choices[] = {
         "Button zero ",
         "Button one ",
         "Button two ",
-    };
-    m_radioBox = new wxRadioBox(this, wxID_ANY, "Radio Box",
-        wxDefaultPosition, wxDefaultSize, 3, radioBox_choices, 0, wxRA_SPECIFY_ROWS);
+        };
+        m_radioBox = new wxRadioBox(this, wxID_ANY, "Radio Box",
+            wxDefaultPosition, wxDefaultSize, 3, radioBox_choices, 0, wxRA_SPECIFY_ROWS);
     m_radioBox->SetValidator(wxGenericValidator(&m_valRadio));
     flex_grid_sizer->Add(m_radioBox, wxSizerFlags().Border(wxALL));
 
@@ -242,7 +244,8 @@ bool CommonCtrlsBase::Create(wxWindow* parent, wxWindowID id, const wxString& ti
         wxBU_EXACTFIT);
     static_box_2->Add(m_toggleBtn, wxSizerFlags().Border(wxALL));
 
-    m_animation_ctrl = new wxAnimationCtrl(static_box_2->GetStaticBox(), wxID_ANY, wxueAnimation(clr_hourglass_gif, sizeof(clr_hourglass_gif)));
+    m_animation_ctrl = new wxAnimationCtrl(static_box_2->GetStaticBox(), wxID_ANY, wxueAnimation(clr_hourglass_gif, sizeof(clr_hourglass_gif)),
+        wxDefaultPosition, wxDefaultSize, wxAC_DEFAULT_STYLE);
     m_animation_ctrl->SetInactiveBitmap(wxImage(empty_xpm));
     static_box_2->Add(m_animation_ctrl, wxSizerFlags().Border(wxALL));
 
@@ -293,14 +296,16 @@ bool CommonCtrlsBase::Create(wxWindow* parent, wxWindowID id, const wxString& ti
     parent_sizer->Add(box_sizer5, wxSizerFlags().Expand().Border(wxALL));
 
     m_staticText12 = new wxStaticText(this, wxID_ANY, "Slider:");
-    box_sizer5->Add(m_staticText12, wxSizerFlags().Center().Border(wxLEFT|wxTOP|wxBOTTOM, wxSizerFlags::GetDefaultBorder()));
+    box_sizer5->Add(m_staticText12,
+        wxSizerFlags().Center().Border(wxLEFT|wxTOP|wxBOTTOM, wxSizerFlags::GetDefaultBorder()));
 
     m_slider = new wxSlider(this, wxID_ANY, 50, 0, 100);
     m_slider->SetValue(50);
     box_sizer5->Add(m_slider, wxSizerFlags().Border(wxALL));
 
     m_staticText13 = new wxStaticText(this, wxID_ANY, "Gauge:");
-    box_sizer5->Add(m_staticText13, wxSizerFlags().Center().Border(wxLEFT|wxTOP|wxBOTTOM, wxSizerFlags::GetDefaultBorder()));
+    box_sizer5->Add(m_staticText13,
+        wxSizerFlags().Center().Border(wxLEFT|wxTOP|wxBOTTOM, wxSizerFlags::GetDefaultBorder()));
 
     m_gauge = new wxGauge(this, wxID_ANY, 100);
     m_gauge->SetValue(0);
@@ -416,7 +421,6 @@ void CommonCtrlsBase::OnContextMenu(wxContextMenuEvent& event)
 {
     wxMenu menu;
     auto pmenu = &menu;  // convenience variable for the auto-generated code
-
     auto* menu_item = new wxMenuItem(pmenu, wxID_ANY, "Play Animation");
     pmenu->Append(menu_item);
 
