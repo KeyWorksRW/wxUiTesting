@@ -14,6 +14,7 @@ set (wxui_generated
     ${CMAKE_CURRENT_LIST_DIR}/notebook_base.cpp
     ${CMAKE_CURRENT_LIST_DIR}/other_ctrls_base.cpp
     ${CMAKE_CURRENT_LIST_DIR}/popupwin_base.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/python_dlg_base.cpp
     ${CMAKE_CURRENT_LIST_DIR}/ribbondlg_base.cpp
     ${CMAKE_CURRENT_LIST_DIR}/toolbook_base.cpp
     ${CMAKE_CURRENT_LIST_DIR}/treebook_base.cpp

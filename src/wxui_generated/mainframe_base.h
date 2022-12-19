@@ -31,6 +31,7 @@ protected:
     virtual void OnMultiTestDialog(wxCommandEvent& event) { event.Skip(); }
     virtual void OnNotebook(wxCommandEvent& event) { event.Skip(); }
     virtual void OnOtherCtrls(wxCommandEvent& event) { event.Skip(); }
+    virtual void OnPythonDlg(wxCommandEvent& event) { event.Skip(); }
     virtual void OnQuit(wxCommandEvent& event) { event.Skip(); }
     virtual void OnRibbonDialog(wxCommandEvent& event) { event.Skip(); }
     virtual void OnToolbook(wxCommandEvent& event) { event.Skip(); }

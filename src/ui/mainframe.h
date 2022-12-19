@@ -27,4 +27,5 @@ protected:
     void OnToolbook(wxCommandEvent& event) override;
     void OnTreebook(wxCommandEvent& event) override;
     void OnWizard(wxCommandEvent& event) override;
+    void OnPythonDlg(wxCommandEvent& event) override;
 };

@@ -19,15 +19,18 @@ MainFrameBase::MainFrameBase(wxWindow* parent, wxWindowID id, const wxString& ti
     auto* menubar = new wxMenuBar();
 
     auto* menuDialogs = new wxMenu();
+    auto* menu_item_2 = new wxMenuItem(menuDialogs, wxID_ANY, "PythonDlg");
+    menuDialogs->Append(menu_item_2);
     auto* menuItem_2 = new wxMenuItem(menuDialogs, wxID_ANY, "Common Controls...", "Common controls",
         wxITEM_NORMAL);
-    menuItem_2->SetBitmap(wxArtProvider::GetBitmapBundle(wxART_LIST_VIEW, wxART_MENU));
+    menuItem_2->SetBitmap(wxArtProvider::GetBitmapBundle(wxART_TIP, wxART_MENU));
     menuDialogs->Append(menuItem_2);
     auto* menuItem = new wxMenuItem(menuDialogs, wxID_ANY, "DlgMulitTest...", "Launch DlgMultiTest Dialog",
         wxITEM_NORMAL);
-    menuItem->SetBitmap(wxArtProvider::GetBitmapBundle(wxART_REPORT_VIEW, wxART_MENU));
+    menuItem->SetBitmap(wxArtProvider::GetBitmapBundle(wxART_INFORMATION, wxART_MENU));
     menuDialogs->Append(menuItem);
     auto* menu_item = new wxMenuItem(menuDialogs, wxID_ANY, "Import Tests");
+    menu_item->SetBitmap(wxArtProvider::GetBitmapBundle(wxART_GOTO_LAST, wxART_MENU));
     menuDialogs->Append(menu_item);
     auto* menuItem1 = new wxMenuItem(menuDialogs, wxID_ANY, "Other Controls Dialog...");
     menuDialogs->Append(menuItem1);
@@ -57,15 +60,18 @@ MainFrameBase::MainFrameBase(wxWindow* parent, wxWindowID id, const wxString& ti
     SetMenuBar(menubar);
 
     m_toolBar = CreateToolBar();
+    auto* tool_4 = m_toolBar->AddTool(wxID_ANY, "PythonDlg",
+        wxArtProvider::GetBitmapBundle(wxART_ADD_BOOKMARK, wxART_TOOLBAR));
+
     auto* tool_2 = m_toolBar->AddTool(wxID_ANY, "Common Controls...",
-        wxArtProvider::GetBitmapBundle(wxART_LIST_VIEW, wxART_TOOLBAR));
+        wxArtProvider::GetBitmapBundle(wxART_TIP, wxART_TOOLBAR));
 
     auto* tool = m_toolBar->AddTool(wxID_ANY, "DlgMulitTest...",
-        wxArtProvider::GetBitmapBundle(wxART_REPORT_VIEW, wxART_TOOLBAR), wxNullBitmap, wxITEM_NORMAL,
+        wxArtProvider::GetBitmapBundle(wxART_INFORMATION, wxART_TOOLBAR), wxNullBitmap, wxITEM_NORMAL,
         "Launch DlgMultiTest Dialog", "Launch DlgMultiTest Dialog");
 
     auto* tool_3 = m_toolBar->AddTool(wxID_ANY, "ImportTest",
-        wxArtProvider::GetBitmapBundle(wxART_FULL_SCREEN, wxART_TOOLBAR), wxNullBitmap, wxITEM_NORMAL, "Import Test",
+        wxArtProvider::GetBitmapBundle(wxART_GOTO_LAST, wxART_TOOLBAR), wxNullBitmap, wxITEM_NORMAL, "Import Test",
         "Import Test");
 
     m_toolBar->Realize();
@@ -75,6 +81,7 @@ MainFrameBase::MainFrameBase(wxWindow* parent, wxWindowID id, const wxString& ti
     Centre(wxBOTH);
 
     // Event handlers
+    Bind(wxEVT_MENU, &MainFrameBase::OnPythonDlg, this, menu_item_2->GetId());
     Bind(wxEVT_MENU, &MainFrameBase::OnCommonDialog, this, menuItem_2->GetId());
     Bind(wxEVT_MENU, &MainFrameBase::OnMultiTestDialog, this, menuItem->GetId());
     Bind(wxEVT_MENU, &MainFrameBase::OnImportTest, this, menu_item->GetId());
@@ -87,6 +94,7 @@ MainFrameBase::MainFrameBase(wxWindow* parent, wxWindowID id, const wxString& ti
     Bind(wxEVT_MENU, &MainFrameBase::OnToolbook, this, menu_toolbook->GetId());
     Bind(wxEVT_MENU, &MainFrameBase::OnTreebook, this, menu_treebook->GetId());
     Bind(wxEVT_MENU, &MainFrameBase::OnQuit, this, wxID_EXIT);
+    Bind(wxEVT_TOOL, &MainFrameBase::OnPythonDlg, this, tool_4->GetId());
     Bind(wxEVT_TOOL, &MainFrameBase::OnCommonDialog, this, tool_2->GetId());
     Bind(wxEVT_TOOL, &MainFrameBase::OnMultiTestDialog, this, tool->GetId());
     Bind(wxEVT_TOOL, &MainFrameBase::OnImportTest, this, tool_3->GetId());
