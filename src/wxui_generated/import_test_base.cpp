@@ -27,9 +27,11 @@ bool ImportTest::Create(wxWindow* parent, wxWindowID id, const wxString& title,
     m_splitter->SetMinimumPaneSize(150);
     dlg_sizer->Add(m_splitter, wxSizerFlags().Border(wxALL));
 
-    m_panel_import_fb = new ImportFormBuilder(m_splitter, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL);
+    m_panel_import_fb = new ImportFormBuilder(m_splitter, wxID_ANY, wxDefaultPosition, wxDefaultSize,
+        wxTAB_TRAVERSAL);
 
-    m_panel_formbuilder = new FormBuilderBase(m_splitter, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL);
+    m_panel_formbuilder = new FormBuilderBase(m_splitter, wxID_ANY, wxDefaultPosition, wxDefaultSize,
+        wxTAB_TRAVERSAL);
     m_splitter->SplitVertically(m_panel_import_fb, m_panel_formbuilder);
 
     m_splitter_2 = new wxSplitterWindow(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxSP_3D);

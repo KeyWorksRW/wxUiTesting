@@ -57,14 +57,15 @@ bool CommonCtrlsBase::Create(wxWindow* parent, wxWindowID id, const wxString& ti
     auto* parent_sizer = new wxBoxSizer(wxVERTICAL);
 
     auto* box_sizer6 = new wxBoxSizer(wxVERTICAL);
-    parent_sizer->Add(box_sizer6, wxSizerFlags().Expand().Border(wxALL));
 
     m_infoBar = new wxInfoBar(this);
-        m_infoBar->SetShowHideEffects(wxSHOW_EFFECT_EXPAND, wxSHOW_EFFECT_NONE);
+    m_infoBar->SetShowHideEffects(wxSHOW_EFFECT_EXPAND, wxSHOW_EFFECT_NONE);
+    m_infoBar->SetEffectDuration(500);
     box_sizer6->Add(m_infoBar, wxSizerFlags().Expand().Border(wxALL));
 
+    parent_sizer->Add(box_sizer6, wxSizerFlags().Expand().Border(wxALL));
+
     auto* box_sizer = new wxBoxSizer(wxHORIZONTAL);
-    parent_sizer->Add(box_sizer, wxSizerFlags().Expand().Border(wxALL));
 
     m_staticText = new wxStaticText(this, wxID_ANY, "Text:");
     box_sizer->Add(m_staticText,
@@ -92,8 +93,9 @@ bool CommonCtrlsBase::Create(wxWindow* parent, wxWindowID id, const wxString& ti
     m_checkBox = new wxCheckBox(this, wxID_ANY, "2-state Checkbox");
     box_sizer->Add(m_checkBox, wxSizerFlags().Center().Border(wxALL));
 
+    parent_sizer->Add(box_sizer, wxSizerFlags().Expand().Border(wxALL));
+
     auto* box_sizer2 = new wxBoxSizer(wxHORIZONTAL);
-    parent_sizer->Add(box_sizer2, wxSizerFlags().Expand().Border(wxALL));
 
     m_btn = new wxButton(this, wxID_ANY, "First btn");
     box_sizer2->Add(m_btn, wxSizerFlags().Border(wxALL));
@@ -110,14 +112,13 @@ bool CommonCtrlsBase::Create(wxWindow* parent, wxWindowID id, const wxString& ti
     m_checkBox2 = new wxCheckBox(this, wxID_ANY, "Checkbox");
     box_sizer2->Add(m_checkBox2, wxSizerFlags().Center().Border(wxALL));
 
+    parent_sizer->Add(box_sizer2, wxSizerFlags().Expand().Border(wxALL));
+
     auto* static_box = new wxStaticBoxSizer(wxVERTICAL, this, "Combos and Choices");
-    parent_sizer->Add(static_box, wxSizerFlags().Expand().Border(wxALL));
 
     auto* box_sizer3 = new wxBoxSizer(wxHORIZONTAL);
-    static_box->Add(box_sizer3, wxSizerFlags().Expand().Border(wxALL));
 
     auto* static_box_sizer2 = new wxStaticBoxSizer(wxVERTICAL, static_box->GetStaticBox(), "Combo");
-    box_sizer3->Add(static_box_sizer2, wxSizerFlags().Expand().Border(wxALL));
 
     m_staticText3 = new wxStaticText(static_box_sizer2->GetStaticBox(), wxID_ANY, "Unsorted");
     static_box_sizer2->Add(m_staticText3, wxSizerFlags().Border(wxALL));
@@ -142,8 +143,9 @@ bool CommonCtrlsBase::Create(wxWindow* parent, wxWindowID id, const wxString& ti
     m_comboBox2->SetToolTip("Item #2 should be selected by default");
     static_box_sizer2->Add(m_comboBox2, wxSizerFlags().Border(wxALL));
 
+    box_sizer3->Add(static_box_sizer2, wxSizerFlags().Expand().Border(wxALL));
+
     auto* static_box_sizer3 = new wxStaticBoxSizer(wxVERTICAL, static_box->GetStaticBox(), "Choice");
-    box_sizer3->Add(static_box_sizer3, wxSizerFlags().Expand().Border(wxALL));
 
     m_staticText5 = new wxStaticText(static_box_sizer3->GetStaticBox(), wxID_ANY, "Unsorted");
     static_box_sizer3->Add(m_staticText5, wxSizerFlags().Border(wxALL));
@@ -168,8 +170,9 @@ bool CommonCtrlsBase::Create(wxWindow* parent, wxWindowID id, const wxString& ti
     m_choice2->SetToolTip("Item #2 should be selected by default");
     static_box_sizer3->Add(m_choice2, wxSizerFlags().Border(wxALL));
 
+    box_sizer3->Add(static_box_sizer3, wxSizerFlags().Expand().Border(wxALL));
+
     auto* static_box_sizer4 = new wxStaticBoxSizer(wxVERTICAL, static_box->GetStaticBox(), "List");
-    box_sizer3->Add(static_box_sizer4, wxSizerFlags().Expand().Border(wxALL));
 
     m_staticText7 = new wxStaticText(static_box_sizer4->GetStaticBox(), wxID_ANY, "Unsorted");
     static_box_sizer4->Add(m_staticText7, wxSizerFlags().Border(wxALL));
@@ -183,14 +186,16 @@ bool CommonCtrlsBase::Create(wxWindow* parent, wxWindowID id, const wxString& ti
     m_staticText8 = new wxStaticText(static_box_sizer4->GetStaticBox(), wxID_ANY, "Sorted");
     static_box_sizer4->Add(m_staticText8, wxSizerFlags().Border(wxALL));
 
-    m_listBox2 = new wxListBox(static_box_sizer4->GetStaticBox(), wxID_ANY, wxDefaultPosition, wxDefaultSize, 0, nullptr, wxLB_SINGLE|wxLB_SORT);
+    m_listBox2 = new wxListBox(static_box_sizer4->GetStaticBox(), wxID_ANY, wxDefaultPosition, wxDefaultSize, 0, nullptr,
+        wxLB_SINGLE|wxLB_SORT);
     m_listBox2->Append("item #1");
     m_listBox2->Append("item #2");
     m_listBox2->Append("item #0");
     static_box_sizer4->Add(m_listBox2, wxSizerFlags().Border(wxALL));
 
+    box_sizer3->Add(static_box_sizer4, wxSizerFlags().Expand().Border(wxALL));
+
     auto* static_box_sizer5 = new wxStaticBoxSizer(wxVERTICAL, static_box->GetStaticBox(), "Checked");
-    box_sizer3->Add(static_box_sizer5, wxSizerFlags().Expand().Border(wxALL));
 
     m_staticText9 = new wxStaticText(static_box_sizer5->GetStaticBox(), wxID_ANY, "Unsorted");
     static_box_sizer5->Add(m_staticText9, wxSizerFlags().Border(wxALL));
@@ -202,12 +207,18 @@ bool CommonCtrlsBase::Create(wxWindow* parent, wxWindowID id, const wxString& ti
     m_staticText10 = new wxStaticText(static_box_sizer5->GetStaticBox(), wxID_ANY, "Sorted");
     static_box_sizer5->Add(m_staticText10, wxSizerFlags().Border(wxALL));
 
-    m_checkList2 = new wxCheckListBox(static_box_sizer5->GetStaticBox(), wxID_ANY, wxDefaultPosition, wxDefaultSize, 0, nullptr, wxLB_SINGLE|wxLB_SORT);
+    m_checkList2 = new wxCheckListBox(static_box_sizer5->GetStaticBox(), wxID_ANY, wxDefaultPosition,
+        wxDefaultSize, 0, nullptr, wxLB_SINGLE|wxLB_SORT);
     m_checkList2->Append("\"item #1\" \"item #2\" \"item #0\"");
     static_box_sizer5->Add(m_checkList2, wxSizerFlags().Border(wxALL));
 
+    box_sizer3->Add(static_box_sizer5, wxSizerFlags().Expand().Border(wxALL));
+
+    static_box->Add(box_sizer3, wxSizerFlags().Expand().Border(wxALL));
+
+    parent_sizer->Add(static_box, wxSizerFlags().Expand().Border(wxALL));
+
     auto* flex_grid_sizer = new wxFlexGridSizer(4, 0, 0);
-    parent_sizer->Add(flex_grid_sizer, wxSizerFlags().Expand().Border(wxALL));
 
     m_staticText11 = new wxStaticText(this, wxID_ANY,
         "On Windows 10, the items may be be clipped unless they have a trailing space.");
@@ -221,11 +232,11 @@ bool CommonCtrlsBase::Create(wxWindow* parent, wxWindowID id, const wxString& ti
         };
         m_radioBox = new wxRadioBox(this, wxID_ANY, "Radio Box",
             wxDefaultPosition, wxDefaultSize, 3, radioBox_choices, 0, wxRA_SPECIFY_ROWS);
+    m_radioBox->SetSelection(1);
     m_radioBox->SetValidator(wxGenericValidator(&m_valRadio));
     flex_grid_sizer->Add(m_radioBox, wxSizerFlags().Border(wxALL));
 
     auto* box_sizer_2 = new wxBoxSizer(wxVERTICAL);
-    flex_grid_sizer->Add(box_sizer_2, wxSizerFlags().Border(wxALL));
 
     auto* bmp = new wxStaticBitmap(this, wxID_ANY, wxueBundleSVG(wxue_img::face_smile_svg, 1781, 7417, wxSize(64, 64)));
     box_sizer_2->Add(bmp, wxSizerFlags().Border(wxALL));
@@ -233,12 +244,13 @@ bool CommonCtrlsBase::Create(wxWindow* parent, wxWindowID id, const wxString& ti
     m_staticText_2 = new wxStaticText(this, wxID_ANY, "SVG image");
     box_sizer_2->Add(m_staticText_2, wxSizerFlags().Border(wxALL));
 
+    flex_grid_sizer->Add(box_sizer_2, wxSizerFlags().Border(wxALL));
+
     m_bmpComboBox = new wxBitmapComboBox(this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0, nullptr, wxCB_READONLY);
     flex_grid_sizer->Add(m_bmpComboBox, wxSizerFlags().Border(wxALL));
 
     m_checkPlayAnimation = new wxCheckBox(this, wxID_ANY, "Play Animation");
-    auto* static_box_2 = new wxStaticBoxSizer(new wxStaticBox(this, wxID_ANY,m_checkPlayAnimation), wxVERTICAL);
-    flex_grid_sizer->Add(static_box_2, wxSizerFlags().Border(wxALL));
+    auto* static_box_2 = new wxStaticBoxSizer(new wxStaticBox(this, wxID_ANY, m_checkPlayAnimation), wxVERTICAL);
 
     m_toggleBtn = new wxToggleButton(static_box_2->GetStaticBox(), wxID_ANY, "Play Animation", wxDefaultPosition, wxDefaultSize,
         wxBU_EXACTFIT);
@@ -248,6 +260,8 @@ bool CommonCtrlsBase::Create(wxWindow* parent, wxWindowID id, const wxString& ti
         wxDefaultPosition, wxDefaultSize, wxAC_DEFAULT_STYLE);
     m_animation_ctrl->SetInactiveBitmap(wxImage(empty_xpm));
     static_box_2->Add(m_animation_ctrl, wxSizerFlags().Border(wxALL));
+
+    flex_grid_sizer->Add(static_box_2, wxSizerFlags().Border(wxALL));
 
     m_split_button = new wxue_ctrl::SplitButton(this, wxID_ANY, "Play");
     {
@@ -292,8 +306,9 @@ bool CommonCtrlsBase::Create(wxWindow* parent, wxWindowID id, const wxString& ti
     }
     flex_grid_sizer->Add(m_edit_listbox, wxSizerFlags().Border(wxALL));
 
+    parent_sizer->Add(flex_grid_sizer, wxSizerFlags().Expand().Border(wxALL));
+
     auto* box_sizer5 = new wxBoxSizer(wxHORIZONTAL);
-    parent_sizer->Add(box_sizer5, wxSizerFlags().Expand().Border(wxALL));
 
     m_staticText12 = new wxStaticText(this, wxID_ANY, "Slider:");
     box_sizer5->Add(m_staticText12,
@@ -310,6 +325,8 @@ bool CommonCtrlsBase::Create(wxWindow* parent, wxWindowID id, const wxString& ti
     m_gauge = new wxGauge(this, wxID_ANY, 100);
     m_gauge->SetValue(0);
     box_sizer5->Add(m_gauge, wxSizerFlags().Center().Border(wxALL));
+
+    parent_sizer->Add(box_sizer5, wxSizerFlags().Expand().Border(wxALL));
 
     auto* stdBtn = CreateStdDialogButtonSizer(wxOK|wxCANCEL|wxHELP);
     parent_sizer->Add(CreateSeparatedSizer(stdBtn), wxSizerFlags().Expand().Border(wxALL));

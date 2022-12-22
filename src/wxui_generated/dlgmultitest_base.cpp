@@ -10,7 +10,7 @@
 #include <wx/panel.h>
 #include <wx/sizer.h>
 
-#include "..\ui\my_images.h"
+#include "my_images.h"
 
 #include "dlgmultitest_base.h"
 
@@ -50,7 +50,6 @@ bool DlgMultiTestBase::Create(wxWindow* parent, wxWindowID id, const wxString& t
     auto* box_sizer_3 = new wxBoxSizer(wxVERTICAL);
 
     auto* grid_bag_sizer = new wxGridBagSizer();
-    box_sizer_3->Add(grid_bag_sizer, wxSizerFlags().Border(wxALL));
 
     m_btn = new wxButton(page_2, wxID_ANY, "Normal");
     m_btn->SetToolTip("A normal button");
@@ -83,14 +82,16 @@ bool DlgMultiTestBase::Create(wxWindow* parent, wxWindowID id, const wxString& t
     auto* disable_bitmaps = new wxCheckBox(page_2, wxID_ANY, "Disable");
     grid_bag_sizer->Add(disable_bitmaps, wxGBPosition(2, 2), wxGBSpan(1, 1), wxALL, 5);
 
+    box_sizer_3->Add(grid_bag_sizer, wxSizerFlags().Border(wxALL));
+
     auto* box_sizer_7 = new wxBoxSizer(wxHORIZONTAL);
-    box_sizer_3->Add(box_sizer_7, wxSizerFlags().Border(wxALL));
 
     m_btn_5 = new wxCommandLinkButton(page_2, wxID_ANY, "Command", "wxCommandLinkButton");
         m_btn_5->SetBitmap(wxArtProvider::GetBitmapBundle(wxART_GO_FORWARD, wxART_OTHER));
     m_btn_5->SetToolTip("The bitmap for this is from Art Provider.");
     box_sizer_7->Add(m_btn_5, wxSizerFlags().Border(wxALL));
 
+    box_sizer_3->Add(box_sizer_7, wxSizerFlags().Border(wxALL));
     page_2->SetSizerAndFit(box_sizer_3);
 
     auto* page_3 = new wxPanel(m_notebook, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL);
@@ -99,7 +100,6 @@ bool DlgMultiTestBase::Create(wxWindow* parent, wxWindowID id, const wxString& t
     auto* box_sizer_4 = new wxBoxSizer(wxVERTICAL);
 
     auto* box_sizer_8 = new wxBoxSizer(wxHORIZONTAL);
-    box_sizer_4->Add(box_sizer_8, wxSizerFlags(1).Border(wxALL));
 
     m_banner_left = new wxBannerWindow(page_3, wxLEFT);
     m_banner_left->SetText("Left Banner", wxEmptyString);
@@ -115,14 +115,16 @@ bool DlgMultiTestBase::Create(wxWindow* parent, wxWindowID id, const wxString& t
     m_banner_right->SetText("Right Banner", wxEmptyString);
     box_sizer_8->Add(m_banner_right, wxSizerFlags().Border(wxALL));
 
+    box_sizer_4->Add(box_sizer_8, wxSizerFlags(1).Border(wxALL));
+
     auto* box_sizer_9 = new wxBoxSizer(wxHORIZONTAL);
-    box_sizer_4->Add(box_sizer_9, wxSizerFlags().Border(wxALL));
 
     m_banner = new wxBannerWindow(page_3, wxLEFT);
         m_banner->SetBitmap(wxue_img::bundle_wiztest_png());
     m_banner->SetText("This is a long title", wxEmptyString);
     box_sizer_9->Add(m_banner, wxSizerFlags().Border(wxALL));
 
+    box_sizer_4->Add(box_sizer_9, wxSizerFlags().Border(wxALL));
     page_3->SetSizerAndFit(box_sizer_4);
 
     auto* page_4 = new wxPanel(m_notebook, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL);
@@ -131,10 +133,8 @@ bool DlgMultiTestBase::Create(wxWindow* parent, wxWindowID id, const wxString& t
     auto* box_sizer_5 = new wxBoxSizer(wxVERTICAL);
 
     auto* flex_grid_sizer = new wxFlexGridSizer(2, 0, 0);
-    box_sizer_5->Add(flex_grid_sizer, wxSizerFlags().Border(wxALL));
 
     auto* box_sizer_10 = new wxBoxSizer(wxVERTICAL);
-    flex_grid_sizer->Add(box_sizer_10, wxSizerFlags().Border(wxALL));
 
     m_staticText_2 = new wxStaticText(page_4, wxID_ANY, "wxRearrangeCtrl");
     box_sizer_10->Add(m_staticText_2, wxSizerFlags().Expand().Border(wxALL));
@@ -142,8 +142,9 @@ bool DlgMultiTestBase::Create(wxWindow* parent, wxWindowID id, const wxString& t
     m_rearrange = new wxRearrangeCtrl(page_4, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxArrayInt(), wxArrayString());
     box_sizer_10->Add(m_rearrange, wxSizerFlags().Border(wxALL));
 
+    flex_grid_sizer->Add(box_sizer_10, wxSizerFlags().Border(wxALL));
+
     auto* box_sizer_11 = new wxBoxSizer(wxVERTICAL);
-    flex_grid_sizer->Add(box_sizer_11, wxSizerFlags().Border(wxALL));
 
     auto* staticText_3 = new wxStaticText(page_4, wxID_ANY, "wxCheckListBox");
     box_sizer_11->Add(staticText_3, wxSizerFlags().Expand().Border(wxALL));
@@ -151,8 +152,9 @@ bool DlgMultiTestBase::Create(wxWindow* parent, wxWindowID id, const wxString& t
     m_checkList = new wxCheckListBox(page_4, wxID_ANY);
     box_sizer_11->Add(m_checkList, wxSizerFlags().Border(wxALL));
 
+    flex_grid_sizer->Add(box_sizer_11, wxSizerFlags().Border(wxALL));
+
     auto* box_sizer_12 = new wxBoxSizer(wxVERTICAL);
-    flex_grid_sizer->Add(box_sizer_12, wxSizerFlags().Border(wxALL));
 
     m_staticText_3 = new wxStaticText(page_4, wxID_ANY, "wxListView");
     box_sizer_12->Add(m_staticText_3, wxSizerFlags().Border(wxALL));
@@ -173,13 +175,17 @@ bool DlgMultiTestBase::Create(wxWindow* parent, wxWindowID id, const wxString& t
     m_listview->SetToolTip("Separate content columns with a semi-colon (;)");
     box_sizer_12->Add(m_listview, wxSizerFlags().Border(wxALL));
 
+    flex_grid_sizer->Add(box_sizer_12, wxSizerFlags().Border(wxALL));
+
     auto* box_sizer_13 = new wxBoxSizer(wxHORIZONTAL);
-    flex_grid_sizer->Add(box_sizer_13, wxSizerFlags().Border(wxALL));
 
     m_edit_listbox = new wxEditableListBox(page_4, wxID_ANY, "My Editable ListBox", wxDefaultPosition, wxDefaultSize,
         wxEL_ALLOW_NEW|wxEL_ALLOW_EDIT|wxEL_ALLOW_DELETE);
     box_sizer_13->Add(m_edit_listbox, wxSizerFlags().Border(wxALL));
 
+    flex_grid_sizer->Add(box_sizer_13, wxSizerFlags().Border(wxALL));
+
+    box_sizer_5->Add(flex_grid_sizer, wxSizerFlags().Border(wxALL));
     page_4->SetSizerAndFit(box_sizer_5);
 
     auto* page_5 = new wxPanel(m_notebook, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL);
@@ -190,7 +196,6 @@ bool DlgMultiTestBase::Create(wxWindow* parent, wxWindowID id, const wxString& t
     m_staticText_5 = new wxStaticText(page_5, wxID_ANY, "TODO: replace this control with something more useful...");
     m_staticText_5->Wrap(200);
     box_sizer_6->Add(m_staticText_5, wxSizerFlags().Border(wxALL));
-
     page_5->SetSizerAndFit(box_sizer_6);
 
     auto* page = new wxPanel(m_notebook, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL);
@@ -201,7 +206,6 @@ bool DlgMultiTestBase::Create(wxWindow* parent, wxWindowID id, const wxString& t
     m_staticText = new wxStaticText(page, wxID_ANY, "TODO: replace this control with something more useful...");
     m_staticText->Wrap(200);
     box_sizer->Add(m_staticText, wxSizerFlags().Border(wxALL));
-
     page->SetSizerAndFit(box_sizer);
 
     auto* stdBtn = CreateStdDialogButtonSizer(wxCLOSE|wxNO_DEFAULT);

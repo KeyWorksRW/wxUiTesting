@@ -60,7 +60,6 @@ bool TreebookBase::Create(wxWindow* parent, wxWindowID id, const wxString& title
 
     m_staticText = new wxStaticText(page, wxID_ANY, "This is a sentence in English.");
     parent_sizer->Add(m_staticText, wxSizerFlags().Border(wxALL));
-
     page->SetSizerAndFit(parent_sizer);
 
     auto* page_4 = new wxPanel(m_treebook, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL);
@@ -71,7 +70,6 @@ bool TreebookBase::Create(wxWindow* parent, wxWindowID id, const wxString& title
 
     m_staticText_2 = new wxStaticText(page_4, wxID_ANY, "Theatre");
     page_sizer->Add(m_staticText_2, wxSizerFlags().Border(wxALL));
-
     page_4->SetSizerAndFit(page_sizer);
 
     auto* page_5 = new wxPanel(m_treebook, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL);
@@ -82,7 +80,6 @@ bool TreebookBase::Create(wxWindow* parent, wxWindowID id, const wxString& title
 
     m_staticText_3 = new wxStaticText(page_5, wxID_ANY, "Theater");
     page_sizer_2->Add(m_staticText_3, wxSizerFlags().Border(wxALL));
-
     page_5->SetSizerAndFit(page_sizer_2);
 
     auto* page_2 = new wxPanel(m_treebook, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL);
@@ -93,7 +90,6 @@ bool TreebookBase::Create(wxWindow* parent, wxWindowID id, const wxString& title
 
     m_staticText = new wxStaticText(page_2, wxID_ANY, wxString::FromUTF8("Ceci est une phrase en français."));
     parent_sizer_2->Add(m_staticText, wxSizerFlags().Border(wxALL));
-
     page_2->SetSizerAndFit(parent_sizer_2);
 
     auto* page_3 = new wxPanel(m_treebook, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL);
@@ -104,7 +100,6 @@ bool TreebookBase::Create(wxWindow* parent, wxWindowID id, const wxString& title
 
     m_staticText = new wxStaticText(page_3, wxID_ANY, wxString::FromUTF8("これは日本語の文章です。"));
     parent_sizer_3->Add(m_staticText, wxSizerFlags().Border(wxALL));
-
     page_3->SetSizerAndFit(parent_sizer_3);
 
     auto* stdBtn = CreateStdDialogButtonSizer(wxCLOSE|wxNO_DEFAULT);

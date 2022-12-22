@@ -38,7 +38,6 @@ bool RibbonDlgBase::Create(wxWindow* parent, wxWindowID id, const wxString& titl
     auto* first_parent_sizer = new wxBoxSizer(wxVERTICAL);
 
     auto* box_sizer = new wxBoxSizer(wxVERTICAL);
-    first_parent_sizer->Add(box_sizer, wxSizerFlags(1).Expand().Border(wxALL));
 
     m_staticText = new wxStaticText(rbnPanel, wxID_ANY, "This is a sentence in English.");
     m_staticText->Wrap(200);
@@ -47,6 +46,7 @@ bool RibbonDlgBase::Create(wxWindow* parent, wxWindowID id, const wxString& titl
     m_btn = new wxButton(rbnPanel, wxID_ANY, "Switch");
     box_sizer->Add(m_btn, wxSizerFlags().Center().Border(wxALL));
 
+    first_parent_sizer->Add(box_sizer, wxSizerFlags(1).Expand().Border(wxALL));
     rbnPanel->SetSizerAndFit(first_parent_sizer);
 
     auto* rbnPanel_2 = new wxRibbonPanel(rbnPage, wxID_ANY, "French",
@@ -56,7 +56,6 @@ bool RibbonDlgBase::Create(wxWindow* parent, wxWindowID id, const wxString& titl
     auto* first_parent_sizer_2 = new wxBoxSizer(wxVERTICAL);
 
     auto* box_sizer_2 = new wxBoxSizer(wxVERTICAL);
-    first_parent_sizer_2->Add(box_sizer_2, wxSizerFlags(1).Expand().Border(wxALL));
 
     m_staticText_2 = new wxStaticText(rbnPanel_2, wxID_ANY,
         wxString::FromUTF8("Ceci est une phrase en français."));
@@ -66,6 +65,7 @@ bool RibbonDlgBase::Create(wxWindow* parent, wxWindowID id, const wxString& titl
     m_btn_2 = new wxButton(rbnPanel_2, wxID_ANY, "Switch");
     box_sizer_2->Add(m_btn_2, wxSizerFlags().Center().Border(wxALL));
 
+    first_parent_sizer_2->Add(box_sizer_2, wxSizerFlags(1).Expand().Border(wxALL));
     rbnPanel_2->SetSizerAndFit(first_parent_sizer_2);
 
     auto* ribbonPage2 = new wxRibbonPage(m_rbnBar, wxID_ANY, "Second");
@@ -93,7 +93,6 @@ bool RibbonDlgBase::Create(wxWindow* parent, wxWindowID id, const wxString& titl
     m_rbnBar->Realize();
 
     auto* box_sizer_3 = new wxBoxSizer(wxVERTICAL);
-    parent_sizer->Add(box_sizer_3, wxSizerFlags().Expand().Border(wxALL));
 
     m_scintilla = new wxStyledTextCtrl(this, wxID_ANY);
     {
@@ -107,6 +106,8 @@ bool RibbonDlgBase::Create(wxWindow* parent, wxWindowID id, const wxString& titl
         m_scintilla->SetBackSpaceUnIndents(true);
     }
     box_sizer_3->Add(m_scintilla, wxSizerFlags().Expand().Border(wxALL));
+
+    parent_sizer->Add(box_sizer_3, wxSizerFlags().Expand().Border(wxALL));
 
     auto* stdBtn = CreateStdDialogButtonSizer(wxOK|wxCANCEL);
     parent_sizer->Add(CreateSeparatedSizer(stdBtn), wxSizerFlags().Expand().Border(wxALL));
