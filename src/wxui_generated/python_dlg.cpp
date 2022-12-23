@@ -13,7 +13,7 @@
 #include <wx/settings.h>
 #include <wx/sizer.h>
 
-#include "python_dlg_base.h"
+#include "python_dlg.h"
 
 bool PythonDlg::Create(wxWindow* parent, wxWindowID id, const wxString& title,
         const wxPoint& pos, const wxSize& size, long style, const wxString &name)
@@ -32,7 +32,7 @@ bool PythonDlg::Create(wxWindow* parent, wxWindowID id, const wxString& title,
 
     auto* page_sizer = new wxBoxSizer(wxVERTICAL);
 
-    m_staticText = new wxStaticText(page, wxID_ANY, "MyLabel");
+    m_staticText = new wxStaticText(page, wxID_ANY, "Hello");
     page_sizer->Add(m_staticText, wxSizerFlags().Border(wxALL));
     page->SetSizerAndFit(page_sizer);
 
@@ -56,3 +56,22 @@ bool PythonDlg::Create(wxWindow* parent, wxWindowID id, const wxString& title,
 //
 // clang-format on
 // ***********************************************
+
+/////////////////// Non-generated Copyright/License Info ////////////////////
+// Author:    Ralph Walden
+// Copyright: Copyright (c) 2020-2022 KeyWorks Software (Ralph Walden)
+// License:   Apache License -- see ../../LICENSE
+/////////////////////////////////////////////////////////////////////////////
+
+void PythonDlg::OnInit(wxInitDialogEvent& event)
+{
+    event.Skip();  // transfer all validator data to their windows and update UI
+}
+
+#include "mainframe.h"
+
+void MainFrame::OnPythonDlg(wxCommandEvent& WXUNUSED(event))
+{
+    PythonDlg dlg(this);
+    dlg.ShowModal();
+}

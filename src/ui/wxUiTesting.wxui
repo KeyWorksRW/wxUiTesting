@@ -8,6 +8,7 @@
     base_directory="../wxui_generated"
     cmake_file="../wxui_generated/wxui_generated.cmake"
     cmake_varname="wxui_generated"
+    derived_directory="../ui"
     generate_cmake="1"
     wxWidgets_version="3.2"
     python_output_folder="../python">
@@ -26,9 +27,7 @@
       title="wxUiTesting"
       base_file="../wxui_generated/mainframe_base"
       derived_class_name="MainFrame"
-      derived_file="mainframe"
-      python_file="mainframe_base"
-      python_inherit_name="mainframe"
+      derived_file="../ui/mainframe"
       size="500,300"
       window_style="wxTAB_TRAVERSAL">
       <node
@@ -159,7 +158,7 @@
       title="Common controls"
       base_file="../wxui_generated/commonctrls_base"
       derived_class_name="CommonCtrls"
-      derived_file="commonctrls"
+      derived_file="../ui/commonctrls"
       wxEVT_CONTEXT_MENU="OnContextMenu">
       <node
         class="wxBoxSizer"
@@ -611,9 +610,9 @@
       title="Widgets Testing"
       minimum_size="-1,-1"
       size="-1,-1"
-      base_file="../wxui_generated/dlgmultitest_base"
+      base_file="dlgmultitest_base"
       derived_class_name="DlgMultiTest"
-      derived_file="dlgmultitest"
+      derived_file="../ui/dlgmultitest"
       wxEVT_INIT_DIALOG="OnInit">
       <node
         class="wxBoxSizer"
@@ -1118,7 +1117,7 @@
       size="-1,-1"
       base_file="../wxui_generated/other_ctrls_base"
       derived_class_name="OtherCtrlsDlg"
-      derived_file="other_ctrls">
+      derived_file="../ui/other_ctrls">
       <node
         class="wxBoxSizer"
         orientation="wxVERTICAL"
@@ -1283,7 +1282,7 @@
       class_name="PopupWinBase"
       base_file="../wxui_generated/popupwin_base"
       derived_class_name="PopupWin"
-      derived_file="popupwin">
+      derived_file="../ui/popupwin">
       <node
         class="wxBoxSizer"
         orientation="wxVERTICAL"
@@ -1302,7 +1301,7 @@
       size="-1,-1"
       base_file="../wxui_generated/ribbondlg_base"
       derived_class_name="RibbonDlg"
-      derived_file="ribbondlg">
+      derived_file="../ui/ribbondlg">
       <node
         class="wxBoxSizer"
         orientation="wxVERTICAL"
@@ -1615,9 +1614,9 @@
       class_name="WizardBase"
       extra_style="wxWIZARD_EX_HELPBUTTON"
       title="Wizard Tests"
-      base_file="../wxui_generated/wizard_base"
+      base_file="wizard_base"
       derived_class_name="Wizard"
-      derived_file="wizard"
+      derived_file="../ui/wizard"
       wxEVT_WIZARD_BEFORE_PAGE_CHANGED="OnBeforeChange">
       <node
         class="wxWizardPageSimple">
@@ -1656,16 +1655,13 @@
     </node>
     <node
       class="wxDialog"
-      class_name="PythonDlgBase"
+      class_name="PythonDlg"
       style="wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER"
       title="Hello Python Dialog!"
       size="-1,-1"
-      base_file="python_dlg_base"
-      derived_class_name="DlgHelloWorld"
-      derived_file="./dlghelloworld"
+      base_file="python_dlg"
       use_derived_class="0"
-      python_file="python_dlg_base"
-      python_inherit_name="python_dlg"
+      python_file="python_dlg"
       xrc_file="python_dlg"
       wxEVT_INIT_DIALOG="OnInit">
       <node
@@ -1674,48 +1670,20 @@
         var_name="bSizer1"
         flags="wxEXPAND">
         <node
-          class="wxBoxSizer"
-          minimum_size="-1,-1d"
-          flags="wxEXPAND"
-          proportion="1">
+          class="wxTreebook">
           <node
-            class="wxStaticText"
-            label="wxPython est génial n'est-ce pas?"
-            style="wxALIGN_RIGHT"
-            var_name="m_staticText2"
-            foreground_colour="0,128,0"
-            pos="50,100d"
-            size="150,32d"
-            variant="large"
-            window_name="my_text"
-            alignment="wxALIGN_CENTER_VERTICAL" />
-          <node
-            class="wxTextCtrl"
-            maxlength="120"
-            style="wxTE_MULTILINE|wxTE_READONLY"
-            tooltip="Enter some exciting text here!"
-            window_name="my_window"
-            wxEVT_TEXT="OnText" />
-        </node>
-        <node
-          class="wxBoxSizer"
-          orientation="wxVERTICAL"
-          var_name="box_sizer_2"
-          flags="wxEXPAND"
-          proportion="1">
-          <node
-            class="wxComboBox"
-            contents="&quot;foo&quot; &quot;bar&quot; &quot;cat&quot; &quot;dog&quot;"
-            hint="Does this work?"
-            style="wxCB_SORT"
-            flags="wxEXPAND"
-            proportion="1" />
-          <node
-            class="wxRadioButton"
-            checked="1" />
-          <node
-            class="wxStaticBitmap"
-            bitmap="SVG;../art/face-smile.svg;[24,24]" />
+            class="BookPage"
+            background_colour="wxSYS_COLOUR_BTNFACE"
+            window_style="wxTAB_TRAVERSAL">
+            <node
+              class="wxBoxSizer"
+              orientation="wxVERTICAL"
+              var_name="page_sizer">
+              <node
+                class="wxStaticText"
+                label="Hello" />
+            </node>
+          </node>
         </node>
         <node
           class="wxStdDialogButtonSizer"

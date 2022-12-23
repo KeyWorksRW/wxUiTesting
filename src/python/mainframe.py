@@ -45,6 +45,6 @@ class mainframe(mainframe_base.MainFrameBase):
         event.Skip()
 
     def OnPythonDlg(self, event):
-        dlg = python_dlg.python_dlg(self)
+        dlg = python_dlg.PythonDlg(self)
         dlg.ShowModal()
         dlg.Destroy()
