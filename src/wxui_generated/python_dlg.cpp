@@ -7,13 +7,26 @@
 
 // clang-format off
 
-#include <wx/button.h>
-#include <wx/colour.h>
-#include <wx/panel.h>
-#include <wx/settings.h>
 #include <wx/sizer.h>
 
 #include "python_dlg.h"
+
+#include <wx/mstream.h>  // memory stream classes
+
+// Convert a data array into a wxImage
+inline wxImage wxueImage(const unsigned char* data, size_t size_data)
+{
+    wxMemoryInputStream strm(data, size_data);
+    wxImage image;
+    image.LoadFile(strm);
+    return image;
+};
+
+namespace wxue_img
+{
+    extern const unsigned char english_png[541];
+    extern const unsigned char japanese_png[377];
+}
 
 bool PythonDlg::Create(wxWindow* parent, wxWindowID id, const wxString& title,
         const wxPoint& pos, const wxSize& size, long style, const wxString &name)
@@ -21,20 +34,45 @@ bool PythonDlg::Create(wxWindow* parent, wxWindowID id, const wxString& title,
     if (!wxDialog::Create(parent, id, title, pos, size, style, name))
         return false;
 
+    if (!wxImage::FindHandler(wxBITMAP_TYPE_PNG))
+        wxImage::AddHandler(new wxPNGHandler);
+
     auto* bSizer1 = new wxBoxSizer(wxVERTICAL);
+    {
+        wxString radioBox_choices[] = {
+            "Radio Button ",
+            "fooish ",
+            "bar none "
+        };
+        // Trailing spaces added to avoid clipping
+        m_radioBox = new wxRadioBox(this, wxID_ANY, "My Radio Box", wxDefaultPosition, wxDefaultSize, 3,
+            radioBox_choices, 0, wxRA_SPECIFY_COLS);
+    }
+    bSizer1->Add(m_radioBox, wxSizerFlags().Border(wxALL));
 
-    m_treebook = new wxTreebook(this, wxID_ANY);
-    bSizer1->Add(m_treebook, wxSizerFlags().Border(wxALL));
+    auto* box_sizer_3 = new wxBoxSizer(wxHORIZONTAL);
 
-    auto* page = new wxPanel(m_treebook, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL);
-    m_treebook->AddPage(page, "page");
-    page->SetBackgroundColour(wxSystemSettings::GetColour(wxSYS_COLOUR_BTNFACE));
+    m_btn = new wxButton(this, wxID_ANY, "MyButton");
+    box_sizer_3->Add(m_btn, wxSizerFlags().Border(wxALL));
 
-    auto* page_sizer = new wxBoxSizer(wxVERTICAL);
+    m_btn_2 = new wxCommandLinkButton(this, wxID_ANY, "MyButton", "my note");
+        m_btn_2->SetBitmap(wxBitmapBundle::FromBitmap(wxueImage(wxue_img::english_png, sizeof(wxue_img::english_png))));
+    box_sizer_3->Add(m_btn_2, wxSizerFlags().Border(wxALL));
 
-    m_staticText = new wxStaticText(page, wxID_ANY, "Hello");
-    page_sizer->Add(m_staticText, wxSizerFlags().Border(wxALL));
-    page->SetSizerAndFit(page_sizer);
+    m_toggleBtn = new wxToggleButton(this, wxID_ANY, "MyButton");
+        m_toggleBtn->SetBitmap(wxBitmapBundle::FromBitmap(wxueImage(wxue_img::japanese_png, sizeof(wxue_img::japanese_png))));
+    box_sizer_3->Add(m_toggleBtn, wxSizerFlags().Border(wxALL));
+
+    bSizer1->Add(box_sizer_3, wxSizerFlags().Border(wxALL));
+
+    auto* box_sizer = new wxBoxSizer(wxVERTICAL);
+
+    m_webview = wxWebView::New(this, wxID_ANY, "https://en.cppreference.com/w/Special:WhatLinksHere/Main_Page",
+        wxDefaultPosition, wxDefaultSize, wxWebViewBackendDefault, wxBORDER_RAISED);
+    m_webview->SetMinSize(ConvertDialogToPixels(wxSize(300, 200)));
+    box_sizer->Add(m_webview, wxSizerFlags(1).Expand().Border(wxALL));
+
+    bSizer1->Add(box_sizer, wxSizerFlags().Expand().Border(wxALL));
 
     auto* stdBtn = CreateStdDialogButtonSizer(wxOK|wxCANCEL);
     bSizer1->Add(CreateSeparatedSizer(stdBtn), wxSizerFlags().Expand().Border(wxALL));

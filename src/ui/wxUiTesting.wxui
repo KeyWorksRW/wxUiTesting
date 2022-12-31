@@ -149,7 +149,8 @@
           wxEVT_TOOL="OnImportTest" />
       </node>
       <node
-        class="wxStatusBar" />
+        class="wxStatusBar"
+        fields="wxSB_FLAT|100;wxSB_FLAT|-1" />
     </node>
     <node
       class="wxDialog"
@@ -1670,20 +1671,35 @@
         var_name="bSizer1"
         flags="wxEXPAND">
         <node
-          class="wxTreebook">
+          class="wxRadioBox"
+          contents="&quot;Radio Button &quot; &quot;fooish &quot; &quot;bar none &quot;" />
+        <node
+          class="wxBoxSizer"
+          var_name="box_sizer_3">
           <node
-            class="BookPage"
-            background_colour="wxSYS_COLOUR_BTNFACE"
-            window_style="wxTAB_TRAVERSAL">
-            <node
-              class="wxBoxSizer"
-              orientation="wxVERTICAL"
-              var_name="page_sizer">
-              <node
-                class="wxStaticText"
-                label="Hello" />
-            </node>
-          </node>
+            class="wxButton"
+            bitmap=""
+            pressed_bmp="Embed;../art/english.png" />
+          <node
+            class="wxCommandLinkButton"
+            var_name="m_btn_2"
+            bitmap="Embed;../art/english.png" />
+          <node
+            class="wxToggleButton"
+            bitmap="Embed;../art/japanese.png" />
+        </node>
+        <node
+          class="wxBoxSizer"
+          orientation="wxVERTICAL"
+          flags="wxEXPAND">
+          <node
+            class="wxWebView"
+            url="https://en.cppreference.com/w/Special:WhatLinksHere/Main_Page"
+            minimum_size="300,200d"
+            pos="-1,-1d"
+            window_style="wxBORDER_RAISED"
+            flags="wxEXPAND"
+            proportion="1" />
         </node>
         <node
           class="wxStdDialogButtonSizer"

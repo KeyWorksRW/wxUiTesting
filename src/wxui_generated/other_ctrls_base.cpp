@@ -81,6 +81,7 @@ bool OtherCtrlsBase::Create(wxWindow* parent, wxWindowID id, const wxString& tit
     parent_sizer3->Add(m_spinCtrl, wxSizerFlags().Border(wxALL));
 
     m_spinCtrlDouble = new wxSpinCtrlDouble(m_panel2);
+
     parent_sizer3->Add(m_spinCtrlDouble, wxSizerFlags().Border(wxALL));
 
     m_spinBtn = new wxSpinButton(m_panel2);
@@ -102,7 +103,8 @@ bool OtherCtrlsBase::Create(wxWindow* parent, wxWindowID id, const wxString& tit
 
     auto* parent_sizer5 = new wxBoxSizer(wxVERTICAL);
 
-    m_richText = new wxRichTextCtrl(m_panel4, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxRE_MULTILINE|wxVSCROLL | wxHSCROLL | wxNO_BORDER | wxWANTS_CHARS);
+    m_richText = new wxRichTextCtrl(m_panel4, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize,
+        wxRE_MULTILINE|wxVSCROLL | wxHSCROLL | wxNO_BORDER | wxWANTS_CHARS);
     parent_sizer5->Add(m_richText, wxSizerFlags(1).Expand().Border(wxALL));
     m_panel4->SetSizerAndFit(parent_sizer5);
 
@@ -111,7 +113,7 @@ bool OtherCtrlsBase::Create(wxWindow* parent, wxWindowID id, const wxString& tit
 
     auto* parent_sizer6 = new wxBoxSizer(wxVERTICAL);
 
-    m_scintilla = new wxStyledTextCtrl(m_panel5, wxID_ANY);
+    m_scintilla = new wxStyledTextCtrl(m_panel5);
     {
         m_scintilla->SetLexer(wxSTC_LEX_CPP);
         m_scintilla->SetEOLMode(wxSTC_EOL_LF);
@@ -119,7 +121,7 @@ bool OtherCtrlsBase::Create(wxWindow* parent, wxWindowID id, const wxString& tit
         // 5 on wxGTK or wxOSX
         m_scintilla->SetMarginLeft(wxSizerFlags::GetDefaultBorder());
         m_scintilla->SetMarginRight(wxSizerFlags::GetDefaultBorder());
-        m_scintilla->SetMarginWidth(1, 0);  // Remove default margin
+        m_scintilla->SetMarginWidth(1, 0); // Remove default margin
         m_scintilla->SetBackSpaceUnIndents(true);
     }
     parent_sizer6->Add(m_scintilla, wxSizerFlags(1).Expand().Border(wxALL));

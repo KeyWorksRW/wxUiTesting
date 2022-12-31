@@ -97,7 +97,7 @@ bool RibbonDlgBase::Create(wxWindow* parent, wxWindowID id, const wxString& titl
 
     auto* box_sizer_3 = new wxBoxSizer(wxVERTICAL);
 
-    m_scintilla = new wxStyledTextCtrl(this, wxID_ANY);
+    m_scintilla = new wxStyledTextCtrl(this);
     {
         m_scintilla->SetLexer(wxSTC_LEX_CPP);
         m_scintilla->SetEOLMode(wxSTC_EOL_LF);
@@ -105,7 +105,7 @@ bool RibbonDlgBase::Create(wxWindow* parent, wxWindowID id, const wxString& titl
         // 5 on wxGTK or wxOSX
         m_scintilla->SetMarginLeft(wxSizerFlags::GetDefaultBorder());
         m_scintilla->SetMarginRight(wxSizerFlags::GetDefaultBorder());
-        m_scintilla->SetMarginWidth(1, 0);  // Remove default margin
+        m_scintilla->SetMarginWidth(1, 0); // Remove default margin
         m_scintilla->SetBackSpaceUnIndents(true);
     }
     box_sizer_3->Add(m_scintilla, wxSizerFlags().Expand().Border(wxALL));

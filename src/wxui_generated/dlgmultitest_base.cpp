@@ -58,7 +58,7 @@ bool DlgMultiTestBase::Create(wxWindow* parent, wxWindowID id, const wxString& t
     m_btn->SetToolTip("A normal button");
     grid_bag_sizer->Add(m_btn, wxGBPosition(0, 0), wxGBSpan(1, 1), wxALL, 5);
 
-    m_btn_2 = new wxButton(page_2, wxID_ANY);
+    m_btn_2 = new wxButton(page_2, wxID_ANY, wxEmptyString);
     m_btn_2->SetLabelMarkup("<b><span foreground=\'red\'>Markup</span></b>");
     m_btn_2->SetToolTip("Text should be Bold and Red.");
     grid_bag_sizer->Add(m_btn_2, wxGBPosition(0, 1), wxGBSpan(1, 1), wxALL, 5);
@@ -182,8 +182,8 @@ bool DlgMultiTestBase::Create(wxWindow* parent, wxWindowID id, const wxString& t
 
     auto* box_sizer_13 = new wxBoxSizer(wxHORIZONTAL);
 
-    m_edit_listbox = new wxEditableListBox(page_4, wxID_ANY, "My Editable ListBox", wxDefaultPosition, wxDefaultSize,
-        wxEL_ALLOW_NEW|wxEL_ALLOW_EDIT|wxEL_ALLOW_DELETE);
+    m_edit_listbox = new wxEditableListBox(page_4, wxID_ANY, "My Editable ListBox", wxDefaultPosition,
+        wxDefaultSize, wxEL_ALLOW_NEW|wxEL_ALLOW_EDIT|wxEL_ALLOW_DELETE);
     box_sizer_13->Add(m_edit_listbox, wxSizerFlags().Border(wxALL));
 
     flex_grid_sizer->Add(box_sizer_13, wxSizerFlags().Border(wxALL));

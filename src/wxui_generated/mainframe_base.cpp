@@ -49,13 +49,16 @@ MainFrameBase::MainFrameBase(wxWindow* parent, wxWindowID id, const wxString& ti
     auto* menuItem_2 = new wxMenuItem(menuDialogs, wxID_ANY, "Common Controls...", "Common controls",
         wxITEM_NORMAL);
     menuItem_2->SetBitmap(wxArtProvider::GetBitmapBundle(wxART_TIP, wxART_MENU));
+
     menuDialogs->Append(menuItem_2);
     auto* menuItem = new wxMenuItem(menuDialogs, wxID_ANY, "DlgMulitTest...", "Launch DlgMultiTest Dialog",
         wxITEM_NORMAL);
     menuItem->SetBitmap(wxArtProvider::GetBitmapBundle(wxART_INFORMATION, wxART_MENU));
+
     menuDialogs->Append(menuItem);
     auto* menu_item = new wxMenuItem(menuDialogs, wxID_ANY, "Import Tests");
     menu_item->SetBitmap(wxArtProvider::GetBitmapBundle(wxART_GOTO_LAST, wxART_MENU));
+
     menuDialogs->Append(menu_item);
     auto* menuItem1 = new wxMenuItem(menuDialogs, wxID_ANY, "Other Controls Dialog...");
     menuDialogs->Append(menuItem1);
@@ -65,6 +68,7 @@ MainFrameBase::MainFrameBase(wxWindow* parent, wxWindowID id, const wxString& ti
     menuDialogs->Append(menuItem3);
 
     auto* submenu = new wxMenu();
+
     auto* menu_choicebook = new wxMenuItem(submenu, wxID_ANY, "Choicebook");
     submenu->Append(menu_choicebook);
     auto* menu_listbook = new wxMenuItem(submenu, wxID_ANY, "Listbook");
@@ -101,7 +105,13 @@ MainFrameBase::MainFrameBase(wxWindow* parent, wxWindowID id, const wxString& ti
 
     m_toolBar->Realize();
 
-    m_statusBar = CreateStatusBar();
+    m_statusBar = CreateStatusBar(2);
+    {
+        const int sb_field_widths[2] = {100, -1};
+        m_statusBar->SetStatusWidths(2, sb_field_widths);
+        const int sb_field_styles[2] = {100, -1};
+        m_statusBar->SetStatusStyles(2, sb_field_styles);
+    }
 
     Centre(wxBOTH);
 

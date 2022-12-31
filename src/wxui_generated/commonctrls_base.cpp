@@ -227,14 +227,16 @@ bool CommonCtrlsBase::Create(wxWindow* parent, wxWindowID id, const wxString& ti
         "On Windows 10, the items may be be clipped unless they have a trailing space.");
     m_staticText11->Wrap(200);
     flex_grid_sizer->Add(m_staticText11, wxSizerFlags().Border(wxALL));
-
+    {
         wxString radioBox_choices[] = {
-        "Button zero ",
-        "Button one ",
-        "Button two ",
+            "Button zero ",
+            "Button one ",
+            "Button two "
         };
-        m_radioBox = new wxRadioBox(this, wxID_ANY, "Radio Box",
-            wxDefaultPosition, wxDefaultSize, 3, radioBox_choices, 0, wxRA_SPECIFY_ROWS);
+        // Trailing spaces added to avoid clipping
+        m_radioBox = new wxRadioBox(this, wxID_ANY, "Radio Box", wxDefaultPosition, wxDefaultSize, 3, radioBox_choices,
+            0, wxRA_SPECIFY_ROWS);
+    }
     m_radioBox->SetSelection(1);
     m_radioBox->SetValidator(wxGenericValidator(&m_valRadio));
     flex_grid_sizer->Add(m_radioBox, wxSizerFlags().Border(wxALL));
@@ -250,13 +252,14 @@ bool CommonCtrlsBase::Create(wxWindow* parent, wxWindowID id, const wxString& ti
     flex_grid_sizer->Add(box_sizer_2, wxSizerFlags().Border(wxALL));
 
     m_bmpComboBox = new wxBitmapComboBox(this, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, 0, nullptr, wxCB_READONLY);
+
     flex_grid_sizer->Add(m_bmpComboBox, wxSizerFlags().Border(wxALL));
 
     m_checkPlayAnimation = new wxCheckBox(this, wxID_ANY, "Play Animation");
     auto* static_box_2 = new wxStaticBoxSizer(new wxStaticBox(this, wxID_ANY, m_checkPlayAnimation), wxVERTICAL);
 
-    m_toggleBtn = new wxToggleButton(static_box_2->GetStaticBox(), wxID_ANY, "Play Animation", wxDefaultPosition, wxDefaultSize,
-        wxBU_EXACTFIT);
+    m_toggleBtn = new wxToggleButton(static_box_2->GetStaticBox(), wxID_ANY, "Play Animation", wxDefaultPosition,
+        wxDefaultSize, wxBU_EXACTFIT);
     static_box_2->Add(m_toggleBtn, wxSizerFlags().Border(wxALL));
 
     m_animation_ctrl = new wxAnimationCtrl(static_box_2->GetStaticBox(), wxID_ANY, wxueAnimation(clr_hourglass_gif, sizeof(clr_hourglass_gif)),
@@ -298,8 +301,8 @@ bool CommonCtrlsBase::Create(wxWindow* parent, wxWindowID id, const wxString& ti
 
     flex_grid_sizer->AddSpacer(0);
 
-    m_edit_listbox = new wxEditableListBox(this, wxID_ANY, "My Editable ListBox", wxDefaultPosition, wxDefaultSize,
-        wxEL_ALLOW_NEW|wxEL_ALLOW_EDIT|wxEL_ALLOW_DELETE);
+    m_edit_listbox = new wxEditableListBox(this, wxID_ANY, "My Editable ListBox", wxDefaultPosition,
+        wxDefaultSize, wxEL_ALLOW_NEW|wxEL_ALLOW_EDIT|wxEL_ALLOW_DELETE);
     {
         wxArrayString tmp_array;
         tmp_array.push_back(wxString::FromUTF8("item #1"));
