@@ -6,6 +6,7 @@
 ###############################################################################
 
 import wx
+
 import python_dlg
 
 class MainFrame(wx.Frame):
