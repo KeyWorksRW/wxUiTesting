@@ -1,25 +1,37 @@
+set (file_list_dir ${CMAKE_CURRENT_LIST_DIR})
+
 set (file_list
 
-    ${CMAKE_CURRENT_LIST_DIR}/wxUiTesting.rc
-    ${CMAKE_CURRENT_LIST_DIR}/mainapp.cpp
+    wxUiTesting.rc
+    mainapp.cpp
 
-    ${CMAKE_CURRENT_LIST_DIR}/import_test.cpp   # Import Test Dialog
+    import_test.cpp   # Import Test Dialog
 
-    ${CMAKE_CURRENT_LIST_DIR}/imports/form_base.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/imports/import_form_base.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/imports/crafter_base.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/imports/crafter_bitmaps.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/imports/import_crafter_base.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/imports/import_crafter_base.cpp
+    imports/form_base.cpp
+    imports/import_form_base.cpp
+    imports/crafter_base.cpp
+    imports/crafter_bitmaps.cpp
+    imports/import_crafter_base.cpp
+    imports/import_crafter_base.cpp
 
-    ${CMAKE_CURRENT_LIST_DIR}/custom_ctrls/split_button.cpp  # Split Button Custom widget (button + menu)
+    custom_ctrls/split_button.cpp  # Split Button Custom widget (button + menu)
 
-    ${CMAKE_CURRENT_LIST_DIR}/ui/commonctrls.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/ui/dlgmultitest.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/ui/mainframe.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/ui/other_ctrls.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/ui/popupwin.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/ui/ribbondlg.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/ui/wizard.cpp
+    ui/commonctrls.cpp
+    ui/dlgmultitest.cpp
+    ui/mainframe.cpp
+    ui/other_ctrls.cpp
+    ui/popupwin.cpp
+    ui/ribbondlg.cpp
+    ui/wizard.cpp
+
+)
+
+set (python_files
+
+    main.py
+
+    mainframe.py
+    mainframe_base.py
+    python_dlg.py
 
 )

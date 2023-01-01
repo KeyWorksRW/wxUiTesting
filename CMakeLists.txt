@@ -59,6 +59,7 @@ add_compile_definitions($<$<CONFIG:Release>:NDEBUG>)
 
 include(src/wxui_generated/wxui_generated.cmake)  # This will set ${wxue_generated_code} with a list of generated files
 include(src/file_list.cmake)     # This will set ${file_list} with a list of files
+list(TRANSFORM file_list PREPEND "${file_list_dir}/")
 
 add_executable(wxUiTesting WIN32
     ${file_list}
