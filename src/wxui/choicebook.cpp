@@ -127,3 +127,18 @@ bool ChoiceBook::Create(wxWindow* parent, wxWindowID id, const wxString& title,
 //
 // clang-format on
 // ***********************************************
+
+/////////////////// Non-generated Copyright/License Info ////////////////////
+// Purpose:   Multiple Tests dialog
+// Author:    Ralph Walden
+// Copyright: Copyright (c) 2020-2023 KeyWorks Software (Ralph Walden)
+// License:   Apache License -- see ../../LICENSE
+/////////////////////////////////////////////////////////////////////////////
+
+#include "mainframe.h"  // MainFrame -- Main window
+
+void MainFrame::OnChoicebook(wxCommandEvent& WXUNUSED(event))
+{
+    ChoiceBook dlg(this);
+    dlg.ShowModal();
+}

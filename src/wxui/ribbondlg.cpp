@@ -15,13 +15,13 @@
 #include <wx/settings.h>
 #include <wx/sizer.h>
 
-#include "ribbondlg_base.h"
+#include "ribbondlg.h"
 
 #include "../art/english.xpm"
 #include "../art/french.xpm"
 
-bool RibbonDlgBase::Create(wxWindow* parent, wxWindowID id, const wxString& title,
-        const wxPoint& pos, const wxSize& size, long style, const wxString &name)
+bool RibbonDlg::Create(wxWindow* parent, wxWindowID id, const wxString& title,
+    const wxPoint& pos, const wxSize& size, long style, const wxString &name)
 {
     if (!wxDialog::Create(parent, id, title, pos, size, style, name))
         return false;
@@ -141,3 +141,18 @@ bool RibbonDlgBase::Create(wxWindow* parent, wxWindowID id, const wxString& titl
 //
 // clang-format on
 // ***********************************************
+
+/////////////////// Non-generated Copyright/License Info ////////////////////
+// Purpose:   Multiple Tests dialog
+// Author:    Ralph Walden
+// Copyright: Copyright (c) 2020-2023 KeyWorks Software (Ralph Walden)
+// License:   Apache License -- see ../../LICENSE
+/////////////////////////////////////////////////////////////////////////////
+
+#include "mainframe.h"  // MainFrame -- Main window
+
+void MainFrame::OnRibbonDialog(wxCommandEvent& WXUNUSED(event))
+{
+    RibbonDlg dlg(this);
+    dlg.ShowModal();
+}

@@ -9,43 +9,46 @@
 
 #pragma once
 
+#include <wx/bitmap.h>
+#include <wx/button.h>
 #include <wx/dialog.h>
+#include <wx/event.h>
 #include <wx/gdicmn.h>
+#include <wx/icon.h>
+#include <wx/image.h>
+#include <wx/ribbon/art.h>
+#include <wx/ribbon/bar.h>
+#include <wx/ribbon/control.h>
+#include <wx/ribbon/toolbar.h>
 #include <wx/stattext.h>
-#include <wx/treebook.h>
+#include <wx/stc/stc.h>
 
-class TreebookBase : public wxDialog
+class RibbonDlg : public wxDialog
 {
 public:
-    TreebookBase() {}
-    TreebookBase(wxWindow *parent, wxWindowID id = wxID_ANY, const wxString& title = "Treebook",
+    RibbonDlg() {}
+    RibbonDlg(wxWindow *parent, wxWindowID id = wxID_ANY, const wxString& title = "Ribbon Dialog",
         const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize,
-        long style = wxDEFAULT_DIALOG_STYLE, const wxString &name = wxDialogNameStr)
+        long style = wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER, const wxString &name = wxDialogNameStr)
     {
         Create(parent, id, title, pos, size, style, name);
     }
 
-    bool Create(wxWindow *parent, wxWindowID id = wxID_ANY, const wxString& title = "Treebook",
+    bool Create(wxWindow *parent, wxWindowID id = wxID_ANY, const wxString& title = "Ribbon Dialog",
         const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize,
-        long style = wxDEFAULT_DIALOG_STYLE, const wxString &name = wxDialogNameStr);
+        long style = wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER, const wxString &name = wxDialogNameStr);
 
 protected:
 
     // Class member variables
 
+    wxButton* m_btn;
+    wxButton* m_btn_2;
+    wxRibbonBar* m_rbnBar;
     wxStaticText* m_staticText;
     wxStaticText* m_staticText_2;
-    wxStaticText* m_staticText_3;
-    wxTreebook* m_treebook;
+    wxStyledTextCtrl* m_scintilla;
 };
-
-namespace wxue_img
-{
-    // Images declared in this class module:
-
-    extern const unsigned char er_png[302];
-    extern const unsigned char re_png[305];
-}
 
 // ************* End of generated code ***********
 // DO NOT EDIT THIS COMMENT BLOCK!

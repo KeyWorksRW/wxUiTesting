@@ -9,7 +9,7 @@
 
 #include "my_images.h"
 
-#include "wizard_base.h"
+#include "wizard.h"
 
 namespace wxue_img
 {
@@ -17,7 +17,7 @@ namespace wxue_img
     extern const unsigned char wiztest_png[1239];
 }
 
-WizardBase::WizardBase(wxWindow* parent, wxWindowID id, const wxString& title,
+Wizard::Wizard(wxWindow* parent, wxWindowID id, const wxString& title,
         const wxPoint& pos, long style) : wxWizard()
 {
     SetExtraStyle(wxWIZARD_EX_HELPBUTTON);
@@ -56,7 +56,7 @@ WizardBase::WizardBase(wxWindow* parent, wxWindowID id, const wxString& title,
     Center(wxBOTH);
 
     // Event handlers
-    Bind(wxEVT_WIZARD_BEFORE_PAGE_CHANGED, &WizardBase::OnBeforeChange, this);
+    Bind(wxEVT_WIZARD_BEFORE_PAGE_CHANGED, &Wizard::OnBeforeChange, this);
 }
 
 // ************* End of generated code ***********
@@ -67,3 +67,23 @@ WizardBase::WizardBase(wxWindow* parent, wxWindowID id, const wxString& title,
 //
 // clang-format on
 // ***********************************************
+
+/////////////////// Non-generated Copyright/License Info ////////////////////
+// Purpose:   Multiple Tests dialog
+// Author:    Ralph Walden
+// Copyright: Copyright (c) 2020-2023 KeyWorks Software (Ralph Walden)
+// License:   Apache License -- see ../../LICENSE
+/////////////////////////////////////////////////////////////////////////////
+
+#include "mainframe.h"  // MainFrame -- Main window
+
+void MainFrame::OnWizard(wxCommandEvent& WXUNUSED(event))
+{
+    Wizard wizard(this);
+    wizard.Run();
+}
+
+void Wizard::OnBeforeChange(wxWizardEvent& event)
+{
+    event.Skip();
+}

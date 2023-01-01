@@ -5,8 +5,6 @@ set (file_list
     wxUiTesting.rc
     mainapp.cpp
 
-    import_test.cpp   # Import Test Dialog
-
     imports/form_base.cpp
     imports/import_form_base.cpp
     imports/crafter_base.cpp
@@ -17,9 +15,6 @@ set (file_list
     custom_ctrls/split_button.cpp  # Split Button Custom widget (button + menu)
 
     ui/mainframe.cpp
-    ui/other_ctrls.cpp
-    ui/ribbondlg.cpp
-    ui/wizard.cpp
 
 )
 
@@ -30,18 +25,18 @@ set(wxui_file_list
     wxui/commonctrls.cpp
     wxui/dlgmultitest.cpp
     wxui/form_toolbar_base.cpp
-    wxui/import_test_base.cpp
-    wxui/listbook_base.cpp
+    wxui/import_test.cpp
+    wxui/listbook.cpp
     wxui/mainframe_base.cpp
     wxui/my_images.cpp
-    wxui/notebook_base.cpp
-    wxui/other_ctrls_base.cpp
+    wxui/notebook.cpp
+    wxui/other_ctrls.cpp
     wxui/popupwin.cpp
     wxui/python_dlg.cpp
-    wxui/ribbondlg_base.cpp
-    wxui/toolbook_base.cpp
-    wxui/treebook_base.cpp
-    wxui/wizard_base.cpp
+    wxui/ribbondlg.cpp
+    wxui/toolbook.cpp
+    wxui/treebook.cpp
+    wxui/wizard.cpp
 
 )
 

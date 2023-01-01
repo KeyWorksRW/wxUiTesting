@@ -31,13 +31,13 @@
 #include <wx/tglbtn.h>
 #include <wx/timectrl.h>
 
-class OtherCtrlsBase : public wxDialog
+class OtherCtrlsDlg : public wxDialog
 {
 public:
     wxHtmlWindow* m_htmlWin;
 
-    OtherCtrlsBase() {}
-    OtherCtrlsBase(wxWindow *parent, wxWindowID id = wxID_ANY, const wxString& title = "NoteBook Dialog",
+    OtherCtrlsDlg() {}
+    OtherCtrlsDlg(wxWindow *parent, wxWindowID id = wxID_ANY, const wxString& title = "NoteBook Dialog",
         const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize,
         long style = wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER, const wxString &name = wxDialogNameStr)
     {

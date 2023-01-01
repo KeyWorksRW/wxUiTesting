@@ -11,21 +11,21 @@
 
 #include <wx/dialog.h>
 #include <wx/gdicmn.h>
+#include <wx/listbook.h>
 #include <wx/stattext.h>
-#include <wx/toolbook.h>
 
-class ToolbookBase : public wxDialog
+class Listbook : public wxDialog
 {
 public:
-    ToolbookBase() {}
-    ToolbookBase(wxWindow *parent, wxWindowID id = wxID_ANY, const wxString& title = "wxToolbook",
-        const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize,
+    Listbook() {}
+    Listbook(wxWindow *parent, wxWindowID id = wxID_ANY, const wxString& title = "Listbook", const wxPoint& pos =
+        wxDefaultPosition, const wxSize& size = wxDefaultSize,
         long style = wxDEFAULT_DIALOG_STYLE, const wxString &name = wxDialogNameStr)
     {
         Create(parent, id, title, pos, size, style, name);
     }
 
-    bool Create(wxWindow *parent, wxWindowID id = wxID_ANY, const wxString& title = "wxToolbook",
+    bool Create(wxWindow *parent, wxWindowID id = wxID_ANY, const wxString& title = "Listbook",
         const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize,
         long style = wxDEFAULT_DIALOG_STYLE, const wxString &name = wxDialogNameStr);
 
@@ -33,8 +33,8 @@ protected:
 
     // Class member variables
 
+    wxListbook* m_listbook;
     wxStaticText* m_staticText;
-    wxToolbook* m_toolbook;
 };
 
 // ************* End of generated code ***********

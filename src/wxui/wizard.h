@@ -9,31 +9,34 @@
 
 #pragma once
 
-#include <wx/dialog.h>
+#include <wx/colour.h>
+#include <wx/event.h>
 #include <wx/gdicmn.h>
-#include <wx/notebook.h>
+#include <wx/settings.h>
+#include <wx/sizer.h>
 #include <wx/stattext.h>
+#include <wx/wizard.h>
 
-class NotebookBase : public wxDialog
+class Wizard : public wxWizard
 {
 public:
-    NotebookBase() {}
-    NotebookBase(wxWindow *parent, wxWindowID id = wxID_ANY, const wxString& title = "Notebook",
-        const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize,
-        long style = wxDEFAULT_DIALOG_STYLE, const wxString &name = wxDialogNameStr)
-    {
-        Create(parent, id, title, pos, size, style, name);
-    }
+    Wizard(wxWindow* parent, wxWindowID id = wxID_ANY,
+        const wxString& title = "Wizard Tests",
+        const wxPoint& pos = wxDefaultPosition,
+        long style = wxDEFAULT_DIALOG_STYLE);
 
-    bool Create(wxWindow *parent, wxWindowID id = wxID_ANY, const wxString& title = "Notebook",
-        const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize,
-        long style = wxDEFAULT_DIALOG_STYLE, const wxString &name = wxDialogNameStr);
+    bool Run() { return RunWizard((wxWizardPage*) GetPageAreaSizer()->GetItem((size_t) 0)->GetWindow()); }
 
 protected:
 
+    // Event handlers
+
+    void OnBeforeChange(wxWizardEvent& event);
+
     // Class member variables
 
-    wxNotebook* m_notebook;
+    wxStaticText* m_staticText2;
+    wxStaticText* m_staticText3;
     wxStaticText* m_staticText;
 };
 

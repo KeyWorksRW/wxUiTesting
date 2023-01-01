@@ -8,17 +8,17 @@ set (wxui_generated
     ${CMAKE_CURRENT_LIST_DIR}/commonctrls.cpp
     ${CMAKE_CURRENT_LIST_DIR}/dlgmultitest.cpp
     ${CMAKE_CURRENT_LIST_DIR}/form_toolbar_base.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/import_test_base.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/listbook_base.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/import_test.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/listbook.cpp
     ${CMAKE_CURRENT_LIST_DIR}/mainframe_base.cpp
     ${CMAKE_CURRENT_LIST_DIR}/my_images.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/notebook_base.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/other_ctrls_base.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/notebook.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/other_ctrls.cpp
     ${CMAKE_CURRENT_LIST_DIR}/popupwin.cpp
     ${CMAKE_CURRENT_LIST_DIR}/python_dlg.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/ribbondlg_base.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/toolbook_base.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/treebook_base.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/wizard_base.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/ribbondlg.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/toolbook.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/treebook.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/wizard.cpp
 
 )

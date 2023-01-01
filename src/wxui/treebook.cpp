@@ -16,7 +16,7 @@
 #include <wx/settings.h>
 #include <wx/sizer.h>
 
-#include "treebook_base.h"
+#include "treebook.h"
 
 #include "../art/english.xpm"
 #include "../art/french.xpm"
@@ -33,8 +33,8 @@ inline wxImage wxueImage(const unsigned char* data, size_t size_data)
     return image;
 };
 
-bool TreebookBase::Create(wxWindow* parent, wxWindowID id, const wxString& title,
-        const wxPoint& pos, const wxSize& size, long style, const wxString &name)
+bool Treebook::Create(wxWindow* parent, wxWindowID id, const wxString& title,
+    const wxPoint& pos, const wxSize& size, long style, const wxString &name)
 {
     if (!wxDialog::Create(parent, id, title, pos, size, style, name))
         return false;
@@ -152,3 +152,18 @@ namespace wxue_img
 //
 // clang-format on
 // ***********************************************
+
+/////////////////// Non-generated Copyright/License Info ////////////////////
+// Purpose:   Multiple Tests dialog
+// Author:    Ralph Walden
+// Copyright: Copyright (c) 2020-2023 KeyWorks Software (Ralph Walden)
+// License:   Apache License -- see ../../LICENSE
+/////////////////////////////////////////////////////////////////////////////
+
+#include "mainframe.h"  // MainFrame -- Main window
+
+void MainFrame::OnTreebook(wxCommandEvent& WXUNUSED(event))
+{
+    Treebook dlg(this);
+    dlg.ShowModal();
+}

@@ -18,10 +18,10 @@
 #include <wx/statbox.h>
 #include <wx/valgen.h>
 
-#include "other_ctrls_base.h"
+#include "other_ctrls.h"
 
-bool OtherCtrlsBase::Create(wxWindow* parent, wxWindowID id, const wxString& title,
-        const wxPoint& pos, const wxSize& size, long style, const wxString &name)
+bool OtherCtrlsDlg::Create(wxWindow* parent, wxWindowID id, const wxString& title,
+    const wxPoint& pos, const wxSize& size, long style, const wxString &name)
 {
     if (!wxDialog::Create(parent, id, title, pos, size, style, name))
         return false;
@@ -161,7 +161,7 @@ bool OtherCtrlsBase::Create(wxWindow* parent, wxWindowID id, const wxString& tit
     SetSizerAndFit(parent_sizer);
     Centre(wxBOTH);
 
-    wxPersistentRegisterAndRestore(this, "OtherCtrlsBase");
+    wxPersistentRegisterAndRestore(this, "OtherCtrlsDlg");
 
     return true;
 }
@@ -174,3 +174,18 @@ bool OtherCtrlsBase::Create(wxWindow* parent, wxWindowID id, const wxString& tit
 //
 // clang-format on
 // ***********************************************
+
+/////////////////// Non-generated Copyright/License Info ////////////////////
+// Purpose:   Other Controls dialog
+// Author:    Ralph Walden
+// Copyright: Copyright (c) 2020-2023 KeyWorks Software (Ralph Walden)
+// License:   Apache License -- see ../../LICENSE
+/////////////////////////////////////////////////////////////////////////////
+
+#include "mainframe.h"  // MainFrame -- Main window
+
+void MainFrame::OnOtherCtrls(wxCommandEvent& WXUNUSED(event))
+{
+    OtherCtrlsDlg dlg(this);
+    dlg.ShowModal();
+}

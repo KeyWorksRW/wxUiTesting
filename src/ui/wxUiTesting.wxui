@@ -847,7 +847,7 @@
       class="wxDialog"
       class_name="ImportTest"
       title="wxFormBuilder comparison"
-      base_file="import_test_base"
+      base_file="import_test"
       base_hdr_includes="#include &lt;wx/aui/auibook.h>@@"
       derived_class_name="ImportTest"
       derived_file="../imports/import_test.cpp"
@@ -901,10 +901,11 @@
     </node>
     <node
       class="wxDialog"
-      class_name="ListbookBase"
+      class_name="Listbook"
       title="Listbook"
-      base_file="listbook_base"
-      derived_class_name="Listbook">
+      base_file="listbook"
+      derived_class_name="Listbook"
+      use_derived_class="0">
       <node
         class="wxBoxSizer"
         orientation="wxVERTICAL">
@@ -1045,12 +1046,13 @@
     </node>
     <node
       class="wxDialog"
-      class_name="NotebookBase"
+      class_name="Notebook"
       title="Notebook"
       minimum_size="-1,-1"
       size="-1,-1"
-      base_file="notebook_base"
-      derived_class_name="Notebook">
+      base_file="notebook"
+      derived_class_name="Notebook"
+      use_derived_class="0">
       <node
         class="wxBoxSizer"
         orientation="wxVERTICAL">
@@ -1118,15 +1120,16 @@
     </node>
     <node
       class="wxDialog"
-      class_name="OtherCtrlsBase"
+      class_name="OtherCtrlsDlg"
       persist="1"
       style="wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER"
       title="NoteBook Dialog"
       minimum_size="-1,-1"
       size="-1,-1"
-      base_file="other_ctrls_base"
+      base_file="other_ctrls"
       derived_class_name="OtherCtrlsDlg"
-      derived_file="../ui/other_ctrls">
+      derived_file="../ui/other_ctrls"
+      use_derived_class="0">
       <node
         class="wxBoxSizer"
         orientation="wxVERTICAL"
@@ -1305,13 +1308,14 @@
     </node>
     <node
       class="wxDialog"
-      class_name="RibbonDlgBase"
+      class_name="RibbonDlg"
       style="wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER"
       title="Ribbon Dialog"
       size="-1,-1"
-      base_file="ribbondlg_base"
+      base_file="ribbondlg"
       derived_class_name="RibbonDlg"
-      derived_file="../ui/ribbondlg">
+      derived_file="../ui/ribbondlg"
+      use_derived_class="0">
       <node
         class="wxBoxSizer"
         orientation="wxVERTICAL"
@@ -1444,10 +1448,11 @@
     </node>
     <node
       class="wxDialog"
-      class_name="ToolbookBase"
+      class_name="Toolbook"
       title="wxToolbook"
-      base_file="toolbook_base"
-      derived_class_name="Toolbook">
+      base_file="toolbook"
+      derived_class_name="Toolbook"
+      use_derived_class="0">
       <node
         class="wxBoxSizer"
         orientation="wxVERTICAL">
@@ -1513,10 +1518,11 @@
     </node>
     <node
       class="wxDialog"
-      class_name="TreebookBase"
+      class_name="Treebook"
       title="Treebook"
-      base_file="treebook_base"
-      derived_class_name="Treebook">
+      base_file="treebook"
+      derived_class_name="Treebook"
+      use_derived_class="0">
       <node
         class="wxBoxSizer"
         orientation="wxVERTICAL">
@@ -1621,12 +1627,13 @@
       bmp_background_colour="wxSYS_COLOUR_WINDOWTEXT"
       bmp_min_width="150"
       border="15"
-      class_name="WizardBase"
+      class_name="Wizard"
       extra_style="wxWIZARD_EX_HELPBUTTON"
       title="Wizard Tests"
-      base_file="wizard_base"
+      base_file="wizard"
       derived_class_name="Wizard"
       derived_file="../ui/wizard"
+      use_derived_class="0"
       wxEVT_WIZARD_BEFORE_PAGE_CHANGED="OnBeforeChange">
       <node
         class="wxWizardPageSimple">

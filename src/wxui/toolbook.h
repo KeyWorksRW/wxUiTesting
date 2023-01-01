@@ -9,35 +9,32 @@
 
 #pragma once
 
-#include <wx/colour.h>
-#include <wx/event.h>
+#include <wx/dialog.h>
 #include <wx/gdicmn.h>
-#include <wx/settings.h>
-#include <wx/sizer.h>
 #include <wx/stattext.h>
-#include <wx/wizard.h>
+#include <wx/toolbook.h>
 
-class WizardBase : public wxWizard
+class Toolbook : public wxDialog
 {
 public:
-    WizardBase(wxWindow* parent, wxWindowID id = wxID_ANY,
-        const wxString& title = "Wizard Tests",
-        const wxPoint& pos = wxDefaultPosition,
-        long style = wxDEFAULT_DIALOG_STYLE);
+    Toolbook() {}
+    Toolbook(wxWindow *parent, wxWindowID id = wxID_ANY, const wxString& title = "wxToolbook",
+        const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize,
+        long style = wxDEFAULT_DIALOG_STYLE, const wxString &name = wxDialogNameStr)
+    {
+        Create(parent, id, title, pos, size, style, name);
+    }
 
-    bool Run() { return RunWizard((wxWizardPage*) GetPageAreaSizer()->GetItem((size_t) 0)->GetWindow()); }
+    bool Create(wxWindow *parent, wxWindowID id = wxID_ANY, const wxString& title = "wxToolbook",
+        const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize,
+        long style = wxDEFAULT_DIALOG_STYLE, const wxString &name = wxDialogNameStr);
 
 protected:
 
-    // Virtual event handlers -- override them in your derived class
-
-    virtual void OnBeforeChange(wxWizardEvent& event) { event.Skip(); }
-
     // Class member variables
 
-    wxStaticText* m_staticText2;
-    wxStaticText* m_staticText3;
     wxStaticText* m_staticText;
+    wxToolbook* m_toolbook;
 };
 
 // ************* End of generated code ***********

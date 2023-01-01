@@ -16,33 +16,33 @@
 #include <wx/settings.h>
 #include <wx/sizer.h>
 
-#include "toolbook_base.h"
+#include "listbook.h"
 
 #include "../art/english.xpm"
 #include "../art/french.xpm"
 #include "../art/japanese.xpm"
 
-bool ToolbookBase::Create(wxWindow* parent, wxWindowID id, const wxString& title,
-        const wxPoint& pos, const wxSize& size, long style, const wxString &name)
+bool Listbook::Create(wxWindow* parent, wxWindowID id, const wxString& title,
+    const wxPoint& pos, const wxSize& size, long style, const wxString &name)
 {
     if (!wxDialog::Create(parent, id, title, pos, size, style, name))
         return false;
 
     auto* box_sizer = new wxBoxSizer(wxVERTICAL);
 
-    m_toolbook = new wxToolbook(this, wxID_ANY);
+    m_listbook = new wxListbook(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxLB_LEFT);
     {
         wxBookCtrlBase::Images bundle_list;
         bundle_list.push_back(wxBitmapBundle::FromBitmap(wxImage(english_xpm)));
         bundle_list.push_back(wxBitmapBundle::FromBitmap(wxImage(french_xpm)));
         bundle_list.push_back(wxBitmapBundle::FromBitmap(wxImage(japanese_xpm)));
-        m_toolbook->SetImages(bundle_list);
+        m_listbook->SetImages(bundle_list);
     }
-    m_toolbook->SetMinSize(wxSize(400, 400));
-    box_sizer->Add(m_toolbook, wxSizerFlags().Border(wxALL));
+    m_listbook->SetMinSize(wxSize(400, 400));
+    box_sizer->Add(m_listbook, wxSizerFlags().Border(wxALL));
 
-    auto* page = new wxPanel(m_toolbook, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL);
-    m_toolbook->AddPage(page, "English", false, 0);
+    auto* page = new wxPanel(m_listbook, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL);
+    m_listbook->AddPage(page, "English", false, 0);
     page->SetBackgroundColour(wxSystemSettings::GetColour(wxSYS_COLOUR_BTNFACE));
 
     auto* parent_sizer = new wxBoxSizer(wxVERTICAL);
@@ -51,8 +51,8 @@ bool ToolbookBase::Create(wxWindow* parent, wxWindowID id, const wxString& title
     parent_sizer->Add(m_staticText, wxSizerFlags().Border(wxALL));
     page->SetSizerAndFit(parent_sizer);
 
-    auto* page_2 = new wxPanel(m_toolbook, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL);
-    m_toolbook->AddPage(page_2, wxString::FromUTF8("Français"), false, 1);
+    auto* page_2 = new wxPanel(m_listbook, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL);
+    m_listbook->AddPage(page_2, wxString::FromUTF8("Français"), false, 1);
     page_2->SetBackgroundColour(wxSystemSettings::GetColour(wxSYS_COLOUR_BTNFACE));
 
     auto* parent_sizer_2 = new wxBoxSizer(wxVERTICAL);
@@ -61,8 +61,8 @@ bool ToolbookBase::Create(wxWindow* parent, wxWindowID id, const wxString& title
     parent_sizer_2->Add(m_staticText, wxSizerFlags().Border(wxALL));
     page_2->SetSizerAndFit(parent_sizer_2);
 
-    auto* page_3 = new wxPanel(m_toolbook, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL);
-    m_toolbook->AddPage(page_3, wxString::FromUTF8("日本語"), false, 2);
+    auto* page_3 = new wxPanel(m_listbook, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL);
+    m_listbook->AddPage(page_3, wxString::FromUTF8("日本語"), false, 2);
     page_3->SetBackgroundColour(wxSystemSettings::GetColour(wxSYS_COLOUR_BTNFACE));
 
     auto* parent_sizer_3 = new wxBoxSizer(wxVERTICAL);
@@ -89,3 +89,18 @@ bool ToolbookBase::Create(wxWindow* parent, wxWindowID id, const wxString& title
 //
 // clang-format on
 // ***********************************************
+
+/////////////////// Non-generated Copyright/License Info ////////////////////
+// Purpose:   Multiple Tests dialog
+// Author:    Ralph Walden
+// Copyright: Copyright (c) 2020-2023 KeyWorks Software (Ralph Walden)
+// License:   Apache License -- see ../../LICENSE
+/////////////////////////////////////////////////////////////////////////////
+
+#include "mainframe.h"  // MainFrame -- Main window
+
+void MainFrame::OnListbook(wxCommandEvent& WXUNUSED(event))
+{
+    Listbook dlg(this);
+    dlg.ShowModal();
+}
