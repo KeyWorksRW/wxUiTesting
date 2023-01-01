@@ -19,7 +19,6 @@
 #include <wx/image.h>
 #include <wx/radiobox.h>
 #include <wx/tglbtn.h>
-#include <wx/webview.h>
 
 class PythonDlg : public wxDialog
 {
@@ -48,7 +47,6 @@ protected:
     wxCommandLinkButton* m_btn_2;
     wxRadioBox* m_radioBox;
     wxToggleButton* m_toggleBtn;
-    wxWebView* m_webview;
 };
 
 // ************* End of generated code ***********

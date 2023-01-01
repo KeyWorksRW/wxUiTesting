@@ -29,7 +29,7 @@ namespace wxue_img
 }
 
 bool PythonDlg::Create(wxWindow* parent, wxWindowID id, const wxString& title,
-        const wxPoint& pos, const wxSize& size, long style, const wxString &name)
+    const wxPoint& pos, const wxSize& size, long style, const wxString &name)
 {
     if (!wxDialog::Create(parent, id, title, pos, size, style, name))
         return false;
@@ -66,11 +66,6 @@ bool PythonDlg::Create(wxWindow* parent, wxWindowID id, const wxString& title,
     bSizer1->Add(box_sizer_3, wxSizerFlags().Border(wxALL));
 
     auto* box_sizer = new wxBoxSizer(wxVERTICAL);
-
-    m_webview = wxWebView::New(this, wxID_ANY, "https://en.cppreference.com/w/Special:WhatLinksHere/Main_Page",
-        wxDefaultPosition, wxDefaultSize, wxWebViewBackendDefault, wxBORDER_RAISED);
-    m_webview->SetMinSize(ConvertDialogToPixels(wxSize(300, 200)));
-    box_sizer->Add(m_webview, wxSizerFlags(1).Expand().Border(wxALL));
 
     bSizer1->Add(box_sizer, wxSizerFlags().Expand().Border(wxALL));
 
