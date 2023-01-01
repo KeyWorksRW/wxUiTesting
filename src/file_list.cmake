@@ -16,10 +16,8 @@ set (file_list
 
     custom_ctrls/split_button.cpp  # Split Button Custom widget (button + menu)
 
-    # ui/dlgmultitest.cpp
     ui/mainframe.cpp
     ui/other_ctrls.cpp
-    ui/popupwin.cpp
     ui/ribbondlg.cpp
     ui/wizard.cpp
 
@@ -38,7 +36,7 @@ set(wxui_file_list
     wxui/my_images.cpp
     wxui/notebook_base.cpp
     wxui/other_ctrls_base.cpp
-    wxui/popupwin_base.cpp
+    wxui/popupwin.cpp
     wxui/python_dlg.cpp
     wxui/ribbondlg_base.cpp
     wxui/toolbook_base.cpp

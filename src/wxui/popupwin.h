@@ -15,10 +15,10 @@
 #include <wx/settings.h>
 #include <wx/stattext.h>
 
-class PopupWinBase : public wxPopupTransientWindow
+class PopupWin : public wxPopupTransientWindow
 {
 public:
-    PopupWinBase(wxWindow* parent, int style = wxBORDER_RAISED);
+    PopupWin(wxWindow* parent, int style = wxBORDER_RAISED);
 protected:
 
     // Class member variables

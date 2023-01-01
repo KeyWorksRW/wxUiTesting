@@ -1288,10 +1288,11 @@
       class="wxPopupTransientWindow"
       background_colour="wxSYS_COLOUR_INFOBK"
       border="wxBORDER_RAISED"
-      class_name="PopupWinBase"
-      base_file="popupwin_base"
+      class_name="PopupWin"
+      base_file="popupwin"
       derived_class_name="PopupWin"
-      derived_file="../ui/popupwin">
+      derived_file="../ui/popupwin"
+      use_derived_class="0">
       <node
         class="wxBoxSizer"
         orientation="wxVERTICAL"

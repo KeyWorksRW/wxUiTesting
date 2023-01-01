@@ -14,7 +14,7 @@ set (wxui_generated
     ${CMAKE_CURRENT_LIST_DIR}/my_images.cpp
     ${CMAKE_CURRENT_LIST_DIR}/notebook_base.cpp
     ${CMAKE_CURRENT_LIST_DIR}/other_ctrls_base.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/popupwin_base.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/popupwin.cpp
     ${CMAKE_CURRENT_LIST_DIR}/python_dlg.cpp
     ${CMAKE_CURRENT_LIST_DIR}/ribbondlg_base.cpp
     ${CMAKE_CURRENT_LIST_DIR}/toolbook_base.cpp

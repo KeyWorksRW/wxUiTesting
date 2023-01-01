@@ -9,9 +9,9 @@
 
 #include <wx/sizer.h>
 
-#include "popupwin_base.h"
+#include "popupwin.h"
 
-PopupWinBase::PopupWinBase(wxWindow* parent, int style) : wxPopupTransientWindow(parent, style)
+PopupWin::PopupWin(wxWindow* parent, int style) : wxPopupTransientWindow(parent, style)
 {
     SetBackgroundColour(wxSystemSettings::GetColour(wxSYS_COLOUR_INFOBK));
 
