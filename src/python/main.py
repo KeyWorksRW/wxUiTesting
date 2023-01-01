@@ -5,7 +5,7 @@ import mainframe
 
 class MyApp(wx.App):
     def OnInit(self):
-        frame = mainframe.mainframe(None)
+        frame = mainframe.MainFrame(None)
         self.SetTopWindow(frame)
 
         frame.Show(True)
