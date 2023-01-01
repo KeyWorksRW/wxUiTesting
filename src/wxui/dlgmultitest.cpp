@@ -15,7 +15,7 @@
 
 #include "my_images.h"
 
-#include "dlgmultitest_base.h"
+#include "dlgmultitest.h"
 
 #include <wx/mstream.h>  // memory stream classes
 
@@ -33,8 +33,8 @@ namespace wxue_img
     extern const unsigned char wiztest_png[1239];
 }
 
-bool DlgMultiTestBase::Create(wxWindow* parent, wxWindowID id, const wxString& title,
-        const wxPoint& pos, const wxSize& size, long style, const wxString &name)
+bool DlgMultiTest::Create(wxWindow* parent, wxWindowID id, const wxString& title,
+    const wxPoint& pos, const wxSize& size, long style, const wxString &name)
 {
     if (!wxDialog::Create(parent, id, title, pos, size, style, name))
         return false;
@@ -219,7 +219,7 @@ bool DlgMultiTestBase::Create(wxWindow* parent, wxWindowID id, const wxString& t
     Centre(wxBOTH);
 
     // Event handlers
-    Bind(wxEVT_INIT_DIALOG, &DlgMultiTestBase::OnInit, this);
+    Bind(wxEVT_INIT_DIALOG, &DlgMultiTest::OnInit, this);
     disable_bitmaps->Bind(wxEVT_CHECKBOX,
         [this](wxCommandEvent& event)
         {
@@ -291,3 +291,27 @@ namespace wxue_img
 //
 // clang-format on
 // ***********************************************
+
+/////////////////// Non-generated Copyright/License Info ////////////////////
+// Purpose:   Multiple Tests dialog
+// Author:    Ralph Walden
+// Copyright: Copyright (c) 2020-2023 KeyWorks Software (Ralph Walden)
+// License:   Apache License -- see ../../LICENSE
+/////////////////////////////////////////////////////////////////////////////
+
+#include "mainframe.h"  // MainFrame -- Main window
+
+void MainFrame::OnMultiTestDialog(wxCommandEvent& WXUNUSED(event))
+{
+    DlgMultiTest dlg(this);
+    dlg.ShowModal();
+}
+
+void DlgMultiTest::OnInit(wxInitDialogEvent& event)
+{
+    auto sel = m_listview->FindItem(-1, "meaning");
+    if (sel >= 0)
+        m_listview->Select(sel);
+
+    event.Skip();
+}

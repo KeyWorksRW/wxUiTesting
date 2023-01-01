@@ -613,14 +613,15 @@
     </node>
     <node
       class="wxDialog"
-      class_name="DlgMultiTestBase"
+      class_name="DlgMultiTest"
       style="wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER"
       title="Widgets Testing"
       minimum_size="-1,-1"
       size="-1,-1"
-      base_file="dlgmultitest_base"
+      base_file="dlgmultitest"
       derived_class_name="DlgMultiTest"
       derived_file="../ui/dlgmultitest"
+      use_derived_class="0"
       wxEVT_INIT_DIALOG="OnInit">
       <node
         class="wxBoxSizer"

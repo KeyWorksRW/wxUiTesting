@@ -29,11 +29,11 @@
 #include <wx/stattext.h>
 #include <wx/tglbtn.h>
 
-class DlgMultiTestBase : public wxDialog
+class DlgMultiTest : public wxDialog
 {
 public:
-    DlgMultiTestBase() {}
-    DlgMultiTestBase(wxWindow *parent, wxWindowID id = wxID_ANY, const wxString& title = "Widgets Testing",
+    DlgMultiTest() {}
+    DlgMultiTest(wxWindow *parent, wxWindowID id = wxID_ANY, const wxString& title = "Widgets Testing",
         const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize,
         long style = wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER, const wxString &name = wxDialogNameStr)
     {
@@ -46,9 +46,9 @@ public:
 
 protected:
 
-    // Virtual event handlers -- override them in your derived class
+    // Event handlers
 
-    virtual void OnInit(wxInitDialogEvent& event) { event.Skip(); }
+    void OnInit(wxInitDialogEvent& event);
 
     // Class member variables
 
