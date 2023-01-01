@@ -1,4 +1,4 @@
-set (file_list_dir wxui_generated)
+set (file_list_dir src)
 
 set (file_list
 
@@ -26,10 +26,10 @@ set (file_list
 
 )
 
-# Manually maintained from wxui_generated/wxui_generated.cmake
+# Manually maintained from wxui/wxui_generated.cmake
 set(wxui_file_list
 
-    wxui/choicebook_base.cpp
+    wxui/choicebook.cpp
     wxui/commonctrls_base.cpp
     wxui/dlgmultitest_base.cpp
     wxui/form_toolbar_base.cpp

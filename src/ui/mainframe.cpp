@@ -13,9 +13,8 @@
 #include "ribbondlg.h"     // RibbonDlg
 #include "wizard.h"        // Wizard
 
-#include "../wxui_generated/python_dlg.h"
-
-#include "choicebook_base.h"
+#include "python_dlg.h"
+#include "choicebook.h"
 #include "listbook_base.h"
 #include "notebook_base.h"
 #include "toolbook_base.h"
@@ -63,7 +62,7 @@ void MainFrame::OnQuit(wxCommandEvent& WXUNUSED(event))
 
 void MainFrame::OnChoicebook(wxCommandEvent& WXUNUSED(event))
 {
-    ChoiceBookBase dlg(this);
+    ChoiceBook dlg(this);
     dlg.ShowModal();
 }
 

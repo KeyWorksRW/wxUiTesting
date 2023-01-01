@@ -15,11 +15,11 @@
 #include <wx/gdicmn.h>
 #include <wx/stattext.h>
 
-class ChoiceBookBase : public wxDialog
+class ChoiceBook : public wxDialog
 {
 public:
-    ChoiceBookBase() {}
-    ChoiceBookBase(wxWindow *parent, wxWindowID id = wxID_ANY, const wxString& title = "Choicebook",
+    ChoiceBook() {}
+    ChoiceBook(wxWindow *parent, wxWindowID id = wxID_ANY, const wxString& title = "Choicebook",
         const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize,
         long style = wxDEFAULT_DIALOG_STYLE, const wxString &name = wxDialogNameStr)
     {

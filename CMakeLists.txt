@@ -57,7 +57,7 @@ add_subdirectory(${widget_cmake_dir})
 
 add_compile_definitions($<$<CONFIG:Release>:NDEBUG>)
 
-include(src/wxui_generated/wxui_generated.cmake)  # This will set ${wxue_generated_code} with a list of generated files
+include(src/wxui/wxui_generated.cmake)  # This will set ${wxue_generated_code} with a list of generated files
 include(src/file_list.cmake)     # This will set ${file_list} with a list of files
 list(TRANSFORM file_list PREPEND "${file_list_dir}/")
 
@@ -102,7 +102,7 @@ target_include_directories(wxUiTesting PRIVATE
     ${setup_dir}
     src/
     src/ui
-    src/wxui_generated
+    src/wxui
 )
 
 target_include_directories(check_build PRIVATE
@@ -110,5 +110,5 @@ target_include_directories(check_build PRIVATE
     ${setup_dir}
     src/
     src/ui
-    src/wxui_generated
+    src/wxui
 )

@@ -6,7 +6,7 @@
     art_directory="../art"
     code_preference="any"
     base_directory="../wxui"
-    cmake_file="wxui_generated.cmake"
+    cmake_file="../wxui/wxui_generated.cmake"
     cmake_varname="wxui_generated"
     derived_directory="../ui"
     generate_cmake="1"
@@ -493,10 +493,11 @@
     </node>
     <node
       class="wxDialog"
-      class_name="ChoiceBookBase"
+      class_name="ChoiceBook"
       title="Choicebook"
-      base_file="choicebook_base"
-      derived_class_name="ChoiceBook">
+      base_file="choicebook"
+      derived_class_name="ChoiceBook"
+      use_derived_class="0">
       <node
         class="wxBoxSizer"
         orientation="wxVERTICAL"

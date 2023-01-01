@@ -4,7 +4,7 @@
 
 set (wxui_generated
 
-    ${CMAKE_CURRENT_LIST_DIR}/choicebook_base.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/choicebook.cpp
     ${CMAKE_CURRENT_LIST_DIR}/commonctrls_base.cpp
     ${CMAKE_CURRENT_LIST_DIR}/dlgmultitest_base.cpp
     ${CMAKE_CURRENT_LIST_DIR}/form_toolbar_base.cpp

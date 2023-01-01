@@ -16,14 +16,14 @@
 #include <wx/settings.h>
 #include <wx/sizer.h>
 
-#include "choicebook_base.h"
+#include "choicebook.h"
 
 #include "../art/english.xpm"
 #include "../art/french.xpm"
 #include "../art/japanese.xpm"
 
-bool ChoiceBookBase::Create(wxWindow* parent, wxWindowID id, const wxString& title,
-        const wxPoint& pos, const wxSize& size, long style, const wxString &name)
+bool ChoiceBook::Create(wxWindow* parent, wxWindowID id, const wxString& title,
+    const wxPoint& pos, const wxSize& size, long style, const wxString &name)
 {
     if (!wxDialog::Create(parent, id, title, pos, size, style, name))
         return false;
