@@ -27,8 +27,7 @@ inline wxImage wxueImage(const unsigned char* data, size_t size_data)
 };
 
 MainFrameBase::MainFrameBase(wxWindow* parent, wxWindowID id, const wxString& title,
-        const wxPoint& pos, const wxSize& size, long style) :
-    wxFrame(parent, id, title, pos, size, style)
+    const wxPoint& pos, const wxSize& size, long style) : wxFrame(parent, id, title, pos, size, style)
 {
     if (!wxImage::FindHandler(wxBITMAP_TYPE_PNG))
         wxImage::AddHandler(new wxPNGHandler);
@@ -112,6 +111,7 @@ MainFrameBase::MainFrameBase(wxWindow* parent, wxWindowID id, const wxString& ti
         const int sb_field_styles[2] = {100, -1};
         m_statusBar->SetStatusStyles(2, sb_field_styles);
     }
+
 
     Centre(wxBOTH);
 

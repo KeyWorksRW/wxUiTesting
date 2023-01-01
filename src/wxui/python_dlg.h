@@ -9,16 +9,12 @@
 
 #pragma once
 
-#include <wx/bitmap.h>
-#include <wx/button.h>
-#include <wx/commandlinkbutton.h>
+#include <wx/colour.h>
 #include <wx/dialog.h>
 #include <wx/event.h>
 #include <wx/gdicmn.h>
-#include <wx/icon.h>
-#include <wx/image.h>
-#include <wx/radiobox.h>
-#include <wx/tglbtn.h>
+#include <wx/settings.h>
+#include <wx/stattext.h>
 
 class PythonDlg : public wxDialog
 {
@@ -43,10 +39,7 @@ protected:
 
     // Class member variables
 
-    wxButton* m_btn;
-    wxCommandLinkButton* m_btn_2;
-    wxRadioBox* m_radioBox;
-    wxToggleButton* m_toggleBtn;
+    wxStaticText* m_staticText;
 };
 
 // ************* End of generated code ***********

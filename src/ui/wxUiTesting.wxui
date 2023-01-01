@@ -5,8 +5,8 @@
     class="Project"
     art_directory="../art"
     code_preference="any"
-    base_directory="../wxui_generated"
-    cmake_file="../wxui_generated/wxui_generated.cmake"
+    base_directory="../wxui"
+    cmake_file="wxui_generated.cmake"
     cmake_varname="wxui_generated"
     derived_directory="../ui"
     generate_cmake="1"
@@ -25,7 +25,7 @@
       class="wxFrame"
       class_name="MainFrameBase"
       title="wxUiTesting"
-      base_file="../wxui_generated/mainframe_base"
+      base_file="mainframe_base"
       derived_class_name="MainFrame"
       derived_file="../ui/mainframe"
       python_file="mainframe_base"
@@ -159,7 +159,7 @@
       class_name="CommonCtrlsBase"
       style="wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER"
       title="Common controls"
-      base_file="../wxui_generated/commonctrls_base"
+      base_file="commonctrls_base"
       derived_class_name="CommonCtrls"
       derived_file="../ui/commonctrls"
       wxEVT_CONTEXT_MENU="OnContextMenu">
@@ -495,7 +495,7 @@
       class="wxDialog"
       class_name="ChoiceBookBase"
       title="Choicebook"
-      base_file="../wxui_generated/choicebook_base"
+      base_file="choicebook_base"
       derived_class_name="ChoiceBook">
       <node
         class="wxBoxSizer"
@@ -841,7 +841,7 @@
       class="wxDialog"
       class_name="ImportTest"
       title="wxFormBuilder comparison"
-      base_file="../wxui_generated/import_test_base"
+      base_file="import_test_base"
       base_hdr_includes="#include &lt;wx/aui/auibook.h>@@"
       derived_class_name="ImportTest"
       derived_file="../imports/import_test.cpp"
@@ -897,7 +897,7 @@
       class="wxDialog"
       class_name="ListbookBase"
       title="Listbook"
-      base_file="../wxui_generated/listbook_base"
+      base_file="listbook_base"
       derived_class_name="Listbook">
       <node
         class="wxBoxSizer"
@@ -1011,7 +1011,7 @@
     </node>
     <node
       class="ToolBar"
-      base_file="../wxui_generated/form_toolbar_base"
+      base_file="form_toolbar_base"
       size="-1,32">
       <node
         class="tool"
@@ -1043,7 +1043,7 @@
       title="Notebook"
       minimum_size="-1,-1"
       size="-1,-1"
-      base_file="../wxui_generated/notebook_base"
+      base_file="notebook_base"
       derived_class_name="Notebook">
       <node
         class="wxBoxSizer"
@@ -1118,7 +1118,7 @@
       title="NoteBook Dialog"
       minimum_size="-1,-1"
       size="-1,-1"
-      base_file="../wxui_generated/other_ctrls_base"
+      base_file="other_ctrls_base"
       derived_class_name="OtherCtrlsDlg"
       derived_file="../ui/other_ctrls">
       <node
@@ -1283,7 +1283,7 @@
       background_colour="wxSYS_COLOUR_INFOBK"
       border="wxBORDER_RAISED"
       class_name="PopupWinBase"
-      base_file="../wxui_generated/popupwin_base"
+      base_file="popupwin_base"
       derived_class_name="PopupWin"
       derived_file="../ui/popupwin">
       <node
@@ -1302,7 +1302,7 @@
       style="wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER"
       title="Ribbon Dialog"
       size="-1,-1"
-      base_file="../wxui_generated/ribbondlg_base"
+      base_file="ribbondlg_base"
       derived_class_name="RibbonDlg"
       derived_file="../ui/ribbondlg">
       <node
@@ -1439,7 +1439,7 @@
       class="wxDialog"
       class_name="ToolbookBase"
       title="wxToolbook"
-      base_file="../wxui_generated/toolbook_base"
+      base_file="toolbook_base"
       derived_class_name="Toolbook">
       <node
         class="wxBoxSizer"
@@ -1508,7 +1508,7 @@
       class="wxDialog"
       class_name="TreebookBase"
       title="Treebook"
-      base_file="../wxui_generated/treebook_base"
+      base_file="treebook_base"
       derived_class_name="Treebook">
       <node
         class="wxBoxSizer"

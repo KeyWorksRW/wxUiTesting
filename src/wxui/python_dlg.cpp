@@ -7,26 +7,10 @@
 
 // clang-format off
 
+#include <wx/button.h>
 #include <wx/sizer.h>
 
 #include "python_dlg.h"
-
-#include <wx/mstream.h>  // memory stream classes
-
-// Convert a data array into a wxImage
-inline wxImage wxueImage(const unsigned char* data, size_t size_data)
-{
-    wxMemoryInputStream strm(data, size_data);
-    wxImage image;
-    image.LoadFile(strm);
-    return image;
-};
-
-namespace wxue_img
-{
-    extern const unsigned char english_png[541];
-    extern const unsigned char japanese_png[377];
-}
 
 bool PythonDlg::Create(wxWindow* parent, wxWindowID id, const wxString& title,
     const wxPoint& pos, const wxSize& size, long style, const wxString &name)
@@ -34,38 +18,16 @@ bool PythonDlg::Create(wxWindow* parent, wxWindowID id, const wxString& title,
     if (!wxDialog::Create(parent, id, title, pos, size, style, name))
         return false;
 
-    if (!wxImage::FindHandler(wxBITMAP_TYPE_PNG))
-        wxImage::AddHandler(new wxPNGHandler);
-
     auto* bSizer1 = new wxBoxSizer(wxVERTICAL);
-    {
-        wxString radioBox_choices[] = {
-            "Radio Button ",
-            "fooish ",
-            "bar none "
-        };
-        // Trailing spaces added to avoid clipping
-        m_radioBox = new wxRadioBox(this, wxID_ANY, "My Radio Box", wxDefaultPosition, wxDefaultSize, 3,
-            radioBox_choices, 0, wxRA_SPECIFY_COLS);
-    }
-    bSizer1->Add(m_radioBox, wxSizerFlags().Border(wxALL));
-
-    auto* box_sizer_3 = new wxBoxSizer(wxHORIZONTAL);
-
-    m_btn = new wxButton(this, wxID_ANY, "MyButton");
-    box_sizer_3->Add(m_btn, wxSizerFlags().Border(wxALL));
-
-    m_btn_2 = new wxCommandLinkButton(this, wxID_ANY, "MyButton", "my note");
-        m_btn_2->SetBitmap(wxBitmapBundle::FromBitmap(wxueImage(wxue_img::english_png, sizeof(wxue_img::english_png))));
-    box_sizer_3->Add(m_btn_2, wxSizerFlags().Border(wxALL));
-
-    m_toggleBtn = new wxToggleButton(this, wxID_ANY, "MyButton");
-        m_toggleBtn->SetBitmap(wxBitmapBundle::FromBitmap(wxueImage(wxue_img::japanese_png, sizeof(wxue_img::japanese_png))));
-    box_sizer_3->Add(m_toggleBtn, wxSizerFlags().Border(wxALL));
-
-    bSizer1->Add(box_sizer_3, wxSizerFlags().Border(wxALL));
 
     auto* box_sizer = new wxBoxSizer(wxVERTICAL);
+
+    m_staticText = new wxStaticText(this, wxID_ANY, wxString::FromUTF8("wxPython est génial n\'est-ce pas?"),
+        ConvertDialogToPixels(wxPoint(50, 100)), ConvertDialogToPixels(wxSize(150, 32)), wxALIGN_CENTER_HORIZONTAL,
+        "my_text");
+    m_staticText->SetWindowVariant(wxWINDOW_VARIANT_LARGE);
+    m_staticText->SetForegroundColour(wxColour(0, 128, 0));
+    box_sizer->Add(m_staticText, wxSizerFlags().Center().Border(wxALL));
 
     bSizer1->Add(box_sizer, wxSizerFlags().Expand().Border(wxALL));
 
