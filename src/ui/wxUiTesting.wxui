@@ -156,12 +156,16 @@
     </node>
     <node
       class="wxDialog"
-      class_name="CommonCtrlsBase"
+      class_name="CommonCtrls"
       style="wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER"
       title="Common controls"
-      base_file="commonctrls_base"
+      base_file="commonctrls"
+      base_hdr_includes="#include &quot;popupwin.h&quot;  // PopupWin -- Popup Window"
       derived_class_name="CommonCtrls"
       derived_file="../ui/commonctrls"
+      inserted_hdr_code="public:@@    ~CommonCtrls();@@@@private:@@    PopupWin* m_popup_win { nullptr };"
+      use_derived_class="0"
+      wxEVT_INIT_DIALOG="OnInit"
       wxEVT_CONTEXT_MENU="OnContextMenu">
       <node
         class="wxBoxSizer"

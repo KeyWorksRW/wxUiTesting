@@ -19,7 +19,7 @@
 
 #include "../custom_ctrls/split_button.h"
 
-#include "commonctrls_base.h"
+#include "commonctrls.h"
 
 #include "../art/clr_hourglass_gif.hxx"
 #include "../art/empty.xpm"
@@ -51,8 +51,8 @@ inline wxAnimation wxueAnimation(const unsigned char* data, size_t size_data)
     return animation;
 };
 
-bool CommonCtrlsBase::Create(wxWindow* parent, wxWindowID id, const wxString& title,
-        const wxPoint& pos, const wxSize& size, long style, const wxString &name)
+bool CommonCtrls::Create(wxWindow* parent, wxWindowID id, const wxString& title,
+    const wxPoint& pos, const wxSize& size, long style, const wxString &name)
 {
     if (!wxDialog::Create(parent, id, title, pos, size, style, name))
         return false;
@@ -341,7 +341,8 @@ bool CommonCtrlsBase::Create(wxWindow* parent, wxWindowID id, const wxString& ti
     Centre(wxBOTH);
 
     // Event handlers
-    Bind(wxEVT_CONTEXT_MENU, &CommonCtrlsBase::OnContextMenu, this);
+    Bind(wxEVT_INIT_DIALOG, &CommonCtrls::OnInit, this);
+    Bind(wxEVT_CONTEXT_MENU, &CommonCtrls::OnContextMenu, this);
     m_textCtrl->Bind(wxEVT_TEXT_ENTER,
         [this](wxCommandEvent&)
         {
@@ -361,15 +362,15 @@ bool CommonCtrlsBase::Create(wxWindow* parent, wxWindowID id, const wxString& ti
             m_infoBar->ShowMessage("wxEVT_BUTTON event");
             Fit();
         } );
-    btn2->Bind(wxEVT_BUTTON, &CommonCtrlsBase::OnPopupBtn, this);
+    btn2->Bind(wxEVT_BUTTON, &CommonCtrls::OnPopupBtn, this);
     m_radioBtn->Bind(wxEVT_RADIOBUTTON,
         [this](wxCommandEvent&)
         {
             m_infoBar->ShowMessage("wxEVT_RADIOBUTTON event");
             Fit();
         } );
-    m_radioBtn2->Bind(wxEVT_RADIOBUTTON, &CommonCtrlsBase::OnRadio, this);
-    m_checkBox2->Bind(wxEVT_CHECKBOX, &CommonCtrlsBase::OnCheckBox, this);
+    m_radioBtn2->Bind(wxEVT_RADIOBUTTON, &CommonCtrls::OnRadio, this);
+    m_checkBox2->Bind(wxEVT_CHECKBOX, &CommonCtrls::OnCheckBox, this);
     m_comboBox->Bind(wxEVT_COMBOBOX,
         [this](wxCommandEvent&)
         {
@@ -394,11 +395,11 @@ bool CommonCtrlsBase::Create(wxWindow* parent, wxWindowID id, const wxString& ti
             m_infoBar->ShowMessage("wxEVT_CHOICE event");
             Fit();
         } );
-    m_choice2->Bind(wxEVT_CHOICE, &CommonCtrlsBase::OnChoice, this);
-    m_listbox->Bind(wxEVT_LISTBOX, &CommonCtrlsBase::OnListBox, this);
-    m_listBox2->Bind(wxEVT_LISTBOX, &CommonCtrlsBase::OnListBox, this);
-    m_checkList->Bind(wxEVT_CHECKLISTBOX, &CommonCtrlsBase::OnListChecked, this);
-    m_radioBox->Bind(wxEVT_RADIOBOX, &CommonCtrlsBase::OnRadioBox, this);
+    m_choice2->Bind(wxEVT_CHOICE, &CommonCtrls::OnChoice, this);
+    m_listbox->Bind(wxEVT_LISTBOX, &CommonCtrls::OnListBox, this);
+    m_listBox2->Bind(wxEVT_LISTBOX, &CommonCtrls::OnListBox, this);
+    m_checkList->Bind(wxEVT_CHECKLISTBOX, &CommonCtrls::OnListChecked, this);
+    m_radioBox->Bind(wxEVT_RADIOBOX, &CommonCtrls::OnRadioBox, this);
     m_checkPlayAnimation->Bind(wxEVT_CHECKBOX,
         [this](wxCommandEvent&)
         {
@@ -435,12 +436,12 @@ bool CommonCtrlsBase::Create(wxWindow* parent, wxWindowID id, const wxString& ti
             m_infoBar->ShowMessage("wxEVT_LIST_BEGIN_DRAG event");
             Fit();
         } );
-    m_slider->Bind(wxEVT_SLIDER, &CommonCtrlsBase::OnSlider, this);
+    m_slider->Bind(wxEVT_SLIDER, &CommonCtrls::OnSlider, this);
 
     return true;
 }
 
-void CommonCtrlsBase::OnContextMenu(wxContextMenuEvent& event)
+void CommonCtrls::OnContextMenu(wxContextMenuEvent& event)
 {
     wxMenu menu;
     auto pmenu = &menu;  // convenience variable for the auto-generated code
@@ -556,3 +557,85 @@ namespace wxue_img
 //
 // clang-format on
 // ***********************************************
+
+/////////////////// Non-generated Copyright/License Info ////////////////////
+// Purpose:   Common controls dialog
+// Author:    Ralph Walden
+// Copyright: Copyright (c) 2020-2023 KeyWorks Software (Ralph Walden)
+// License:   Apache License -- see ../../LICENSE
+/////////////////////////////////////////////////////////////////////////////
+
+#include <wx/artprov.h>
+
+#include "mainframe.h"  // auto-generated: ../wxui_generated/mainframe_base.h and ../wxui_generated/mainframe_base.cpp
+
+void MainFrame::OnCommonDialog(wxCommandEvent& WXUNUSED(event))
+{
+    CommonCtrls dlg(this);
+    dlg.ShowModal();
+}
+
+void CommonCtrls::OnInit(wxInitDialogEvent& event)
+{
+    m_bmpComboBox->Append("Home", wxArtProvider::GetBitmap(wxART_GO_HOME, wxART_MENU));
+    m_bmpComboBox->Append("Print", wxArtProvider::GetBitmap(wxART_PRINT, wxART_MENU));
+
+    event.Skip();  // transfer all validator data to their windows and update UI
+}
+
+CommonCtrls::~CommonCtrls()
+{
+    delete m_popup_win;
+}
+
+void CommonCtrls::OnListChecked(wxCommandEvent& WXUNUSED(event))
+{
+    m_infoBar->ShowMessage("wxEVT_CHECKLISTBOX event");
+    Fit();
+}
+
+void CommonCtrls::OnRadioBox(wxCommandEvent& WXUNUSED(event))
+{
+    m_infoBar->ShowMessage("wxEVT_RADIOBOX event");
+    Fit();
+}
+
+void CommonCtrls::OnSlider(wxCommandEvent& WXUNUSED(event))
+{
+    m_infoBar->ShowMessage("wxEVT_SLIDER event");
+    Fit();
+}
+
+void CommonCtrls::OnListBox(wxCommandEvent& WXUNUSED(event))
+{
+    m_infoBar->ShowMessage("wxEVT_LISTBOX event");
+    Fit();
+}
+
+void CommonCtrls::OnCheckBox(wxCommandEvent& WXUNUSED(event))
+{
+    // TODO: Implement OnCheckBox
+}
+
+void CommonCtrls::OnChoice(wxCommandEvent& WXUNUSED(event))
+{
+    // TODO: Implement OnChoice
+}
+
+void CommonCtrls::OnRadio(wxCommandEvent& WXUNUSED(event))
+{
+    // TODO: Implement OnRadio
+}
+
+void CommonCtrls::OnPopupBtn(wxCommandEvent& event)
+{
+    if (m_popup_win)
+        delete m_popup_win;
+    m_popup_win = new PopupWin(this);
+
+    auto btn = wxStaticCast(event.GetEventObject(), wxWindow);
+    auto pos = btn->ClientToScreen(wxPoint(0, 0));
+    m_popup_win->Position(pos, btn->GetSize());
+
+    m_popup_win->Popup();
+}

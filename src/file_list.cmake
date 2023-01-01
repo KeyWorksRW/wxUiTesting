@@ -16,7 +16,7 @@ set (file_list
 
     custom_ctrls/split_button.cpp  # Split Button Custom widget (button + menu)
 
-    ui/commonctrls.cpp
+    # ui/commonctrls.cpp
     ui/dlgmultitest.cpp
     ui/mainframe.cpp
     ui/other_ctrls.cpp
@@ -30,7 +30,7 @@ set (file_list
 set(wxui_file_list
 
     wxui/choicebook.cpp
-    wxui/commonctrls_base.cpp
+    wxui/commonctrls.cpp
     wxui/dlgmultitest_base.cpp
     wxui/form_toolbar_base.cpp
     wxui/import_test_base.cpp

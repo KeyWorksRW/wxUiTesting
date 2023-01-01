@@ -7,7 +7,6 @@
 
 #include "mainframe.h"  // auto-generated: ../wxui_generated/mainframe_base.h and ../wxui_generated/mainframe_base.cpp
 
-#include "commonctrls.h"   // CommonCtrls -- Common controls dialog
 #include "dlgmultitest.h"  // DlgMultiTest -- Multiple Tests dialog
 #include "other_ctrls.h"   // OtherCtrlsDlg
 #include "ribbondlg.h"     // RibbonDlg
@@ -27,12 +26,6 @@ MainFrame::MainFrame(wxWindow* parent) : MainFrameBase(parent) {}
 void MainFrame::OnMultiTestDialog(wxCommandEvent& WXUNUSED(event))
 {
     DlgMultiTest dlg(this);
-    dlg.ShowModal();
-}
-
-void MainFrame::OnCommonDialog(wxCommandEvent& WXUNUSED(event))
-{
-    CommonCtrls dlg(this);
     dlg.ShowModal();
 }
 

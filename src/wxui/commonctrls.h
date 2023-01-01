@@ -39,11 +39,13 @@ namespace wxue_ctrl
 class SplitButton;
 }
 
-class CommonCtrlsBase : public wxDialog
+#include "popupwin.h"  // PopupWin -- Popup Window
+
+class CommonCtrls : public wxDialog
 {
 public:
-    CommonCtrlsBase() {}
-    CommonCtrlsBase(wxWindow *parent, wxWindowID id = wxID_ANY, const wxString& title = "Common controls",
+    CommonCtrls() {}
+    CommonCtrls(wxWindow *parent, wxWindowID id = wxID_ANY, const wxString& title = "Common controls",
         const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize,
         long style = wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER, const wxString &name = wxDialogNameStr)
     {
@@ -54,19 +56,26 @@ public:
         const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxDefaultSize,
         long style = wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER, const wxString &name = wxDialogNameStr);
 
+public:
+    ~CommonCtrls();
+
+private:
+    PopupWin* m_popup_win { nullptr };
+
 protected:
 
-    // Virtual event handlers -- override them in your derived class
+    // Event handlers
 
-    virtual void OnCheckBox(wxCommandEvent& event) { event.Skip(); }
-    virtual void OnChoice(wxCommandEvent& event) { event.Skip(); }
-    virtual void OnListBox(wxCommandEvent& event) { event.Skip(); }
-    virtual void OnListChecked(wxCommandEvent& event) { event.Skip(); }
-    virtual void OnPopupBtn(wxCommandEvent& event) { event.Skip(); }
-    virtual void OnRadio(wxCommandEvent& event) { event.Skip(); }
-    virtual void OnRadioBox(wxCommandEvent& event) { event.Skip(); }
-    virtual void OnSlider(wxCommandEvent& event) { event.Skip(); }
+    void OnCheckBox(wxCommandEvent& event);
+    void OnChoice(wxCommandEvent& event);
     void OnContextMenu(wxContextMenuEvent& event);
+    void OnInit(wxInitDialogEvent& event);
+    void OnListBox(wxCommandEvent& event);
+    void OnListChecked(wxCommandEvent& event);
+    void OnPopupBtn(wxCommandEvent& event);
+    void OnRadio(wxCommandEvent& event);
+    void OnRadioBox(wxCommandEvent& event);
+    void OnSlider(wxCommandEvent& event);
 
     // Validator variables
 
