@@ -14,8 +14,6 @@ set (file_list
 
     custom_ctrls/split_button.cpp  # Split Button Custom widget (button + menu)
 
-    ui/mainframe.cpp
-
 )
 
 # Manually maintained from wxui/wxui_generated.cmake
@@ -27,7 +25,7 @@ set(wxui_file_list
     wxui/form_toolbar_base.cpp
     wxui/import_test.cpp
     wxui/listbook.cpp
-    wxui/mainframe_base.cpp
+    wxui/mainframe.cpp
     wxui/my_images.cpp
     wxui/notebook.cpp
     wxui/other_ctrls.cpp

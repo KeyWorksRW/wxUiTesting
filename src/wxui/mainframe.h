@@ -15,30 +15,30 @@
 #include <wx/statusbr.h>
 #include <wx/toolbar.h>
 
-class MainFrameBase : public wxFrame
+class MainFrame : public wxFrame
 {
 public:
-    MainFrameBase(wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = "wxUiTesting",
+    MainFrame(wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = "wxUiTesting",
         const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize(500, 300),
         long style = wxDEFAULT_FRAME_STYLE|wxTAB_TRAVERSAL);
 
 protected:
 
-    // Virtual event handlers -- override them in your derived class
+    // Event handlers
 
-    virtual void OnChoicebook(wxCommandEvent& event) { event.Skip(); }
-    virtual void OnCommonDialog(wxCommandEvent& event) { event.Skip(); }
-    virtual void OnImportTest(wxCommandEvent& event) { event.Skip(); }
-    virtual void OnListbook(wxCommandEvent& event) { event.Skip(); }
-    virtual void OnMultiTestDialog(wxCommandEvent& event) { event.Skip(); }
-    virtual void OnNotebook(wxCommandEvent& event) { event.Skip(); }
-    virtual void OnOtherCtrls(wxCommandEvent& event) { event.Skip(); }
-    virtual void OnPythonDlg(wxCommandEvent& event) { event.Skip(); }
-    virtual void OnQuit(wxCommandEvent& event) { event.Skip(); }
-    virtual void OnRibbonDialog(wxCommandEvent& event) { event.Skip(); }
-    virtual void OnToolbook(wxCommandEvent& event) { event.Skip(); }
-    virtual void OnTreebook(wxCommandEvent& event) { event.Skip(); }
-    virtual void OnWizard(wxCommandEvent& event) { event.Skip(); }
+    void OnChoicebook(wxCommandEvent& event);
+    void OnCommonDialog(wxCommandEvent& event);
+    void OnImportTest(wxCommandEvent& event);
+    void OnListbook(wxCommandEvent& event);
+    void OnMultiTestDialog(wxCommandEvent& event);
+    void OnNotebook(wxCommandEvent& event);
+    void OnOtherCtrls(wxCommandEvent& event);
+    void OnPythonDlg(wxCommandEvent& event);
+    void OnQuit(wxCommandEvent& event);
+    void OnRibbonDialog(wxCommandEvent& event);
+    void OnToolbook(wxCommandEvent& event);
+    void OnTreebook(wxCommandEvent& event);
+    void OnWizard(wxCommandEvent& event);
 
     // Class member variables
 

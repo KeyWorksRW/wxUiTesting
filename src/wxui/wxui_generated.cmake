@@ -10,7 +10,7 @@ set (wxui_generated
     ${CMAKE_CURRENT_LIST_DIR}/form_toolbar_base.cpp
     ${CMAKE_CURRENT_LIST_DIR}/import_test.cpp
     ${CMAKE_CURRENT_LIST_DIR}/listbook.cpp
-    ${CMAKE_CURRENT_LIST_DIR}/mainframe_base.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/mainframe.cpp
     ${CMAKE_CURRENT_LIST_DIR}/my_images.cpp
     ${CMAKE_CURRENT_LIST_DIR}/notebook.cpp
     ${CMAKE_CURRENT_LIST_DIR}/other_ctrls.cpp

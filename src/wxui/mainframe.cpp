@@ -13,7 +13,7 @@
 #include <wx/image.h>
 #include <wx/menu.h>
 
-#include "mainframe_base.h"
+#include "mainframe.h"
 
 #include <wx/mstream.h>  // memory stream classes
 
@@ -26,7 +26,7 @@ inline wxImage wxueImage(const unsigned char* data, size_t size_data)
     return image;
 };
 
-MainFrameBase::MainFrameBase(wxWindow* parent, wxWindowID id, const wxString& title,
+MainFrame::MainFrame(wxWindow* parent, wxWindowID id, const wxString& title,
     const wxPoint& pos, const wxSize& size, long style) : wxFrame(parent, id, title, pos, size, style)
 {
     if (!wxImage::FindHandler(wxBITMAP_TYPE_PNG))
@@ -116,23 +116,23 @@ MainFrameBase::MainFrameBase(wxWindow* parent, wxWindowID id, const wxString& ti
     Centre(wxBOTH);
 
     // Event handlers
-    Bind(wxEVT_MENU, &MainFrameBase::OnPythonDlg, this, menu_item_2->GetId());
-    Bind(wxEVT_MENU, &MainFrameBase::OnCommonDialog, this, menuItem_2->GetId());
-    Bind(wxEVT_MENU, &MainFrameBase::OnMultiTestDialog, this, menuItem->GetId());
-    Bind(wxEVT_MENU, &MainFrameBase::OnImportTest, this, menu_item->GetId());
-    Bind(wxEVT_MENU, &MainFrameBase::OnOtherCtrls, this, menuItem1->GetId());
-    Bind(wxEVT_MENU, &MainFrameBase::OnRibbonDialog, this, menuItem2->GetId());
-    Bind(wxEVT_MENU, &MainFrameBase::OnWizard, this, menuItem3->GetId());
-    Bind(wxEVT_MENU, &MainFrameBase::OnChoicebook, this, menu_choicebook->GetId());
-    Bind(wxEVT_MENU, &MainFrameBase::OnListbook, this, menu_listbook->GetId());
-    Bind(wxEVT_MENU, &MainFrameBase::OnNotebook, this, menu_notebook->GetId());
-    Bind(wxEVT_MENU, &MainFrameBase::OnToolbook, this, menu_toolbook->GetId());
-    Bind(wxEVT_MENU, &MainFrameBase::OnTreebook, this, menu_treebook->GetId());
-    Bind(wxEVT_MENU, &MainFrameBase::OnQuit, this, wxID_EXIT);
-    Bind(wxEVT_TOOL, &MainFrameBase::OnPythonDlg, this, tool_4->GetId());
-    Bind(wxEVT_TOOL, &MainFrameBase::OnCommonDialog, this, tool_2->GetId());
-    Bind(wxEVT_TOOL, &MainFrameBase::OnMultiTestDialog, this, tool->GetId());
-    Bind(wxEVT_TOOL, &MainFrameBase::OnImportTest, this, tool_3->GetId());
+    Bind(wxEVT_MENU, &MainFrame::OnPythonDlg, this, menu_item_2->GetId());
+    Bind(wxEVT_MENU, &MainFrame::OnCommonDialog, this, menuItem_2->GetId());
+    Bind(wxEVT_MENU, &MainFrame::OnMultiTestDialog, this, menuItem->GetId());
+    Bind(wxEVT_MENU, &MainFrame::OnImportTest, this, menu_item->GetId());
+    Bind(wxEVT_MENU, &MainFrame::OnOtherCtrls, this, menuItem1->GetId());
+    Bind(wxEVT_MENU, &MainFrame::OnRibbonDialog, this, menuItem2->GetId());
+    Bind(wxEVT_MENU, &MainFrame::OnWizard, this, menuItem3->GetId());
+    Bind(wxEVT_MENU, &MainFrame::OnChoicebook, this, menu_choicebook->GetId());
+    Bind(wxEVT_MENU, &MainFrame::OnListbook, this, menu_listbook->GetId());
+    Bind(wxEVT_MENU, &MainFrame::OnNotebook, this, menu_notebook->GetId());
+    Bind(wxEVT_MENU, &MainFrame::OnToolbook, this, menu_toolbook->GetId());
+    Bind(wxEVT_MENU, &MainFrame::OnTreebook, this, menu_treebook->GetId());
+    Bind(wxEVT_MENU, &MainFrame::OnQuit, this, wxID_EXIT);
+    Bind(wxEVT_TOOL, &MainFrame::OnPythonDlg, this, tool_4->GetId());
+    Bind(wxEVT_TOOL, &MainFrame::OnCommonDialog, this, tool_2->GetId());
+    Bind(wxEVT_TOOL, &MainFrame::OnMultiTestDialog, this, tool->GetId());
+    Bind(wxEVT_TOOL, &MainFrame::OnImportTest, this, tool_3->GetId());
 }
 
 namespace wxue_img
@@ -199,3 +199,16 @@ namespace wxue_img
 //
 // clang-format on
 // ***********************************************
+
+/////////////////// Non-generated Copyright/License Info ////////////////////
+// Purpose:   Main Window
+// Author:    Ralph Walden
+// Copyright: Copyright (c) 2020-2023 KeyWorks Software (Ralph Walden)
+// License:   Apache License -- see ../../LICENSE
+/////////////////////////////////////////////////////////////////////////////
+
+void MainFrame::OnQuit(wxCommandEvent& WXUNUSED(event))
+{
+    // true forces the frame to close
+    Close(true);
+}

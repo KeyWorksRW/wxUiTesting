@@ -28,7 +28,7 @@
 
 #include "mainapp.h"  // MainApp
 
-#include "ui/mainframe.h"  // MainFrame -- Main window
+#include "mainframe.h"  // MainFrame -- Main window
 
 wxIMPLEMENT_APP(MainApp);
 

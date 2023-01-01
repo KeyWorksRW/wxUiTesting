@@ -23,11 +23,12 @@
     </node>
     <node
       class="wxFrame"
-      class_name="MainFrameBase"
+      class_name="MainFrame"
       title="wxUiTesting"
-      base_file="mainframe_base"
+      base_file="mainframe"
       derived_class_name="MainFrame"
       derived_file="../ui/mainframe"
+      use_derived_class="0"
       python_file="mainframe_base"
       python_inherit_name="mainframe"
       size="500,300"
