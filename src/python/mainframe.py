@@ -11,11 +11,14 @@ import python_dlg
 import wizard
 
 class MainFrame(wx.Frame):
-    def __init__(self, parent):
-        wx.Frame.__init__(self, parent, id=wx.ID_ANY,
-            title="wxUiTesting",
-            pos=wx.DefaultPosition, size=wx.Size(500, 300),
-            style=wx.DEFAULT_FRAME_STYLE)
+
+    def __init__(self, parent, id=wx.ID_ANY, title="wxUiTesting", pos=
+                wx.DefaultPosition, size=wx.Size(500, 300),
+                style=wx.DEFAULT_FRAME_STYLE|wx.TAB_TRAVERSAL,
+                name=wx.FrameNameStr):
+        wx.Frame.__init__(self)
+
+        self.Create(parent, id, title, pos, size, style, name)
 
         menubar = wx.MenuBar()
 
