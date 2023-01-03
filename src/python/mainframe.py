@@ -8,6 +8,7 @@
 import wx
 
 import python_dlg
+import wizard
 
 class MainFrame(wx.Frame):
     def __init__(self, parent):
@@ -25,8 +26,8 @@ class MainFrame(wx.Frame):
                     wx.Bitmap("../art/wxPython_2x.png") ]
         menu_item_2.SetBitmap(wx.BitmapBundle.FromBitmaps(bitmaps))
         menuDialogs.Append(menu_item_2)
-        menuItem_2 = wx.MenuItem(menuDialogs, wx.ID_ANY, "Common Controls...", "Common controls",
-            wx.ITEM_NORMAL)
+        menuItem_2 = wx.MenuItem(menuDialogs, wx.ID_ANY, "Common Controls...",
+            "Common controls", wx.ITEM_NORMAL)
         menuItem_2.SetBitmap(wx.ArtProvider.GetBitmapBundle(wx.ART_TIP, wx.ART_MENU))
         menuDialogs.Append(menuItem_2)
         menuItem = wx.MenuItem(menuDialogs, wx.ID_ANY, "DlgMulitTest...",
@@ -64,8 +65,8 @@ class MainFrame(wx.Frame):
         self.SetMenuBar(menubar)
 
         self.m_toolBar = self.CreateToolBar()
-        tool_4 = self.m_toolBar.AddTool(wx.ID_ANY, "PythonDlg", wx.BitmapBundle.FromBitmap(wx.Bitmap(
-        "../art/wxPython_1_5x.png")))
+        tool_4 = self.m_toolBar.AddTool(wx.ID_ANY, "PythonDlg", wx.BitmapBundle.FromBitmap(
+            wx.Bitmap("../art/wxPython_1_5x.png")))
 
         tool_2 = self.m_toolBar.AddTool(wx.ID_ANY, "Common Controls...",
             wx.ArtProvider.GetBitmapBundle(wx.ART_TIP, wx.ART_TOOLBAR))
@@ -74,9 +75,9 @@ class MainFrame(wx.Frame):
             wx.ArtProvider.GetBitmapBundle(wx.ART_INFORMATION, wx.ART_TOOLBAR), wx.NullBitmap,
             wx.ITEM_NORMAL, "Launch DlgMultiTest Dialog", "Launch DlgMultiTest Dialog")
 
-        tool_3 = self.m_toolBar.AddTool(wx.ID_ANY, "ImportTest", wx.ArtProvider.GetBitmapBundle(
-            wx.ART_GOTO_LAST, wx.ART_TOOLBAR), wx.NullBitmap, wx.ITEM_NORMAL, "Import Test",
-            "Import Test")
+        tool_3 = self.m_toolBar.AddTool(wx.ID_ANY, "ImportTest",
+            wx.ArtProvider.GetBitmapBundle(wx.ART_GOTO_LAST, wx.ART_TOOLBAR), wx.NullBitmap,
+            wx.ITEM_NORMAL, "Import Test", "Import Test")
 
         self.m_toolBar.Realize()
 
@@ -87,7 +88,7 @@ class MainFrame(wx.Frame):
 
         self.Centre(wx.BOTH)
 
-        # Bind Event handlers to inherited mainframe class functions
+        # Bind Event handlers
         self.Bind(wx.EVT_MENU, self.OnPythonDlg, id=menu_item_2.GetId())
         self.Bind(wx.EVT_MENU, self.OnCommonDialog, id=menuItem_2.GetId())
         self.Bind(wx.EVT_MENU, self.OnMultiTestDialog, id=menuItem.GetId())
@@ -106,17 +107,68 @@ class MainFrame(wx.Frame):
         self.Bind(wx.EVT_TOOL, self.OnMultiTestDialog, id=tool.GetId())
         self.Bind(wx.EVT_TOOL, self.OnImportTest, id=tool_3.GetId())
 
+    # Event handler functions
+    # Add these below the comment block, or to your inherited class.
+    """
+    def OnPythonDlg(self, event):
+        event.Skip()
+
+    def OnCommonDialog(self, event):
+        event.Skip()
+
+    def OnMultiTestDialog(self, event):
+        event.Skip()
+
+    def OnImportTest(self, event):
+        event.Skip()
+
+    def OnOtherCtrls(self, event):
+        event.Skip()
+
+    def OnRibbonDialog(self, event):
+        event.Skip()
+
+    def OnWizard(self, event):
+        event.Skip()
+
+    def OnChoicebook(self, event):
+        event.Skip()
+
+    def OnListbook(self, event):
+        event.Skip()
+
+    def OnNotebook(self, event):
+        event.Skip()
+
+    def OnToolbook(self, event):
+        event.Skip()
+
+    def OnTreebook(self, event):
+        event.Skip()
+
+    def OnQuit(self, event):
+        event.Skip()
+
+    def OnPythonDlg(self, event):
+        event.Skip()
+
+    def OnCommonDialog(self, event):
+        event.Skip()
+
+    def OnMultiTestDialog(self, event):
+        event.Skip()
+
+    def OnImportTest(self, event):
+        event.Skip()
+
+    """
+
 # ************* End of generated code ***********
 # DO NOT EDIT THIS COMMENT BLOCK!
 #
 # Code below this comment block will be preserved
 # if the code for this class is re-generated.
 # ***********************************************
-
-# The original file was missing the comment block ending the generated code!
-#
-# The entire original file has been copied below this comment block.
-
 
     # Event handler functions
     def OnChoicebook(self, event):
@@ -153,9 +205,11 @@ class MainFrame(wx.Frame):
         event.Skip()
 
     def OnWizard(self, event):
-        event.Skip()
+        my_wizard = wizard.Wizard(self)
+        my_wizard.Run()
+        my_wizard.Destroy()
 
     def OnPythonDlg(self, event):
-        dlg = python_dlg.PythonDlg(self)
+        dlg = python_dlg.PythonDlg(self, title="PythonDlg")
         dlg.ShowModal()
         dlg.Destroy()
