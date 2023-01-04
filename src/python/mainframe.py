@@ -18,7 +18,8 @@ class MainFrame(wx.Frame):
                 name=wx.FrameNameStr):
         wx.Frame.__init__(self)
 
-        self.Create(parent, id, title, pos, size, style, name)
+        if not self.Create(parent, id, title, pos, size, style, name):
+            return
 
         menubar = wx.MenuBar()
 
@@ -59,7 +60,6 @@ class MainFrame(wx.Frame):
         menu_treebook = wx.MenuItem(submenu, wx.ID_ANY, "Treebook")
         submenu.Append(menu_treebook)
         menuDialogs.AppendSubMenu(submenu, "Book Controls")
-
         menuDialogs.AppendSeparator()
         menuItem4 = wx.MenuItem(menuDialogs, wx.ID_EXIT, "Exit")
         menuDialogs.Append(menuItem4)
