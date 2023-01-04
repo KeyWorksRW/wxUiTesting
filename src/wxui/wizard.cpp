@@ -17,16 +17,16 @@ namespace wxue_img
     extern const unsigned char wiztest_png[1239];
 }
 
-Wizard::Wizard(wxWindow* parent, wxWindowID id, const wxString& title,
-        const wxPoint& pos, long style) : wxWizard()
+Wizard::Wizard(wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, long style) : wxWizard()
 {
-    SetExtraStyle(wxWIZARD_EX_HELPBUTTON);
-    SetBorder(15);
-
     if (!wxImage::FindHandler(wxBITMAP_TYPE_PNG))
         wxImage::AddHandler(new wxPNGHandler);
 
-    Create(parent, id, title, wxue_img::bundle_wiztest_png(), pos, style);
+    SetExtraStyle(GetExtraStyle() | wxWIZARD_EX_HELPBUTTON);
+    SetBorder(15);
+    if (!Create(parent, id, title, wxue_img::bundle_wiztest_png(), pos, style))
+        return;
+
     auto* wizPage = new wxWizardPageSimple(this);
 
     auto* box_sizer = new wxBoxSizer(wxHORIZONTAL);
@@ -56,6 +56,7 @@ Wizard::Wizard(wxWindow* parent, wxWindowID id, const wxString& title,
     Center(wxBOTH);
 
     // Event handlers
+    Bind(wxEVT_INIT_DIALOG, &Wizard::OnInit, this);
     Bind(wxEVT_WIZARD_BEFORE_PAGE_CHANGED, &Wizard::OnBeforeChange, this);
 }
 
@@ -86,4 +87,9 @@ void MainFrame::OnWizard(wxCommandEvent& WXUNUSED(event))
 void Wizard::OnBeforeChange(wxWizardEvent& event)
 {
     event.Skip();
+}
+
+void Wizard::OnInit(wxInitDialogEvent& event)
+{
+    event.Skip();  // transfer all validator data to their windows and update UI
 }

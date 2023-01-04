@@ -60,8 +60,7 @@ bool RibbonDlg::Create(wxWindow* parent, wxWindowID id, const wxString& title,
 
     auto* box_sizer_2 = new wxBoxSizer(wxVERTICAL);
 
-    m_staticText_2 = new wxStaticText(rbnPanel_2, wxID_ANY,
-        wxString::FromUTF8("Ceci est une phrase en français."));
+    m_staticText_2 = new wxStaticText(rbnPanel_2, wxID_ANY, wxString::FromUTF8("Ceci est une phrase en français."));
     m_staticText_2->Wrap(200);
     box_sizer_2->Add(m_staticText_2, wxSizerFlags().Border(wxALL));
 

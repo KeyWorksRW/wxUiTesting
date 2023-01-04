@@ -18,9 +18,9 @@
 class MainFrame : public wxFrame
 {
 public:
-    MainFrame(wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = "wxUiTesting",
-        const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize(500, 300),
-        long style = wxDEFAULT_FRAME_STYLE|wxTAB_TRAVERSAL);
+    MainFrame(wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = "wxUiTesting", const wxPoint& pos =
+        wxDefaultPosition, const wxSize& size = wxSize(500, 300), long style = wxDEFAULT_FRAME_STYLE|wxTAB_TRAVERSAL,
+        const wxString &name = wxFrameNameStr);
 
 protected:
 

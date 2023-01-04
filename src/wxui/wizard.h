@@ -20,10 +20,8 @@
 class Wizard : public wxWizard
 {
 public:
-    Wizard(wxWindow* parent, wxWindowID id = wxID_ANY,
-        const wxString& title = "Wizard Tests",
-        const wxPoint& pos = wxDefaultPosition,
-        long style = wxDEFAULT_DIALOG_STYLE);
+    Wizard(wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = "Wizard Tests", const wxPoint& pos =
+        wxDefaultPosition, long style = wxDEFAULT_DIALOG_STYLE);
 
     bool Run() { return RunWizard((wxWizardPage*) GetPageAreaSizer()->GetItem((size_t) 0)->GetWindow()); }
 
@@ -32,6 +30,7 @@ protected:
     // Event handlers
 
     void OnBeforeChange(wxWizardEvent& event);
+    void OnInit(wxInitDialogEvent& event);
 
     // Class member variables
 

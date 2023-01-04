@@ -8,6 +8,7 @@
     base_directory="../wxui"
     cmake_file="../wxui/wxui_generated.cmake"
     cmake_varname="wxui_generated"
+    cpp_line_length="120"
     derived_directory="../ui"
     generate_cmake="1"
     wxWidgets_version="3.2"
@@ -29,7 +30,7 @@
       derived_class_name="MainFrame"
       derived_file="../ui/mainframe"
       use_derived_class="0"
-      insert_python_code="import python_dlg"
+      insert_python_code="import python_dlg@@import wizard"
       python_file="mainframe"
       python_inherit_name="mainframe"
       size="500,300"
@@ -1021,7 +1022,7 @@
     <node
       class="ToolBar"
       base_file="form_toolbar_base"
-      size="-1,32">
+      size="-1,-1">
       <node
         class="tool"
         bitmap="Embed;../art/english.png"
@@ -1636,6 +1637,9 @@
       derived_class_name="Wizard"
       derived_file="../ui/wizard"
       use_derived_class="0"
+      python_file="wizard"
+      python_inherit_name="Wizard"
+      wxEVT_INIT_DIALOG="OnInit"
       wxEVT_WIZARD_BEFORE_PAGE_CHANGED="OnBeforeChange">
       <node
         class="wxWizardPageSimple">

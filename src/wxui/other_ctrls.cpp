@@ -31,17 +31,15 @@ bool OtherCtrlsDlg::Create(wxWindow* parent, wxWindowID id, const wxString& titl
     m_notebook = new wxNotebook(this, wxID_ANY);
     parent_sizer->Add(m_notebook, wxSizerFlags(1).Expand().Border(wxALL));
 
-    auto* page = new wxPanel(m_notebook, wxID_ANY, wxDefaultPosition, wxDefaultSize,
-        wxBORDER_THEME|wxTAB_TRAVERSAL);
+    auto* page = new wxPanel(m_notebook, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxBORDER_THEME|wxTAB_TRAVERSAL);
     m_notebook->AddPage(page, "Pickers");
 
     auto* parent_sizer2 = new wxBoxSizer(wxVERTICAL);
 
     auto* static_box = new wxStaticBoxSizer(wxVERTICAL, page, "Pickers");
 
-    m_filePicker = new wxFilePickerCtrl(static_box->GetStaticBox(), wxID_ANY, wxEmptyString,
-        wxFileSelectorPromptStr, "BMP files|*.bmp", wxDefaultPosition, wxDefaultSize,
-        wxFLP_USE_TEXTCTRL|wxFLP_OPEN|wxFLP_FILE_MUST_EXIST);
+    m_filePicker = new wxFilePickerCtrl(static_box->GetStaticBox(), wxID_ANY, wxEmptyString, wxFileSelectorPromptStr,
+        "BMP files|*.bmp", wxDefaultPosition, wxDefaultSize, wxFLP_USE_TEXTCTRL|wxFLP_OPEN|wxFLP_FILE_MUST_EXIST);
     static_box->Add(m_filePicker, wxSizerFlags().Border(wxALL));
 
     m_dirPicker = new wxDirPickerCtrl(static_box->GetStaticBox(), wxID_ANY, ".", wxDirSelectorPromptStr,
@@ -58,15 +56,14 @@ bool OtherCtrlsDlg::Create(wxWindow* parent, wxWindowID id, const wxString& titl
     static_box->Add(m_timePicker, wxSizerFlags().Border(wxALL));
 
         m_fontPicker = new wxFontPickerCtrl(static_box->GetStaticBox(), wxID_ANY, wxFont(wxNORMAL_FONT->GetPointSize(),
-        wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, "Comic Sans MS"),
-        wxDefaultPosition, wxDefaultSize, wxFNTP_DEFAULT_STYLE|wxFNTP_USE_TEXTCTRL);
+        wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false, "Comic Sans MS"), wxDefaultPosition,
+        wxDefaultSize, wxFNTP_DEFAULT_STYLE|wxFNTP_USE_TEXTCTRL);
     static_box->Add(m_fontPicker, wxSizerFlags().Border(wxALL));
 
     parent_sizer2->Add(static_box, wxSizerFlags().Expand().Border(wxALL));
     page->SetSizerAndFit(parent_sizer2);
 
-    auto* m_panel2 = new wxPanel(m_notebook, wxID_ANY, wxDefaultPosition, wxDefaultSize,
-        wxBORDER_RAISED|wxTAB_TRAVERSAL);
+    auto* m_panel2 = new wxPanel(m_notebook, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxBORDER_RAISED|wxTAB_TRAVERSAL);
     m_notebook->AddPage(m_panel2, "Spinners", true);
 
     auto* parent_sizer3 = new wxBoxSizer(wxVERTICAL);
@@ -75,8 +72,8 @@ bool OtherCtrlsDlg::Create(wxWindow* parent, wxWindowID id, const wxString& titl
     m_scrollBar->SetScrollbar(0, 1, 100, 1);
     parent_sizer3->Add(m_scrollBar, wxSizerFlags().Expand().Border(wxALL));
 
-    m_spinCtrl = new wxSpinCtrl(m_panel2, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize,
-        wxSP_ARROW_KEYS, 0, 100, 4);
+    m_spinCtrl = new wxSpinCtrl(m_panel2, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxSP_ARROW_KEYS, 0,
+        100, 4);
     m_spinCtrl->SetValidator(wxGenericValidator(&m_spinValidate));
     parent_sizer3->Add(m_spinCtrl, wxSizerFlags().Border(wxALL));
 
@@ -103,8 +100,8 @@ bool OtherCtrlsDlg::Create(wxWindow* parent, wxWindowID id, const wxString& titl
 
     auto* parent_sizer5 = new wxBoxSizer(wxVERTICAL);
 
-    m_richText = new wxRichTextCtrl(m_panel4, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize,
-        wxRE_MULTILINE|wxVSCROLL | wxHSCROLL | wxNO_BORDER | wxWANTS_CHARS);
+    m_richText = new wxRichTextCtrl(m_panel4, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxRE_MULTILINE|
+        wxVSCROLL | wxHSCROLL | wxNO_BORDER | wxWANTS_CHARS);
     parent_sizer5->Add(m_richText, wxSizerFlags(1).Expand().Border(wxALL));
     m_panel4->SetSizerAndFit(parent_sizer5);
 
