@@ -30,7 +30,6 @@
       derived_class_name="MainFrame"
       derived_file="../ui/mainframe"
       use_derived_class="0"
-      insert_python_code="import python_dlg@@import wizard"
       python_file="mainframe"
       python_inherit_name="mainframe"
       size="500,300"
@@ -1361,7 +1360,7 @@
             </node>
             <node
               class="wxRibbonPanel"
-              bitmap="XPM;../art/french.xpm"
+              bitmap="Embed;../art/french.png"
               label="French"
               var_name="rbnPanel_2"
               background_colour="wxSYS_COLOUR_MENU">
@@ -1408,7 +1407,7 @@
                   label="Forward" />
                 <node
                   class="ribbonButton"
-                  bitmap="Art;wxART_GO_BACK|wxART_OTHER"
+                  bitmap="Embed;../art/left.png"
                   label="Backward" />
               </node>
             </node>
@@ -1431,6 +1430,22 @@
                   class="ribbonTool"
                   bitmap="Art;wxART_GOTO_LAST|wxART_TOOLBAR"
                   id="wxID_FILE9" />
+              </node>
+            </node>
+          </node>
+          <node
+            class="wxRibbonPage"
+            label="Fourth"
+            var_name="ribbonPage_3">
+            <node
+              class="wxRibbonPanel"
+              label="Gallery Panel"
+              var_name="rbnPanel_3">
+              <node
+                class="wxRibbonGallery">
+                <node
+                  class="ribbonGalleryItem"
+                  bitmap="Embed;../art/toggle_button.png" />
               </node>
             </node>
           </node>
@@ -1707,6 +1722,9 @@
             variant="large"
             window_name="my_text"
             alignment="wxALIGN_CENTER_VERTICAL|wxALIGN_CENTER_HORIZONTAL" />
+          <node
+            class="wxStaticBitmap"
+            bitmap="Embed;../art/wxPython.png" />
         </node>
         <node
           class="wxStdDialogButtonSizer"

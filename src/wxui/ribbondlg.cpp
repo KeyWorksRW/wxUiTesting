@@ -28,7 +28,9 @@ bool RibbonDlg::Create(wxWindow* parent, wxWindowID id, const wxString& title,
 
     auto* parent_sizer = new wxBoxSizer(wxVERTICAL);
 
-    m_rbnBar = new wxRibbonBar(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxRIBBON_BAR_SHOW_PAGE_LABELS|wxRIBBON_BAR_SHOW_PAGE_ICONS|wxRIBBON_BAR_FLOW_HORIZONTAL);
+    m_rbnBar = new wxRibbonBar(this, wxID_ANY, wxDefaultPosition, wxDefaultSize,
+        wxRIBBON_BAR_SHOW_PAGE_LABELS|wxRIBBON_BAR_SHOW_PAGE_ICONS|wxRIBBON_BAR_FLOW_HORIZONTAL);
+
     m_rbnBar->SetArtProvider(new wxRibbonAUIArtProvider);
     parent_sizer->Add(m_rbnBar, wxSizerFlags().Expand().Border(wxALL));
 

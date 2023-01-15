@@ -7,6 +7,39 @@
 
 import wx
 
+from wx.lib.embeddedimage import PyEmbeddedImage
+
+wxPython_png = PyEmbeddedImage(
+    b"iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAACXBIWXMAAAsTAAALEwEAmpwYAAABQUlE"
+    b"QVQ4y42TMVLDQAxFnwMHoKTMDXKDIB/CJb5CTsCgDG3uwBB3OQIUckpmSBF6MzEHIG06UXgd27ET+DOa"
+    b"3dXO/pW+JOhCVNWTJDH+idHJYwNYrVYiIq6qDsjfNFOMBS4zcXd3VXUzczOrSS5CWOC8BUsrMzN3d5eZ"
+    b"XIziuue5r5Z4E8NzOO8xlkRDBFfAjgPCDWNug3cLTIIR1owIyIcIKErK6JXyPWNNxpoD8M34SABQAiUv"
+    b"gAbP7nhXNM5T6FGflEqLFGdBo0sBUpwRKUkw+2kJPKXqj7S1vwA1w91x+QgEzc/aiaJX1lBK98q0aEVR"
+    b"p1ulpKOBnrC6lDXyfed4d66VYcojk1DGJfM8rx53CNIQ4f0Qwbib0/wL4k3LkQG70AtP5IBGvZl4GBBm"
+    b"C3wCS+KhZurXPm1mIoh2dhZ+Ad+Nn/PyqjymAAAAAElFTkSuQmCC")
+
+wxPython_1_5x_png = PyEmbeddedImage(
+    b"iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAACr0lE"
+    b"QVRIx62Uz0sUYRjHP+sPSOiweEkicEDsIrjToZPQjhc7dGitW6Cup/SwsJt6dj2XTCBk0GFW+gPsbId3"
+    b"FSo9OSsIYSwzXrQgdkeUTsbbYV63cXbGVesLL8877/v84P3O83zbiYaeTqcPNU0rdnZ2HtVqtU3+I9K5"
+    b"XM6RCpZlSWA+sP4JOuAIIaRhGNKyLCmllLquSyGEFEJIwLxOYo0BtnmCZA5pvjPPHiANw5D1el2Wy+WG"
+    b"BYqXTdyh7AST6KT8j8JagaOFIwBc18XzPIQQ9Pb2XpOWDA4fkHwMrFd/Vz6fb7xIf6pLMjiKzpZIqAKr"
+    b"TKBxM8arCrxR+0VlZ4EKiVYF2oHvfCXJfQx6Yry6gYdqBfGZfcC+qECbsitY2CxHeCzHRI4AkL0MRWcs"
+    b"6Fvw+lnYI0+KOyTpAW413dnsMgq4QFqdVgDvXIGqfzncF91+WUDjAWk0DMYCNzvADAuAwxglALYoscdk"
+    b"uE0NoBzzSj9wA40NNE4QTDf5VNhRtL0gyxQeUABoq/rttg88bsXn0BDmdgm0G+pgEJhjntsYVEjwkiIn"
+    b"wAAGoF11XuaFQEqJLFZDM5NCNpjI4LDIlaYdQORyOPW6X8D5hdQ3AwXeEtQowSqNYey4IGmSfky6yDIO"
+    b"3ceQTCrh6oJkMLIPgHvqa5gikhQaIbfz6MfkOVlSqluuAtk8aGGYzKjkEVg5BPu46TgVNXhtMdJtqGf7"
+    b"OjTDeq2G63ngnUK57ttQ+iRzWAwiG3oVU8CX7vNSYSwtUbJtKOxB6SAUsaZoGVFi+APYZx1wO1ryOQ1M"
+    b"IcigFX6DfRDhswb8pMCs6qRTbHbJAm4iUhrymDwieWHhKnACfMJlldE4VY3T8yzjWAyqXxfEe2W/sMI3"
+    b"XCUx5ZZqGgGDu0zQFeqMCsNqZwdVMw5/ANThGfS+jW3VAAAAAElFTkSuQmCC")
+
+wxPython_2x_png = PyEmbeddedImage(
+    b"iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAAElBMVEUBAAAAAAAAuwD//wD////dAABp"
+    b"I5D7AAAAAXRSTlMAQObYZgAAAJdJREFUeNp900sKxDAAw9BKTe5/5SFDawjEzVYP0+/1HuD6Oowx+O5L"
+    b"1BkYMEabAVda/ShQ5Q+gAoEsnLqZkQ4EtIqcDqp4CA1cEwDqwswSRgBbj3lA7iYgJAuvmJvgzlWQia3f"
+    b"ESgF1AlW7xNgwGkC/QTYQbqkCwcAASIYkOfH20U9gXTSA3R74wD9q0o6Cii/V60hHOoPwvkD1WDE+MAA"
+    b"AAAASUVORK5CYII=")
+
 import python_dlg
 import wizard
 
@@ -25,9 +58,9 @@ class MainFrame(wx.Frame):
 
         menuDialogs = wx.Menu()
         menu_item_2 = wx.MenuItem(menuDialogs, wx.ID_ANY, "PythonDlg")
-        bitmaps = [ wx.Bitmap("../art/wxPython.png"),
-                    wx.Bitmap("../art/wxPython_1_5x.png"),
-                    wx.Bitmap("../art/wxPython_2x.png") ]
+        bitmaps = [ wxPython_png.Bitmap,
+                    wxPython_1_5x_png.Bitmap,
+                    wxPython_2x_png.Bitmap ]
         menu_item_2.SetBitmap(wx.BitmapBundle.FromBitmaps(bitmaps))
         menuDialogs.Append(menu_item_2)
         menuItem_2 = wx.MenuItem(menuDialogs, wx.ID_ANY, "Common Controls...",
@@ -69,7 +102,7 @@ class MainFrame(wx.Frame):
 
         self.m_toolBar = self.CreateToolBar()
         tool_4 = self.m_toolBar.AddTool(wx.ID_ANY, "PythonDlg", wx.BitmapBundle.FromBitmap(
-            wx.Bitmap("../art/wxPython_1_5x.png")))
+            wxPython_1_5x_png.Bitmap))
 
         tool_2 = self.m_toolBar.AddTool(wx.ID_ANY, "Common Controls...",
             wx.ArtProvider.GetBitmapBundle(wx.ART_TIP, wx.ART_TOOLBAR))
