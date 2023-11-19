@@ -1,15 +1,10 @@
-# Directories to ignore
-bin/
-lib/
-bld/
-build/
-python/
+# Unique directories to ignore
 
-.private/
-archive/
 tests/
+quick/
+__pycache__/
 
-# File extensions to ignore
+# Unique file extensions to ignore
 *.backup
 *.bak
 *.bat
@@ -38,7 +33,7 @@ tests/
 *.txt
 *.zip
 
-# cmake
+# CMake
 CMakeFiles/
 build/
 
