@@ -16,6 +16,9 @@
 
 #include "dlgissue_960.h"
 
+// Convert a data array into a wxImage
+wxImage wxueImage(const unsigned char* data, size_t size_data);
+
 namespace wxue_img
 {
     // Ainsi ça se passe.png

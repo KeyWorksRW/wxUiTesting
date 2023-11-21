@@ -32,7 +32,7 @@
         bitmap="Embed;bottom(1).png" />
       <node
         class="embedded_image"
-        bitmap="Embed;../../src/art_src/debug_32.png" />
+        bitmap="Embed;debug_32.png" />
       <node
         class="embedded_image"
         bitmap="Embed;disabled.png" />
@@ -83,7 +83,7 @@
         bitmap="Embed;wiztest2.png" />
       <node
         class="embedded_image"
-        bitmap="Embed;../../src/art_src/wxNotebook.png" />
+        bitmap="Embed;wxNotebook.png" />
       <node
         class="embedded_image"
         bitmap="Embed;wxPython.png" />
@@ -201,13 +201,13 @@
           var_name="menuDialogs">
           <node
             class="wxMenuItem"
-            bitmap="Embed;../src/art_src/debug_32.png"
+            bitmap="Embed;debug_32.png"
             label="MainTestDlg"
             var_name="menu_item_3"
             wxEVT_MENU="OnMainTestDlg" />
           <node
             class="wxMenuItem"
-            bitmap="Embed;../src/art_src/wxNotebook.png"
+            bitmap="Embed;wxNotebook.png"
             label="BookTestDlg"
             var_name="menu_item_4"
             wxEVT_MENU="OnBookTestDlg" />
@@ -219,14 +219,14 @@
             wxEVT_MENU="OnPythonDlg" />
           <node
             class="wxMenuItem"
-            bitmap="Embed;../../src/art_src/wxToolBar.png"
+            bitmap="Embed;wxToolBar.png"
             help="Dialog for testing different types of toolbars"
             label="Tools Dialog"
             var_name="_menu_tools_dlg2"
             wxEVT_MENU="OnToolsDlg[python:on_tools_dlg][ruby:on_tools_dlg]" />
           <node
             class="wxMenuItem"
-            bitmap="Embed;../../src/art_src/wxWizard.png"
+            bitmap="Embed;wxWizard.png"
             label="Wizard"
             var_name="menuItem3"
             wxEVT_MENU="OnWizard" />
@@ -245,11 +245,11 @@
             var_name="separator_2" />
           <node
             class="submenu"
-            bitmap="Embed;../../src/art_src/wxDialog.png"
+            bitmap="Embed;wxDialog.png"
             label="Issue Dialogs">
             <node
               class="wxMenuItem"
-              bitmap="Embed;../src/art_src/debug_32.png"
+              bitmap="Embed;debug_32.png"
               label="DlgIssue_956"
               var_name="menu_item_5"
               wxEVT_MENU="OnDlgIssue_956" />
@@ -275,6 +275,7 @@
             wxEVT_MENU="OnWizard" />
           <node
             class="wxMenuItem"
+            bitmap="Embed;wxToolBar.png"
             help="Dialog for testing different types of toolbars"
             label="Tools Dialog"
             var_name="_menu_tools_dlg"
@@ -282,13 +283,13 @@
         </node>
         <node
           class="tool"
-          bitmap="Embed;../src/art_src/debug_32.png"
+          bitmap="Embed;debug_32.png"
           label="MainTestDlg"
           var_name="tool_4"
           wxEVT_TOOL="OnMainTestDlg" />
         <node
           class="tool"
-          bitmap="Embed;../src/art_src/wxNotebook.png"
+          bitmap="Embed;wxNotebook.png"
           label="BookTestDlg"
           var_name="tool_5"
           wxEVT_TOOL="OnBookTestDlg" />

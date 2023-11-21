@@ -140,6 +140,7 @@ class MainFrame < Wx::Frame
     menu_tools_dlg = Wx::MenuItem.new(tool_dropdown_menu, Wx::ID_ANY,
       'Tools Dialog', 'Dialog for testing different types of toolbars',
       Wx::ITEM_NORMAL)
+    menu_tools_dlg.set_bitmap(wxue_get_bundle($wxToolBar_png))
     tool_dropdown_menu.append(menu_tools_dlg)
     tool_dropdown.set_dropdown_menu(tool_dropdown_menu)
     tool_4 = @toolBar.add_tool(Wx::ID_ANY, 'MainTestDlg', wxue_get_bundle($debug_32_png))

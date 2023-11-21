@@ -16,30 +16,12 @@
 
 #include "tools_dlg.h"
 
-#include <wx/mstream.h>  // memory stream classes
-#include <wx/zstream.h>  // zlib stream classes
-
-#include <memory>  // for std::make_unique
-
 // Convert a data array into a wxImage
-inline wxImage wxueImage(const unsigned char* data, size_t size_data)
-{
-    wxMemoryInputStream strm(data, size_data);
-    wxImage image;
-    image.LoadFile(strm);
-    return image;
-};
+wxImage wxueImage(const unsigned char* data, size_t size_data);
 
 // Convert compressed SVG string into a wxBitmapBundle
-inline wxBitmapBundle wxueBundleSVG(const unsigned char* data,
-    size_t size_data, size_t size_svg, wxSize def_size)
-{
-    auto str = std::make_unique<char[]>(size_svg);
-    wxMemoryInputStream stream_in(data, size_data);
-    wxZlibInputStream zlib_strm(stream_in);
-    zlib_strm.Read(str.get(), size_svg);
-    return wxBitmapBundle::FromSVG(str.get(), def_size);
-};
+wxBitmapBundle wxueBundleSVG(const unsigned char* data,
+    size_t size_data, size_t size_svg, wxSize def_size);
 
 namespace wxue_img
 {

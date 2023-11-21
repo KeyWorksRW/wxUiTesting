@@ -27,16 +27,11 @@
 
 #include <wx/animate.h>
 
-#include <wx/mstream.h>  // memory stream classes
+// Convert a data array into a wxImage
+wxImage wxueImage(const unsigned char* data, size_t size_data);
 
 // Convert a data array into a wxAnimation
-inline wxAnimation wxueAnimation(const unsigned char* data, size_t size_data)
-{
-    wxMemoryInputStream strm(data, size_data);
-    wxAnimation animation;
-    animation.Load(strm);
-    return animation;
-};
+wxAnimation wxueAnimation(const unsigned char* data, size_t size_data);
 namespace wxue_img
 {
     extern const unsigned char disabled_png[437];

@@ -193,6 +193,7 @@ class MainFrame(wx.Frame):
         tool_dropdown_menu.Append(menu_item)
         menu_tools_dlg = wx.MenuItem(tool_dropdown_menu, wx.ID_ANY, "Tools Dialog",
             "Dialog for testing different types of toolbars", wx.ITEM_NORMAL)
+        menu_tools_dlg.SetBitmap(wx.BitmapBundle.FromBitmap(wxToolBar_png.Bitmap))
         tool_dropdown_menu.Append(menu_tools_dlg)
         tool_dropdown.SetDropdownMenu(tool_dropdown_menu)
         tool_4 = self.toolBar.AddTool(wx.ID_ANY, "MainTestDlg", images.debug_32_png.Bitmap)

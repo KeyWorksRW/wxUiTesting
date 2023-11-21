@@ -17,16 +17,8 @@
 
 #include "mainframe.h"
 
-#include <wx/mstream.h>  // memory stream classes
-
 // Convert a data array into a wxImage
-inline wxImage wxueImage(const unsigned char* data, size_t size_data)
-{
-    wxMemoryInputStream strm(data, size_data);
-    wxImage image;
-    image.LoadFile(strm);
-    return image;
-};
+wxImage wxueImage(const unsigned char* data, size_t size_data);
 
 namespace wxue_img
 {
@@ -168,6 +160,8 @@ bool MainFrame::Create(wxWindow* parent, wxWindowID id, const wxString& title,
     tool_dropdown_menu->Append(menu_item);
     auto* menu_tools_dlg = new wxMenuItem(tool_dropdown_menu, wxID_ANY, "Tools Dialog",
         "Dialog for testing different types of toolbars", wxITEM_NORMAL);
+    menu_tools_dlg->SetBitmap(wxBitmapBundle::FromBitmap(wxueImage(wxue_img::wxToolBar_png, sizeof(wxue_img::wxToolBar_png))));
+
     tool_dropdown_menu->Append(menu_tools_dlg);
     tool_dropdown->SetDropdownMenu(tool_dropdown_menu);
     auto* tool_4 = m_toolBar->AddTool(wxID_ANY, "MainTestDlg", wxue_img::bundle_debug_32_png());
