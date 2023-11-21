@@ -17,9 +17,6 @@
 
 #include "booktest_dlg.h"
 
-// Convert a data array into a wxImage
-wxImage wxueImage(const unsigned char* data, size_t size_data);
-
 namespace wxue_img
 {
     extern const unsigned char english_png[541];

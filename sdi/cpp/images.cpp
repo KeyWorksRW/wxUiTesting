@@ -9,7 +9,6 @@
 
 #include "images.h"
 
-#include <wx/animate.h>  // wxAnimation class
 #include <wx/mstream.h>  // memory stream classes
 #include <wx/zstream.h>  // zlib stream classes
 

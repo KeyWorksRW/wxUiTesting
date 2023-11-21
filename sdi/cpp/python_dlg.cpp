@@ -20,15 +20,6 @@
 
 #include <wx/animate.h>
 
-// Convert a data array into a wxImage
-wxImage wxueImage(const unsigned char* data, size_t size_data);
-
-// Convert compressed SVG string into a wxBitmapBundle
-wxBitmapBundle wxueBundleSVG(const unsigned char* data,
-    size_t size_data, size_t size_svg, wxSize def_size);
-
-// Convert a data array into a wxAnimation
-wxAnimation wxueAnimation(const unsigned char* data, size_t size_data);
 namespace wxue_img
 {
     extern const unsigned char clr_hourglass_gif[2017];

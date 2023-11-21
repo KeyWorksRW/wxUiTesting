@@ -16,13 +16,6 @@
 
 #include "tools_dlg.h"
 
-// Convert a data array into a wxImage
-wxImage wxueImage(const unsigned char* data, size_t size_data);
-
-// Convert compressed SVG string into a wxBitmapBundle
-wxBitmapBundle wxueBundleSVG(const unsigned char* data,
-    size_t size_data, size_t size_svg, wxSize def_size);
-
 namespace wxue_img
 {
     // fontPicker@1_25x.png

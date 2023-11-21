@@ -27,11 +27,6 @@
 
 #include <wx/animate.h>
 
-// Convert a data array into a wxImage
-wxImage wxueImage(const unsigned char* data, size_t size_data);
-
-// Convert a data array into a wxAnimation
-wxAnimation wxueAnimation(const unsigned char* data, size_t size_data);
 namespace wxue_img
 {
     extern const unsigned char disabled_png[437];

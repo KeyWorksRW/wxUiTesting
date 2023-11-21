@@ -13,9 +13,6 @@
 
 #include "wizard.h"
 
-// Convert a data array into a wxImage
-wxImage wxueImage(const unsigned char* data, size_t size_data);
-
 namespace wxue_img
 {
     extern const unsigned char wiztest2_png[6797];
