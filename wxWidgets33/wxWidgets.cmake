@@ -1150,9 +1150,9 @@ set (wxCLib_sources
     src/png/pngwrite.c
     src/png/pngwtran.c
     src/png/pngwutil.c
-    src/png/arm/arm_init.c
-    src/png/arm/filter_neon_intrinsics.c
-    src/png/arm/palette_neon_intrinsics.c
+    # src/png/arm/arm_init.c
+    # src/png/arm/filter_neon_intrinsics.c
+    # src/png/arm/palette_neon_intrinsics.c
     src/png/intel/intel_init.c
     src/png/intel/filter_sse2_intrinsics.c
 
