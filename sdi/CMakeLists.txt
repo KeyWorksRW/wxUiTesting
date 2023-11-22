@@ -29,10 +29,10 @@ if (BUILD_31 AND BUILD_33)
 endif()
 
 if (BUILD_31)
-    set(BUILD_ROOT ${BUILD_31_DIR} CACHE PATH "${CMAKE_CURRENT_LIST_DIR}/../wxWidgets31" FORCE)
+    set(BUILD_ROOT ${CMAKE_CURRENT_LIST_DIR}/../wxWidgets31 CACHE PATH "${CMAKE_CURRENT_LIST_DIR}/../wxWidgets31" FORCE)
     set(WIDGETS_LIB wxWidgets31)
 elseif (BUILD_33)
-    set(BUILD_ROOT ${BUILD_33_DIR} CACHE PATH "${CMAKE_CURRENT_LIST_DIR}/../wxWidgets33" FORCE)
+    set(BUILD_ROOT ${CMAKE_CURRENT_LIST_DIR}/../wxWidgets33 CACHE PATH "${CMAKE_CURRENT_LIST_DIR}/../wxWidgets33" FORCE)
     set(WIDGETS_LIB wxWidgets33)
 else()
     set(BUILD_ROOT ${CMAKE_CURRENT_LIST_DIR}/../wxWidgets32 CACHE PATH "${CMAKE_CURRENT_LIST_DIR}/../wxWidgets32" FORCE)
@@ -43,6 +43,8 @@ if (NOT CMAKE_RUNTIME_OUTPUT_DIRECTORY)
     set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${BUILD_ROOT}/build)
 endif()
 
+message(NOTICE "wxWidgets lib: ${WIDGETS_LIB}")
+message(NOTICE "BUILD_ROOT: ${BUILD_ROOT}")
 message(NOTICE "Building into ${CMAKE_RUNTIME_OUTPUT_DIRECTORY} using ${WIDGETS_LIB}")
 
 option(INTERNAL_DARK_MODE "Enable dark mode (used with wxWidgets 3.3 in _WIN32 builds)" OFF)
@@ -85,6 +87,24 @@ if (MSVC)
     if (NOT BUILD_SHARED_LIBS)
         set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
     endif()
+else()
+    # Use the package PkgConfig to detect GTK+ headers/library files
+    find_package(PkgConfig REQUIRED)
+
+    pkg_check_modules(GTK3 REQUIRED gtk+-3.0)
+    include_directories(${GTK3_INCLUDE_DIRS})
+    link_directories(${GTK3_LIBRARY_DIRS})
+    add_definitions(${GTK3_CFLAGS_OTHER})
+
+    pkg_check_modules(X11 REQUIRED x11)
+    include_directories(${X11_INCLUDE_DIRS})
+    link_directories(${X11_LIBRARY_DIRS})
+    add_definitions(${X11_CFLAGS_OTHER})
+
+    # This should work for gcc and clang (including xcode which is based on clang)
+    # -O2 can result in faster code than -O3 due to CPU caching.
+    string(REPLACE "-O3" "-O2" cl_optimize "${CMAKE_CXX_FLAGS_RELEASE}")
+    set(CMAKE_CXX_FLAGS_RELEASE ${cl_optimize} CACHE STRING "C++ Release flags" FORCE)
 endif()
 
 add_compile_definitions($<$<CONFIG:Release>:NDEBUG>)
@@ -119,16 +139,23 @@ add_library(check_build STATIC EXCLUDE_FROM_ALL
 if (BUILD_SHARED_LIBS)
     target_compile_definitions(sdi_test PRIVATE WXUSINGDLL)
     target_compile_definitions(check_build PRIVATE WXUSINGDLL)
-else()
-    # This is built into wxWidgets if a shared library is created
-    set(CLib wxCLib)
 endif()
 
-if (WIN32)
-    target_link_libraries(sdi_test PRIVATE ${WIDGETS_LIB} ${CLib} comctl32 Imm32 Shlwapi Version UxTheme)
-else()
-    target_link_libraries(sdi_test PRIVATE ${WIDGETS_LIB} ${CLib})
+if (UNIX)
+    set(SYSTEM_LIBS
+        ${GTK3_LIBRARIES}
+        ${X11_LIBRARIES}
+        pthread
+        dl
+        png
+        GL
+        GLX
+    )
+elseif (WIN32)
+    set(SYSTEM_LIBS comctl32 Imm32 Shlwapi Version UxTheme)
 endif()
+
+target_link_libraries(sdi_test PRIVATE ${WIDGETS_LIB}  ${SYSTEM_LIBS} wxCLib)
 
 if (MSVC)
     # /GL -- combined with the Linker flag /LTCG to perform whole program optimization in Release build
@@ -138,6 +165,8 @@ if (MSVC)
 
     # Assume the manifest is in the resource file
     target_link_options(sdi_test PRIVATE "/manifest:no")
+elseif(UNIX)
+    target_compile_options(sdi_test PRIVATE "-fPIC")
 endif()
 
 target_precompile_headers(sdi_test PRIVATE "cpp/pch.h")
