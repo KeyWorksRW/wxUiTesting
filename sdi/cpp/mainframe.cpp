@@ -38,6 +38,7 @@ bool MainFrame::Create(wxWindow* parent, wxWindowID id, const wxString& title,
 
     if (!wxFrame::Create(parent, id, title, pos, size, style, name))
         return false;
+    SetMinSize(ConvertDialogToPixels(wxSize(200, 100)));
 
     splitter = new wxSplitterWindow(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxSP_3D);
     splitter->SetSashGravity(0.0);
@@ -68,18 +69,50 @@ bool MainFrame::Create(wxWindow* parent, wxWindowID id, const wxString& title,
 
     propertyGridItem_4 = propertyGridPage_2->Append(new wxIntProperty("2", wxEmptyString));
 
-    grid = new wxGrid(splitter, wxID_ANY);
+    m_kicadGrid = new wxGrid(splitter, wxID_ANY);
     {
-        grid->CreateGrid(5, 5);
-        grid->EnableDragGridSize(false);
-        grid->SetMargins(0, 0);
-        grid->SetDefaultCellAlignment(wxALIGN_LEFT, wxALIGN_TOP);
-        grid->SetColLabelAlignment(wxALIGN_CENTER, wxALIGN_CENTER);
-        grid->SetColLabelSize(wxGRID_AUTOSIZE);
-        grid->SetRowLabelAlignment(wxALIGN_CENTER, wxALIGN_CENTER);
-        grid->SetRowLabelSize(wxGRID_AUTOSIZE);
+        m_kicadGrid->CreateGrid(2, 11);
+        m_kicadGrid->EnableDragGridSize(false);
+        m_kicadGrid->SetMargins(0, 0);
+        {
+            wxFontInfo font_info(wxSystemSettings::GetFont(wxSYS_DEFAULT_GUI_FONT).GetPointSize());
+            m_kicadGrid->SetLabelFont(wxFont(font_info));
+        }
+
+        m_kicadGrid->SetDefaultCellAlignment(wxALIGN_LEFT, wxALIGN_TOP);
+        m_kicadGrid->SetColLabelAlignment(wxALIGN_CENTER, wxALIGN_CENTER);
+        m_kicadGrid->SetColLabelSize(24);
+        m_kicadGrid->SetColSize(0, 124);
+        m_kicadGrid->SetColSize(1, 60);
+        m_kicadGrid->SetColSize(2, 110);
+        m_kicadGrid->SetColSize(3, 110);
+        m_kicadGrid->SetColSize(4, 110);
+        m_kicadGrid->SetColSize(5, 60);
+        m_kicadGrid->SetColSize(6, 110);
+        m_kicadGrid->SetColSize(7, 110);
+        m_kicadGrid->SetColSize(8, 110);
+        m_kicadGrid->SetColSize(9, 110);
+        m_kicadGrid->SetColSize(10, 110);
+        m_kicadGrid->SetColLabelValue(0, "Text Items");
+        m_kicadGrid->SetColLabelValue(1, "Show");
+        m_kicadGrid->SetColLabelValue(2, "Width");
+        m_kicadGrid->SetColLabelValue(3, "Height");
+        m_kicadGrid->SetColLabelValue(4, "Thickness");
+        m_kicadGrid->SetColLabelValue(5, "Italic");
+        m_kicadGrid->SetColLabelValue(6, "Layer");
+        m_kicadGrid->SetColLabelValue(7, "Orientation");
+        m_kicadGrid->SetColLabelValue(8, "Unconstrained");
+        m_kicadGrid->SetColLabelValue(9, "X Offset");
+        m_kicadGrid->SetColLabelValue(10, "Y Offset");
+
+        m_kicadGrid->EnableDragRowSize(false);
+        m_kicadGrid->SetRowLabelAlignment(wxALIGN_LEFT, wxALIGN_CENTER);
+        m_kicadGrid->SetRowLabelSize(160);
+        m_kicadGrid->SetRowLabelValue(0, "Reference designator");
+        m_kicadGrid->SetRowLabelValue(1, "Value");
     }
-    splitter->SplitHorizontally(propertyGridManager, grid);
+    m_kicadGrid->SetMinSize(wxSize(800, 140));
+    splitter->SplitHorizontally(propertyGridManager, m_kicadGrid);
 
     auto* menubar = new wxMenuBar();
 
@@ -196,6 +229,7 @@ bool MainFrame::Create(wxWindow* parent, wxWindowID id, const wxString& title,
     Bind(wxEVT_MENU, &MainFrame::OnDlgIssue_960, this, menu_item_6->GetId());
     Bind(wxEVT_MENU, &MainFrame::OnWizard, this, menu_item->GetId());
     Bind(wxEVT_MENU, &MainFrame::OnToolsDlg, this, menu_tools_dlg->GetId());
+    m_kicadGrid->Bind(wxEVT_SIZE, &MainFrame::OnGridSize, this);
     Bind(wxEVT_TOOL, &MainFrame::OnMainTestDlg, this, tool_4->GetId());
     Bind(wxEVT_TOOL, &MainFrame::OnBookTestDlg, this, tool_5->GetId());
     Bind(wxEVT_TOOL, &MainFrame::OnPythonDlg, this, tool_3->GetId());
@@ -308,4 +342,8 @@ void MainFrame::OnQuit(wxCommandEvent& WXUNUSED(event))
 {
     // true forces the frame to close
     Close(true);
+}
+
+void MainFrame::OnGridSize(wxSizeEvent& WXUNUSED(event))
+{
 }

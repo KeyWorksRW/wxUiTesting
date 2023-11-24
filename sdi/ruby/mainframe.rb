@@ -28,6 +28,8 @@ class MainFrame < Wx::Frame
 
     super(parent, id, title, pos, size, style)
 
+    set_min_size(convert_dialog_to_pixels(Wx::Size.new(200, 100)))
+
     @splitter = Wx::SplitterWindow.new(self, Wx::ID_ANY,
       Wx::DEFAULT_POSITION, Wx::DEFAULT_SIZE, Wx::SP_3D)
     @splitter.set_sash_gravity(0.0)
@@ -70,16 +72,46 @@ class MainFrame < Wx::Frame
     @propertyGridItem_4 = @propertyGridPage_2.append(Wx::PG::IntProperty.new('2', ''
       ))
 
-    @grid = Wx::GRID::Grid.new(@splitter, Wx::ID_ANY)
-    @grid.create_grid(5, 5)
-    @grid.enable_drag_grid_size(false)
-    @grid.set_margins(0, 0)
-    @grid.set_default_cell_alignment(Wx::ALIGN_LEFT, Wx::ALIGN_TOP)
-    @grid.set_col_label_alignment(Wx::ALIGN_CENTER, Wx::ALIGN_CENTER)
-    @grid.set_col_label_size(Wx::GRID::GRID_AUTOSIZE)
-    @grid.set_row_label_alignment(Wx::ALIGN_CENTER, Wx::ALIGN_CENTER)
-    @grid.set_row_label_size(Wx::GRID::GRID_AUTOSIZE)
-    @splitter.split_horizontally(@propertyGridManager, @grid)
+    @kicadGrid = Wx::GRID::Grid.new(@splitter, Wx::ID_ANY)
+    @kicadGrid.create_grid(2, 11)
+    @kicadGrid.enable_drag_grid_size(false)
+    @kicadGrid.set_margins(0, 0)
+    font_info = Wx::FontInfo.new(Wx::SystemSettings.get_font(
+      Wx::SYS_DEFAULT_GUI_FONT).get_point_size())
+    @kicadGrid.set_label_font(Wx::Font.new(font_info))
+    @kicadGrid.set_default_cell_alignment(Wx::ALIGN_LEFT, Wx::ALIGN_TOP)
+    @kicadGrid.set_col_label_alignment(Wx::ALIGN_CENTER, Wx::ALIGN_CENTER)
+    @kicadGrid.set_col_label_size(24)
+    @kicadGrid.set_col_size(0, 124)
+    @kicadGrid.set_col_size(1, 60)
+    @kicadGrid.set_col_size(2, 110)
+    @kicadGrid.set_col_size(3, 110)
+    @kicadGrid.set_col_size(4, 110)
+    @kicadGrid.set_col_size(5, 60)
+    @kicadGrid.set_col_size(6, 110)
+    @kicadGrid.set_col_size(7, 110)
+    @kicadGrid.set_col_size(8, 110)
+    @kicadGrid.set_col_size(9, 110)
+    @kicadGrid.set_col_size(10, 110)
+    @kicadGrid.set_col_label_value(0, 'Text Items')
+    @kicadGrid.set_col_label_value(1, 'Show')
+    @kicadGrid.set_col_label_value(2, 'Width')
+    @kicadGrid.set_col_label_value(3, 'Height')
+    @kicadGrid.set_col_label_value(4, 'Thickness')
+    @kicadGrid.set_col_label_value(5, 'Italic')
+    @kicadGrid.set_col_label_value(6, 'Layer')
+    @kicadGrid.set_col_label_value(7, 'Orientation')
+    @kicadGrid.set_col_label_value(8, 'Unconstrained')
+    @kicadGrid.set_col_label_value(9, 'X Offset')
+    @kicadGrid.set_col_label_value(10, 'Y Offset')
+
+    @kicadGrid.enable_drag_row_size(false)
+    @kicadGrid.set_row_label_alignment(Wx::ALIGN_LEFT, Wx::ALIGN_CENTER)
+    @kicadGrid.set_row_label_size(160)
+    @kicadGrid.set_row_label_value(0, 'Reference designator')
+    @kicadGrid.set_row_label_value(1, 'Value')
+    @kicadGrid.set_min_size(Wx::Size.new(800, 140))
+    @splitter.split_horizontally(@propertyGridManager, @kicadGrid)
 
     menubar = Wx::MenuBar.new
 
@@ -175,6 +207,7 @@ class MainFrame < Wx::Frame
     evt_menu(menu_item_6.get_id, :OnDlgIssue_960)
     evt_menu(menu_item.get_id, :OnWizard)
     evt_menu(menu_tools_dlg.get_id, :on_tools_dlg)
+    evt_size(:OnGridSize)
     evt_tool(tool_4.get_id, :OnMainTestDlg)
     evt_tool(tool_5.get_id, :OnBookTestDlg)
     evt_tool(tool_3.get_id, :OnPythonDlg)
@@ -292,6 +325,10 @@ def OnMainTestDlg
 end
 
 def OnPythonDlg(event)
+  event.skip
+end
+
+def OnGridSize(event)
   event.skip
 end
 

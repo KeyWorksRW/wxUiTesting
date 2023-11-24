@@ -10,6 +10,7 @@
 #pragma once
 
 #include <wx/event.h>
+#include <wx/font.h>
 #include <wx/frame.h>
 #include <wx/gdicmn.h>
 #include <wx/grid.h>
@@ -52,6 +53,7 @@ protected:
     void OnCommonDialog(wxCommandEvent& event);
     void OnDlgIssue_956(wxCommandEvent& event);
     void OnDlgIssue_960(wxCommandEvent& event);
+    void OnGridSize(wxSizeEvent& event);
     void OnMainTestDlg(wxCommandEvent& event);
     void OnPythonDlg(wxCommandEvent& event);
     void OnQuit(wxCommandEvent& event);
@@ -60,7 +62,7 @@ protected:
 
     // Class member variables
 
-    wxGrid* grid;
+    wxGrid* m_kicadGrid;  // Grid imported from a kicad dialog, utilizing column sizes and labels
     wxMenu* menu;
     wxPGProperty* propertyGridItem;
     wxPGProperty* propertyGridItem_2;

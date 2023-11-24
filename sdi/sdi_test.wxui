@@ -105,6 +105,7 @@
       relative_require_list="dlgissue_956.rb;dlgissue_960.rb;booktest_dlg.rb;wizard.rb;main_test_dlg.rb;tools_dlg.rb"
       ruby_file="mainframe"
       xrc_file="mainframe"
+      minimum_size="200,100d"
       size="500,300"
       window_style="wxTAB_TRAVERSAL">
       <node
@@ -172,7 +173,24 @@
         </node>
         <node
           class="wxGrid"
-          var_name="grid" />
+          col_label_size="24"
+          col_label_values="Text Items;Show;Width;Height;Thickness;Italic;Layer;Orientation;Unconstrained;X Offset;Y Offset"
+          cols="11"
+          column_sizes="124;60;110;110;110;60;110;110;110;110;110"
+          drag_row_size="0"
+          label_font=",90,92,-1,70,0"
+          row_label_horiz_alignment="wxALIGN_LEFT"
+          row_label_size="160"
+          row_label_values="Reference designator;Value"
+          rows="2"
+          var_comment="Grid imported from a kicad dialog, utilizing column sizes and labels"
+          var_name="m_kicadGrid"
+          minimum_size="800,140"
+          size="-1,-1"
+          borders="wxLEFT|wxRIGHT|wxBOTTOM"
+          flags="wxEXPAND"
+          proportion="1"
+          wxEVT_SIZE="OnGridSize" />
       </node>
       <node
         class="wxMenuBar"

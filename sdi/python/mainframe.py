@@ -76,6 +76,7 @@ class MainFrame(wx.Frame):
 
         if not self.Create(parent, id, title, pos, size, style, name):
             return
+        self.SetMinSize(self.ConvertDialogToPixels(wx.Size(200, 100)))
 
         self.splitter = wx.SplitterWindow(self, wx.ID_ANY, wx.DefaultPosition,
             wx.DefaultSize, wx.SP_3D)
@@ -120,16 +121,45 @@ class MainFrame(wx.Frame):
         self.propertyGridItem_4 = self.propertyGridPage_2.Append(wx.propgrid.IntProperty(
         "2", ""))
 
-        self.grid = wx.grid.Grid(self.splitter, wx.ID_ANY)
-        self.grid.CreateGrid(5, 5)
-        self.grid.EnableDragGridSize(False)
-        self.grid.SetMargins(0, 0)
-        self.grid.SetDefaultCellAlignment(wx.ALIGN_LEFT, wx.ALIGN_TOP)
-        self.grid.SetColLabelAlignment(wx.ALIGN_CENTER, wx.ALIGN_CENTER)
-        self.grid.SetColLabelSize(wx.grid.GRID_AUTOSIZE)
-        self.grid.SetRowLabelAlignment(wx.ALIGN_CENTER, wx.ALIGN_CENTER)
-        self.grid.SetRowLabelSize(wx.grid.GRID_AUTOSIZE)
-        self.splitter.SplitHorizontally(self.propertyGridManager, self.grid)
+        self.kicadGrid = wx.grid.Grid(self.splitter, wx.ID_ANY)
+        self.kicadGrid.CreateGrid(2, 11)
+        self.kicadGrid.EnableDragGridSize(False)
+        self.kicadGrid.SetMargins(0, 0)
+        font_info = wx.FontInfo(wx.SystemSettings.GetFont(wx.SYS_DEFAULT_GUI_FONT).GetPointSize())
+        self.kicadGrid.SetLabelFont(wx.Font(font_info))
+        self.kicadGrid.SetDefaultCellAlignment(wx.ALIGN_LEFT, wx.ALIGN_TOP)
+        self.kicadGrid.SetColLabelAlignment(wx.ALIGN_CENTER, wx.ALIGN_CENTER)
+        self.kicadGrid.SetColLabelSize(24)
+        self.kicadGrid.SetColSize(0, 124)
+        self.kicadGrid.SetColSize(1, 60)
+        self.kicadGrid.SetColSize(2, 110)
+        self.kicadGrid.SetColSize(3, 110)
+        self.kicadGrid.SetColSize(4, 110)
+        self.kicadGrid.SetColSize(5, 60)
+        self.kicadGrid.SetColSize(6, 110)
+        self.kicadGrid.SetColSize(7, 110)
+        self.kicadGrid.SetColSize(8, 110)
+        self.kicadGrid.SetColSize(9, 110)
+        self.kicadGrid.SetColSize(10, 110)
+        self.kicadGrid.SetColLabelValue(0, "Text Items")
+        self.kicadGrid.SetColLabelValue(1, "Show")
+        self.kicadGrid.SetColLabelValue(2, "Width")
+        self.kicadGrid.SetColLabelValue(3, "Height")
+        self.kicadGrid.SetColLabelValue(4, "Thickness")
+        self.kicadGrid.SetColLabelValue(5, "Italic")
+        self.kicadGrid.SetColLabelValue(6, "Layer")
+        self.kicadGrid.SetColLabelValue(7, "Orientation")
+        self.kicadGrid.SetColLabelValue(8, "Unconstrained")
+        self.kicadGrid.SetColLabelValue(9, "X Offset")
+        self.kicadGrid.SetColLabelValue(10, "Y Offset")
+
+        self.kicadGrid.EnableDragRowSize(False)
+        self.kicadGrid.SetRowLabelAlignment(wx.ALIGN_LEFT, wx.ALIGN_CENTER)
+        self.kicadGrid.SetRowLabelSize(160)
+        self.kicadGrid.SetRowLabelValue(0, "Reference designator")
+        self.kicadGrid.SetRowLabelValue(1, "Value")
+        self.kicadGrid.SetMinSize(wx.Size(800, 140))
+        self.splitter.SplitHorizontally(self.propertyGridManager, self.kicadGrid)
 
         menubar = wx.MenuBar()
 
@@ -228,6 +258,7 @@ class MainFrame(wx.Frame):
         self.Bind(wx.EVT_MENU, self.OnDlgIssue_960, id=menu_item_6.GetId())
         self.Bind(wx.EVT_MENU, self.OnWizard, id=menu_item.GetId())
         self.Bind(wx.EVT_MENU, self.on_tools_dlg, id=menu_tools_dlg.GetId())
+        self.kicadGrid.Bind(wx.EVT_SIZE, self.OnGridSize)
         self.Bind(wx.EVT_TOOL, self.OnMainTestDlg, id=tool_4.GetId())
         self.Bind(wx.EVT_TOOL, self.OnBookTestDlg, id=tool_5.GetId())
         self.Bind(wx.EVT_TOOL, self.OnPythonDlg, id=tool_3.GetId())
@@ -278,6 +309,10 @@ class MainFrame(wx.Frame):
 
     def OnTreebook(self, event):
         event.Skip()
+
+    def OnGridSize(self, event):
+        event.Skip()
+
 
     def OnMainTestDlg(self, event):
         dlg = main_test_dlg.MainTestDialog(self, title="Main Dialog Tests")
