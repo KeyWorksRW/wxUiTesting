@@ -12,10 +12,6 @@
 
 #include "split_button.h"
 
-#if !(__cplusplus >= 201703L || (defined(_MSVC_LANG) && _MSVC_LANG >= 201703L))
-    #error "You need a compiler that supports C++17 or later."
-#endif
-
 #ifndef wxCONTROL_NONE
     #define wxCONTROL_NONE 0  // This was defined in wxWidgets 3.1
 #endif
@@ -89,7 +85,8 @@ void SplitButton::OnLeftButtonUp(wxMouseEvent& event)
     auto pos = event.GetPosition();
     if (pos.x < (GetSize().GetWidth() - m_arrow_btn_width))
     {
-        if (auto EventHandler = GetEventHandler(); EventHandler)
+        auto EventHandler = GetEventHandler();
+        if (EventHandler)
         {
             EventHandler->CallAfter(
                 [=]()
