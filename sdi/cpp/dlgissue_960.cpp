@@ -16,16 +16,6 @@
 
 #include "dlgissue_960.h"
 
-namespace wxue_img
-{
-    // Ainsi ça se passe.png
-    extern const unsigned char Ainsi_c3_a_se_passe_png[148];
-    // bottom(1).png
-    extern const unsigned char bottom_1__png[148];
-    // 1_bottom.png
-    extern const unsigned char img_1_bottom_png[148];
-}
-
 bool DlgIssue_960::Create(wxWindow* parent, wxWindowID id, const wxString& title,
     const wxPoint& pos, const wxSize& size, long style, const wxString &name)
 {

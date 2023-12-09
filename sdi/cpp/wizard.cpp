@@ -13,12 +13,6 @@
 
 #include "wizard.h"
 
-namespace wxue_img
-{
-    extern const unsigned char wiztest2_png[6797];
-    extern const unsigned char wiztest_png[1239];
-}
-
 Wizard::Wizard(wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, long style) : wxWizard()
 {
     if (!wxImage::FindHandler(wxBITMAP_TYPE_PNG))

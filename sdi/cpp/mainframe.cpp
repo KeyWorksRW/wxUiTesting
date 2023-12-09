@@ -17,16 +17,26 @@
 
 #include "mainframe.h"
 
+#include <wx/mstream.h>  // memory stream classes
+
+// Convert a data array into a wxImage
+#ifdef __cpp_inline_variables
+inline wxImage wxueImage(const unsigned char* data, size_t size_data)
+#else
+static wxImage wxueImage(const unsigned char* data, size_t size_data)
+#endif
+{
+    wxMemoryInputStream strm(data, size_data);
+    wxImage image;
+    image.LoadFile(strm);
+    return image;
+};
+
 namespace wxue_img
 {
-    // Ainsi ça se passe.png
-    extern const unsigned char Ainsi_c3_a_se_passe_png[148];
-    extern const unsigned char debug_32_png[1701];
-    extern const unsigned char english_png[541];
-    extern const unsigned char wxNotebook_png[177];
-    extern const unsigned char wxPython_1_5x_png[765];
-    extern const unsigned char wxPython_2x_png[251];
-    extern const unsigned char wxPython_png[399];
+    extern const unsigned char wxDialog_png[636];
+    extern const unsigned char wxToolBar_png[554];
+    extern const unsigned char wxWizard_png[1047];
 }
 
 bool MainFrame::Create(wxWindow* parent, wxWindowID id, const wxString& title,
@@ -132,21 +142,12 @@ bool MainFrame::Create(wxWindow* parent, wxWindowID id, const wxString& title,
     auto* menuDialogs = new wxMenu();
     auto* menu_item_3 = new wxMenuItem(menuDialogs, wxID_ANY, "MainTestDlg");
     menu_item_3->SetBitmap(wxue_img::bundle_debug_32_png());
-
     menuDialogs->Append(menu_item_3);
     auto* menu_item_4 = new wxMenuItem(menuDialogs, wxID_ANY, "BookTestDlg");
     menu_item_4->SetBitmap(wxue_img::bundle_wxNotebook_png());
-
     menuDialogs->Append(menu_item_4);
     auto* menu_item_2 = new wxMenuItem(menuDialogs, wxID_ANY, "PythonDlg");
-    {
-        wxVector<wxBitmap> bitmaps;
-        bitmaps.push_back(wxueImage(wxue_img::wxPython_png, sizeof(wxue_img::wxPython_png)));
-        bitmaps.push_back(wxueImage(wxue_img::wxPython_1_5x_png, sizeof(wxue_img::wxPython_1_5x_png)));
-        bitmaps.push_back(wxueImage(wxue_img::wxPython_2x_png, sizeof(wxue_img::wxPython_2x_png)));
-        menu_item_2->SetBitmap(wxBitmapBundle::FromBitmaps(bitmaps));
-    }
-
+    menu_item_2->SetBitmap(wxue_img::bundle_wxPython_png());
     menuDialogs->Append(menu_item_2);
     auto* menu_tools_dlg2 = new wxMenuItem(menuDialogs, wxID_ANY, "Tools Dialog",
         "Dialog for testing different types of toolbars", wxITEM_NORMAL);
@@ -167,11 +168,9 @@ bool MainFrame::Create(wxWindow* parent, wxWindowID id, const wxString& title,
     auto* submenu = new wxMenu();
     auto* menu_item_5 = new wxMenuItem(submenu, wxID_ANY, "DlgIssue_956");
     menu_item_5->SetBitmap(wxue_img::bundle_debug_32_png());
-
     submenu->Append(menu_item_5);
     auto* menu_item_6 = new wxMenuItem(submenu, wxID_ANY, "DlgIssue_960");
     menu_item_6->SetBitmap(wxue_img::bundle_Ainsi_c3_a_se_passe_png());
-
     submenu->Append(menu_item_6);
     auto* submenu_item = menuDialogs->AppendSubMenu(submenu, "Issue Dialogs");
     submenu_item->SetBitmap(wxBitmapBundle::FromBitmap(wxueImage(wxue_img::wxDialog_png, sizeof(wxue_img::wxDialog_png))));

@@ -24,12 +24,27 @@
 
 #include <wx/animate.h>
 
+#include <wx/mstream.h>  // memory stream classes
+#include <wx/zstream.h>  // zlib stream classes
+
+#include <memory>  // for std::make_unique
+
+// Convert a data array into a wxAnimation
+#ifdef __cpp_inline_variables
+inline wxAnimation wxueAnimation(const unsigned char* data, size_t size_data)
+#else
+static wxAnimation wxueAnimation(const unsigned char* data, size_t size_data)
+#endif
+{
+    wxMemoryInputStream strm(data, size_data);
+    wxAnimation animation;
+    animation.Load(strm);
+    return animation;
+};
+
 namespace wxue_img
 {
     extern const unsigned char clr_hourglass_gif[2017];
-    extern const unsigned char disabled_png[437];
-    // face-smile.svg
-    extern const unsigned char face_smile_svg[1781];
 }
 
 bool CommonCtrls::Create(wxWindow* parent, wxWindowID id, const wxString& title,
@@ -249,7 +264,7 @@ bool CommonCtrls::Create(wxWindow* parent, wxWindowID id, const wxString& title,
 
     m_animation_ctrl = new wxAnimationCtrl(static_box_2->GetStaticBox(), wxID_ANY, wxueAnimation(wxue_img::clr_hourglass_gif, sizeof(wxue_img::clr_hourglass_gif)),
         wxDefaultPosition, wxDefaultSize, wxAC_DEFAULT_STYLE);
-    m_animation_ctrl->SetInactiveBitmap(wxueImage(wxue_img::disabled_png, sizeof(wxue_img::disabled_png)));
+    m_animation_ctrl->SetInactiveBitmap(wxue_img::bundle_disabled_png());
     static_box_2->Add(m_animation_ctrl, wxSizerFlags().Border(wxALL));
 
     flex_grid_sizer->Add(static_box_2, wxSizerFlags().Border(wxALL));

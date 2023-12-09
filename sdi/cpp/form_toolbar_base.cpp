@@ -11,13 +11,6 @@
 
 #include "form_toolbar_base.h"
 
-namespace wxue_img
-{
-    extern const unsigned char english_png[541];
-    extern const unsigned char french_png[252];
-    extern const unsigned char japanese_png[377];
-}
-
 MyToolBarBase::MyToolBarBase(wxWindow* parent, wxWindowID id, const wxPoint& pos, const wxSize& size, long style,
     const wxString& name) : wxToolBar(parent, id, pos, size, style, name)
 {

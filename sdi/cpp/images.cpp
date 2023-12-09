@@ -14,170 +14,27 @@
 
 #include <memory>  // for std::make_unique
 
-// Convert compressed SVG string into a wxBitmapBundle
-wxBitmapBundle wxueBundleSVG(const unsigned char* data,
-    size_t size_data, size_t size_svg, wxSize def_size)
-{
-    auto str = std::make_unique<char[]>(size_svg);
-    wxMemoryInputStream stream_in(data, size_data);
-    wxZlibInputStream zlib_strm(stream_in);
-    zlib_strm.Read(str.get(), size_svg);
-    return wxBitmapBundle::FromSVG(str.get(), def_size);
-};
-
-// Convert a data array into a wxImage
-wxImage wxueImage(const unsigned char* data, size_t size_data)
-{
-    wxMemoryInputStream strm(data, size_data);
-    wxImage image;
-    image.LoadFile(strm);
-    return image;
-};
-
-// Convert multiple bitmaps into a wxBitmapBundle
-wxBitmapBundle wxueBundleBitmaps(const wxBitmap& bmp1, const wxBitmap& bmp2, const wxBitmap& bmp3)
-{
-    wxVector<wxBitmap> bitmaps;
-    if (bmp1.IsOk())
-        bitmaps.push_back(bmp1);
-    if (bmp2.IsOk())
-        bitmaps.push_back(bmp2);
-    if (bmp3.IsOk())
-        bitmaps.push_back(bmp3);
-    return wxBitmapBundle::FromBitmaps(bitmaps);
-};
-
-// Convert a data array into a wxAnimation
-wxAnimation wxueAnimation(const unsigned char* data, size_t size_data)
-{
-    wxMemoryInputStream strm(data, size_data);
-    wxAnimation animation;
-    animation.Load(strm);
-    return animation;
-};
-
 namespace wxue_img
 {
-    wxBitmapBundle bundle_face_smile_svg(int width, int height)
+    // Convert a data array into a wxImage
+    wxImage get_image(const unsigned char* data, size_t size_data)
     {
-        return wxueBundleSVG(wxue_img::face_smile_svg, 1781, 7417, wxSize(width, height));
-    }
+        wxMemoryInputStream strm(data, size_data);
+        wxImage image;
+        image.LoadFile(strm);
+        return image;
+    };
 
-    wxBitmapBundle bundle_img_1_bottom_png()
+    // Convert compressed SVG string into a wxBitmapBundle
+    wxBitmapBundle get_bundle_svg(const unsigned char* data,
+        size_t size_data, size_t size_svg, wxSize def_size)
     {
-        return wxBitmapBundle::FromBitmap(wxBitmap(wxueImage(img_1_bottom_png, 148)));
-    }
-
-    wxBitmapBundle bundle_Ainsi_c3_a_se_passe_png()
-    {
-        return wxBitmapBundle::FromBitmap(wxBitmap(wxueImage(Ainsi_c3_a_se_passe_png, 148)));
-    }
-
-    wxBitmapBundle bundle_bottom_1__png()
-    {
-        return wxBitmapBundle::FromBitmap(wxBitmap(wxueImage(bottom_1__png, 148)));
-    }
-
-    wxBitmapBundle bundle_debug_32_png()
-    {
-        return wxBitmapBundle::FromBitmap(wxBitmap(wxueImage(debug_32_png, 1701)));
-    }
-
-    wxBitmapBundle bundle_disabled_png()
-    {
-        return wxBitmapBundle::FromBitmap(wxBitmap(wxueImage(disabled_png, 437)));
-    }
-
-    wxBitmapBundle bundle_english_png()
-    {
-        return wxBitmapBundle::FromBitmap(wxBitmap(wxueImage(english_png, 541)));
-    }
-
-    wxBitmapBundle bundle_er_png()
-    {
-        return wxBitmapBundle::FromBitmap(wxBitmap(wxueImage(er_png, 302)));
-    }
-
-    wxBitmapBundle bundle_focus_png()
-    {
-        return wxBitmapBundle::FromBitmap(wxBitmap(wxueImage(focus_png, 517)));
-    }
-
-    wxBitmapBundle bundle_fontPicker_png()
-    {
-        return wxueBundleBitmaps(
-            wxBitmap(wxueImage(fontPicker_png, 763)),
-            wxBitmap(wxueImage(fontPicker_1_25x_png, 1330)),
-            wxBitmap(wxueImage(fontPicker_1_5x_png, 1507)));
-    }
-
-    wxBitmapBundle bundle_french_png()
-    {
-        return wxBitmapBundle::FromBitmap(wxBitmap(wxueImage(french_png, 252)));
-    }
-
-    wxBitmapBundle bundle_japanese_png()
-    {
-        return wxBitmapBundle::FromBitmap(wxBitmap(wxueImage(japanese_png, 377)));
-    }
-
-    wxBitmapBundle bundle_left_png()
-    {
-        return wxBitmapBundle::FromBitmap(wxBitmap(wxueImage(left_png, 158)));
-    }
-
-    wxBitmapBundle bundle_no_hour_png()
-    {
-        return wxBitmapBundle::FromBitmap(wxBitmap(wxueImage(no_hour_png, 347)));
-    }
-
-    wxBitmapBundle bundle_normal_png()
-    {
-        return wxBitmapBundle::FromBitmap(wxBitmap(wxueImage(normal_png, 508)));
-    }
-
-    wxBitmapBundle bundle_re_png()
-    {
-        return wxBitmapBundle::FromBitmap(wxBitmap(wxueImage(re_png, 305)));
-    }
-
-    wxBitmapBundle bundle_ribbon_button_hybrid_png()
-    {
-        return wxBitmapBundle::FromBitmap(wxBitmap(wxueImage(ribbon_button_hybrid_png, 192)));
-    }
-
-    wxBitmapBundle bundle_toggle_button_png()
-    {
-        return wxBitmapBundle::FromBitmap(wxBitmap(wxueImage(toggle_button_png, 277)));
-    }
-
-    wxBitmapBundle bundle_wiztest_png()
-    {
-        return wxBitmapBundle::FromBitmap(wxBitmap(wxueImage(wiztest_png, 1239)));
-    }
-
-    wxBitmapBundle bundle_wiztest2_png()
-    {
-        return wxBitmapBundle::FromBitmap(wxBitmap(wxueImage(wiztest2_png, 6797)));
-    }
-
-    wxBitmapBundle bundle_wxNotebook_png()
-    {
-        return wxBitmapBundle::FromBitmap(wxBitmap(wxueImage(wxNotebook_png, 177)));
-    }
-
-    wxBitmapBundle bundle_wxPython_png()
-    {
-        return wxueBundleBitmaps(
-            wxBitmap(wxueImage(wxPython_png, 399)),
-            wxBitmap(wxueImage(wxPython_1_5x_png, 765)),
-            wxBitmap(wxueImage(wxPython_2x_png, 251)));
-    }
-
-    wxBitmapBundle bundle_wxPython_1_5x_png()
-    {
-        return wxBitmapBundle::FromBitmap(wxBitmap(wxueImage(wxPython_1_5x_png, 765)));
-    }
+        auto str = std::make_unique<char[]>(size_svg);
+        wxMemoryInputStream stream_in(data, size_data);
+        wxZlibInputStream zlib_strm(stream_in);
+        zlib_strm.Read(str.get(), size_svg);
+        return wxBitmapBundle::FromSVG(str.get(), def_size);
+    };
 
     const unsigned char Ainsi_c3_a_se_passe_png[148] {
     137,80,78,71,13,10,26,10,0,0,0,13,73,72,68,82,0,0,0,24,0,0,0,24,8,6,0,0,0,224,119,61,248,0,0,0,9,112,72,89,115,0,0,11,
@@ -896,6 +753,256 @@ namespace wxue_img
     0,0,0,0,73,69,78,68,174,66,96,130
     };
 
+    wxBitmapBundle bundle_img_1_bottom_png()
+    {
+        return wxBitmapBundle::FromBitmap(wxBitmap(get_image(img_1_bottom_png, 148)));
+    }
+
+    wxBitmapBundle bundle_Ainsi_c3_a_se_passe_png()
+    {
+        return wxBitmapBundle::FromBitmap(wxBitmap(get_image(Ainsi_c3_a_se_passe_png, 148)));
+    }
+
+    wxBitmapBundle bundle_bottom_1__png()
+    {
+        return wxBitmapBundle::FromBitmap(wxBitmap(get_image(bottom_1__png, 148)));
+    }
+
+    wxBitmapBundle bundle_debug_32_png()
+    {
+        return wxBitmapBundle::FromBitmap(wxBitmap(get_image(debug_32_png, 1701)));
+    }
+
+    wxBitmapBundle bundle_disabled_png()
+    {
+        return wxBitmapBundle::FromBitmap(wxBitmap(get_image(disabled_png, 437)));
+    }
+
+    wxBitmapBundle bundle_english_png()
+    {
+        return wxBitmapBundle::FromBitmap(wxBitmap(get_image(english_png, 541)));
+    }
+
+    wxBitmapBundle bundle_er_png()
+    {
+        return wxBitmapBundle::FromBitmap(wxBitmap(get_image(er_png, 302)));
+    }
+
+    wxBitmapBundle bundle_face_smile_svg(int width, int height)
+    {
+        return get_bundle_svg(face_smile_svg, 1781, 7417, wxSize(width, height));
+    }
+
+    wxBitmapBundle bundle_focus_png()
+    {
+        return wxBitmapBundle::FromBitmap(wxBitmap(get_image(focus_png, 517)));
+    }
+
+    wxBitmapBundle bundle_fontPicker_png()
+    {
+        wxVector<wxBitmap> bitmaps;
+        bitmaps.push_back(get_image(fontPicker_png, sizeof(fontPicker_png)));
+        bitmaps.push_back(get_image(fontPicker_1_25x_png, sizeof(fontPicker_1_25x_png)));
+        bitmaps.push_back(get_image(fontPicker_1_5x_png, sizeof(fontPicker_1_5x_png)));
+        return wxBitmapBundle::FromBitmaps(bitmaps);
+    }
+
+    wxBitmapBundle bundle_french_png()
+    {
+        return wxBitmapBundle::FromBitmap(wxBitmap(get_image(french_png, 252)));
+    }
+
+    wxBitmapBundle bundle_japanese_png()
+    {
+        return wxBitmapBundle::FromBitmap(wxBitmap(get_image(japanese_png, 377)));
+    }
+
+    wxBitmapBundle bundle_left_png()
+    {
+        return wxBitmapBundle::FromBitmap(wxBitmap(get_image(left_png, 158)));
+    }
+
+    wxBitmapBundle bundle_no_hour_png()
+    {
+        return wxBitmapBundle::FromBitmap(wxBitmap(get_image(no_hour_png, 347)));
+    }
+
+    wxBitmapBundle bundle_normal_png()
+    {
+        return wxBitmapBundle::FromBitmap(wxBitmap(get_image(normal_png, 508)));
+    }
+
+    wxBitmapBundle bundle_re_png()
+    {
+        return wxBitmapBundle::FromBitmap(wxBitmap(get_image(re_png, 305)));
+    }
+
+    wxBitmapBundle bundle_ribbon_button_hybrid_png()
+    {
+        return wxBitmapBundle::FromBitmap(wxBitmap(get_image(ribbon_button_hybrid_png, 192)));
+    }
+
+    wxBitmapBundle bundle_toggle_button_png()
+    {
+        return wxBitmapBundle::FromBitmap(wxBitmap(get_image(toggle_button_png, 277)));
+    }
+
+    wxBitmapBundle bundle_wiztest_png()
+    {
+        return wxBitmapBundle::FromBitmap(wxBitmap(get_image(wiztest_png, 1239)));
+    }
+
+    wxBitmapBundle bundle_wiztest2_png()
+    {
+        return wxBitmapBundle::FromBitmap(wxBitmap(get_image(wiztest2_png, 6797)));
+    }
+
+    wxBitmapBundle bundle_wxNotebook_png()
+    {
+        return wxBitmapBundle::FromBitmap(wxBitmap(get_image(wxNotebook_png, 177)));
+    }
+
+    wxBitmapBundle bundle_wxPython_png()
+    {
+        wxVector<wxBitmap> bitmaps;
+        bitmaps.push_back(get_image(wxPython_png, sizeof(wxPython_png)));
+        bitmaps.push_back(get_image(wxPython_1_5x_png, sizeof(wxPython_1_5x_png)));
+        bitmaps.push_back(get_image(wxPython_2x_png, sizeof(wxPython_2x_png)));
+        return wxBitmapBundle::FromBitmaps(bitmaps);
+    }
+
+    wxBitmapBundle bundle_wxPython_1_5x_png()
+    {
+        wxVector<wxBitmap> bitmaps;
+        bitmaps.push_back(get_image(wxPython_1_5x_png, sizeof(wxPython_1_5x_png)));
+        bitmaps.push_back(get_image(wxPython_2x_png, sizeof(wxPython_2x_png)));
+        return wxBitmapBundle::FromBitmaps(bitmaps);
+    }
+
+    wxImage image_Ainsi_c3_a_se_passe_png()
+    {
+        return get_image(Ainsi_c3_a_se_passe_png, 148);
+    }
+
+    wxImage image_bottom_1__png()
+    {
+        return get_image(bottom_1__png, 148);
+    }
+
+    wxImage image_debug_32_png()
+    {
+        return get_image(debug_32_png, 1701);
+    }
+
+    wxImage image_disabled_png()
+    {
+        return get_image(disabled_png, 437);
+    }
+
+    wxImage image_english_png()
+    {
+        return get_image(english_png, 541);
+    }
+
+    wxImage image_er_png()
+    {
+        return get_image(er_png, 302);
+    }
+
+    wxImage image_focus_png()
+    {
+        return get_image(focus_png, 517);
+    }
+
+    wxImage image_fontPicker_1_25x_png()
+    {
+        return get_image(fontPicker_1_25x_png, 1330);
+    }
+
+    wxImage image_fontPicker_1_5x_png()
+    {
+        return get_image(fontPicker_1_5x_png, 1507);
+    }
+
+    wxImage image_fontPicker_png()
+    {
+        return get_image(fontPicker_png, 763);
+    }
+
+    wxImage image_french_png()
+    {
+        return get_image(french_png, 252);
+    }
+
+    wxImage image_img_1_bottom_png()
+    {
+        return get_image(img_1_bottom_png, 148);
+    }
+
+    wxImage image_japanese_png()
+    {
+        return get_image(japanese_png, 377);
+    }
+
+    wxImage image_left_png()
+    {
+        return get_image(left_png, 158);
+    }
+
+    wxImage image_no_hour_png()
+    {
+        return get_image(no_hour_png, 347);
+    }
+
+    wxImage image_normal_png()
+    {
+        return get_image(normal_png, 508);
+    }
+
+    wxImage image_re_png()
+    {
+        return get_image(re_png, 305);
+    }
+
+    wxImage image_ribbon_button_hybrid_png()
+    {
+        return get_image(ribbon_button_hybrid_png, 192);
+    }
+
+    wxImage image_toggle_button_png()
+    {
+        return get_image(toggle_button_png, 277);
+    }
+
+    wxImage image_wiztest2_png()
+    {
+        return get_image(wiztest2_png, 6797);
+    }
+
+    wxImage image_wiztest_png()
+    {
+        return get_image(wiztest_png, 1239);
+    }
+
+    wxImage image_wxNotebook_png()
+    {
+        return get_image(wxNotebook_png, 177);
+    }
+
+    wxImage image_wxPython_1_5x_png()
+    {
+        return get_image(wxPython_1_5x_png, 765);
+    }
+
+    wxImage image_wxPython_2x_png()
+    {
+        return get_image(wxPython_2x_png, 251);
+    }
+
+    wxImage image_wxPython_png()
+    {
+        return get_image(wxPython_png, 399);
+    }
 }
 
 // ************* End of generated code ***********

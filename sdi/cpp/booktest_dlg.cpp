@@ -17,15 +17,6 @@
 
 #include "booktest_dlg.h"
 
-namespace wxue_img
-{
-    extern const unsigned char english_png[541];
-    extern const unsigned char er_png[302];
-    extern const unsigned char french_png[252];
-    extern const unsigned char japanese_png[377];
-    extern const unsigned char re_png[305];
-}
-
 bool BookTestDlg::Create(wxWindow* parent, wxWindowID id, const wxString& title,
     const wxPoint& pos, const wxSize& size, long style, const wxString &name)
 {

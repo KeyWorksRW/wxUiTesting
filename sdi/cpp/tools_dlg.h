@@ -24,11 +24,7 @@
 
 namespace wxue_img
 {
-    // Images declared in this class module:
-
     extern const unsigned char left_svg[585];
-    // redo@2x.png
-    extern const unsigned char redo_2x_png[1264];
     extern const unsigned char redo_png[945];
     extern const unsigned char undo_png[962];
 }

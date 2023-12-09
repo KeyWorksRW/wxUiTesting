@@ -27,17 +27,27 @@
 
 #include <wx/animate.h>
 
+#include <wx/mstream.h>  // memory stream classes
+#include <wx/zstream.h>  // zlib stream classes
+
+#include <memory>  // for std::make_unique
+
+// Convert a data array into a wxAnimation
+#ifdef __cpp_inline_variables
+inline wxAnimation wxueAnimation(const unsigned char* data, size_t size_data)
+#else
+static wxAnimation wxueAnimation(const unsigned char* data, size_t size_data)
+#endif
+{
+    wxMemoryInputStream strm(data, size_data);
+    wxAnimation animation;
+    animation.Load(strm);
+    return animation;
+};
+
 namespace wxue_img
 {
-    extern const unsigned char disabled_png[437];
-    extern const unsigned char english_png[541];
-    extern const unsigned char focus_png[517];
-    extern const unsigned char french_png[252];
-    extern const unsigned char left_png[158];
-    extern const unsigned char no_hour_png[347];
-    extern const unsigned char normal_png[508];
-    extern const unsigned char toggle_button_png[277];
-    extern const unsigned char wiztest_png[1239];
+    extern const unsigned char clr_hourglass_gif[2017];
 }
 
 bool MainTestDialog::Create(wxWindow* parent, wxWindowID id, const wxString& title,
@@ -255,7 +265,7 @@ bool MainTestDialog::Create(wxWindow* parent, wxWindowID id, const wxString& tit
 
     m_animation_ctrl = new wxAnimationCtrl(static_box_3->GetStaticBox(), wxID_ANY, wxueAnimation(wxue_img::clr_hourglass_gif, sizeof(wxue_img::clr_hourglass_gif)),
         wxDefaultPosition, wxDefaultSize, wxAC_DEFAULT_STYLE);
-    m_animation_ctrl->SetInactiveBitmap(wxueImage(wxue_img::disabled_png, sizeof(wxue_img::disabled_png)));
+    m_animation_ctrl->SetInactiveBitmap(wxue_img::bundle_disabled_png());
     static_box_3->Add(m_animation_ctrl, wxSizerFlags().Border(wxALL));
 
     box_sizer_19->Add(static_box_3, wxSizerFlags().Border(wxALL));

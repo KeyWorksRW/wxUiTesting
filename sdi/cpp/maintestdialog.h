@@ -57,8 +57,6 @@
 
 namespace wxue_img
 {
-    // Images declared in this class module:
-
     extern const unsigned char clr_hourglass_gif[2017];
 }
 

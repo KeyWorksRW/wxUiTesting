@@ -21,6 +21,11 @@
 #include <wx/stattext.h>
 #include <wx/tglbtn.h>
 
+namespace wxue_img
+{
+    extern const unsigned char clr_hourglass_gif[2017];
+}
+
 class PythonDlg : public wxDialog
 {
 public:
