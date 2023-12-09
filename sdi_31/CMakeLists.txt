@@ -173,14 +173,14 @@ target_precompile_headers(sdi_31 PRIVATE "cpp/pch.h")
 target_precompile_headers(check_build PRIVATE "cpp/pch.h")
 
 target_include_directories(sdi_31 PRIVATE
-    ${BUILD_ROOT}/include
     ${setup_dir}
+    ${BUILD_ROOT}/include
     ${CMAKE_CURRENT_LIST_DIR}/cpp/
 )
 
 target_include_directories(check_build PRIVATE
-    ${BUILD_ROOT}/include
     ${setup_dir}
+    ${BUILD_ROOT}/include
     ${CMAKE_CURRENT_LIST_DIR}/cpp/
 )
 
