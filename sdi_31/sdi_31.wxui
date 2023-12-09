@@ -11,7 +11,7 @@
     cpp_line_length="125"
     derived_directory="cpp"
     generate_cmake="1"
-    wxWidgets_version="3.2"
+    wxWidgets_version="3.1"
     python_output_folder="python"
     ruby_output_folder="ruby"
     combine_all_forms="0"
@@ -302,7 +302,7 @@
                   class="wxStaticText"
                   label="11.5-pt default font"
                   var_name="static_text"
-                  font="Segoe UI,11.5" />
+                  font="Segoe UI,11.5,,bold" />
                 <node
                   class="wxStaticText"
                   label="Comic Sans MS -1 pt size"
