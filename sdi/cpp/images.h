@@ -50,6 +50,8 @@ namespace wxue_img
     wxImage image_focus_png();
     wxImage image_fontPicker_1_25x_png();
     wxImage image_fontPicker_1_5x_png();
+    wxImage image_fontPicker_1_75x_png();
+    wxImage image_fontPicker_2x_png();
     wxImage image_fontPicker_png();
     wxImage image_french_png();
     wxImage image_img_1_bottom_png();

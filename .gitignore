@@ -10,7 +10,6 @@ __pycache__/
 *.bat
 *.btm
 *.chm
-*.cmd
 *.db
 *.dll
 *.exe
@@ -29,8 +28,6 @@ __pycache__/
 *.res
 *.rtf
 *.tmp
-*.ttBld
-*.txt
 *.zip
 
 # CMake
