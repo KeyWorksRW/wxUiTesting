@@ -26,15 +26,48 @@
 #include <wx/animate.h>
 
 #include <wx/mstream.h>  // memory stream classes
+#include <wx/zstream.h>  // zlib stream classes
+
+#include <memory>  // for std::make_unique
 
 // Convert a data array into a wxImage
-wxImage wxueImage(const unsigned char* data, size_t size_data);
+#ifdef __cpp_inline_variables
+inline wxImage wxueImage(const unsigned char* data, size_t size_data)
+#else
+static wxImage wxueImage(const unsigned char* data, size_t size_data)
+#endif
+{
+    wxMemoryInputStream strm(data, size_data);
+    wxImage image;
+    image.LoadFile(strm);
+    return image;
+};
 
 // Convert a data array into a wxAnimation
-wxAnimation wxueAnimation(const unsigned char* data, size_t size_data);
+#ifdef __cpp_inline_variables
+inline wxAnimation wxueAnimation(const unsigned char* data, size_t size_data)
+#else
+static wxAnimation wxueAnimation(const unsigned char* data, size_t size_data)
+#endif
+{
+    wxMemoryInputStream strm(data, size_data);
+    wxAnimation animation;
+    animation.Load(strm);
+    return animation;
+};
+
 namespace wxue_img
 {
+    extern const unsigned char clr_hourglass_gif[2017];
+    extern const unsigned char disabled_png[437];
     extern const unsigned char english_png[541];
+    extern const unsigned char focus_png[517];
+    extern const unsigned char french_png[252];
+    extern const unsigned char left_png[158];
+    extern const unsigned char no_hour_png[347];
+    extern const unsigned char normal_png[508];
+    extern const unsigned char toggle_button_png[277];
+    extern const unsigned char wiztest_png[1239];
 }
 
 bool MainTestDialog::Create(wxWindow* parent, wxWindowID id, const wxString& title,
@@ -66,8 +99,19 @@ bool MainTestDialog::Create(wxWindow* parent, wxWindowID id, const wxString& tit
 
     static_text = new wxStaticText(page_2, wxID_ANY, "11.5-pt default font");
     {
-        wxFontInfo font_info(11.5);
-        font_info.FaceName("Segoe UI");
+        wxFontInfo font_info(
+        #if !wxCHECK_VERSION(3, 1, 2)
+            12);
+        #else // fractional point sizes are new to wxWidgets 3.1.2
+            11.5);
+        #endif
+        font_info.FaceName("Segoe UI")
+        #if !wxCHECK_VERSION(3, 1, 2)
+            .Bold()
+        #else // Weight() is new to wxWidgets 3.1.2
+            .Weight(wxFONTWEIGHT_BOLD)
+        #endif
+        ;
         static_text->SetFont(wxFont(font_info));
     }
     grid_sizer2->Add(static_text, wxSizerFlags().Border(wxALL));
@@ -90,8 +134,19 @@ bool MainTestDialog::Create(wxWindow* parent, wxWindowID id, const wxString& tit
 
     static_text3 = new wxStaticText(page_2, wxID_ANY, "bold, underlined Times New Roman, 12.5");
     {
-        wxFontInfo font_info(12.5);
-        font_info.FaceName("Times New Roman").Weight(wxFONTWEIGHT_BOLD).Underlined();
+        wxFontInfo font_info(
+        #if !wxCHECK_VERSION(3, 1, 2)
+            13);
+        #else // fractional point sizes are new to wxWidgets 3.1.2
+            12.5);
+        #endif
+        font_info.FaceName("Times New Roman")
+        #if !wxCHECK_VERSION(3, 1, 2)
+            .Bold()
+        #else // Weight() is new to wxWidgets 3.1.2
+            .Weight(wxFONTWEIGHT_BOLD)
+        #endif
+        .Underlined();
         static_text3->SetFont(wxFont(font_info));
     }
     grid_sizer2->Add(static_text3, wxSizerFlags().Border(wxALL));
@@ -142,17 +197,51 @@ bool MainTestDialog::Create(wxWindow* parent, wxWindowID id, const wxString& tit
     grid_bag_sizer->Add(m_btn_2, wxGBPosition(0, 1), wxGBSpan(1, 1), wxALL, 5);
 
     m_btn_bitmaps = new wxButton(page_4, wxID_ANY, "Bitmaps");
+#if wxCHECK_VERSION(3, 1, 6)
     {
-        m_btn_bitmaps->SetBitmap(wxBitmapBundle::FromBitmap(wxueImage(wxue_img::normal_png, sizeof(wxue_img::normal_png))));
-        m_btn_bitmaps->SetBitmapDisabled(wxBitmapBundle::FromBitmap(wxueImage(wxue_img::no_hour_png, sizeof(wxue_img::no_hour_png))));
-        m_btn_bitmaps->SetBitmapCurrent(wxBitmapBundle::FromBitmap(wxueImage(wxue_img::focus_png, sizeof(wxue_img::focus_png))));
+        m_btn_bitmaps->SetBitmap(
+#if wxCHECK_VERSION(3, 1, 6)
+        wxBitmapBundle::FromBitmap(wxueImage(wxue_img::normal_png, sizeof(wxue_img::normal_png)))
+#else
+        wxueImage(wxue_img::normal_png, sizeof(wxue_img::normal_png))
+#endif
+    );
+        m_btn_bitmaps->SetBitmapDisabled(
+#if wxCHECK_VERSION(3, 1, 6)
+        wxBitmapBundle::FromBitmap(wxueImage(wxue_img::no_hour_png, sizeof(wxue_img::no_hour_png)))
+#else
+        wxueImage(wxue_img::no_hour_png, sizeof(wxue_img::no_hour_png))
+#endif
+    );
+        m_btn_bitmaps->SetBitmapCurrent(
+#if wxCHECK_VERSION(3, 1, 6)
+        wxBitmapBundle::FromBitmap(wxueImage(wxue_img::focus_png, sizeof(wxue_img::focus_png)))
+#else
+        wxueImage(wxue_img::focus_png, sizeof(wxue_img::focus_png))
+#endif
+    );
     }
+#else
+    m_btn_bitmaps->SetBitmap(wxueImage(wxue_img::normal_png, sizeof(wxue_img::normal_png)));
+    m_btn_bitmaps->SetBitmapDisabled(wxueImage(wxue_img::no_hour_png, sizeof(wxue_img::no_hour_png)));
+    m_btn_bitmaps->SetBitmapCurrent(wxueImage(wxue_img::focus_png, sizeof(wxue_img::focus_png)));
+#endif  // wxCHECK_VERSION(3, 1, 6)
     m_btn_bitmaps->SetToolTip("Bitmap should change when mouse is over button, or button is disabled.");
     grid_bag_sizer->Add(m_btn_bitmaps, wxGBPosition(0, 2), wxGBSpan(1, 1), wxALL, 5);
 
     m_btn_4 = new wxButton(page_4, wxID_ANY, "Right");
     m_btn_4->SetBitmapPosition(wxRIGHT);
-        m_btn_4->SetBitmap(wxBitmapBundle::FromBitmap(wxueImage(wxue_img::normal_png, sizeof(wxue_img::normal_png))));
+#if wxCHECK_VERSION(3, 1, 6)
+        m_btn_4->SetBitmap(
+#if wxCHECK_VERSION(3, 1, 6)
+        wxBitmapBundle::FromBitmap(wxueImage(wxue_img::normal_png, sizeof(wxue_img::normal_png)))
+#else
+        wxueImage(wxue_img::normal_png, sizeof(wxue_img::normal_png))
+#endif
+    );
+#else
+    m_btn_4->SetBitmap(wxueImage(wxue_img::normal_png, sizeof(wxue_img::normal_png)));
+#endif  // wxCHECK_VERSION(3, 1, 6)
     m_btn_4->SetToolTip("Bitmap should be on the right side (fails in wxPython 4.2).");
     grid_bag_sizer->Add(m_btn_4, wxGBPosition(0, 3), wxGBSpan(1, 1), wxALL, 5);
 
@@ -169,7 +258,11 @@ bool MainTestDialog::Create(wxWindow* parent, wxWindowID id, const wxString& tit
     auto* box_sizer_7 = new wxBoxSizer(wxHORIZONTAL);
 
     m_btn_5 = new wxCommandLinkButton(page_4, wxID_ANY, "Command", "wxCommandLinkButton");
+#if wxCHECK_VERSION(3, 1, 6)
         m_btn_5->SetBitmap(wxArtProvider::GetBitmapBundle(wxART_GO_FORWARD, wxART_OTHER));
+#else
+    m_btn_5->SetBitmap(wxArtProvider::GetBitmap(wxART_GO_FORWARD, wxART_OTHER));
+#endif  // wxCHECK_VERSION(3, 1, 6)
     m_btn_5->SetToolTip("The bitmap for this is from Art Provider.");
     box_sizer_7->Add(m_btn_5, wxSizerFlags().Border(wxALL));
 
@@ -186,7 +279,13 @@ bool MainTestDialog::Create(wxWindow* parent, wxWindowID id, const wxString& tit
     box_sizer_7->Add(radioBox, wxSizerFlags().Border(wxALL));
 
     m_checkBox_sizer = new wxCheckBox(page_4, wxID_ANY, "Checkbox");
-    auto* static_box_4 = new wxStaticBoxSizer(new wxStaticBox(page_4, wxID_ANY, m_checkBox_sizer), wxVERTICAL);
+    auto* static_box_4 = new wxStaticBoxSizer(new wxStaticBox(page_4, wxID_ANY,
+#if wxCHECK_VERSION(3, 1, 1)
+        m_checkBox_sizer),
+#else
+        wxEmptyString),
+#endif
+    wxVERTICAL);
 
     m_radioBtn_4 = new wxRadioButton(static_box_4->GetStaticBox(), wxID_ANY, "First button");
     static_box_4->Add(m_radioBtn_4, wxSizerFlags().Border(wxALL));
@@ -201,7 +300,13 @@ bool MainTestDialog::Create(wxWindow* parent, wxWindowID id, const wxString& tit
     box_sizer_7->Add(static_box_4, wxSizerFlags().Border(wxALL));
 
     m_radioBtn__sizer = new wxRadioButton(page_4, wxID_ANY, "Radio");
-    auto* static_box_5 = new wxStaticBoxSizer(new wxStaticBox(page_4, wxID_ANY, m_radioBtn__sizer), wxVERTICAL);
+    auto* static_box_5 = new wxStaticBoxSizer(new wxStaticBox(page_4, wxID_ANY,
+#if wxCHECK_VERSION(3, 1, 1)
+        m_radioBtn__sizer),
+#else
+        wxEmptyString),
+#endif
+    wxVERTICAL);
 
     m_radioBtn_5 = new wxRadioButton(static_box_5->GetStaticBox(), wxID_ANY, "First button");
     static_box_5->Add(m_radioBtn_5, wxSizerFlags().Border(wxALL));
@@ -244,7 +349,13 @@ bool MainTestDialog::Create(wxWindow* parent, wxWindowID id, const wxString& tit
     box_sizer_19->Add(wrap_sizer, wxSizerFlags().Expand().Border(wxALL));
 
     m_checkPlayAnimation = new wxCheckBox(page_4, wxID_ANY, "Play Animation");
-    auto* static_box_3 = new wxStaticBoxSizer(new wxStaticBox(page_4, wxID_ANY, m_checkPlayAnimation), wxVERTICAL);
+    auto* static_box_3 = new wxStaticBoxSizer(new wxStaticBox(page_4, wxID_ANY,
+#if wxCHECK_VERSION(3, 1, 1)
+        m_checkPlayAnimation),
+#else
+        wxEmptyString),
+#endif
+    wxVERTICAL);
 
     m_toggleBtn_2 = new wxToggleButton(static_box_3->GetStaticBox(), wxID_ANY, "Play Animation", wxDefaultPosition,
         wxDefaultSize, wxBU_EXACTFIT);
@@ -252,7 +363,14 @@ bool MainTestDialog::Create(wxWindow* parent, wxWindowID id, const wxString& tit
 
     m_animation_ctrl = new wxAnimationCtrl(static_box_3->GetStaticBox(), wxID_ANY, wxueAnimation(wxue_img::clr_hourglass_gif, sizeof(wxue_img::clr_hourglass_gif)),
         wxDefaultPosition, wxDefaultSize, wxAC_DEFAULT_STYLE);
-    m_animation_ctrl->SetInactiveBitmap(wxueImage(wxue_img::disabled_png, sizeof(wxue_img::disabled_png)));
+    m_animation_ctrl->SetInactiveBitmap(
+
+#if wxCHECK_VERSION(3, 1, 6)
+        wxBitmapBundle::FromBitmap(wxueImage(wxue_img::disabled_png, sizeof(wxue_img::disabled_png)))
+#else
+        wxueImage(wxue_img::disabled_png, sizeof(wxue_img::disabled_png))
+#endif
+    );
     static_box_3->Add(m_animation_ctrl, wxSizerFlags().Border(wxALL));
 
     box_sizer_19->Add(static_box_3, wxSizerFlags().Border(wxALL));
@@ -672,7 +790,17 @@ bool MainTestDialog::Create(wxWindow* parent, wxWindowID id, const wxString& tit
     auto* box_sizer_18 = new wxBoxSizer(wxHORIZONTAL);
 
     m_banner = new wxBannerWindow(page_7, wxLEFT);
-        m_banner->SetBitmap(wxBitmapBundle::FromBitmap(wxueImage(wxue_img::wiztest_png, sizeof(wxue_img::wiztest_png))));
+#if wxCHECK_VERSION(3, 1, 6)
+        m_banner->SetBitmap(
+#if wxCHECK_VERSION(3, 1, 6)
+        wxBitmapBundle::FromBitmap(wxueImage(wxue_img::wiztest_png, sizeof(wxue_img::wiztest_png)))
+#else
+        wxueImage(wxue_img::wiztest_png, sizeof(wxue_img::wiztest_png))
+#endif
+    );
+#else
+    m_banner->SetBitmap(wxueImage(wxue_img::wiztest_png, sizeof(wxue_img::wiztest_png)));
+#endif  // wxCHECK_VERSION(3, 1, 6)
     m_banner->SetText("This is a long title", wxEmptyString);
     box_sizer_18->Add(m_banner, wxSizerFlags().Border(wxALL));
 

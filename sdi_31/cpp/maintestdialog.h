@@ -55,21 +55,6 @@
 #include <wx/tglbtn.h>
 #include <wx/timectrl.h>
 
-namespace wxue_img
-{
-    // Images declared in this class module:
-
-    extern const unsigned char clr_hourglass_gif[2017];
-    extern const unsigned char disabled_png[437];
-    extern const unsigned char focus_png[517];
-    extern const unsigned char french_png[252];
-    extern const unsigned char left_png[158];
-    extern const unsigned char no_hour_png[347];
-    extern const unsigned char normal_png[508];
-    extern const unsigned char toggle_button_png[277];
-    extern const unsigned char wiztest_png[1239];
-}
-
 class MainTestDialog : public wxDialog
 {
 public:

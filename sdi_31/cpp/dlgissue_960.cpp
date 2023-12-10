@@ -7,8 +7,12 @@
 
 // clang-format off
 
-#include <wx/bitmap.h>
-#include <wx/bmpbndl.h>
+#if wxCHECK_VERSION(3, 1, 6)
+    #include <wx/bmpbndl.h>
+#else
+    #include <wx/bitmap.h>
+#endif
+
 #include <wx/button.h>
 #include <wx/icon.h>
 #include <wx/image.h>
@@ -20,12 +24,23 @@
 #include <wx/mstream.h>  // memory stream classes
 
 // Convert a data array into a wxImage
-wxImage wxueImage(const unsigned char* data, size_t size_data);
+#ifdef __cpp_inline_variables
+inline wxImage wxueImage(const unsigned char* data, size_t size_data)
+#else
+static wxImage wxueImage(const unsigned char* data, size_t size_data)
+#endif
+{
+    wxMemoryInputStream strm(data, size_data);
+    wxImage image;
+    image.LoadFile(strm);
+    return image;
+};
 
 namespace wxue_img
 {
-    // Ainsi ça se passe.png
-    extern const unsigned char Ainsi_c3_a_se_passe_png[148];
+    extern const unsigned char Ainsi_c3_a_se_passe_png[148];  // Ainsi ça se passe.png
+    extern const unsigned char bottom_1__png[148];  // bottom(1).png
+    extern const unsigned char img_1_bottom_png[148];  // 1_bottom.png
 }
 
 bool DlgIssue_960::Create(wxWindow* parent, wxWindowID id, const wxString& title,
@@ -45,15 +60,48 @@ bool DlgIssue_960::Create(wxWindow* parent, wxWindowID id, const wxString& title
 
     auto* box_sizer = new wxBoxSizer(wxHORIZONTAL);
 
-    auto* bmp = new wxStaticBitmap(this, wxID_ANY, wxBitmapBundle::FromBitmap(wxueImage(wxue_img::img_1_bottom_png, sizeof(wxue_img::img_1_bottom_png))));
+        auto* bmp = new wxStaticBitmap(this, wxID_ANY, 
+#if wxCHECK_VERSION(3, 1, 6)
+
+#if wxCHECK_VERSION(3, 1, 6)
+        wxBitmapBundle::FromBitmap(wxueImage(wxue_img::img_1_bottom_png, sizeof(wxue_img::img_1_bottom_png)))
+#else
+        wxueImage(wxue_img::img_1_bottom_png, sizeof(wxue_img::img_1_bottom_png))
+#endif
+    );
+#else
+        wxBitmap(wxueImage(wxue_img::img_1_bottom_png, sizeof(wxue_img::img_1_bottom_png))));
+#endif
     box_sizer->Add(bmp, wxSizerFlags().Border(wxALL));
 
-    auto* bmp_2 = new wxStaticBitmap(this, wxID_ANY, wxBitmapBundle::FromBitmap(wxueImage(wxue_img::bottom_1__png, sizeof(wxue_img::bottom_1__png))));
+        auto* bmp_2 = new wxStaticBitmap(this, wxID_ANY, 
+#if wxCHECK_VERSION(3, 1, 6)
+
+#if wxCHECK_VERSION(3, 1, 6)
+        wxBitmapBundle::FromBitmap(wxueImage(wxue_img::bottom_1__png, sizeof(wxue_img::bottom_1__png)))
+#else
+        wxueImage(wxue_img::bottom_1__png, sizeof(wxue_img::bottom_1__png))
+#endif
+    );
+#else
+        wxBitmap(wxueImage(wxue_img::bottom_1__png, sizeof(wxue_img::bottom_1__png))));
+#endif
     box_sizer->Add(bmp_2, wxSizerFlags().Border(wxALL));
 
     dlg_sizer->Add(box_sizer, wxSizerFlags().Border(wxALL));
 
-    auto* bmp_3 = new wxStaticBitmap(this, wxID_ANY, wxBitmapBundle::FromBitmap(wxueImage(wxue_img::Ainsi_c3_a_se_passe_png, sizeof(wxue_img::Ainsi_c3_a_se_passe_png))));
+        auto* bmp_3 = new wxStaticBitmap(this, wxID_ANY, 
+#if wxCHECK_VERSION(3, 1, 6)
+
+#if wxCHECK_VERSION(3, 1, 6)
+        wxBitmapBundle::FromBitmap(wxueImage(wxue_img::Ainsi_c3_a_se_passe_png, sizeof(wxue_img::Ainsi_c3_a_se_passe_png)))
+#else
+        wxueImage(wxue_img::Ainsi_c3_a_se_passe_png, sizeof(wxue_img::Ainsi_c3_a_se_passe_png))
+#endif
+    );
+#else
+        wxBitmap(wxueImage(wxue_img::Ainsi_c3_a_se_passe_png, sizeof(wxue_img::Ainsi_c3_a_se_passe_png))));
+#endif
     dlg_sizer->Add(bmp_3, wxSizerFlags().Border(wxALL));
 
     auto* stdBtn = CreateStdDialogButtonSizer(wxOK|wxCANCEL);

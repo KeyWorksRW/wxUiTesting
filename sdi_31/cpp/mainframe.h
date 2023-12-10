@@ -24,23 +24,6 @@
 #include <wx/statusbr.h>
 #include <wx/toolbar.h>
 
-namespace wxue_img
-{
-    // Images declared in this class module:
-
-    // Ainsi ça se passe.png
-    extern const unsigned char Ainsi_c3_a_se_passe_png[148];
-    extern const unsigned char debug_32_png[1701];
-    extern const unsigned char english_png[541];
-    extern const unsigned char wxDialog_png[636];
-    extern const unsigned char wxNotebook_png[177];
-    extern const unsigned char wxPython_1_5x_png[765];
-    extern const unsigned char wxPython_2x_png[251];
-    extern const unsigned char wxPython_png[399];
-    extern const unsigned char wxToolBar_png[554];
-    extern const unsigned char wxWizard_png[1047];
-}
-
 class MainFrame : public wxFrame
 {
 public:

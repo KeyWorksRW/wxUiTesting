@@ -17,15 +17,27 @@
 #include <wx/mstream.h>  // memory stream classes
 
 // Convert a data array into a wxImage
-wxImage wxueImage(const unsigned char* data, size_t size_data);
+#ifdef __cpp_inline_variables
+inline wxImage wxueImage(const unsigned char* data, size_t size_data)
+#else
+static wxImage wxueImage(const unsigned char* data, size_t size_data)
+#endif
+{
+    wxMemoryInputStream strm(data, size_data);
+    wxImage image;
+    image.LoadFile(strm);
+    return image;
+};
 
 namespace wxue_img
 {
-    // fontPicker@1_25x.png
-    extern const unsigned char fontPicker_1_25x_png[1330];
-    // fontPicker@1_5x.png
-    extern const unsigned char fontPicker_1_5x_png[1507];
+    extern const unsigned char fontPicker_1_25x_png[1330];  // fontPicker@1_25x.png
+    extern const unsigned char fontPicker_1_5x_png[1507];  // fontPicker@1_5x.png
+    extern const unsigned char fontPicker_1_75x_png[2109];  // fontPicker@1_75x.png
+    extern const unsigned char fontPicker_2x_png[948];  // fontPicker@2x.png
     extern const unsigned char fontPicker_png[763];
+    extern const unsigned char redo_png[945];
+    extern const unsigned char undo_png[962];
     extern const unsigned char wxPython_1_5x_png[765];
     extern const unsigned char wxPython_2x_png[251];
     extern const unsigned char wxPython_png[399];
@@ -42,54 +54,114 @@ bool ToolBarsDialog::Create(wxWindow* parent, wxWindowID id, const wxString& tit
     auto* box_sizer = new wxBoxSizer(wxVERTICAL);
 
     m_tool_bar = new wxToolBar(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTB_HORIZONTAL);
-    m_tool_bar->AddTool(wxID_ANY, wxEmptyString, wxArtProvider::GetBitmapBundle(wxART_CUT, wxART_TOOLBAR));
+    m_tool_bar->AddTool(wxID_ANY, wxEmptyString,
+#if wxCHECK_VERSION(3, 1, 6)
+        wxArtProvider::GetBitmap(wxART_CUT, wxART_TOOLBAR)
+#else
+        wxBitmap(wxArtProvider::GetBitmap(wxART_CUT, wxART_TOOLBAR))
+#endif
+    );
 
     m_tool_bar->AddTool(wxID_ANY, wxEmptyString,
-        wxueImage(wxue_img::undo_png, sizeof(wxue_img::undo_png)));
+#if wxCHECK_VERSION(3, 1, 6)
 
-    m_tool_bar->AddTool(wxID_ANY, wxEmptyString, wxBitmapBundle::FromBitmaps(wxueImage(wxue_img::redo_png, sizeof(wxue_img::redo_png)), wxueImage(wxue_img::redo_2x_png, sizeof(wxue_img::redo_2x_png))));
+        wxueImage(wxue_img::undo_png, sizeof(wxue_img::undo_png))
+#else
+        wxBitmap(wxueImage(wxue_img::undo_png, sizeof(wxue_img::undo_png)))
+#endif
+    );
 
-    m_tool_bar->AddTool(wxID_ANY, wxEmptyString, [&]()
+    m_tool_bar->AddTool(wxID_ANY, wxEmptyString,
+#if wxCHECK_VERSION(3, 1, 6)
+
+        wxueImage(wxue_img::redo_png, sizeof(wxue_img::redo_png))
+#else
+        wxBitmap(wxueImage(wxue_img::redo_png, sizeof(wxue_img::redo_png)))
+#endif
+    );
+
+    m_tool_bar->AddTool(wxID_ANY, wxEmptyString,
+#if wxCHECK_VERSION(3, 1, 6)
+        [&]()
     {
         wxVector<wxBitmap> bitmaps;
         bitmaps.push_back(wxueImage(wxue_img::wxPython_png, sizeof(wxue_img::wxPython_png)));
         bitmaps.push_back(wxueImage(wxue_img::wxPython_1_5x_png, sizeof(wxue_img::wxPython_1_5x_png)));
         bitmaps.push_back(wxueImage(wxue_img::wxPython_2x_png, sizeof(wxue_img::wxPython_2x_png)));
         return wxBitmapBundle::FromBitmaps(bitmaps);
-    }());
+    }()
+#else
+        wxBitmap(wxueImage(wxue_img::wxPython_png, sizeof(wxue_img::wxPython_png)))
+#endif
+    );
 
-    m_tool_bar->AddTool(wxID_ANY, wxEmptyString, [&]()
+    m_tool_bar->AddTool(wxID_ANY, wxEmptyString,
+#if wxCHECK_VERSION(3, 1, 6)
+        [&]()
     {
         wxVector<wxBitmap> bitmaps;
         bitmaps.push_back(wxueImage(wxue_img::fontPicker_png, sizeof(wxue_img::fontPicker_png)));
         bitmaps.push_back(wxueImage(wxue_img::fontPicker_1_25x_png, sizeof(wxue_img::fontPicker_1_25x_png)));
         bitmaps.push_back(wxueImage(wxue_img::fontPicker_1_5x_png, sizeof(wxue_img::fontPicker_1_5x_png)));
+        bitmaps.push_back(wxueImage(wxue_img::fontPicker_1_75x_png, sizeof(wxue_img::fontPicker_1_75x_png)));
+        bitmaps.push_back(wxueImage(wxue_img::fontPicker_2x_png, sizeof(wxue_img::fontPicker_2x_png)));
         return wxBitmapBundle::FromBitmaps(bitmaps);
-    }());
+    }()
+#else
+        wxBitmap(wxueImage(wxue_img::fontPicker_png, sizeof(wxue_img::fontPicker_png)))
+#endif
+    );
 
     m_tool_bar->Realize();
     box_sizer->Add(m_tool_bar, wxSizerFlags().Border(wxALL));
 
     m_aui_tool_bar = new wxAuiToolBar(this, wxID_ANY, wxDefaultPosition, wxDefaultSize,
         wxAUI_TB_PLAIN_BACKGROUND);
-    m_aui_tool_bar->AddTool(wxID_ANY, wxEmptyString, wxArtProvider::GetBitmapBundle(wxART_CUT, wxART_TOOLBAR));
-    m_aui_tool_bar->AddTool(wxID_ANY, wxEmptyString, wxBitmapBundle::FromBitmaps(wxueImage(wxue_img::redo_png, sizeof(wxue_img::redo_png)), wxueImage(wxue_img::redo_2x_png, sizeof(wxue_img::redo_2x_png))));
-    m_aui_tool_bar->AddTool(wxID_ANY, wxEmptyString, [&]()
+    m_aui_tool_bar->AddTool(wxID_ANY, wxEmptyString,
+#if wxCHECK_VERSION(3, 1, 6)
+        wxArtProvider::GetBitmap(wxART_CUT, wxART_TOOLBAR)
+#else
+        wxBitmap(wxArtProvider::GetBitmap(wxART_CUT, wxART_TOOLBAR))
+#endif
+    );
+    m_aui_tool_bar->AddTool(wxID_ANY, wxEmptyString,
+#if wxCHECK_VERSION(3, 1, 6)
+
+        wxueImage(wxue_img::redo_png, sizeof(wxue_img::redo_png))
+#else
+        wxBitmap(wxueImage(wxue_img::redo_png, sizeof(wxue_img::redo_png)))
+#endif
+    );
+    m_aui_tool_bar->AddTool(wxID_ANY, wxEmptyString,
+#if wxCHECK_VERSION(3, 1, 6)
+        [&]()
     {
         wxVector<wxBitmap> bitmaps;
         bitmaps.push_back(wxueImage(wxue_img::wxPython_png, sizeof(wxue_img::wxPython_png)));
         bitmaps.push_back(wxueImage(wxue_img::wxPython_1_5x_png, sizeof(wxue_img::wxPython_1_5x_png)));
         bitmaps.push_back(wxueImage(wxue_img::wxPython_2x_png, sizeof(wxue_img::wxPython_2x_png)));
         return wxBitmapBundle::FromBitmaps(bitmaps);
-    }());
-    m_aui_tool_bar->AddTool(wxID_ANY, wxEmptyString, [&]()
+    }()
+#else
+        wxBitmap(wxueImage(wxue_img::wxPython_png, sizeof(wxue_img::wxPython_png)))
+#endif
+    );
+    m_aui_tool_bar->AddTool(wxID_ANY, wxEmptyString,
+#if wxCHECK_VERSION(3, 1, 6)
+        [&]()
     {
         wxVector<wxBitmap> bitmaps;
         bitmaps.push_back(wxueImage(wxue_img::fontPicker_png, sizeof(wxue_img::fontPicker_png)));
         bitmaps.push_back(wxueImage(wxue_img::fontPicker_1_25x_png, sizeof(wxue_img::fontPicker_1_25x_png)));
         bitmaps.push_back(wxueImage(wxue_img::fontPicker_1_5x_png, sizeof(wxue_img::fontPicker_1_5x_png)));
+        bitmaps.push_back(wxueImage(wxue_img::fontPicker_1_75x_png, sizeof(wxue_img::fontPicker_1_75x_png)));
+        bitmaps.push_back(wxueImage(wxue_img::fontPicker_2x_png, sizeof(wxue_img::fontPicker_2x_png)));
         return wxBitmapBundle::FromBitmaps(bitmaps);
-    }());
+    }()
+#else
+        wxBitmap(wxueImage(wxue_img::fontPicker_png, sizeof(wxue_img::fontPicker_png)))
+#endif
+    );
     m_aui_tool_bar->Realize();
     box_sizer->Add(m_aui_tool_bar, wxSizerFlags().Border(wxALL));
 
@@ -109,25 +181,15 @@ bool ToolBarsDialog::Create(wxWindow* parent, wxWindowID id, const wxString& tit
         rbnToolBar->AddTool(rbn_tool1,
             wxueImage(wxue_img::undo_png, sizeof(wxue_img::undo_png)).Rescale(
             FromDIP(24), FromDIP(24), wxIMAGE_QUALITY_BILINEAR), wxEmptyString, wxRIBBON_BUTTON_NORMAL);
-        rbnToolBar->AddTool(rbn_tool2, wxBitmapBundle::FromBitmaps(wxueImage(wxue_img::redo_png, sizeof(wxue_img::redo_png)), wxueImage(wxue_img::redo_2x_png, sizeof(wxue_img::redo_2x_png)))
-            .GetBitmap(wxSize(
-            FromDIP(24), FromDIP(24))), wxEmptyString, wxRIBBON_BUTTON_NORMAL);
-        rbnToolBar->AddTool(rbn_tool3, [&]()
-        {
-            wxVector<wxBitmap> bitmaps;
-            bitmaps.push_back(wxueImage(wxue_img::wxPython_png, sizeof(wxue_img::wxPython_png)));
-            bitmaps.push_back(wxueImage(wxue_img::wxPython_1_5x_png, sizeof(wxue_img::wxPython_1_5x_png)));
-            bitmaps.push_back(wxueImage(wxue_img::wxPython_2x_png, sizeof(wxue_img::wxPython_2x_png)));
-            return wxBitmapBundle::FromBitmaps(bitmaps);
-        }().GetBitmap(wxSize(FromDIP(16), FromDIP(16))), wxEmptyString, wxRIBBON_BUTTON_NORMAL);
-        rbnToolBar->AddTool(rbn_tool_list, [&]()
-        {
-            wxVector<wxBitmap> bitmaps;
-            bitmaps.push_back(wxueImage(wxue_img::fontPicker_png, sizeof(wxue_img::fontPicker_png)));
-            bitmaps.push_back(wxueImage(wxue_img::fontPicker_1_25x_png, sizeof(wxue_img::fontPicker_1_25x_png)));
-            bitmaps.push_back(wxueImage(wxue_img::fontPicker_1_5x_png, sizeof(wxue_img::fontPicker_1_5x_png)));
-            return wxBitmapBundle::FromBitmaps(bitmaps);
-        }().GetBitmap(wxSize(FromDIP(22), FromDIP(22))), wxEmptyString, wxRIBBON_BUTTON_NORMAL);
+        rbnToolBar->AddTool(rbn_tool2,
+            wxueImage(wxue_img::redo_png, sizeof(wxue_img::redo_png)).Rescale(
+            FromDIP(24), FromDIP(24), wxIMAGE_QUALITY_BILINEAR), wxEmptyString, wxRIBBON_BUTTON_NORMAL);
+        rbnToolBar->AddTool(rbn_tool3,
+            wxueImage(wxue_img::wxPython_png, sizeof(wxue_img::wxPython_png)).Rescale(
+            FromDIP(16), FromDIP(16), wxIMAGE_QUALITY_BILINEAR), wxEmptyString, wxRIBBON_BUTTON_NORMAL);
+        rbnToolBar->AddTool(rbn_tool_list,
+            wxueImage(wxue_img::fontPicker_png, sizeof(wxue_img::fontPicker_png)).Rescale(
+            FromDIP(22), FromDIP(22), wxIMAGE_QUALITY_BILINEAR), wxEmptyString, wxRIBBON_BUTTON_NORMAL);
     }
     rbnToolBar->Realize();
 
@@ -144,49 +206,6 @@ bool ToolBarsDialog::Create(wxWindow* parent, wxWindowID id, const wxString& tit
 
 namespace wxue_img
 {
-    // redo@2x.png
-    const unsigned char redo_2x_png[1264] {
-        137,80,78,71,13,10,26,10,0,0,0,13,73,72,68,82,0,0,0,48,0,0,0,48,8,6,0,0,0,87,2,249,135,0,0,0,9,112,72,89,115,0,
-        0,11,19,0,0,11,19,1,0,154,156,24,0,0,4,162,73,68,65,84,104,222,237,152,93,76,28,85,20,199,127,179,179,203,46,208,
-        221,165,44,136,148,37,45,80,109,154,10,74,208,152,66,98,160,47,164,138,49,126,133,23,109,106,19,63,18,19,211,82,
-        218,4,250,96,82,177,173,45,95,69,141,182,182,53,109,172,88,77,72,155,24,99,213,248,100,136,169,13,18,27,227,71,
-        99,27,138,82,11,9,108,89,216,143,89,150,241,225,222,173,179,19,70,136,41,38,238,238,121,249,239,153,153,123,111,
-        246,255,63,247,156,115,175,194,50,155,183,208,255,25,192,107,29,93,155,1,94,121,177,89,185,157,243,219,248,159,
-        155,125,185,23,120,160,174,126,5,64,12,130,0,45,123,186,71,0,186,95,111,89,157,81,224,191,80,192,174,42,54,128,
-        218,77,155,221,0,223,95,24,84,1,118,180,117,142,1,244,236,111,93,149,81,96,57,205,166,136,164,115,51,52,7,64,65,
-        121,77,14,64,110,174,91,5,216,222,118,104,28,160,119,255,174,59,50,10,44,143,2,170,98,84,98,54,58,15,128,179,240,
-        46,39,192,198,250,21,121,0,186,174,79,2,28,62,176,187,64,14,157,207,40,176,68,243,0,120,124,197,77,0,165,101,235,
-        154,0,42,171,238,187,27,224,193,218,218,114,161,128,100,76,82,22,137,9,130,213,236,59,29,0,15,53,54,121,229,124,
-        1,169,68,161,244,163,41,173,192,191,238,75,114,189,69,13,0,205,207,62,119,10,96,203,182,151,74,0,178,221,121,138,
-        96,88,124,23,210,4,211,211,225,56,0,218,156,14,64,124,94,224,92,92,162,244,87,170,65,29,96,240,252,185,176,80,98,
-        87,177,92,114,58,179,7,0,202,214,87,247,0,28,236,234,121,1,96,85,69,117,142,200,243,130,225,224,116,60,153,97,153,
-        75,116,125,97,201,39,130,49,140,227,127,183,57,21,128,186,135,159,206,17,123,70,185,1,208,179,175,117,141,28,114,
-        35,61,21,40,40,169,120,30,160,239,157,147,47,3,56,243,75,29,0,65,25,219,170,164,66,151,28,75,1,0,241,67,150,129,
-        91,152,200,66,9,230,19,150,216,11,97,221,5,64,86,150,83,5,200,246,120,86,3,132,167,167,211,79,129,108,128,237,59,
-        118,238,53,50,31,149,12,218,69,161,189,21,227,186,252,161,235,201,147,152,253,137,233,216,130,139,109,40,113,2,
-        112,233,235,79,52,128,55,187,247,212,73,230,47,166,103,22,42,94,115,207,33,209,207,55,21,1,4,34,137,152,87,146,
-        242,184,77,250,121,57,98,74,135,93,190,143,70,68,172,107,226,249,216,148,150,212,19,37,172,210,47,152,31,254,242,
-        99,13,160,183,171,253,126,128,216,236,236,165,244,238,133,30,125,252,201,122,0,205,230,86,68,126,159,75,206,78,
-        94,135,136,233,63,126,139,0,28,61,242,225,101,128,225,161,239,70,1,124,190,252,245,0,237,7,79,148,1,92,15,104,73,
-        245,160,210,159,5,192,208,23,103,162,0,125,111,236,174,2,136,105,218,175,153,110,20,96,109,121,121,30,64,48,50,
-        39,43,172,120,94,228,21,67,7,78,31,185,14,112,226,216,219,45,0,83,99,35,31,25,199,63,242,212,214,111,0,254,12,104,
-        101,0,33,25,251,85,126,161,220,197,243,130,249,174,142,182,117,98,132,54,146,57,145,25,223,185,61,238,28,99,222,
-        207,178,139,255,124,229,167,225,16,192,187,135,59,183,0,204,222,28,255,106,161,73,102,102,102,226,198,46,244,94,
-        191,88,242,194,231,103,34,242,126,168,66,126,58,150,57,19,155,204,9,16,12,133,231,1,220,50,109,120,101,158,127,
-        255,131,227,63,254,19,243,102,171,40,80,1,56,215,127,58,44,186,203,157,137,155,185,137,204,189,144,133,205,2,252,
-        252,195,208,40,192,218,154,70,159,200,66,98,47,4,2,147,163,75,89,96,114,114,82,5,56,219,127,50,4,208,187,175,213,
-        47,95,77,221,150,91,143,148,175,3,223,14,14,246,1,52,53,143,119,3,68,29,185,14,0,135,77,209,140,183,18,128,106,
-        34,69,1,216,212,208,88,46,153,223,96,122,191,82,98,220,132,115,38,140,167,237,173,68,150,145,225,142,206,247,6,
-        0,170,55,54,248,0,6,250,143,77,0,28,127,235,192,86,147,2,170,105,110,37,233,104,246,55,90,49,159,56,40,104,22,190,
-        150,178,10,216,140,249,223,140,30,143,175,20,160,187,239,232,171,0,46,183,59,31,96,219,51,79,116,1,104,225,153,
-        107,166,125,165,90,40,96,197,184,153,233,168,133,159,192,72,202,41,224,180,64,87,178,111,207,3,104,109,223,251,
-        24,192,229,95,174,168,0,159,158,61,53,4,16,143,107,65,211,30,82,77,204,107,75,97,118,9,207,211,86,129,100,172,169,
-        169,241,137,138,59,227,5,184,122,237,170,188,252,212,52,211,222,138,155,98,221,28,227,86,204,91,41,48,155,114,10,
-        40,22,140,103,89,248,102,116,0,184,92,46,7,64,36,18,81,44,234,65,204,66,17,109,137,123,36,100,28,151,210,149,88,
-        53,41,146,196,180,1,237,38,180,45,82,36,231,77,104,238,121,18,235,206,152,80,51,213,147,212,239,133,22,83,198,110,
-        209,3,45,216,149,46,192,252,98,93,168,158,22,231,129,191,0,113,232,168,216,218,141,204,222,0,0,0,0,73,69,78,68,
-        174,66,96,130
-    };
 
     const unsigned char redo_png[945] {
         137,80,78,71,13,10,26,10,0,0,0,13,73,72,68,82,0,0,0,24,0,0,0,24,8,6,0,0,0,224,119,61,248,0,0,0,9,112,72,89,115,

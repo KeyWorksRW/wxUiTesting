@@ -13,16 +13,6 @@
 #include <wx/gdicmn.h>
 #include <wx/stattext.h>
 
-namespace wxue_img
-{
-    // Images declared in this class module:
-
-    // bottom(1).png
-    extern const unsigned char bottom_1__png[148];
-    // 1_bottom.png
-    extern const unsigned char img_1_bottom_png[148];
-}
-
 class DlgIssue_960 : public wxDialog
 {
 public:

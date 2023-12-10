@@ -20,15 +20,6 @@
 #include <wx/toolbook.h>
 #include <wx/treebook.h>
 
-namespace wxue_img
-{
-    // Images declared in this class module:
-
-    extern const unsigned char er_png[302];
-    extern const unsigned char japanese_png[377];
-    extern const unsigned char re_png[305];
-}
-
 class BookTestDlg : public wxDialog
 {
 public:

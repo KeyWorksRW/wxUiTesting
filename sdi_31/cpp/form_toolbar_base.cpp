@@ -16,7 +16,17 @@
 #include <wx/mstream.h>  // memory stream classes
 
 // Convert a data array into a wxImage
-wxImage wxueImage(const unsigned char* data, size_t size_data);
+#ifdef __cpp_inline_variables
+inline wxImage wxueImage(const unsigned char* data, size_t size_data)
+#else
+static wxImage wxueImage(const unsigned char* data, size_t size_data)
+#endif
+{
+    wxMemoryInputStream strm(data, size_data);
+    wxImage image;
+    image.LoadFile(strm);
+    return image;
+};
 
 namespace wxue_img
 {
@@ -33,13 +43,31 @@ MyToolBarBase::MyToolBarBase(wxWindow* parent, wxWindowID id, const wxPoint& pos
         wxImage::AddHandler(new wxPNGHandler);
 
     AddTool(wxID_ANY, wxEmptyString,
-        wxueImage(wxue_img::english_png, sizeof(wxue_img::english_png)), wxEmptyString, wxITEM_RADIO);
+#if wxCHECK_VERSION(3, 1, 6)
+
+        wxueImage(wxue_img::english_png, sizeof(wxue_img::english_png))
+#else
+        wxBitmap(wxueImage(wxue_img::english_png, sizeof(wxue_img::english_png)))
+#endif
+    , wxEmptyString, wxITEM_RADIO);
 
     AddTool(wxID_ANY, wxEmptyString,
-        wxueImage(wxue_img::french_png, sizeof(wxue_img::french_png)), wxEmptyString, wxITEM_RADIO);
+#if wxCHECK_VERSION(3, 1, 6)
+
+        wxueImage(wxue_img::french_png, sizeof(wxue_img::french_png))
+#else
+        wxBitmap(wxueImage(wxue_img::french_png, sizeof(wxue_img::french_png)))
+#endif
+    , wxEmptyString, wxITEM_RADIO);
 
     AddTool(wxID_ANY, wxEmptyString,
-        wxueImage(wxue_img::japanese_png, sizeof(wxue_img::japanese_png)), wxEmptyString, wxITEM_RADIO);
+#if wxCHECK_VERSION(3, 1, 6)
+
+        wxueImage(wxue_img::japanese_png, sizeof(wxue_img::japanese_png))
+#else
+        wxBitmap(wxueImage(wxue_img::japanese_png, sizeof(wxue_img::japanese_png)))
+#endif
+    , wxEmptyString, wxITEM_RADIO);
 
     m_comboBox = new wxComboBox(this, wxID_ANY);
     m_comboBox->Append("English");

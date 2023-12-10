@@ -15,13 +15,31 @@
 #include <wx/mstream.h>  // memory stream classes
 
 // Convert a data array into a wxImage
-wxImage wxueImage(const unsigned char* data, size_t size_data)
+#ifdef __cpp_inline_variables
+inline wxImage wxueImage(const unsigned char* data, size_t size_data)
+#else
+static wxImage wxueImage(const unsigned char* data, size_t size_data)
+#endif
 {
     wxMemoryInputStream strm(data, size_data);
     wxImage image;
     image.LoadFile(strm);
     return image;
 };
+
+namespace wxue_img
+{
+    extern const unsigned char Ainsi_c3_a_se_passe_png[148];  // Ainsi ça se passe.png
+    extern const unsigned char debug_32_png[1701];
+    extern const unsigned char english_png[541];
+    extern const unsigned char wxDialog_png[636];
+    extern const unsigned char wxNotebook_png[177];
+    extern const unsigned char wxPython_1_5x_png[765];
+    extern const unsigned char wxPython_2x_png[251];
+    extern const unsigned char wxPython_png[399];
+    extern const unsigned char wxToolBar_png[554];
+    extern const unsigned char wxWizard_png[1047];
+}
 
 bool MainFrame::Create(wxWindow* parent, wxWindowID id, const wxString& title,
     const wxPoint& pos, const wxSize& size, long style, const wxString &name)
@@ -44,7 +62,13 @@ bool MainFrame::Create(wxWindow* parent, wxWindowID id, const wxString& title,
     propertyGridManager->SetExtraStyle(wxPG_EX_MODE_BUTTONS);
 
     propertyGridPage = propertyGridManager->AddPage("Animal Page",
-        wxBitmapBundle::FromBitmap(wxueImage(wxue_img::wxPython_1_5x_png, sizeof(wxue_img::wxPython_1_5x_png))));
+
+#if !wxCHECK_VERSION(3, 1, 6)
+        wxueImage(wxue_img::wxPython_1_5x_png, sizeof(wxue_img::wxPython_1_5x_png))
+#else
+    wxBitmapBundle::FromBitmaps(wxueImage(wxue_img::wxPython_1_5x_png, sizeof(wxue_img::wxPython_1_5x_png)), wxueImage(wxue_img::wxPython_2x_png, sizeof(wxue_img::wxPython_2x_png)))
+#endif
+    );
 
     propertyGridItem_7 = propertyGridPage->Append(new wxPropertyCategory("Pets", "Pets"));
 
@@ -57,7 +81,13 @@ bool MainFrame::Create(wxWindow* parent, wxWindowID id, const wxString& title,
     propertyGridItem_8 = propertyGridPage->Append(new wxStringProperty("horses", wxEmptyString));
 
     propertyGridPage_2 = propertyGridManager->AddPage("Number Page",
-        wxBitmapBundle::FromBitmap(wxueImage(wxue_img::english_png, sizeof(wxue_img::english_png))));
+
+#if wxCHECK_VERSION(3, 1, 6)
+        wxBitmapBundle::FromBitmap(wxueImage(wxue_img::english_png, sizeof(wxue_img::english_png)))
+#else
+        wxueImage(wxue_img::english_png, sizeof(wxue_img::english_png))
+#endif
+    );
 
     propertyGridItem_6 = propertyGridPage_2->Append(new wxPropertyCategory("Numbers", "Numbers"));
 
@@ -116,93 +146,245 @@ bool MainFrame::Create(wxWindow* parent, wxWindowID id, const wxString& title,
     auto* menuQuit = new wxMenuItem(menu, wxID_EXIT);
     {
         wxAcceleratorEntry entry;
+        #if wxCHECK_VERSION(3, 1, 6)
         if (entry.FromString("ALT+X"))
             menuQuit->AddExtraAccel(entry);
+        #endif
     }
 
-    menuQuit->SetBitmap(wxArtProvider::GetBitmapBundle(wxART_QUIT, wxART_MENU));
+    menuQuit->SetBitmap(
+#if wxCHECK_VERSION(3, 1, 6)
+        wxArtProvider::GetBitmapBundle(wxART_QUIT, wxART_MENU)
+#else
+        wxBitmap(wxArtProvider::GetBitmap(wxART_QUIT, wxART_MENU))
+#endif
+    );
 
     menu->Append(menuQuit);
     menubar->Append(menu, wxGetStockLabel(wxID_FILE));
 
     auto* menuDialogs = new wxMenu();
     auto* menu_item_3 = new wxMenuItem(menuDialogs, wxID_ANY, "MainTestDlg");
-    menu_item_3->SetBitmap(wxBitmapBundle::FromBitmap(wxueImage(wxue_img::debug_32_png, sizeof(wxue_img::debug_32_png))));
+    menu_item_3->SetBitmap(
+#if wxCHECK_VERSION(3, 1, 6)
+
+#if wxCHECK_VERSION(3, 1, 6)
+        wxBitmapBundle::FromBitmap(wxueImage(wxue_img::debug_32_png, sizeof(wxue_img::debug_32_png)))
+#else
+        wxueImage(wxue_img::debug_32_png, sizeof(wxue_img::debug_32_png))
+#endif
+
+#else
+        wxBitmap(wxueImage(wxue_img::debug_32_png, sizeof(wxue_img::debug_32_png)))
+#endif
+    );
 
     menuDialogs->Append(menu_item_3);
     auto* menu_item_4 = new wxMenuItem(menuDialogs, wxID_ANY, "BookTestDlg");
-    menu_item_4->SetBitmap(wxBitmapBundle::FromBitmap(wxueImage(wxue_img::wxNotebook_png, sizeof(wxue_img::wxNotebook_png))));
+    menu_item_4->SetBitmap(
+#if wxCHECK_VERSION(3, 1, 6)
+
+#if wxCHECK_VERSION(3, 1, 6)
+        wxBitmapBundle::FromBitmap(wxueImage(wxue_img::wxNotebook_png, sizeof(wxue_img::wxNotebook_png)))
+#else
+        wxueImage(wxue_img::wxNotebook_png, sizeof(wxue_img::wxNotebook_png))
+#endif
+
+#else
+        wxBitmap(wxueImage(wxue_img::wxNotebook_png, sizeof(wxue_img::wxNotebook_png)))
+#endif
+    );
 
     menuDialogs->Append(menu_item_4);
     auto* menu_item_2 = new wxMenuItem(menuDialogs, wxID_ANY, "PythonDlg");
     {
+#if wxCHECK_VERSION(3, 1, 6)
         wxVector<wxBitmap> bitmaps;
         bitmaps.push_back(wxueImage(wxue_img::wxPython_png, sizeof(wxue_img::wxPython_png)));
         bitmaps.push_back(wxueImage(wxue_img::wxPython_1_5x_png, sizeof(wxue_img::wxPython_1_5x_png)));
         bitmaps.push_back(wxueImage(wxue_img::wxPython_2x_png, sizeof(wxue_img::wxPython_2x_png)));
-        menu_item_2->SetBitmap(wxBitmapBundle::FromBitmaps(bitmaps));
+#endif
+        menu_item_2->SetBitmap(
+#if wxCHECK_VERSION(3, 1, 6)
+            wxBitmapBundle::FromBitmaps(bitmaps)
+#else
+            wxBitmap(wxueImage(wxue_img::wxPython_png, sizeof(wxue_img::wxPython_png)))
+#endif
+        );
     }
 
     menuDialogs->Append(menu_item_2);
     auto* menu_tools_dlg2 = new wxMenuItem(menuDialogs, wxID_ANY, "Tools Dialog",
         "Dialog for testing different types of toolbars", wxITEM_NORMAL);
-    menu_tools_dlg2->SetBitmap(wxBitmapBundle::FromBitmap(wxueImage(wxue_img::wxToolBar_png, sizeof(wxue_img::wxToolBar_png))));
+    menu_tools_dlg2->SetBitmap(
+#if wxCHECK_VERSION(3, 1, 6)
+
+#if wxCHECK_VERSION(3, 1, 6)
+        wxBitmapBundle::FromBitmap(wxueImage(wxue_img::wxToolBar_png, sizeof(wxue_img::wxToolBar_png)))
+#else
+        wxueImage(wxue_img::wxToolBar_png, sizeof(wxue_img::wxToolBar_png))
+#endif
+
+#else
+        wxBitmap(wxueImage(wxue_img::wxToolBar_png, sizeof(wxue_img::wxToolBar_png)))
+#endif
+    );
 
     menuDialogs->Append(menu_tools_dlg2);
     auto* menuItem3 = new wxMenuItem(menuDialogs, wxID_ANY, "Wizard");
-    menuItem3->SetBitmap(wxBitmapBundle::FromBitmap(wxueImage(wxue_img::wxWizard_png, sizeof(wxue_img::wxWizard_png))));
+    menuItem3->SetBitmap(
+#if wxCHECK_VERSION(3, 1, 6)
+
+#if wxCHECK_VERSION(3, 1, 6)
+        wxBitmapBundle::FromBitmap(wxueImage(wxue_img::wxWizard_png, sizeof(wxue_img::wxWizard_png)))
+#else
+        wxueImage(wxue_img::wxWizard_png, sizeof(wxue_img::wxWizard_png))
+#endif
+
+#else
+        wxBitmap(wxueImage(wxue_img::wxWizard_png, sizeof(wxue_img::wxWizard_png)))
+#endif
+    );
 
     menuDialogs->Append(menuItem3);
     menuDialogs->AppendSeparator();
     auto* menuItem_2 = new wxMenuItem(menuDialogs, wxID_ANY, "Common Controls...", "Common controls", wxITEM_NORMAL);
-    menuItem_2->SetBitmap(wxArtProvider::GetBitmapBundle(wxART_TIP, wxART_MENU));
+    menuItem_2->SetBitmap(
+#if wxCHECK_VERSION(3, 1, 6)
+        wxArtProvider::GetBitmapBundle(wxART_TIP, wxART_MENU)
+#else
+        wxBitmap(wxArtProvider::GetBitmap(wxART_TIP, wxART_MENU))
+#endif
+    );
 
     menuDialogs->Append(menuItem_2);
     menuDialogs->AppendSeparator();
 
     auto* submenu = new wxMenu();
     auto* menu_item_5 = new wxMenuItem(submenu, wxID_ANY, "DlgIssue_956");
-    menu_item_5->SetBitmap(wxBitmapBundle::FromBitmap(wxueImage(wxue_img::debug_32_png, sizeof(wxue_img::debug_32_png))));
+    menu_item_5->SetBitmap(
+#if wxCHECK_VERSION(3, 1, 6)
+
+#if wxCHECK_VERSION(3, 1, 6)
+        wxBitmapBundle::FromBitmap(wxueImage(wxue_img::debug_32_png, sizeof(wxue_img::debug_32_png)))
+#else
+        wxueImage(wxue_img::debug_32_png, sizeof(wxue_img::debug_32_png))
+#endif
+
+#else
+        wxBitmap(wxueImage(wxue_img::debug_32_png, sizeof(wxue_img::debug_32_png)))
+#endif
+    );
 
     submenu->Append(menu_item_5);
     auto* menu_item_6 = new wxMenuItem(submenu, wxID_ANY, "DlgIssue_960");
-    menu_item_6->SetBitmap(wxBitmapBundle::FromBitmap(wxueImage(wxue_img::Ainsi_c3_a_se_passe_png, sizeof(wxue_img::Ainsi_c3_a_se_passe_png))));
+    menu_item_6->SetBitmap(
+#if wxCHECK_VERSION(3, 1, 6)
+
+#if wxCHECK_VERSION(3, 1, 6)
+        wxBitmapBundle::FromBitmap(wxueImage(wxue_img::Ainsi_c3_a_se_passe_png, sizeof(wxue_img::Ainsi_c3_a_se_passe_png)))
+#else
+        wxueImage(wxue_img::Ainsi_c3_a_se_passe_png, sizeof(wxue_img::Ainsi_c3_a_se_passe_png))
+#endif
+
+#else
+        wxBitmap(wxueImage(wxue_img::Ainsi_c3_a_se_passe_png, sizeof(wxue_img::Ainsi_c3_a_se_passe_png)))
+#endif
+    );
 
     submenu->Append(menu_item_6);
     auto* submenu_item = menuDialogs->AppendSubMenu(submenu, "Issue Dialogs");
-    submenu_item->SetBitmap(wxBitmapBundle::FromBitmap(wxueImage(wxue_img::wxDialog_png, sizeof(wxue_img::wxDialog_png))));
+    submenu_item->SetBitmap(
+#if wxCHECK_VERSION(3, 1, 6)
+
+#if wxCHECK_VERSION(3, 1, 6)
+        wxBitmapBundle::FromBitmap(wxueImage(wxue_img::wxDialog_png, sizeof(wxue_img::wxDialog_png)))
+#else
+        wxueImage(wxue_img::wxDialog_png, sizeof(wxue_img::wxDialog_png))
+#endif
+
+#else
+        wxBitmap(wxueImage(wxue_img::wxDialog_png, sizeof(wxue_img::wxDialog_png)))
+#endif
+    );
     menubar->Append(menuDialogs, "&Dialogs");
 
     SetMenuBar(menubar);
 
     m_toolBar = CreateToolBar();
 
-    auto* tool_dropdown = m_toolBar->AddTool(wxID_ANY, wxEmptyString, wxArtProvider::GetBitmapBundle(wxART_EXECUTABLE_FILE,
-        wxART_MENU), wxEmptyString, wxITEM_DROPDOWN);
+    auto* tool_dropdown = m_toolBar->AddTool(wxID_ANY, wxEmptyString,
+#if wxCHECK_VERSION(3, 1, 6)
+        wxArtProvider::GetBitmap(wxART_EXECUTABLE_FILE, wxART_MENU)
+#else
+        wxBitmap(wxArtProvider::GetBitmap(wxART_EXECUTABLE_FILE, wxART_MENU))
+#endif
+    , wxEmptyString, wxITEM_DROPDOWN);
     auto* tool_dropdown_menu = new wxMenu;
     auto* menu_item = new wxMenuItem(tool_dropdown_menu, wxID_ANY, "Wizard...");
-    menu_item->SetBitmap(wxArtProvider::GetBitmapBundle(wxART_FIND, wxART_MENU));
+    menu_item->SetBitmap(
+#if wxCHECK_VERSION(3, 1, 6)
+        wxArtProvider::GetBitmapBundle(wxART_FIND, wxART_MENU)
+#else
+        wxBitmap(wxArtProvider::GetBitmap(wxART_FIND, wxART_MENU))
+#endif
+    );
 
     tool_dropdown_menu->Append(menu_item);
     auto* menu_tools_dlg = new wxMenuItem(tool_dropdown_menu, wxID_ANY, "Tools Dialog",
         "Dialog for testing different types of toolbars", wxITEM_NORMAL);
-    menu_tools_dlg->SetBitmap(wxBitmapBundle::FromBitmap(wxueImage(wxue_img::wxToolBar_png, sizeof(wxue_img::wxToolBar_png))));
+    menu_tools_dlg->SetBitmap(
+#if wxCHECK_VERSION(3, 1, 6)
+
+#if wxCHECK_VERSION(3, 1, 6)
+        wxBitmapBundle::FromBitmap(wxueImage(wxue_img::wxToolBar_png, sizeof(wxue_img::wxToolBar_png)))
+#else
+        wxueImage(wxue_img::wxToolBar_png, sizeof(wxue_img::wxToolBar_png))
+#endif
+
+#else
+        wxBitmap(wxueImage(wxue_img::wxToolBar_png, sizeof(wxue_img::wxToolBar_png)))
+#endif
+    );
 
     tool_dropdown_menu->Append(menu_tools_dlg);
     tool_dropdown->SetDropdownMenu(tool_dropdown_menu);
     auto* tool_4 = m_toolBar->AddTool(wxID_ANY, "MainTestDlg",
-        wxueImage(wxue_img::debug_32_png, sizeof(wxue_img::debug_32_png)));
+#if wxCHECK_VERSION(3, 1, 6)
+
+        wxueImage(wxue_img::debug_32_png, sizeof(wxue_img::debug_32_png))
+#else
+        wxBitmap(wxueImage(wxue_img::debug_32_png, sizeof(wxue_img::debug_32_png)))
+#endif
+    );
 
     auto* tool_5 = m_toolBar->AddTool(wxID_ANY, "BookTestDlg",
-        wxueImage(wxue_img::wxNotebook_png, sizeof(wxue_img::wxNotebook_png)));
+#if wxCHECK_VERSION(3, 1, 6)
+
+        wxueImage(wxue_img::wxNotebook_png, sizeof(wxue_img::wxNotebook_png))
+#else
+        wxBitmap(wxueImage(wxue_img::wxNotebook_png, sizeof(wxue_img::wxNotebook_png)))
+#endif
+    );
 
     m_toolBar->AddSeparator();
     auto* tool_3 = m_toolBar->AddTool(wxID_ANY, "PythonDlg",
-        wxueImage(wxue_img::wxPython_1_5x_png, sizeof(wxue_img::wxPython_1_5x_png)));
+#if wxCHECK_VERSION(3, 1, 6)
+        wxBitmapBundle::FromBitmaps(wxueImage(wxue_img::wxPython_1_5x_png, sizeof(wxue_img::wxPython_1_5x_png)), wxueImage(wxue_img::wxPython_2x_png, sizeof(wxue_img::wxPython_2x_png)))
+#else
+        wxBitmap(wxueImage(wxue_img::wxPython_1_5x_png, sizeof(wxue_img::wxPython_1_5x_png)))
+#endif
+    );
 
     m_toolBar->AddStretchableSpace();
 
-    auto* tool_2 = m_toolBar->AddTool(wxID_ANY, "Common Controls...", wxArtProvider::GetBitmapBundle(wxART_TIP, wxART_TOOLBAR));
+    auto* tool_2 = m_toolBar->AddTool(wxID_ANY, "Common Controls...",
+#if wxCHECK_VERSION(3, 1, 6)
+        wxArtProvider::GetBitmap(wxART_TIP, wxART_TOOLBAR)
+#else
+        wxBitmap(wxArtProvider::GetBitmap(wxART_TIP, wxART_TOOLBAR))
+#endif
+    );
 
     m_toolBar->Realize();
 

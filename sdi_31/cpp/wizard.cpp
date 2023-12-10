@@ -14,10 +14,21 @@
 #include <wx/mstream.h>  // memory stream classes
 
 // Convert a data array into a wxImage
-wxImage wxueImage(const unsigned char* data, size_t size_data);
+#ifdef __cpp_inline_variables
+inline wxImage wxueImage(const unsigned char* data, size_t size_data)
+#else
+static wxImage wxueImage(const unsigned char* data, size_t size_data)
+#endif
+{
+    wxMemoryInputStream strm(data, size_data);
+    wxImage image;
+    image.LoadFile(strm);
+    return image;
+};
 
 namespace wxue_img
 {
+    extern const unsigned char wiztest2_png[6797];
     extern const unsigned char wiztest_png[1239];
 }
 
@@ -29,7 +40,19 @@ Wizard::Wizard(wxWindow* parent, wxWindowID id, const wxString& title, const wxP
     SetExtraStyle(GetExtraStyle() | wxWIZARD_EX_HELPBUTTON);
     SetBorder(15);
     if (!Create(parent, id, title,
-        wxBitmapBundle::FromBitmap(wxueImage(wxue_img::wiztest_png, sizeof(wxue_img::wiztest_png))), pos, style))
+#if wxCHECK_VERSION(3, 1, 6)
+
+
+#if wxCHECK_VERSION(3, 1, 6)
+        wxBitmapBundle::FromBitmap(wxueImage(wxue_img::wiztest_png, sizeof(wxue_img::wiztest_png)))
+#else
+        wxueImage(wxue_img::wiztest_png, sizeof(wxue_img::wiztest_png))
+#endif
+    ,
+        pos, style))
+#else
+            wxBitmap(wxueImage(wxue_img::wiztest_png, sizeof(wxue_img::wiztest_png))), pos, style))
+#endif
         return;
 
     auto* wizPage = new wxWizardPageSimple(this);
@@ -101,7 +124,19 @@ Wizard::Wizard(wxWindow* parent, wxWindowID id, const wxString& title, const wxP
     wizPage2->SetSizerAndFit(box_sizer2);
 
     auto* wizPage3 = new wxWizardPageSimple(this, nullptr, nullptr,
-        wxBitmapBundle::FromBitmap(wxueImage(wxue_img::wiztest2_png, sizeof(wxue_img::wiztest2_png))));
+#if wxCHECK_VERSION(3, 1, 6)
+
+
+#if wxCHECK_VERSION(3, 1, 6)
+        wxBitmapBundle::FromBitmap(wxueImage(wxue_img::wiztest2_png, sizeof(wxue_img::wiztest2_png)))
+#else
+        wxueImage(wxue_img::wiztest2_png, sizeof(wxue_img::wiztest2_png))
+#endif
+
+#else
+        wxueImage(wxue_img::wiztest2_png, sizeof(wxue_img::wiztest2_png))
+#endif
+    );
 
     auto* box_sizer3 = new wxBoxSizer(wxVERTICAL);
 

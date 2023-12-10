@@ -26,13 +26,6 @@
 #include <wx/stattext.h>
 #include <wx/wizard.h>
 
-namespace wxue_img
-{
-    // Images declared in this class module:
-
-    extern const unsigned char wiztest2_png[6797];
-}
-
 class Wizard : public wxWizard
 {
 public:

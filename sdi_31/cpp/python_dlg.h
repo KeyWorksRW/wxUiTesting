@@ -24,17 +24,6 @@
 #include <wx/stattext.h>
 #include <wx/tglbtn.h>
 
-namespace wxue_img
-{
-    // Images declared in this class module:
-
-    // fontPicker@1_25x.png
-    extern const unsigned char fontPicker_1_25x_png[1330];
-    // fontPicker@1_5x.png
-    extern const unsigned char fontPicker_1_5x_png[1507];
-    extern const unsigned char fontPicker_png[763];
-}
-
 class PythonDlg : public wxDialog
 {
 public:
