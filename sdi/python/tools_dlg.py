@@ -71,31 +71,6 @@ redo_png = PyEmbeddedImage(
     b"QorLPC5zuE4DooJFw4pIyCMhD5SNgrJZktZLvnn2PvlHF86+U0umtSrpmijSAcQ8Ui6XlM2S2I58/cQG"
     b"uesbDeDxiWgisiLHRlwOfDmSCP+vf7v+BCTXR/QXGtTnAAAAAElFTkSuQmCC")
 
-# redo@2x.png
-redo_2x_png = PyEmbeddedImage(
-    b"iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAAAsTAAALEwEAmpwYAAAEoklE"
-    b"QVRo3u2YXUwcVRTHf7Ozyy7Q3aUsiJQlLVBtmgpK0JhCYqAvpIoxfoUXbWoTPxIT01LaBPpgUrGtLV9F"
-    b"jba2NW2sWE1Imxhj1fhkiKkNEhvjR2MbilILCWxZ2I9ZlvHh3q2zE0aIKSbu7nn575mZe2/2/z/3nHOv"
-    b"wjKbt9D/GcBrHV2bAV55sVm5nfPb+J+bfbkXeKCufgVADIIALXu6RwC6X29ZnVHgv1DArio2gNpNm90A"
-    b"318YVAF2tHWOAfTsb12VUWA5zaaIpHMzNAdAQXlNDkBurlsF2N52aBygd/+uOzIKLI8CqmJUYjY6D4Cz"
-    b"8C4nwMb6FXkAuq5PAhw+sLtADp3PKLBE8wB4fMVNAKVl65oAKqvuuxvgwdracqGAZExSFokJgtXsOx0A"
-    b"DzU2eeV8AalEofSjKa3Av+5Lcr1FDQDNzz53CmDLtpdKALLdeYpgWHwX0gTT0+E4ANqcDkB8XuBcXKL0"
-    b"V6pBHWDw/LmwUGJXsVxyOrMHAMrWV/cAHOzqeQFgVUV1jsjzguHgdDyZYZlLdH1hySeCMYzjf7c5FYC6"
-    b"h5/OEXtGuQHQs691jRxyIz0VKCipeB6g752TLwM480sdAEEZ26qkQpccSwEA8UOWgVuYyEIJ5hOW2Ath"
-    b"3QVAVpZTBcj2eFYDhKen00+BbIDtO3buNTIflQzaRaG9FeO6/KHryZOY/Ynp2IKLbShxAnDp6080gDe7"
-    b"99RJ5i+mZxYqXnPPIdHPNxUBBCKJmFeS8rhN+nk5YkqHXb6PRkSsa+L52JSW1BMlrNIvmB/+8mMNoLer"
-    b"/X6A2OzspfTuhR59/Ml6AM3mVkR+n0vOTl6HiOk/fosAHD3y4WWA4aHvRgF8vvz1AO0HT5QBXA9oSfWg"
-    b"0p8FwNAXZ6IAfW/srgKIadqvmW4UYG15eR5AMDInK6x4XuQVQwdOH7kOcOLY2y0AU2MjHxnHP/LU1m8A"
-    b"/gxoZQAhGftVfqHcxfOC+a6OtnVihDaSOZEZ37k97hxj3s+yi/985afhEMC7hzu3AMzeHP9qoUlmZmbi"
-    b"xi70Xr9Y8sLnZyLyfqhCfjqWORObzAkQDIXnAdwybXhlnn//g+M//hPzZqsoUAE41386LLrLnYmbuYnM"
-    b"vZCFzQL8/MPQKMDamkafyEJiLwQCk6NLWWByclIFONt/MgTQu6/VL19N3ZZbj5SvA98ODvYBNDWPdwNE"
-    b"HbkOAIdN0Yy3EoBqIkUB2NTQWC6Z32B6v1Ji3IRzJoyn7a1ElpHhjs73BgCqNzb4AAb6j00AHH/rwFaT"
-    b"AqppbiXpaPY3WjGfOChoFr6WsgrYjPnfjB6PrxSgu+/oqwAutzsfYNszT3QBaOGZa6Z9pVooYMW4memo"
-    b"hZ/ASMop4LRAV7JvzwNobd/7GMDlX66oAJ+ePTUEEI9rQdMeUk3Ma0thdgnP01aBZKypqfGJijvjBbh6"
-    b"7aq8/NQ0096Km2LdHONWzFspMJtyCigWjGdZ+GZ0ALhcLgdAJBJRLOpBzEIRbYl7JGQcl9KVWDUpksS0"
-    b"Ae0mtC1SJOdNaO55EuvOmFAz1ZPU74UWU8Zu0QMt2JUuwPxiXaieFueBvwBx6KjY2o3M3gAAAABJRU5E"
-    b"rkJggg==")
-
 class ToolBarsDialog(wx.Dialog):
     def __init__(self, parent, id=wx.ID_ANY, title="Test Dialog", pos=
                 wx.DefaultPosition, size=wx.DefaultSize,
@@ -118,8 +93,7 @@ class ToolBarsDialog(wx.Dialog):
 
         self.tool_bar.AddTool(wx.ID_ANY, "", undo_png.Bitmap)
 
-        self.tool_bar.AddTool(wx.ID_ANY, "", wx.BitmapBundle.FromBitmaps(redo_png.Bitmap,
-            redo_2x_png.Bitmap))
+        self.tool_bar.AddTool(wx.ID_ANY, "", redo_png.Bitmap)
 
         self.tool_bar.AddTool(wx.ID_ANY, "", wx.BitmapBundle.FromBitmaps([ images.
             wxPython_png.Bitmap,
@@ -129,7 +103,9 @@ class ToolBarsDialog(wx.Dialog):
         self.tool_bar.AddTool(wx.ID_ANY, "", wx.BitmapBundle.FromBitmaps([ images.
             fontPicker_png.Bitmap,
                     images.fontPicker_1_25x_png.Bitmap,
-                    images.fontPicker_1_5x_png.Bitmap ]))
+                    images.fontPicker_1_5x_png.Bitmap,
+                    images.fontPicker_1_75x_png.Bitmap,
+                    images.fontPicker_2x_png.Bitmap ]))
 
         self.tool_bar.Realize()
         box_sizer.Add(self.tool_bar, wx.SizerFlags().Border(wx.ALL))
@@ -141,8 +117,7 @@ class ToolBarsDialog(wx.Dialog):
             wx.BitmapBundle.FromSVG(_svg_string_, wx.Size(24, 24)))
         self.aui_tool_bar.AddTool(wx.ID_ANY, "", wx.ArtProvider.GetBitmapBundle(wx.ART_CUT,
             wx.ART_TOOLBAR))
-        self.aui_tool_bar.AddTool(wx.ID_ANY, "", wx.BitmapBundle.FromBitmaps(
-            redo_png.Bitmap, redo_2x_png.Bitmap))
+        self.aui_tool_bar.AddTool(wx.ID_ANY, "", redo_png.Bitmap)
         self.aui_tool_bar.AddTool(wx.ID_ANY, "", wx.BitmapBundle.FromBitmaps([ images.
             wxPython_png.Bitmap,
                     images.wxPython_1_5x_png.Bitmap,
@@ -150,7 +125,9 @@ class ToolBarsDialog(wx.Dialog):
         self.aui_tool_bar.AddTool(wx.ID_ANY, "", wx.BitmapBundle.FromBitmaps([ images.
             fontPicker_png.Bitmap,
                     images.fontPicker_1_25x_png.Bitmap,
-                    images.fontPicker_1_5x_png.Bitmap ]))
+                    images.fontPicker_1_5x_png.Bitmap,
+                    images.fontPicker_1_75x_png.Bitmap,
+                    images.fontPicker_2x_png.Bitmap ]))
         self.aui_tool_bar.Realize()
         box_sizer.Add(self.aui_tool_bar, wx.SizerFlags().Border(wx.ALL))
 
@@ -174,9 +151,9 @@ class ToolBarsDialog(wx.Dialog):
         rbnToolBar.AddTool(rbn_tool1, wx.Bitmap(undo_png.Image.Rescale(
             self.FromDIP(24), self.FromDIP(24), wx.IMAGE_QUALITY_BILINEAR)), "",
             wx.ribbon.RIBBON_BUTTON_NORMAL)
-        rbnToolBar.AddTool(rbn_tool2, wx.BitmapBundle.FromBitmaps(redo_png.Bitmap,
-            redo_2x_png.Bitmap).GetBitmap(wx.Size(
-            self.FromDIP(24), self.FromDIP(24))), "", wx.ribbon.RIBBON_BUTTON_NORMAL)
+        rbnToolBar.AddTool(rbn_tool2, wx.Bitmap(redo_png.Image.Rescale(
+            self.FromDIP(24), self.FromDIP(24), wx.IMAGE_QUALITY_BILINEAR)), "",
+            wx.ribbon.RIBBON_BUTTON_NORMAL)
         rbnToolBar.AddTool(rbn_tool3, wx.BitmapBundle.FromBitmaps([ images.wxPython_png.Bitmap,
                     images.wxPython_1_5x_png.Bitmap,
                     images.wxPython_2x_png.Bitmap ])
@@ -185,7 +162,9 @@ class ToolBarsDialog(wx.Dialog):
         rbnToolBar.AddTool(rbn_tool_list, wx.BitmapBundle.FromBitmaps([ images.
             fontPicker_png.Bitmap,
                     images.fontPicker_1_25x_png.Bitmap,
-                    images.fontPicker_1_5x_png.Bitmap ])
+                    images.fontPicker_1_5x_png.Bitmap,
+                    images.fontPicker_1_75x_png.Bitmap,
+                    images.fontPicker_2x_png.Bitmap ])
             .GetBitmap(wx.Size(self.FromDIP(22), self.FromDIP(22))), "",
             wx.ribbon.RIBBON_BUTTON_NORMAL)
         rbnToolBar.Realize()

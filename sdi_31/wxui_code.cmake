@@ -5,6 +5,7 @@
 set (sdi_generated_code
 
     # Non-base classes
+    ${CMAKE_CURRENT_LIST_DIR}/cpp/bitmaps_dlg.cpp
     ${CMAKE_CURRENT_LIST_DIR}/cpp/booktest_dlg.cpp
     ${CMAKE_CURRENT_LIST_DIR}/cpp/commonctrls.cpp
     ${CMAKE_CURRENT_LIST_DIR}/cpp/mainframe.cpp

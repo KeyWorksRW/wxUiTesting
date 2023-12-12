@@ -43,6 +43,7 @@ protected:
 
     // Event handlers
 
+    void OnBitmapsDlg(wxCommandEvent& event);
     void OnBookTestDlg(wxCommandEvent& event);
     void OnCommonDialog(wxCommandEvent& event);
     void OnDlgIssue_956(wxCommandEvent& event);

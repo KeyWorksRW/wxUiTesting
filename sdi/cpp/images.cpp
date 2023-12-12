@@ -979,6 +979,11 @@ namespace wxue_img
         return wxBitmapBundle::FromBitmaps(bitmaps);
     }
 
+    wxBitmapBundle bundle_wxPython_2x_png()
+    {
+        return wxBitmapBundle::FromBitmap(wxBitmap(get_image(wxPython_2x_png, 251)));
+    }
+
     wxImage image_Ainsi_c3_a_se_passe_png()
     {
         return get_image(Ainsi_c3_a_se_passe_png, 148);

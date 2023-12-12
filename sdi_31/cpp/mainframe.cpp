@@ -32,6 +32,7 @@ namespace wxue_img
     extern const unsigned char Ainsi_c3_a_se_passe_png[148];  // Ainsi ça se passe.png
     extern const unsigned char debug_32_png[1701];
     extern const unsigned char english_png[541];
+    extern const unsigned char normal_png[508];
     extern const unsigned char wxDialog_png[636];
     extern const unsigned char wxNotebook_png[177];
     extern const unsigned char wxPython_1_5x_png[765];
@@ -66,7 +67,9 @@ bool MainFrame::Create(wxWindow* parent, wxWindowID id, const wxString& title,
 #if !wxCHECK_VERSION(3, 1, 6)
         wxueImage(wxue_img::wxPython_1_5x_png, sizeof(wxue_img::wxPython_1_5x_png))
 #else
-    wxBitmapBundle::FromBitmaps(wxueImage(wxue_img::wxPython_1_5x_png, sizeof(wxue_img::wxPython_1_5x_png)), wxueImage(wxue_img::wxPython_2x_png, sizeof(wxue_img::wxPython_2x_png)))
+    wxBitmapBundle::FromBitmaps(
+            wxueImage(wxue_img::wxPython_1_5x_png, sizeof(wxue_img::wxPython_1_5x_png)),
+            wxueImage(wxue_img::wxPython_2x_png, sizeof(wxue_img::wxPython_2x_png)))
 #endif
     );
 
@@ -197,21 +200,18 @@ bool MainFrame::Create(wxWindow* parent, wxWindowID id, const wxString& title,
 
     menuDialogs->Append(menu_item_4);
     auto* menu_item_2 = new wxMenuItem(menuDialogs, wxID_ANY, "PythonDlg");
-    {
+
 #if wxCHECK_VERSION(3, 1, 6)
+    {
         wxVector<wxBitmap> bitmaps;
         bitmaps.push_back(wxueImage(wxue_img::wxPython_png, sizeof(wxue_img::wxPython_png)));
         bitmaps.push_back(wxueImage(wxue_img::wxPython_1_5x_png, sizeof(wxue_img::wxPython_1_5x_png)));
         bitmaps.push_back(wxueImage(wxue_img::wxPython_2x_png, sizeof(wxue_img::wxPython_2x_png)));
-#endif
-        menu_item_2->SetBitmap(
-#if wxCHECK_VERSION(3, 1, 6)
-            wxBitmapBundle::FromBitmaps(bitmaps)
-#else
-            wxBitmap(wxueImage(wxue_img::wxPython_png, sizeof(wxue_img::wxPython_png)))
-#endif
-        );
+        menu_item_2->SetBitmap(wxBitmapBundle::FromBitmaps(bitmaps));
     }
+#else
+    menu_item_2->SetBitmap(wxBitmap(wxueImage(wxue_img::wxPython_png, sizeof(wxue_img::wxPython_png))));
+#endif
 
     menuDialogs->Append(menu_item_2);
     auto* menu_tools_dlg2 = new wxMenuItem(menuDialogs, wxID_ANY, "Tools Dialog",
@@ -247,6 +247,22 @@ bool MainFrame::Create(wxWindow* parent, wxWindowID id, const wxString& title,
     );
 
     menuDialogs->Append(menuItem3);
+    auto* menuItem2 = new wxMenuItem(menuDialogs, wxID_ANY, "Bitmaps");
+    menuItem2->SetBitmap(
+#if wxCHECK_VERSION(3, 1, 6)
+
+#if wxCHECK_VERSION(3, 1, 6)
+        wxBitmapBundle::FromBitmap(wxueImage(wxue_img::normal_png, sizeof(wxue_img::normal_png)))
+#else
+        wxueImage(wxue_img::normal_png, sizeof(wxue_img::normal_png))
+#endif
+
+#else
+        wxBitmap(wxueImage(wxue_img::normal_png, sizeof(wxue_img::normal_png)))
+#endif
+    );
+
+    menuDialogs->Append(menuItem2);
     menuDialogs->AppendSeparator();
     auto* menuItem_2 = new wxMenuItem(menuDialogs, wxID_ANY, "Common Controls...", "Common controls", wxITEM_NORMAL);
     menuItem_2->SetBitmap(
@@ -405,6 +421,7 @@ bool MainFrame::Create(wxWindow* parent, wxWindowID id, const wxString& title,
     Bind(wxEVT_MENU, &MainFrame::OnPythonDlg, this, menu_item_2->GetId());
     Bind(wxEVT_MENU, &MainFrame::OnToolsDlg, this, menu_tools_dlg2->GetId());
     Bind(wxEVT_MENU, &MainFrame::OnWizard, this, menuItem3->GetId());
+    Bind(wxEVT_MENU, &MainFrame::OnBitmapsDlg, this, menuItem2->GetId());
     Bind(wxEVT_MENU, &MainFrame::OnCommonDialog, this, menuItem_2->GetId());
     Bind(wxEVT_MENU, &MainFrame::OnDlgIssue_956, this, menu_item_5->GetId());
     Bind(wxEVT_MENU, &MainFrame::OnDlgIssue_960, this, menu_item_6->GetId());
@@ -507,6 +524,25 @@ namespace wxue_img
         249,13,105,22,212,221,168,158,98,220,0,0,0,0,73,69,78,68,174,66,96,130
     };
 
+    const unsigned char normal_png[508] {
+        137,80,78,71,13,10,26,10,0,0,0,13,73,72,68,82,0,0,0,16,0,0,0,16,8,6,0,0,0,31,243,255,97,0,0,0,9,112,72,89,115,0,
+        0,11,19,0,0,11,19,1,0,154,156,24,0,0,1,174,73,68,65,84,56,203,165,147,177,110,218,96,20,133,63,215,134,129,120,
+        176,84,90,69,130,161,168,68,78,36,166,202,3,3,11,207,192,82,41,188,5,143,193,19,100,247,144,78,97,98,71,44,12,255,
+        3,32,135,1,15,216,33,53,137,227,88,66,5,193,223,33,216,36,181,211,14,61,211,255,95,221,115,238,213,209,61,10,9,
+        174,174,36,154,6,167,167,105,137,231,103,120,122,34,131,94,15,226,88,1,208,210,162,166,193,205,13,156,159,31,27,
+        239,239,225,238,14,164,124,249,43,202,241,157,208,146,199,245,201,73,89,94,94,6,138,162,160,105,26,251,253,158,
+        221,110,151,51,188,135,119,152,254,70,160,94,175,3,160,235,58,166,105,18,4,1,174,235,102,4,10,133,66,254,6,9,28,
+        199,97,56,28,210,104,52,16,66,0,80,46,151,153,78,167,180,90,173,140,96,186,138,16,66,177,44,75,54,155,205,89,187,
+        221,254,186,88,44,208,117,29,128,40,138,168,84,42,140,70,163,217,100,50,57,59,240,228,27,129,215,232,118,187,82,
+        215,245,212,3,85,85,137,227,24,219,182,107,192,60,119,131,60,145,98,177,8,192,102,179,193,182,237,207,192,207,63,
+        251,180,60,178,16,226,147,97,24,132,97,200,96,48,96,62,159,191,55,7,53,135,252,197,48,140,197,118,187,165,84,42,
+        81,171,213,144,82,178,92,46,207,124,223,255,241,87,19,129,111,134,97,8,128,106,181,202,106,181,194,247,125,0,60,
+        207,163,223,239,207,198,227,113,190,137,66,136,143,64,240,175,59,232,116,58,184,174,155,242,62,240,159,72,77,156,
+        173,215,72,160,4,252,90,173,8,163,8,111,189,206,16,182,239,101,225,187,227,4,168,42,152,38,220,222,190,20,31,31,
+        225,224,65,10,203,130,135,7,153,164,241,120,7,23,23,217,56,199,49,132,97,54,137,142,3,187,157,2,240,27,89,2,185,
+        55,227,129,139,244,0,0,0,0,73,69,78,68,174,66,96,130
+    };
+
     const unsigned char wxDialog_png[636] {
         137,80,78,71,13,10,26,10,0,0,0,13,73,72,68,82,0,0,0,22,0,0,0,22,8,6,0,0,0,196,180,108,59,0,0,0,9,112,72,89,115,
         0,0,11,19,0,0,11,19,1,0,154,156,24,0,0,2,46,73,68,65,84,56,203,181,149,65,107,19,81,16,199,127,187,217,46,137,169,
@@ -563,17 +599,6 @@ namespace wxue_img
         60,34,121,97,225,42,112,2,124,194,101,149,209,56,85,141,211,243,44,227,88,12,170,95,23,196,123,101,191,176,194,
         55,92,37,49,229,150,106,26,1,131,187,76,208,21,234,140,10,195,106,103,7,85,51,14,127,0,212,225,25,244,190,141,109,
         213,0,0,0,0,73,69,78,68,174,66,96,130
-    };
-
-    const unsigned char wxPython_2x_png[251] {
-        137,80,78,71,13,10,26,10,0,0,0,13,73,72,68,82,0,0,0,32,0,0,0,32,8,3,0,0,0,68,164,138,198,0,0,0,18,80,76,84,69,1,
-        0,0,0,0,0,0,187,0,255,255,0,255,255,255,221,0,0,105,35,144,251,0,0,0,1,116,82,78,83,0,64,230,216,102,0,0,0,151,
-        73,68,65,84,120,218,125,211,75,10,196,48,0,195,208,74,77,238,127,229,33,67,107,8,196,205,86,15,211,239,245,30,224,
-        250,58,140,49,248,238,75,212,25,24,48,70,155,1,87,90,253,40,80,229,15,160,2,129,44,156,186,153,145,14,4,180,138,
-        156,14,170,120,8,13,92,19,0,234,194,204,18,70,0,91,143,121,64,238,38,32,36,11,175,152,155,224,206,85,144,137,173,
-        223,17,40,5,212,9,86,239,19,96,192,105,2,253,4,216,65,186,164,11,7,0,1,34,24,144,231,199,219,69,61,129,116,210,
-        3,116,123,227,0,253,171,74,58,10,40,191,87,173,33,28,234,15,194,249,3,213,96,196,248,192,0,0,0,0,73,69,78,68,174,
-        66,96,130
     };
 
     const unsigned char wxPython_png[399] {

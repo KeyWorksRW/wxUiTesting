@@ -43,7 +43,7 @@ class ToolBarsDialog < Wx::Dialog
 
     @tool_bar.add_tool(Wx::ID_ANY, '', wxue_get_bundle($undo_png))
 
-    @tool_bar.add_tool(Wx::ID_ANY, '', wxue_get_bundle($redo_png, $redo_2x_png))
+    @tool_bar.add_tool(Wx::ID_ANY, '', wxue_get_bundle($redo_png))
 
     @tool_bar.add_tool(Wx::ID_ANY, '', wxue_get_bundle($wxPython_png, $wxPython_1_5x_png,
       $wxPython_2x_png))
@@ -62,7 +62,7 @@ class ToolBarsDialog < Wx::Dialog
       Wx::Size.new(24, 24)))
     @aui_tool_bar.add_tool(Wx::ID_ANY, '', Wx::ArtProvider.get_bitmap_bundle(
       Wx::ART_CUT, Wx::ART_TOOLBAR))
-    @aui_tool_bar.add_tool(Wx::ID_ANY, '', wxue_get_bundle($redo_png, $redo_2x_png))
+    @aui_tool_bar.add_tool(Wx::ID_ANY, '', wxue_get_bundle($redo_png))
     @aui_tool_bar.add_tool(Wx::ID_ANY, '', wxue_get_bundle($wxPython_png, $wxPython_1_5x_png,
       $wxPython_2x_png))
     @aui_tool_bar.add_tool(Wx::ID_ANY, '', wxue_get_bundle($fontPicker_png, $fontPicker_1_25x_png,
@@ -89,8 +89,7 @@ class ToolBarsDialog < Wx::Dialog
     rbnToolBar.add_tool($rbn_tool1, wxue_get_bundle($undo_png).get_bitmap(
         Wx::Size.new(from_dip(24), from_dip(24))), '',
       Wx::RBN::RIBBON_BUTTON_NORMAL)
-    rbnToolBar.add_tool($rbn_tool2, wxue_get_bundle($redo_png, $redo_2x_png)
-      .get_bitmap(
+    rbnToolBar.add_tool($rbn_tool2, wxue_get_bundle($redo_png).get_bitmap(
         Wx::Size.new(from_dip(24), from_dip(24))), '',
       Wx::RBN::RIBBON_BUTTON_NORMAL)
     rbnToolBar.add_tool($rbn_tool3, wxue_get_bundle($wxPython_png, $wxPython_1_5x_png,
@@ -166,33 +165,6 @@ $redo_png = Base64.decode64(
   'GbE0YhlpFAnLRUJoBcpmSbYx8v3BB+SO03TPp7MWQorLPC5zuE4DooJFw4pIyCMhD5SNgrJZ' +
   'ktZLvnn2PvlHF86+U0umtSrpmijSAcQ8Ui6XlM2S2I58/cQGuesbDeDxiWgisiLHRlwOfDmS' +
   'CP+vf7v+BCTXR/QXGtTnAAAAAElFTkSuQmCC')
-
-# redo@2x.png
-$redo_2x_png = Base64.decode64(
-  'iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAAAsTAAALEwEAmpwY' +
-  'AAAEoklEQVRo3u2YXUwcVRTHf7Ozyy7Q3aUsiJQlLVBtmgpK0JhCYqAvpIoxfoUXbWoTPxIT' +
-  '01LaBPpgUrGtLV9Fjba2NW2sWE1Imxhj1fhkiKkNEhvjR2MbilILCWxZ2I9ZlvHh3q2zE0aI' +
-  'KSbu7nn575mZe2/2/z/3nHOvwjKbt9D/GcBrHV2bAV55sVm5nfPb+J+bfbkXeKCufgVADIIA' +
-  'LXu6RwC6X29ZnVHgv1DArio2gNpNm90A318YVAF2tHWOAfTsb12VUWA5zaaIpHMzNAdAQXlN' +
-  'DkBurlsF2N52aBygd/+uOzIKLI8CqmJUYjY6D4Cz8C4nwMb6FXkAuq5PAhw+sLtADp3PKLBE' +
-  '8wB4fMVNAKVl65oAKqvuuxvgwdracqGAZExSFokJgtXsOx0ADzU2eeV8AalEofSjKa3Av+5L' +
-  'cr1FDQDNzz53CmDLtpdKALLdeYpgWHwX0gTT0+E4ANqcDkB8XuBcXKL0V6pBHWDw/LmwUGJX' +
-  'sVxyOrMHAMrWV/cAHOzqeQFgVUV1jsjzguHgdDyZYZlLdH1hySeCMYzjf7c5FYC6h5/OEXtG' +
-  'uQHQs691jRxyIz0VKCipeB6g752TLwM480sdAEEZ26qkQpccSwEA8UOWgVuYyEIJ5hOW2Ath' +
-  '3QVAVpZTBcj2eFYDhKen00+BbIDtO3buNTIflQzaRaG9FeO6/KHryZOY/Ynp2IKLbShxAnDp' +
-  '6080gDe799RJ5i+mZxYqXnPPIdHPNxUBBCKJmFeS8rhN+nk5YkqHXb6PRkSsa+L52JSW1BMl' +
-  'rNIvmB/+8mMNoLer/X6A2OzspfTuhR59/Ml6AM3mVkR+n0vOTl6HiOk/fosAHD3y4WWA4aHv' +
-  'RgF8vvz1AO0HT5QBXA9oSfWg0p8FwNAXZ6IAfW/srgKIadqvmW4UYG15eR5AMDInK6x4XuQV' +
-  'QwdOH7kOcOLY2y0AU2MjHxnHP/LU1m8A/gxoZQAhGftVfqHcxfOC+a6OtnVihDaSOZEZ37k9' +
-  '7hxj3s+yi/985afhEMC7hzu3AMzeHP9qoUlmZmbixi70Xr9Y8sLnZyLyfqhCfjqWORObzAkQ' +
-  'DIXnAdwybXhlnn//g+M//hPzZqsoUAE41386LLrLnYmbuYnMvZCFzQL8/MPQKMDamkafyEJi' +
-  'LwQCk6NLWWByclIFONt/MgTQu6/VL19N3ZZbj5SvA98ODvYBNDWPdwNEHbkOAIdN0Yy3EoBq' +
-  'IkUB2NTQWC6Z32B6v1Ji3IRzJoyn7a1ElpHhjs73BgCqNzb4AAb6j00AHH/rwFaTAqppbiXp' +
-  'aPY3WjGfOChoFr6WsgrYjPnfjB6PrxSgu+/oqwAutzsfYNszT3QBaOGZa6Z9pVooYMW4memo' +
-  'hZ/ASMop4LRAV7JvzwNobd/7GMDlX66oAJ+ePTUEEI9rQdMeUk3Ma0thdgnP01aBZKypqfGJ' +
-  'ijvjBbh67aq8/NQ0096Km2LdHONWzFspMJtyCigWjGdZ+GZ0ALhcLgdAJBJRLOpBzEIRbYl7' +
-  'JGQcl9KVWDUpksS0Ae0mtC1SJOdNaO55EuvOmFAz1ZPU74UWU8Zu0QMt2JUuwPxiXaieFueB' +
-  'vwBx6KjY2o3M3gAAAABJRU5ErkJggg==')
 
 # ************* End of generated code ***********
 # DO NOT EDIT THIS COMMENT BLOCK!

@@ -158,6 +158,9 @@ bool MainFrame::Create(wxWindow* parent, wxWindowID id, const wxString& title,
     menuItem3->SetBitmap(wxBitmapBundle::FromBitmap(wxueImage(wxue_img::wxWizard_png, sizeof(wxue_img::wxWizard_png))));
 
     menuDialogs->Append(menuItem3);
+    auto* menuItem2 = new wxMenuItem(menuDialogs, wxID_ANY, "Bitmaps");
+    menuItem2->SetBitmap(wxue_img::bundle_normal_png());
+    menuDialogs->Append(menuItem2);
     menuDialogs->AppendSeparator();
     auto* menuItem_2 = new wxMenuItem(menuDialogs, wxID_ANY, "Common Controls...", "Common controls", wxITEM_NORMAL);
     menuItem_2->SetBitmap(wxArtProvider::GetBitmapBundle(wxART_TIP, wxART_MENU));
@@ -223,6 +226,7 @@ bool MainFrame::Create(wxWindow* parent, wxWindowID id, const wxString& title,
     Bind(wxEVT_MENU, &MainFrame::OnPythonDlg, this, menu_item_2->GetId());
     Bind(wxEVT_MENU, &MainFrame::OnToolsDlg, this, menu_tools_dlg2->GetId());
     Bind(wxEVT_MENU, &MainFrame::OnWizard, this, menuItem3->GetId());
+    Bind(wxEVT_MENU, &MainFrame::OnBitmapsDlg, this, menuItem2->GetId());
     Bind(wxEVT_MENU, &MainFrame::OnCommonDialog, this, menuItem_2->GetId());
     Bind(wxEVT_MENU, &MainFrame::OnDlgIssue_956, this, menu_item_5->GetId());
     Bind(wxEVT_MENU, &MainFrame::OnDlgIssue_960, this, menu_item_6->GetId());

@@ -40,6 +40,7 @@ namespace wxue_img
     wxBitmapBundle bundle_wxNotebook_png();  // wxNotebook.png
     wxBitmapBundle bundle_wxPython_png();  // wxPython.png
     wxBitmapBundle bundle_wxPython_1_5x_png();  // wxPython_1_5x.png
+    wxBitmapBundle bundle_wxPython_2x_png();  // wxPython_2x.png
 
     wxImage image_Ainsi_c3_a_se_passe_png();
     wxImage image_bottom_1__png();

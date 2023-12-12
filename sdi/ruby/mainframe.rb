@@ -17,6 +17,7 @@ require_relative 'booktest_dlg'
 require_relative 'wizard'
 require_relative 'main_test_dlg'
 require_relative 'tools_dlg'
+require_relative 'bitmaps_dlg'
 
 require_relative 'images'
 require 'base64'
@@ -43,7 +44,7 @@ class MainFrame < Wx::Frame
     @propertyGridManager.set_extra_style(Wx::PG::PG_EX_MODE_BUTTONS)
 
     @propertyGridPage = @propertyGridManager.add_page('Animal Page',
-      wxue_get_bundle($wxPython_1_5x_png))
+      wxue_get_bundle($wxPython_1_5x_png, $wxPython_2x_png))
 
     @propertyGridItem_7 = @propertyGridPage.append(Wx::PG::PropertyCategory.new(
     'Pets', 'Pets'))
@@ -139,6 +140,9 @@ class MainFrame < Wx::Frame
     menuItem3 = Wx::MenuItem.new(menuDialogs, Wx::ID_ANY, 'Wizard')
     menuItem3.set_bitmap(wxue_get_bundle($wxWizard_png))
     menuDialogs.append(menuItem3)
+    menuItem2 = Wx::MenuItem.new(menuDialogs, Wx::ID_ANY, 'Bitmaps')
+    menuItem2.set_bitmap(wxue_get_bundle($normal_png))
+    menuDialogs.append(menuItem2)
     menuDialogs.append_separator
     menuItem_2 = Wx::MenuItem.new(menuDialogs, Wx::ID_ANY, 'Common Controls...',
       'Common controls', Wx::ITEM_NORMAL)
@@ -180,7 +184,8 @@ class MainFrame < Wx::Frame
     tool_5 = @toolBar.add_tool(Wx::ID_ANY, 'BookTestDlg', wxue_get_bundle($wxNotebook_png))
 
     @toolBar.add_separator
-    tool_3 = @toolBar.add_tool(Wx::ID_ANY, 'PythonDlg', wxue_get_bundle($wxPython_1_5x_png))
+    tool_3 = @toolBar.add_tool(Wx::ID_ANY, 'PythonDlg', wxue_get_bundle($wxPython_1_5x_png,
+      $wxPython_2x_png))
 
     @toolBar.add_stretchable_space
 
@@ -202,6 +207,7 @@ class MainFrame < Wx::Frame
     evt_menu(menu_item_2.get_id, :OnPythonDlg)
     evt_menu(menu_tools_dlg2.get_id, :on_tools_dlg)
     evt_menu(menuItem3.get_id, :OnWizard)
+    evt_menu(menuItem2.get_id, :OnBitmapsDlg)
     evt_menu(menuItem_2.get_id, :OnCommonDialog)
     evt_menu(menu_item_5.get_id, :OnDlgIssue_956)
     evt_menu(menu_item_6.get_id, :OnDlgIssue_960)
@@ -344,6 +350,12 @@ end
 
 def on_tools_dlg(event)
   dlg = ToolBarsDialog.new(self)
+  dlg.show_modal
+  dlg.destroy
+end
+
+def OnBitmapsDlg(event)
+  dlg = BitmapsDlg.new(self)
   dlg.show_modal
   dlg.destroy
 end

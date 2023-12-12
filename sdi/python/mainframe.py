@@ -17,6 +17,7 @@ import python_dlg
 import tools_dlg
 import dlgissue_956
 import dlgissue_960
+import bitmaps_dlg
 
 import images
 from wx.lib.embeddedimage import PyEmbeddedImage
@@ -91,8 +92,8 @@ class MainFrame(wx.Frame):
             wx.propgrid.PG_NO_INTERNAL_BORDER)
         self.propertyGridManager.SetExtraStyle(wx.propgrid.PG_EX_MODE_BUTTONS)
 
-        self.propertyGridPage = self.propertyGridManager.AddPage("Animal Page", wx.BitmapBundle.FromBitmap(
-            images.wxPython_1_5x_png.Bitmap))
+        self.propertyGridPage = self.propertyGridManager.AddPage("Animal Page", wx.BitmapBundle.FromBitmaps(
+            images.wxPython_1_5x_png.Bitmap, images.wxPython_2x_png.Bitmap))
 
         self.propertyGridItem_7 = self.propertyGridPage.Append(
             wx.propgrid.PropertyCategory("Pets", "Pets"))
@@ -193,6 +194,9 @@ class MainFrame(wx.Frame):
         menuItem3 = wx.MenuItem(menuDialogs, wx.ID_ANY, "Wizard")
         menuItem3.SetBitmap(wx.BitmapBundle.FromBitmap(wxWizard_png.Bitmap))
         menuDialogs.Append(menuItem3)
+        menuItem2 = wx.MenuItem(menuDialogs, wx.ID_ANY, "Bitmaps")
+        menuItem2.SetBitmap(wx.BitmapBundle.FromBitmap(images.normal_png.Bitmap))
+        menuDialogs.Append(menuItem2)
         menuDialogs.AppendSeparator()
         menuItem_2 = wx.MenuItem(menuDialogs, wx.ID_ANY, "Common Controls...",
             "Common controls", wx.ITEM_NORMAL)
@@ -231,7 +235,8 @@ class MainFrame(wx.Frame):
         tool_5 = self.toolBar.AddTool(wx.ID_ANY, "BookTestDlg", images.wxNotebook_png.Bitmap)
 
         self.toolBar.AddSeparator()
-        tool_3 = self.toolBar.AddTool(wx.ID_ANY, "PythonDlg", images.wxPython_1_5x_png.Bitmap)
+        tool_3 = self.toolBar.AddTool(wx.ID_ANY, "PythonDlg", wx.BitmapBundle.FromBitmaps(
+            images.wxPython_1_5x_png.Bitmap, images.wxPython_2x_png.Bitmap))
 
         self.toolBar.AddStretchableSpace()
 
@@ -253,6 +258,7 @@ class MainFrame(wx.Frame):
         self.Bind(wx.EVT_MENU, self.OnPythonDlg, id=menu_item_2.GetId())
         self.Bind(wx.EVT_MENU, self.on_tools_dlg, id=menu_tools_dlg2.GetId())
         self.Bind(wx.EVT_MENU, self.OnWizard, id=menuItem3.GetId())
+        self.Bind(wx.EVT_MENU, self.OnBitmapsDlg, id=menuItem2.GetId())
         self.Bind(wx.EVT_MENU, self.OnCommonDialog, id=menuItem_2.GetId())
         self.Bind(wx.EVT_MENU, self.OnDlgIssue_956, id=menu_item_5.GetId())
         self.Bind(wx.EVT_MENU, self.OnDlgIssue_960, id=menu_item_6.GetId())
@@ -348,7 +354,11 @@ class MainFrame(wx.Frame):
         dlg = tools_dlg.ToolBarsDialog(self)
         dlg.ShowModal()
         dlg.Destroy()
-        event.Skip()
+
+    def OnBitmapsDlg(self, event):
+        dlg = bitmaps_dlg.BitmapsDlg(self)
+        dlg.ShowModal()
+        dlg.Destroy()
 
 class MyApp(wx.App):
     def OnInit(self):
