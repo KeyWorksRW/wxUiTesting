@@ -1833,6 +1833,7 @@
         </node>
         <node
           class="wxStdDialogButtonSizer"
+          ContextHelp="1"
           flags="wxEXPAND" />
       </node>
     </node>

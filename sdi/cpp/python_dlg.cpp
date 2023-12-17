@@ -10,6 +10,7 @@
 #include <wx/aui/framemanager.h>
 #include <wx/bmpbndl.h>
 #include <wx/button.h>
+#include <wx/cshelp.h>
 #include <wx/sizer.h>
 #include <wx/statbmp.h>
 #include <wx/statbox.h>
@@ -95,7 +96,12 @@ bool PythonDlg::Create(wxWindow* parent, wxWindowID id, const wxString& title,
 
     bSizer1->Add(box_sizer, wxSizerFlags().Expand().Border(wxALL));
 
-    auto* stdBtn = CreateStdDialogButtonSizer(wxOK|wxCANCEL);
+    auto* stdBtn = new wxStdDialogButtonSizer();
+    stdBtn->AddButton(new wxButton(this, wxID_OK));
+    stdBtn->AddButton(new wxButton(this, wxID_CANCEL));
+    stdBtn->AddButton(new wxContextHelpButton(this, wxID_CONTEXT_HELP));
+    stdBtn->GetAffirmativeButton()->SetDefault();
+    stdBtn->Realize();
     bSizer1->Add(CreateSeparatedSizer(stdBtn), wxSizerFlags().Expand().Border(wxALL));
 
     SetSizerAndFit(bSizer1);

@@ -89,6 +89,8 @@ class PythonDlg(wx.Dialog):
         stdBtn.SetAffirmativeButton(stdBtn_OK)
         stdBtn_Cancel = wx.Button(self, wx.ID_CANCEL)
         stdBtn.SetCancelButton(stdBtn_Cancel)
+        stdBtn_ContextHelp = wx.ContextHelpButton(self, wx.ID_CONTEXT_HELP)
+        stdBtn.AddButton(stdBtn_ContextHelp)
         stdBtn_OK.SetDefault()
         stdBtn.Realize()
         bSizer1.Add(stdBtn, wx.SizerFlags().Expand().Border(wx.ALL))
