@@ -51,7 +51,9 @@
 // this sample is useful when a new port is developed
 // and usually a new port has majority of flags turned off
 #if wxUSE_LOG && wxUSE_TEXTCTRL
-    #define USE_LOG_WINDOW 1
+    // REVIEW: [Randalphwa - 12-18-2023] Causes a GPF on Windows 11 with shared library
+    // #define USE_LOG_WINDOW 1
+    #define USE_LOG_WINDOW 0
 #else
     #define USE_LOG_WINDOW 0
 #endif
