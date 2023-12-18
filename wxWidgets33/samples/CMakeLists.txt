@@ -161,6 +161,7 @@ add_executable(dragimag WIN32
 add_executable(drawing WIN32 ${CMAKE_CURRENT_LIST_DIR}/drawing/drawing.cpp ${CMAKE_CURRENT_LIST_DIR}/sample.rc)
 add_executable(erase WIN32 ${CMAKE_CURRENT_LIST_DIR}/erase/erase.cpp ${CMAKE_CURRENT_LIST_DIR}/sample.rc)
 add_executable(griddemo WIN32 ${CMAKE_CURRENT_LIST_DIR}/grid/griddemo.cpp ${CMAKE_CURRENT_LIST_DIR}/sample.rc)
+add_executable(menu WIN32 ${CMAKE_CURRENT_LIST_DIR}/menu/menu.cpp ${CMAKE_CURRENT_LIST_DIR}/sample.rc)
 
 add_executable(event WIN32
     ${CMAKE_CURRENT_LIST_DIR}/event/event.cpp
@@ -182,6 +183,41 @@ add_executable(splitter WIN32 ${CMAKE_CURRENT_LIST_DIR}/splitter/splitter.cpp ${
 add_executable(svgtest WIN32
     ${CMAKE_CURRENT_LIST_DIR}/svg/svgtest.cpp
     ${CMAKE_CURRENT_LIST_DIR}/svg/svgtest.rc
+)
+
+add_executable(widgets WIN32
+    ${CMAKE_CURRENT_LIST_DIR}/widgets/activityindicator.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/widgets/bmpcombobox.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/widgets/button.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/widgets/checkbox.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/widgets/choice.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/widgets/clrpicker.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/widgets/combobox.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/widgets/datepick.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/widgets/dirctrl.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/widgets/dirpicker.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/widgets/editlbox.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/widgets/filectrl.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/widgets/filepicker.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/widgets/fontpicker.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/widgets/gauge.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/widgets/headerctrl.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/widgets/hyperlnk.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/widgets/itemcontainer.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/widgets/listbox.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/widgets/native.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/widgets/notebook.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/widgets/odcombobox.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/widgets/radiobox.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/widgets/searchctrl.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/widgets/slider.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/widgets/spinbtn.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/widgets/statbmp.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/widgets/static.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/widgets/textctrl.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/widgets/timepick.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/widgets/toggle.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/widgets/widgets.cpp
 )
 
 add_executable(xrcdemo WIN32
@@ -244,11 +280,13 @@ target_precompile_headers(drawing PRIVATE ${CMAKE_CURRENT_LIST_DIR}/../include/w
 target_precompile_headers(event PRIVATE ${CMAKE_CURRENT_LIST_DIR}/../include/wx/wxprec.h)
 target_precompile_headers(erase PRIVATE ${CMAKE_CURRENT_LIST_DIR}/../include/wx/wxprec.h)
 target_precompile_headers(griddemo PRIVATE ${CMAKE_CURRENT_LIST_DIR}/../include/wx/wxprec.h)
+target_precompile_headers(menu PRIVATE ${CMAKE_CURRENT_LIST_DIR}/../include/wx/wxprec.h)
 target_precompile_headers(notebook PRIVATE ${CMAKE_CURRENT_LIST_DIR}/../include/wx/wxprec.h)
 target_precompile_headers(propgrid PRIVATE ${CMAKE_CURRENT_LIST_DIR}/../include/wx/wxprec.h)
 target_precompile_headers(richtext PRIVATE ${CMAKE_CURRENT_LIST_DIR}/../include/wx/wxprec.h)
 target_precompile_headers(splitter PRIVATE ${CMAKE_CURRENT_LIST_DIR}/../include/wx/wxprec.h)
 target_precompile_headers(svgtest PRIVATE ${CMAKE_CURRENT_LIST_DIR}/../include/wx/wxprec.h)
+target_precompile_headers(widgets PRIVATE ${CMAKE_CURRENT_LIST_DIR}/../include/wx/wxprec.h)
 target_precompile_headers(xrcdemo PRIVATE ${CMAKE_CURRENT_LIST_DIR}/../include/wx/wxprec.h)
 
 target_include_directories(animate PRIVATE ${setup_dir} ${CMAKE_CURRENT_LIST_DIR}/animate)
@@ -272,11 +310,13 @@ target_include_directories(drawing PRIVATE ${setup_dir} ${CMAKE_CURRENT_LIST_DIR
 target_include_directories(erase PRIVATE ${setup_dir} ${CMAKE_CURRENT_LIST_DIR}/erase)
 target_include_directories(event PRIVATE ${setup_dir} ${CMAKE_CURRENT_LIST_DIR}/event)
 target_include_directories(griddemo PRIVATE ${setup_dir} ${CMAKE_CURRENT_LIST_DIR}/griddemo)
+target_include_directories(menu PRIVATE ${setup_dir} ${CMAKE_CURRENT_LIST_DIR}/menu)
 target_include_directories(notebook PRIVATE ${setup_dir} ${CMAKE_CURRENT_LIST_DIR}/notebook)
 target_include_directories(propgrid PRIVATE ${setup_dir} ${CMAKE_CURRENT_LIST_DIR}/propgrid)
 target_include_directories(richtext PRIVATE ${setup_dir} ${CMAKE_CURRENT_LIST_DIR}/richtext)
 target_include_directories(splitter PRIVATE ${setup_dir} ${CMAKE_CURRENT_LIST_DIR}/splitter)
 target_include_directories(svgtest PRIVATE ${setup_dir} ${CMAKE_CURRENT_LIST_DIR}/svgtest)
+target_include_directories(widgets PRIVATE ${setup_dir} ${CMAKE_CURRENT_LIST_DIR}/widgets)
 target_include_directories(xrcdemo PRIVATE ${setup_dir} ${CMAKE_CURRENT_LIST_DIR}/xrcdemo)
 
 if (UNIX)
@@ -313,11 +353,13 @@ if (WIN32)
     target_link_libraries(erase PRIVATE wxWidgets33 wxCLib kernel32 user32 gdi32 comctl32 comdlg32 shell32 rpcrt4 advapi32)
     target_link_libraries(event PRIVATE wxWidgets33 wxCLib kernel32 user32 gdi32 comctl32 comdlg32 shell32 rpcrt4 advapi32)
     target_link_libraries(griddemo PRIVATE wxWidgets33 wxCLib kernel32 user32 gdi32 comctl32 comdlg32 shell32 rpcrt4 advapi32)
+    target_link_libraries(menu PRIVATE wxWidgets33 wxCLib kernel32 user32 gdi32 comctl32 comdlg32 shell32 rpcrt4 advapi32)
     target_link_libraries(notebook PRIVATE wxWidgets33 wxCLib kernel32 user32 gdi32 comctl32 comdlg32 shell32 rpcrt4 advapi32)
     target_link_libraries(propgrid PRIVATE wxWidgets33 wxCLib kernel32 user32 gdi32 comctl32 comdlg32 shell32 rpcrt4 advapi32)
     target_link_libraries(richtext PRIVATE wxWidgets33 wxCLib kernel32 user32 gdi32 comctl32 comdlg32 shell32 rpcrt4 advapi32)
     target_link_libraries(splitter PRIVATE wxWidgets33 wxCLib kernel32 user32 gdi32 comctl32 comdlg32 shell32 rpcrt4 advapi32)
     target_link_libraries(svgtest PRIVATE wxWidgets33 wxCLib kernel32 user32 gdi32 comctl32 comdlg32 shell32 rpcrt4 advapi32)
+    target_link_libraries(widgets PRIVATE wxWidgets33 wxCLib kernel32 user32 gdi32 comctl32 comdlg32 shell32 rpcrt4 advapi32)
     target_link_libraries(xrcdemo PRIVATE wxWidgets33 wxCLib kernel32 user32 gdi32 comctl32 comdlg32 shell32 rpcrt4 advapi32)
 else()
     target_link_libraries(animate PRIVATE wxWidgets33 ${SYSTEM_LIBS} wxCLib)
@@ -341,11 +383,13 @@ else()
     target_link_libraries(erase PRIVATE wxWidgets33 ${SYSTEM_LIBS} wxCLib)
     target_link_libraries(event PRIVATE wxWidgets33 ${SYSTEM_LIBS} wxCLib)
     target_link_libraries(griddemo PRIVATE wxWidgets33 ${SYSTEM_LIBS} wxCLib)
+    target_link_libraries(menu PRIVATE wxWidgets33 ${SYSTEM_LIBS} wxCLib)
     target_link_libraries(notebook PRIVATE wxWidgets33 ${SYSTEM_LIBS} wxCLib)
     target_link_libraries(propgrid PRIVATE wxWidgets33 ${SYSTEM_LIBS} wxCLib)
     target_link_libraries(richtext PRIVATE wxWidgets33 ${SYSTEM_LIBS} wxCLib)
     target_link_libraries(splitter PRIVATE wxWidgets33 ${SYSTEM_LIBS} wxCLib)
     target_link_libraries(svgtest PRIVATE wxWidgets33 ${SYSTEM_LIBS} wxCLib)
+    target_link_libraries(widgets PRIVATE wxWidgets33 ${SYSTEM_LIBS} wxCLib)
     target_link_libraries(xrcdemo PRIVATE wxWidgets33 ${SYSTEM_LIBS} wxCLib)
 endif()
 
