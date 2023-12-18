@@ -1064,7 +1064,8 @@ void TextWidgetsPage::OnStreamRedirector(wxCommandEvent& WXUNUSED(event))
 #if wxHAS_TEXT_WINDOW_STREAM
     wxStreamToTextRedirector redirect(m_text);
     wxString str( "Outputed to cout, appears in wxTextCtrl!" );
-    std::cout << str << std::endl;
+    // [Randalphwa - 12-18-2023] on Windows using a shared library, this causes a link error
+    // std::cout << str << std::endl;
 #else
     wxMessageBox("This wxWidgets build does not support wxStreamToTextRedirector");
 #endif
