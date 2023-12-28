@@ -38,7 +38,7 @@ class DlgIssue_960 < Wx::Dialog
 
     dlg_sizer.add(box_sizer, Wx::SizerFlags.new.border(Wx::ALL))
 
-    bmp_3 = Wx::StaticBitmap.new(self, Wx::ID_ANY, wxue_get_bundle($Ainsi_c3_a_se_passe_png))
+    bmp_3 = Wx::StaticBitmap.new(self, Wx::ID_ANY, wxue_get_bundle($Ainsi_a_se_passe_png))
     dlg_sizer.add(bmp_3, Wx::SizerFlags.new.border(Wx::ALL))
 
     if Wx::PLATFORM != 'WXMAC'

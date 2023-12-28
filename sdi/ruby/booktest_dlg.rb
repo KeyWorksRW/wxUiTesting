@@ -22,16 +22,12 @@ class BookTestDlg < Wx::Dialog
     dlg_sizer = Wx::BoxSizer.new(Wx::VERTICAL)
     dlg_sizer.set_min_size(400, 400)
 
-    @notebook = Wx::AUI::AuiNotebook.new(self, Wx::ID_ANY,
-      Wx::DEFAULT_POSITION, Wx::DEFAULT_SIZE, Wx::AUI::AUI_NB_TOP|
-      Wx::AUI::AUI_NB_TAB_SPLIT|Wx::AUI::AUI_NB_TAB_MOVE|
-      Wx::AUI::AUI_NB_SCROLL_BUTTONS|Wx::AUI::AUI_NB_CLOSE_ON_ACTIVE_TAB|
-      Wx::AUI::AUI_NB_MIDDLE_CLICK_CLOSE)
-    dlg_sizer.add(@notebook, Wx::SizerFlags.new(1).expand.border(Wx::ALL))
+    @aui_notebook = Wx::AUI::AuiNotebook.new(self, Wx::ID_ANY)
+    dlg_sizer.add(@aui_notebook, Wx::SizerFlags.new(1).expand.border(Wx::ALL))
 
-    page_2 = Wx::Panel.new(@notebook, Wx::ID_ANY, Wx::DEFAULT_POSITION,
+    page_2 = Wx::Panel.new(@aui_notebook, Wx::ID_ANY, Wx::DEFAULT_POSITION,
       Wx::DEFAULT_SIZE, Wx::TAB_TRAVERSAL)
-    @notebook.add_page(page_2, 'ChoiceBook')
+    @aui_notebook.add_page(page_2, 'ChoiceBook')
 
     page_sizer_1 = Wx::BoxSizer.new(Wx::VERTICAL)
 
@@ -114,9 +110,9 @@ class BookTestDlg < Wx::Dialog
     page_22.set_sizer_and_fit(parent_sizer_14)
     page_2.set_sizer_and_fit(page_sizer_1)
 
-    page_3 = Wx::Panel.new(@notebook, Wx::ID_ANY, Wx::DEFAULT_POSITION,
+    page_3 = Wx::Panel.new(@aui_notebook, Wx::ID_ANY, Wx::DEFAULT_POSITION,
       Wx::DEFAULT_SIZE, Wx::TAB_TRAVERSAL)
-    @notebook.add_page(page_3, 'ListBook')
+    @aui_notebook.add_page(page_3, 'ListBook')
 
     page_sizer_2 = Wx::BoxSizer.new(Wx::VERTICAL)
 
@@ -173,9 +169,9 @@ class BookTestDlg < Wx::Dialog
 
     page_3.set_sizer_and_fit(page_sizer_2)
 
-    page_4 = Wx::Panel.new(@notebook, Wx::ID_ANY, Wx::DEFAULT_POSITION,
+    page_4 = Wx::Panel.new(@aui_notebook, Wx::ID_ANY, Wx::DEFAULT_POSITION,
       Wx::DEFAULT_SIZE, Wx::TAB_TRAVERSAL)
-    @notebook.add_page(page_4, 'NoteBook')
+    @aui_notebook.add_page(page_4, 'NoteBook')
 
     page_sizer_3 = Wx::BoxSizer.new(Wx::VERTICAL)
 
@@ -231,9 +227,9 @@ class BookTestDlg < Wx::Dialog
 
     page_4.set_sizer_and_fit(page_sizer_3)
 
-    page_5 = Wx::Panel.new(@notebook, Wx::ID_ANY, Wx::DEFAULT_POSITION,
+    page_5 = Wx::Panel.new(@aui_notebook, Wx::ID_ANY, Wx::DEFAULT_POSITION,
       Wx::DEFAULT_SIZE, Wx::TAB_TRAVERSAL)
-    @notebook.add_page(page_5, 'ToolBook')
+    @aui_notebook.add_page(page_5, 'ToolBook')
 
     page_sizer_4 = Wx::BoxSizer.new(Wx::VERTICAL)
 
@@ -289,9 +285,9 @@ class BookTestDlg < Wx::Dialog
 
     page_5.set_sizer_and_fit(page_sizer_4)
 
-    page = Wx::Panel.new(@notebook, Wx::ID_ANY, Wx::DEFAULT_POSITION,
+    page = Wx::Panel.new(@aui_notebook, Wx::ID_ANY, Wx::DEFAULT_POSITION,
       Wx::DEFAULT_SIZE, Wx::TAB_TRAVERSAL)
-    @notebook.add_page(page, 'TreeBook')
+    @aui_notebook.add_page(page, 'TreeBook')
 
     page_sizer_5 = Wx::BoxSizer.new(Wx::VERTICAL)
 

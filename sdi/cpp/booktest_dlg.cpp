@@ -28,13 +28,11 @@ bool BookTestDlg::Create(wxWindow* parent, wxWindowID id, const wxString& title,
     auto* dlg_sizer = new wxBoxSizer(wxVERTICAL);
     dlg_sizer->SetMinSize(400, 400);
 
-    m_notebook = new wxAuiNotebook(this, wxID_ANY, wxDefaultPosition, wxDefaultSize,
-        wxAUI_NB_TOP|wxAUI_NB_TAB_SPLIT|wxAUI_NB_TAB_MOVE|wxAUI_NB_SCROLL_BUTTONS|wxAUI_NB_CLOSE_ON_ACTIVE_TAB|wxAUI_NB_MIDDLE_CLICK_CLOSE
-    );
-    dlg_sizer->Add(m_notebook, wxSizerFlags(1).Expand().Border(wxALL));
+    m_aui_notebook = new wxAuiNotebook(this, wxID_ANY);
+    dlg_sizer->Add(m_aui_notebook, wxSizerFlags(1).Expand().Border(wxALL));
 
-    auto* page_2 = new wxPanel(m_notebook, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL);
-    m_notebook->AddPage(page_2, "ChoiceBook");
+    auto* page_2 = new wxPanel(m_aui_notebook, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL);
+    m_aui_notebook->AddPage(page_2, "ChoiceBook");
 
     auto* page_sizer_1 = new wxBoxSizer(wxVERTICAL);
 
@@ -106,8 +104,8 @@ bool BookTestDlg::Create(wxWindow* parent, wxWindowID id, const wxString& title,
     page_22->SetSizerAndFit(parent_sizer_14);
     page_2->SetSizerAndFit(page_sizer_1);
 
-    auto* page_3 = new wxPanel(m_notebook, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL);
-    m_notebook->AddPage(page_3, "ListBook");
+    auto* page_3 = new wxPanel(m_aui_notebook, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL);
+    m_aui_notebook->AddPage(page_3, "ListBook");
 
     auto* page_sizer_2 = new wxBoxSizer(wxVERTICAL);
 
@@ -154,8 +152,8 @@ bool BookTestDlg::Create(wxWindow* parent, wxWindowID id, const wxString& title,
 
     page_3->SetSizerAndFit(page_sizer_2);
 
-    auto* page_4 = new wxPanel(m_notebook, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL);
-    m_notebook->AddPage(page_4, "NoteBook");
+    auto* page_4 = new wxPanel(m_aui_notebook, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL);
+    m_aui_notebook->AddPage(page_4, "NoteBook");
 
     auto* page_sizer_3 = new wxBoxSizer(wxVERTICAL);
 
@@ -202,8 +200,8 @@ bool BookTestDlg::Create(wxWindow* parent, wxWindowID id, const wxString& title,
 
     page_4->SetSizerAndFit(page_sizer_3);
 
-    auto* page_5 = new wxPanel(m_notebook, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL);
-    m_notebook->AddPage(page_5, "ToolBook");
+    auto* page_5 = new wxPanel(m_aui_notebook, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL);
+    m_aui_notebook->AddPage(page_5, "ToolBook");
 
     auto* page_sizer_4 = new wxBoxSizer(wxVERTICAL);
 
@@ -250,8 +248,8 @@ bool BookTestDlg::Create(wxWindow* parent, wxWindowID id, const wxString& title,
 
     page_5->SetSizerAndFit(page_sizer_4);
 
-    auto* page = new wxPanel(m_notebook, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL);
-    m_notebook->AddPage(page, "TreeBook");
+    auto* page = new wxPanel(m_aui_notebook, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL);
+    m_aui_notebook->AddPage(page, "TreeBook");
 
     auto* page_sizer_5 = new wxBoxSizer(wxVERTICAL);
 

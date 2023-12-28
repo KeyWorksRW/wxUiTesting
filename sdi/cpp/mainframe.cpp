@@ -173,7 +173,7 @@ bool MainFrame::Create(wxWindow* parent, wxWindowID id, const wxString& title,
     menu_item_5->SetBitmap(wxue_img::bundle_debug_32_png());
     submenu->Append(menu_item_5);
     auto* menu_item_6 = new wxMenuItem(submenu, wxID_ANY, "DlgIssue_960");
-    menu_item_6->SetBitmap(wxue_img::bundle_Ainsi_c3_a_se_passe_png());
+    menu_item_6->SetBitmap(wxue_img::bundle_Ainsi_a_se_passe_png());
     submenu->Append(menu_item_6);
     auto* submenu_item = menuDialogs->AppendSubMenu(submenu, "Issue Dialogs");
     submenu_item->SetBitmap(wxBitmapBundle::FromBitmap(wxueImage(wxue_img::wxDialog_png, sizeof(wxue_img::wxDialog_png))));

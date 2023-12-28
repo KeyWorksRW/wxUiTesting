@@ -209,7 +209,7 @@ class MainFrame(wx.Frame):
         menu_item_5.SetBitmap(wx.BitmapBundle.FromBitmap(images.debug_32_png.Bitmap))
         submenu.Append(menu_item_5)
         menu_item_6 = wx.MenuItem(submenu, wx.ID_ANY, "DlgIssue_960")
-        menu_item_6.SetBitmap(wx.BitmapBundle.FromBitmap(images.Ainsi_c3_a_se_passe_png.Bitmap))
+        menu_item_6.SetBitmap(wx.BitmapBundle.FromBitmap(images.Ainsi_a_se_passe_png.Bitmap))
         submenu.Append(menu_item_6)
         submenu_item = menuDialogs.AppendSubMenu(submenu, "Issue Dialogs")
         submenu_item.SetBitmap(wx.BitmapBundle.FromBitmap(wxDialog_png.Bitmap))

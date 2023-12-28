@@ -18,7 +18,7 @@ namespace wxue_img
     wxImage get_image(const unsigned char* data, size_t size_data);
 
     wxBitmapBundle bundle_img_1_bottom_png();  // 1_bottom.png
-    wxBitmapBundle bundle_Ainsi_c3_a_se_passe_png();  // Ainsi ça se passe.png
+    wxBitmapBundle bundle_Ainsi_a_se_passe_png();  // Ainsi ça se passe.png
     wxBitmapBundle bundle_bottom_1__png();  // bottom(1).png
     wxBitmapBundle bundle_debug_32_png();  // debug_32.png
     wxBitmapBundle bundle_disabled_png();  // disabled.png
@@ -42,7 +42,7 @@ namespace wxue_img
     wxBitmapBundle bundle_wxPython_1_5x_png();  // wxPython_1_5x.png
     wxBitmapBundle bundle_wxPython_2x_png();  // wxPython_2x.png
 
-    wxImage image_Ainsi_c3_a_se_passe_png();
+    wxImage image_Ainsi_a_se_passe_png();
     wxImage image_bottom_1__png();
     wxImage image_debug_32_png();
     wxImage image_disabled_png();

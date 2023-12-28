@@ -44,7 +44,7 @@ $img_1_bottom_png = Base64.decode64(
   'DP9nmVBmYNoZCGOWCeNwS0U0AgDjl1CSPHv2FQAAAABJRU5ErkJggg==')
 
 # Ainsi ça se passe.png
-$Ainsi_c3_a_se_passe_png = Base64.decode64(
+$Ainsi_a_se_passe_png = Base64.decode64(
   'iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwY' +
   'AAAARklEQVRIx2NgGD4g7cx/hrQz/6nKZmBgYBqmQURFc0aDaDSIRoNoNIhGg4gagBHFawwM' +
   'DP9nmVBmYNoZCGOWCeNwS0U0AgDjl1CSPHv2FQAAAABJRU5ErkJggg==')

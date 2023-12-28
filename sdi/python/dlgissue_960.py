@@ -42,7 +42,7 @@ class DlgIssue_960(wx.Dialog):
         dlg_sizer.Add(box_sizer, wx.SizerFlags().Border(wx.ALL))
 
         bmp_3 = wx.StaticBitmap(self, wx.ID_ANY, wx.BitmapBundle.FromBitmap(
-            images.Ainsi_c3_a_se_passe_png.Bitmap))
+            images.Ainsi_a_se_passe_png.Bitmap))
         dlg_sizer.Add(bmp_3, wx.SizerFlags().Border(wx.ALL))
 
         if "wxMac" not in wx.PlatformInfo:

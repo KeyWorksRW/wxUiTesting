@@ -198,6 +198,7 @@ class MainTestDialog(wx.Dialog):
             wx.DefaultSize, ["Button zero ","Button one ","Button two "], 0,
             wx.RA_SPECIFY_ROWS)
         radioBox.SetSelection(1)
+        # wxPython only supports custom validators, not the wxWidgets validators.
         box_sizer_7.Add(radioBox, wx.SizerFlags().Border(wx.ALL))
 
         # wxPython currently does not support a checkbox as a static box label

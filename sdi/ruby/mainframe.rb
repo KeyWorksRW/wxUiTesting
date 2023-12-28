@@ -156,7 +156,7 @@ class MainFrame < Wx::Frame
     menu_item_5.set_bitmap(wxue_get_bundle($debug_32_png))
     submenu.append(menu_item_5)
     menu_item_6 = Wx::MenuItem.new(submenu, Wx::ID_ANY, 'DlgIssue_960')
-    menu_item_6.set_bitmap(wxue_get_bundle($Ainsi_c3_a_se_passe_png))
+    menu_item_6.set_bitmap(wxue_get_bundle($Ainsi_a_se_passe_png))
     submenu.append(menu_item_6)
     submenu_item = menuDialogs.append_sub_menu(submenu, 'Issue Dialogs')
     submenu_item.set_bitmap(wxue_get_bundle($wxDialog_png))

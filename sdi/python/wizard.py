@@ -66,6 +66,7 @@ class Wizard(wx.adv.Wizard):
 
         self.spinCtrl = wx.SpinCtrl(wizPage2, wx.ID_ANY, wx.EmptyString,
             wx.DefaultPosition, wx.DefaultSize, wx.SP_ARROW_KEYS, 0, 100, 4)
+        # wxPython only supports custom validators, not the wxWidgets validators.
         box_sizer_3.Add(self.spinCtrl, wx.SizerFlags().Border(wx.ALL))
 
         parent_sizer3.Add(box_sizer_3, wx.SizerFlags().Border(wx.ALL))

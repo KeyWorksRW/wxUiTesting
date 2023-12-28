@@ -62,6 +62,9 @@ class Wizard < Wx::Wizard
 
     @spinCtrl = Wx::SpinCtrl.new(wizPage2, Wx::ID_ANY, (''),
       Wx::DEFAULT_POSITION, Wx::DEFAULT_SIZE, Wx::SP_ARROW_KEYS, 0, 100, 4)
+    # to retrieve: @m_spinValidate = @spinCtrl.get_validator.get_value()
+    @m_spinValidate = nil
+    @spinCtrl.set_validator(Wx::GenericValidator.new)
     box_sizer_3.add(@spinCtrl, Wx::SizerFlags.new.border(Wx::ALL))
 
     parent_sizer3.add(box_sizer_3, Wx::SizerFlags.new.border(Wx::ALL))

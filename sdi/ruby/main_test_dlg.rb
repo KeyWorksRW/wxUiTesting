@@ -167,6 +167,9 @@ class MainTestDialog < Wx::Dialog
       Wx::DEFAULT_POSITION, Wx::DEFAULT_SIZE, ['Button zero ','Button one ',
     'Button two '], 0, Wx::RA_SPECIFY_ROWS)
     radioBox.set_selection(1)
+    # to retrieve: @m_valRadio = radioBox.get_validator.get_value()
+    @m_valRadio = nil
+    radioBox.set_validator(Wx::GenericValidator.new)
     box_sizer_7.add(radioBox, Wx::SizerFlags.new.border(Wx::ALL))
 
     @checkBox_sizer = Wx::CheckBox.new(page_4, Wx::ID_ANY, 'Checkbox')

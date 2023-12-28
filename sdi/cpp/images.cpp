@@ -36,7 +36,7 @@ namespace wxue_img
         return wxBitmapBundle::FromSVG(str.get(), def_size);
     };
 
-    const unsigned char Ainsi_c3_a_se_passe_png[148] {
+    const unsigned char Ainsi_a_se_passe_png[148] {
     137,80,78,71,13,10,26,10,0,0,0,13,73,72,68,82,0,0,0,24,0,0,0,24,8,6,0,0,0,224,119,61,248,0,0,0,9,112,72,89,115,0,0,11,
     19,0,0,11,19,1,0,154,156,24,0,0,0,70,73,68,65,84,72,199,99,96,24,62,32,237,204,127,134,180,51,255,169,202,102,96,96,96,
     26,166,65,68,69,115,70,131,104,52,136,70,131,104,52,136,70,131,136,26,128,17,197,107,12,12,12,255,103,153,80,102,96,218,
@@ -856,9 +856,9 @@ namespace wxue_img
         return wxBitmapBundle::FromBitmap(wxBitmap(get_image(img_1_bottom_png, 148)));
     }
 
-    wxBitmapBundle bundle_Ainsi_c3_a_se_passe_png()
+    wxBitmapBundle bundle_Ainsi_a_se_passe_png()
     {
-        return wxBitmapBundle::FromBitmap(wxBitmap(get_image(Ainsi_c3_a_se_passe_png, 148)));
+        return wxBitmapBundle::FromBitmap(wxBitmap(get_image(Ainsi_a_se_passe_png, 148)));
     }
 
     wxBitmapBundle bundle_bottom_1__png()
@@ -984,9 +984,9 @@ namespace wxue_img
         return wxBitmapBundle::FromBitmap(wxBitmap(get_image(wxPython_2x_png, 251)));
     }
 
-    wxImage image_Ainsi_c3_a_se_passe_png()
+    wxImage image_Ainsi_a_se_passe_png()
     {
-        return get_image(Ainsi_c3_a_se_passe_png, 148);
+        return get_image(Ainsi_a_se_passe_png, 148);
     }
 
     wxImage image_bottom_1__png()

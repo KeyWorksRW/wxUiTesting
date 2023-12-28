@@ -39,7 +39,7 @@ protected:
 
     // Class member variables
 
-    wxAuiNotebook* m_notebook;
+    wxAuiNotebook* m_aui_notebook;
     wxChoicebook* m_choicebook;
     wxListbook* m_listbook;
     wxNotebook* m_notebook_2;

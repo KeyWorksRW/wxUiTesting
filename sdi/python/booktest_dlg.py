@@ -24,15 +24,12 @@ class BookTestDlg(wx.Dialog):
         dlg_sizer = wx.BoxSizer(wx.VERTICAL)
         dlg_sizer.SetMinSize(400, 400)
 
-        self.notebook = wx.aui.AuiNotebook(self, wx.ID_ANY, wx.DefaultPosition,
-            wx.DefaultSize, wx.aui.AUI_NB_TOP|wx.aui.AUI_NB_TAB_SPLIT|wx.aui.AUI_NB_TAB_MOVE|
-            wx.aui.AUI_NB_SCROLL_BUTTONS|wx.aui.AUI_NB_CLOSE_ON_ACTIVE_TAB|
-            wx.aui.AUI_NB_MIDDLE_CLICK_CLOSE)
-        dlg_sizer.Add(self.notebook, wx.SizerFlags(1).Expand().Border(wx.ALL))
+        self.aui_notebook = wx.aui.AuiNotebook(self, wx.ID_ANY)
+        dlg_sizer.Add(self.aui_notebook, wx.SizerFlags(1).Expand().Border(wx.ALL))
 
-        page_2 = wx.Panel(self.notebook, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize,
+        page_2 = wx.Panel(self.aui_notebook, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize,
             wx.TAB_TRAVERSAL)
-        self.notebook.AddPage(page_2, "ChoiceBook")
+        self.aui_notebook.AddPage(page_2, "ChoiceBook")
 
         page_sizer_1 = wx.BoxSizer(wx.VERTICAL)
 
@@ -112,9 +109,9 @@ class BookTestDlg(wx.Dialog):
         page_22.SetSizerAndFit(parent_sizer_14)
         page_2.SetSizerAndFit(page_sizer_1)
 
-        page_3 = wx.Panel(self.notebook, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize,
+        page_3 = wx.Panel(self.aui_notebook, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize,
             wx.TAB_TRAVERSAL)
-        self.notebook.AddPage(page_3, "ListBook")
+        self.aui_notebook.AddPage(page_3, "ListBook")
 
         page_sizer_2 = wx.BoxSizer(wx.VERTICAL)
 
@@ -168,9 +165,9 @@ class BookTestDlg(wx.Dialog):
 
         page_3.SetSizerAndFit(page_sizer_2)
 
-        page_4 = wx.Panel(self.notebook, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize,
+        page_4 = wx.Panel(self.aui_notebook, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize,
             wx.TAB_TRAVERSAL)
-        self.notebook.AddPage(page_4, "NoteBook")
+        self.aui_notebook.AddPage(page_4, "NoteBook")
 
         page_sizer_3 = wx.BoxSizer(wx.VERTICAL)
 
@@ -223,9 +220,9 @@ class BookTestDlg(wx.Dialog):
 
         page_4.SetSizerAndFit(page_sizer_3)
 
-        page_5 = wx.Panel(self.notebook, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize,
+        page_5 = wx.Panel(self.aui_notebook, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize,
             wx.TAB_TRAVERSAL)
-        self.notebook.AddPage(page_5, "ToolBook")
+        self.aui_notebook.AddPage(page_5, "ToolBook")
 
         page_sizer_4 = wx.BoxSizer(wx.VERTICAL)
 
@@ -278,9 +275,9 @@ class BookTestDlg(wx.Dialog):
 
         page_5.SetSizerAndFit(page_sizer_4)
 
-        page = wx.Panel(self.notebook, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize,
+        page = wx.Panel(self.aui_notebook, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize,
             wx.TAB_TRAVERSAL)
-        self.notebook.AddPage(page, "TreeBook")
+        self.aui_notebook.AddPage(page, "TreeBook")
 
         page_sizer_5 = wx.BoxSizer(wx.VERTICAL)
 

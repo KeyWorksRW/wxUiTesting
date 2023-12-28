@@ -41,7 +41,7 @@ bool DlgIssue_960::Create(wxWindow* parent, wxWindowID id, const wxString& title
 
     dlg_sizer->Add(box_sizer, wxSizerFlags().Border(wxALL));
 
-    auto* bmp_3 = new wxStaticBitmap(this, wxID_ANY, wxue_img::bundle_Ainsi_c3_a_se_passe_png());
+    auto* bmp_3 = new wxStaticBitmap(this, wxID_ANY, wxue_img::bundle_Ainsi_a_se_passe_png());
     dlg_sizer->Add(bmp_3, wxSizerFlags().Border(wxALL));
 
     auto* stdBtn = CreateStdDialogButtonSizer(wxOK|wxCANCEL);
