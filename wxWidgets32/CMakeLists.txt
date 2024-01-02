@@ -142,8 +142,8 @@ if (WIN32)
 endif()
 
 target_include_directories(wxWidgets32 PRIVATE
-    include
     ${setup_dir}
+    include
     src/tiff/libtiff
     src/jpeg
     src/pcre/wx
@@ -159,8 +159,8 @@ target_include_directories(wxWidgets32 PRIVATE
 )
 
 target_include_directories(wxCLib PRIVATE
-    include
     ${setup_dir}
+    include
     src/tiff/libtiff
     src/jpeg
     src/pcre/wx
