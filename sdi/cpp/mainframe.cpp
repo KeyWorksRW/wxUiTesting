@@ -146,6 +146,9 @@ bool MainFrame::Create(wxWindow* parent, wxWindowID id, const wxString& title,
     auto* menu_item_4 = new wxMenuItem(menuDialogs, wxID_ANY, "BookTestDlg");
     menu_item_4->SetBitmap(wxue_img::bundle_wxNotebook_png());
     menuDialogs->Append(menu_item_4);
+    auto* menu_item2 = new wxMenuItem(menuDialogs, wxID_ANY, "PropSheet");
+    menu_item2->SetBitmap(wxue_img::bundle_face_smile_svg(16, 16));
+    menuDialogs->Append(menu_item2);
     auto* menu_item_2 = new wxMenuItem(menuDialogs, wxID_ANY, "PythonDlg");
     menu_item_2->SetBitmap(wxue_img::bundle_wxPython_png());
     menuDialogs->Append(menu_item_2);
@@ -223,6 +226,7 @@ bool MainFrame::Create(wxWindow* parent, wxWindowID id, const wxString& title,
     Bind(wxEVT_MENU, &MainFrame::OnQuit, this, wxID_EXIT);
     Bind(wxEVT_MENU, &MainFrame::OnMainTestDlg, this, menu_item_3->GetId());
     Bind(wxEVT_MENU, &MainFrame::OnBookTestDlg, this, menu_item_4->GetId());
+    Bind(wxEVT_MENU, &MainFrame::OnPropSheetDlg, this, menu_item2->GetId());
     Bind(wxEVT_MENU, &MainFrame::OnPythonDlg, this, menu_item_2->GetId());
     Bind(wxEVT_MENU, &MainFrame::OnToolsDlg, this, menu_tools_dlg2->GetId());
     Bind(wxEVT_MENU, &MainFrame::OnWizard, this, menuItem3->GetId());

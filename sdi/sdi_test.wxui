@@ -234,6 +234,12 @@
             wxEVT_MENU="OnBookTestDlg" />
           <node
             class="wxMenuItem"
+            bitmap="SVG;face-smile.svg;[16,16]"
+            label="PropSheet"
+            var_name="menu_item2"
+            wxEVT_MENU="OnPropSheetDlg[python:on_propsheet_dlg][ruby:on_propsheet_dlg]" />
+          <node
+            class="wxMenuItem"
             bitmap="Embed;wxPython.png"
             label="PythonDlg"
             var_name="menu_item_2"
@@ -2087,6 +2093,63 @@
         <node
           class="wxStdDialogButtonSizer"
           flags="wxEXPAND" />
+      </node>
+    </node>
+    <node
+      class="wxPropertySheetDialog"
+      class_name="PropSheetBase"
+      icon="SVG;face-smile.svg;[16,16]"
+      inner_border="20"
+      title="wxPropertySheetDialog"
+      base_file="propsheet_base"
+      derived_class_name="PropSheet"
+      derived_file="propsheet"
+      use_derived_class="0">
+      <node
+        class="BookPage"
+        label="Page 1"
+        var_name="page2"
+        window_style="wxTAB_TRAVERSAL">
+        <node
+          class="wxBoxSizer"
+          orientation="wxVERTICAL"
+          var_name="page_sizer_1">
+          <node
+            class="wxStaticText"
+            label="TODO: replace this control with something more useful..."
+            var_name="m_staticText2"
+            wrap="200" />
+        </node>
+      </node>
+      <node
+        class="BookPage"
+        label="Page 2"
+        var_name="page3"
+        window_style="wxTAB_TRAVERSAL">
+        <node
+          class="wxBoxSizer"
+          orientation="wxVERTICAL"
+          var_name="page_sizer_2">
+          <node
+            class="wxStaticText"
+            label="TODO: replace this control with something more useful..."
+            var_name="m_staticText3"
+            wrap="200" />
+        </node>
+      </node>
+      <node
+        class="BookPage"
+        label="Page 3"
+        window_style="wxTAB_TRAVERSAL">
+        <node
+          class="wxBoxSizer"
+          orientation="wxVERTICAL"
+          var_name="page_sizer_3">
+          <node
+            class="wxStaticText"
+            label="TODO: replace this control with something more useful..."
+            wrap="200" />
+        </node>
       </node>
     </node>
     <node

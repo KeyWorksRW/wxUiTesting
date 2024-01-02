@@ -54,6 +54,7 @@ protected:
     void OnDlgIssue_960(wxCommandEvent& event);
     void OnGridSize(wxSizeEvent& event);
     void OnMainTestDlg(wxCommandEvent& event);
+    void OnPropSheetDlg(wxCommandEvent& event);
     void OnPythonDlg(wxCommandEvent& event);
     void OnQuit(wxCommandEvent& event);
     void OnToolsDlg(wxCommandEvent& event);

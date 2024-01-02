@@ -20,6 +20,8 @@ import dlgissue_960
 import bitmaps_dlg
 
 import images
+import zlib
+import base64
 from wx.lib.embeddedimage import PyEmbeddedImage
 
 wxToolBar_png = PyEmbeddedImage(
@@ -181,6 +183,11 @@ class MainFrame(wx.Frame):
         menu_item_4 = wx.MenuItem(menuDialogs, wx.ID_ANY, "BookTestDlg")
         menu_item_4.SetBitmap(wx.BitmapBundle.FromBitmap(images.wxNotebook_png.Bitmap))
         menuDialogs.Append(menu_item_4)
+        menu_item2 = wx.MenuItem(menuDialogs, wx.ID_ANY, "PropSheet")
+        _svg_string_ = zlib.decompress(base64.b64decode(images.face_smile_svg))
+        menu_item2.SetBitmap(
+            wx.BitmapBundle.FromSVG(_svg_string_, wx.Size(16, 16)))
+        menuDialogs.Append(menu_item2)
         menu_item_2 = wx.MenuItem(menuDialogs, wx.ID_ANY, "PythonDlg")
         bitmaps = [ images.wxPython_png.Bitmap,
                     images.wxPython_1_5x_png.Bitmap,
@@ -255,6 +262,7 @@ class MainFrame(wx.Frame):
         self.Bind(wx.EVT_MENU, self.on_quit, id=wx.ID_EXIT)
         self.Bind(wx.EVT_MENU, self.OnMainTestDlg, id=menu_item_3.GetId())
         self.Bind(wx.EVT_MENU, self.OnBookTestDlg, id=menu_item_4.GetId())
+        self.Bind(wx.EVT_MENU, self.on_propsheet_dlg, id=menu_item2.GetId())
         self.Bind(wx.EVT_MENU, self.OnPythonDlg, id=menu_item_2.GetId())
         self.Bind(wx.EVT_MENU, self.on_tools_dlg, id=menu_tools_dlg2.GetId())
         self.Bind(wx.EVT_MENU, self.OnWizard, id=menuItem3.GetId())
@@ -273,6 +281,9 @@ class MainFrame(wx.Frame):
     # Unimplemented Event handler functions
     # Copy any listed and paste them below the comment block, or to your inherited class.
     """
+    def on_propsheet_dlg(self, event):
+        event.Skip()
+
     """
 
 # ************* End of generated code ***********

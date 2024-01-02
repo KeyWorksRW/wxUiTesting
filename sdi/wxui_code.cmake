@@ -11,6 +11,7 @@ set (sdi_generated_code
     ${CMAKE_CURRENT_LIST_DIR}/cpp/images.cpp
     ${CMAKE_CURRENT_LIST_DIR}/cpp/mainframe.cpp
     ${CMAKE_CURRENT_LIST_DIR}/cpp/popupwin.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/cpp/propsheet_base.cpp
     ${CMAKE_CURRENT_LIST_DIR}/cpp/python_dlg.cpp
     ${CMAKE_CURRENT_LIST_DIR}/cpp/testformpanel.cpp
     ${CMAKE_CURRENT_LIST_DIR}/cpp/wizard.cpp

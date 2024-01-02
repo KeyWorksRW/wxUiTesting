@@ -20,7 +20,9 @@ require_relative 'tools_dlg'
 require_relative 'bitmaps_dlg'
 
 require_relative 'images'
+require 'zlib'
 require 'base64'
+require 'stringio'
 
 class MainFrame < Wx::Frame
   def initialize(parent, id = Wx::ID_ANY, title = 'SDI Tests',
@@ -130,6 +132,11 @@ class MainFrame < Wx::Frame
     menu_item_4 = Wx::MenuItem.new(menuDialogs, Wx::ID_ANY, 'BookTestDlg')
     menu_item_4.set_bitmap(wxue_get_bundle($wxNotebook_png))
     menuDialogs.append(menu_item_4)
+    menu_item2 = Wx::MenuItem.new(menuDialogs, Wx::ID_ANY, 'PropSheet')
+    _svg_string_ = Zlib::Inflate.inflate(Base64.decode64(images.$face_smile_svg))
+    menu_item2.set_bitmap(Wx::BitmapBundle.from_svg(_svg_string_,
+      Wx::Size.new(16, 16)))
+    menuDialogs.append(menu_item2)
     menu_item_2 = Wx::MenuItem.new(menuDialogs, Wx::ID_ANY, 'PythonDlg')
     menu_item_2.set_bitmap(wxue_get_bundle($wxPython_png, $wxPython_1_5x_png, $wxPython_2x_png))
     menuDialogs.append(menu_item_2)
@@ -204,6 +211,7 @@ class MainFrame < Wx::Frame
     evt_menu(menuQuit.get_id, :on_quit)
     evt_menu(menu_item_3.get_id, :OnMainTestDlg)
     evt_menu(menu_item_4.get_id, :OnBookTestDlg)
+    evt_menu(menu_item2.get_id, :on_propsheet_dlg)
     evt_menu(menu_item_2.get_id, :OnPythonDlg)
     evt_menu(menu_tools_dlg2.get_id, :on_tools_dlg)
     evt_menu(menuItem3.get_id, :OnWizard)
@@ -240,6 +248,10 @@ class MainFrame < Wx::Frame
   end
 
   def OnWizard(event)
+    event.skip
+  end
+
+  def on_propsheet_dlg(event)
     event.skip
   end
 
