@@ -2541,6 +2541,10 @@
             <node
               class="wxGauge"
               alignment="wxALIGN_CENTER" />
+            <node
+              class="wxStaticBitmap"
+              bitmap="Art;wxART_GO_HOME|wxART_OTHER"
+              var_name="bmp2" />
           </node>
           <node
             class="wxStdDialogButtonSizer"

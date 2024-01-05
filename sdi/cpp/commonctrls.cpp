@@ -7,8 +7,12 @@
 
 // clang-format off
 
+#include <wx/artprov.h>
+#include <wx/bitmap.h>
 #include <wx/bmpbndl.h>
 #include <wx/event.h>
+#include <wx/icon.h>
+#include <wx/image.h>
 #include <wx/menu.h>
 #include <wx/sizer.h>
 #include <wx/statbmp.h>
@@ -329,6 +333,9 @@ bool CommonCtrls::Create(wxWindow* parent, wxWindowID id, const wxString& title,
     m_gauge = new wxGauge(this, wxID_ANY, 100);
     m_gauge->SetValue(0);
     box_sizer5->Add(m_gauge, wxSizerFlags().Center().Border(wxALL));
+
+    auto* bmp2 = new wxStaticBitmap(this, wxID_ANY, wxArtProvider::GetBitmapBundle(wxART_GO_HOME, wxART_OTHER));
+    box_sizer5->Add(bmp2, wxSizerFlags().Border(wxALL));
 
     parent_sizer->Add(box_sizer5, wxSizerFlags().Expand().Border(wxALL));
 
