@@ -72,6 +72,11 @@ class MainTestDialog(wx.Dialog):
 
         self.notebook = wx.Notebook(self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize,
             wx.BK_TOP|wx.NB_MULTILINE)
+
+        bundle_list = [
+            wx.ArtProvider.GetBitmapBundle(wx.ART_FILE_OPEN, wx.ART_OTHER)
+        ]
+        self.notebook.SetImages(bundle_list)
         dlg_sizer.Add(self.notebook, wx.SizerFlags().Expand().Border(wx.ALL))
 
         page_2 = wx.Panel(self.notebook, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize,
@@ -513,7 +518,7 @@ class MainTestDialog(wx.Dialog):
 
         page_6 = wx.Panel(self.notebook, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize,
             wx.BORDER_THEME|wx.TAB_TRAVERSAL)
-        self.notebook.AddPage(page_6, "Pickers")
+        self.notebook.AddPage(page_6, "Pickers", False, 0)
 
         parent_sizer2 = wx.BoxSizer(wx.VERTICAL)
 

@@ -32,6 +32,11 @@ class MainTestDialog < Wx::Dialog
 
     @notebook = Wx::Notebook.new(self, Wx::ID_ANY, Wx::DEFAULT_POSITION,
       Wx::DEFAULT_SIZE, Wx::BK_TOP|Wx::NB_MULTILINE)
+
+    bundle_list = [
+      Wx::ArtProvider.get_bitmap_bundle(Wx::ART_FILE_OPEN, Wx::ART_OTHER)
+    ]
+    @notebook.set_images(bundle_list)
     dlg_sizer.add(@notebook, Wx::SizerFlags.new.expand.border(Wx::ALL))
 
     page_2 = Wx::Panel.new(@notebook, Wx::ID_ANY, Wx::DEFAULT_POSITION,
@@ -493,7 +498,7 @@ class MainTestDialog < Wx::Dialog
 
     page_6 = Wx::Panel.new(@notebook, Wx::ID_ANY, Wx::DEFAULT_POSITION,
       Wx::DEFAULT_SIZE, Wx::BORDER_THEME|Wx::TAB_TRAVERSAL)
-    @notebook.add_page(page_6, 'Pickers')
+    @notebook.add_page(page_6, 'Pickers', false, 0)
 
     parent_sizer2 = Wx::BoxSizer.new(Wx::VERTICAL)
 
