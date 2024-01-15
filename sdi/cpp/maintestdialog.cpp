@@ -63,6 +63,11 @@ bool MainTestDialog::Create(wxWindow* parent, wxWindowID id, const wxString& tit
     auto* dlg_sizer = new wxBoxSizer(wxVERTICAL);
 
     m_notebook = new wxNotebook(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxBK_TOP|wxNB_MULTILINE);
+    {
+        wxWithImages::Images bundle_list;
+        bundle_list.push_back(wxArtProvider::GetBitmapBundle(wxART_FILE_OPEN, wxART_OTHER));
+        m_notebook->SetImages(bundle_list);
+    }
     dlg_sizer->Add(m_notebook, wxSizerFlags().Expand().Border(wxALL));
 
     auto* page_2 = new wxPanel(m_notebook, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL);
@@ -486,7 +491,7 @@ bool MainTestDialog::Create(wxWindow* parent, wxWindowID id, const wxString& tit
     page_3->SetSizerAndFit(page_sizer_2);
 
     auto* page_6 = new wxPanel(m_notebook, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxBORDER_THEME|wxTAB_TRAVERSAL);
-    m_notebook->AddPage(page_6, "Pickers");
+    m_notebook->AddPage(page_6, "Pickers", false, 0);
 
     auto* parent_sizer2 = new wxBoxSizer(wxVERTICAL);
 
