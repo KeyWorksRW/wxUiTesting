@@ -35,7 +35,7 @@ class ToolBarsDialog < Wx::Dialog
     @tool_bar = Wx::ToolBar.new(self, Wx::ID_ANY, Wx::DEFAULT_POSITION,
       Wx::DEFAULT_SIZE, Wx::TB_HORIZONTAL)
     _svg_string_ = Zlib::Inflate.inflate(Base64.decode64($left_svg))
-    @tool_svg = @tool_svg = @tool_bar.add_tool(Wx::ID_ANY, '', Wx::BitmapBundle.from_svg(_svg_string_,
+    @tool_svg = @tool_bar.add_tool(Wx::ID_ANY, '', Wx::BitmapBundle.from_svg(_svg_string_,
       Wx::Size.new(24, 24)))
 
     @tool_bar.add_tool(Wx::ID_ANY, '', Wx::ArtProvider.get_bitmap_bundle(
@@ -77,7 +77,7 @@ class ToolBarsDialog < Wx::Dialog
 
     rbnPage = Wx::RBN::RibbonPage.new(@rbnBar, Wx::ID_ANY, 'Page 1')
 
-    rbnPanel = Wx::RBN::RibbonPanel.new(rbnPage, Wx::ID_ANY, 'Page 1, panel 1')
+    rbnPanel = Wx::RBN::RibbonPanel.new(rbnPage, Wx::ID_ANY, 'Tool Panel')
 
     rbnToolBar = Wx::RBN::RibbonToolBar.new(rbnPanel, Wx::ID_ANY)
     _svg_string_ = Zlib::Inflate.inflate(Base64.decode64($left_svg))
@@ -101,6 +101,21 @@ class ToolBarsDialog < Wx::Dialog
         Wx::Size.new(from_dip(22), from_dip(22))), '',
       Wx::RBN::RIBBON_BUTTON_NORMAL)
     rbnToolBar.realize
+
+    rbn_panel2 = Wx::RBN::RibbonPanel.new(rbnPage, Wx::ID_ANY, 'Button Panel')
+
+    rbn_btn_bar = Wx::RBN::RibbonButtonBar.new(rbn_panel2, Wx::ID_ANY)
+    _svg_string_ = Zlib::Inflate.inflate(Base64.decode64($left_svg))
+    rbn_btn_bar.add_button(Wx::ID_ANY, 'rbn_btn_svg', Wx::BitmapBundle.from_svg(_svg_string_,
+      Wx::Size.new(24, 24)).get_bitmap(Wx::DEFAULT_SIZE), '',
+      Wx::RBN::RIBBON_BUTTON_NORMAL)
+    rbn_btn_bar.add_button(Wx::ID_ANY, 'rbn_btn_art', Wx::ArtProvider.get_bitmap(
+      Wx::ART_CUT, Wx::ART_TOOLBAR), '', Wx::RBN::RIBBON_BUTTON_NORMAL)
+    rbn_btn_bar.add_button(Wx::ID_ANY, 'rbn_btn1', wxue_get_bundle($undo_png)
+      .get_bitmap(
+        Wx::Size.new(from_dip(24), from_dip(24))), '',
+      Wx::RBN::RIBBON_BUTTON_NORMAL)
+    rbn_btn_bar.realize
 
     set_sizer(box_sizer)
     set_min_size(convert_dialog_to_pixels(Wx::Size.new(200, -1)))

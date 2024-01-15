@@ -85,7 +85,7 @@ class ToolBarsDialog(wx.Dialog):
         self.tool_bar = wx.ToolBar(self, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize,
             wx.TB_HORIZONTAL)
         _svg_string_ = zlib.decompress(base64.b64decode(left_svg))
-        self.tool_svg = self.tool_svg = self.tool_bar.AddTool(wx.ID_ANY, "",
+        self.tool_svg = self.tool_bar.AddTool(wx.ID_ANY, "",
             wx.BitmapBundle.FromSVG(_svg_string_, wx.Size(24, 24)))
 
         self.tool_bar.AddTool(wx.ID_ANY, "", wx.ArtProvider.GetBitmapBundle(wx.ART_CUT,
@@ -138,7 +138,7 @@ class ToolBarsDialog(wx.Dialog):
 
         rbnPage = wx.ribbon.RibbonPage(self.rbnBar, wx.ID_ANY, "Page 1")
 
-        rbnPanel = wx.ribbon.RibbonPanel(rbnPage, wx.ID_ANY, "Page 1, panel 1")
+        rbnPanel = wx.ribbon.RibbonPanel(rbnPage, wx.ID_ANY, "Tool Panel")
 
         rbnToolBar = wx.ribbon.RibbonToolBar(rbnPanel, wx.ID_ANY)
         _svg_string_ = zlib.decompress(base64.b64decode(left_svg))
@@ -168,6 +168,21 @@ class ToolBarsDialog(wx.Dialog):
             .GetBitmap(wx.Size(self.FromDIP(22), self.FromDIP(22))), "",
             wx.ribbon.RIBBON_BUTTON_NORMAL)
         rbnToolBar.Realize()
+
+        rbn_panel2 = wx.ribbon.RibbonPanel(rbnPage, wx.ID_ANY, "Button Panel")
+
+        rbn_btn_bar = wx.ribbon.RibbonButtonBar(rbn_panel2, wx.ID_ANY)
+        _svg_string_ = zlib.decompress(base64.b64decode(left_svg))
+        rbn_btn_bar.AddButton(wx.ID_ANY, "rbn_btn_svg",
+            wx.BitmapBundle.FromSVG(_svg_string_,
+            self.FromDIP(wx.Size(24, 24))).GetBitmap(wx.DefaultSize), "",
+            wx.ribbon.RIBBON_BUTTON_NORMAL)
+        rbn_btn_bar.AddButton(wx.ID_ANY, "rbn_btn_art", wx.ArtProvider.GetBitmap(
+            wx.ART_CUT, wx.ART_TOOLBAR), "", wx.ribbon.RIBBON_BUTTON_NORMAL)
+        rbn_btn_bar.AddButton(wx.ID_ANY, "rbn_btn1", wx.Bitmap(undo_png.Image.Rescale(
+            self.FromDIP(24), self.FromDIP(24), wx.IMAGE_QUALITY_BILINEAR)), "",
+            wx.ribbon.RIBBON_BUTTON_NORMAL)
+        rbn_btn_bar.Realize()
 
         self.SetSizer(box_sizer)
         self.SetMinSize(self.ConvertDialogToPixels(wx.Size(200, -1)))

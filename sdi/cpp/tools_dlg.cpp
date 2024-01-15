@@ -8,6 +8,7 @@
 // clang-format off
 
 #include <wx/artprov.h>
+#include <wx/ribbon/buttonbar.h>
 #include <wx/ribbon/page.h>
 #include <wx/ribbon/panel.h>
 #include <wx/sizer.h>
@@ -68,7 +69,7 @@ bool ToolBarsDialog::Create(wxWindow* parent, wxWindowID id, const wxString& tit
     auto* box_sizer = new wxBoxSizer(wxVERTICAL);
 
     m_tool_bar = new wxToolBar(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTB_HORIZONTAL);
-    m_tool_svg = m_tool_svg = m_tool_bar->AddTool(wxID_ANY, wxEmptyString,
+    m_tool_svg = m_tool_bar->AddTool(wxID_ANY, wxEmptyString,
         wxueBundleSVG(wxue_img::left_svg, 585, 1857, FromDIP(wxSize(24, 24))));
 
     m_tool_bar->AddTool(wxID_ANY, wxEmptyString, wxArtProvider::GetBitmapBundle(wxART_CUT, wxART_TOOLBAR));
@@ -105,7 +106,7 @@ bool ToolBarsDialog::Create(wxWindow* parent, wxWindowID id, const wxString& tit
 
     auto* rbnPage = new wxRibbonPage(m_rbnBar, wxID_ANY, "Page 1");
 
-    auto* rbnPanel = new wxRibbonPanel(rbnPage, wxID_ANY, "Page 1, panel 1");
+    auto* rbnPanel = new wxRibbonPanel(rbnPage, wxID_ANY, "Tool Panel");
 
     auto* rbnToolBar = new wxRibbonToolBar(rbnPanel, wxID_ANY);
     {
@@ -126,6 +127,21 @@ bool ToolBarsDialog::Create(wxWindow* parent, wxWindowID id, const wxString& tit
             wxRIBBON_BUTTON_NORMAL);
     }
     rbnToolBar->Realize();
+
+    auto* rbn_panel2 = new wxRibbonPanel(rbnPage, wxID_ANY, "Button Panel");
+
+    auto* rbn_btn_bar = new wxRibbonButtonBar(rbn_panel2, wxID_ANY);
+    {
+        rbn_btn_bar->AddButton(wxID_ANY, "rbn_btn_svg",
+            wxueBundleSVG(wxue_img::left_svg, 585, 1857, FromDIP(wxSize(24, 24))).GetBitmap(wxDefaultSize), wxEmptyString,
+            wxRIBBON_BUTTON_NORMAL);
+        rbn_btn_bar->AddButton(wxID_ANY, "rbn_btn_art", wxArtProvider::GetBitmap(wxART_CUT, wxART_TOOLBAR), wxEmptyString,
+            wxRIBBON_BUTTON_NORMAL);
+        rbn_btn_bar->AddButton(wxID_ANY, "rbn_btn1",
+            wxueImage(wxue_img::undo_png, sizeof(wxue_img::undo_png)).Rescale(
+            FromDIP(24), FromDIP(24), wxIMAGE_QUALITY_BILINEAR), wxEmptyString, wxRIBBON_BUTTON_NORMAL);
+    }
+    rbn_btn_bar->Realize();
 
     SetSizer(box_sizer);
     SetMinSize(ConvertDialogToPixels(wxSize(200, -1)));
