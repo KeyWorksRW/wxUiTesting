@@ -281,9 +281,6 @@ class MainFrame(wx.Frame):
     # Unimplemented Event handler functions
     # Copy any listed and paste them below the comment block, or to your inherited class.
     """
-    def on_propsheet_dlg(self, event):
-        event.Skip()
-
     """
 
 # ************* End of generated code ***********
@@ -370,6 +367,9 @@ class MainFrame(wx.Frame):
         dlg = bitmaps_dlg.BitmapsDlg(self)
         dlg.ShowModal()
         dlg.Destroy()
+
+    def on_propsheet_dlg(self, event):
+        event.Skip()
 
 class MyApp(wx.App):
     def OnInit(self):

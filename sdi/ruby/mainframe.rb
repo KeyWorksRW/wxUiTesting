@@ -133,7 +133,7 @@ class MainFrame < Wx::Frame
     menu_item_4.set_bitmap(wxue_get_bundle($wxNotebook_png))
     menuDialogs.append(menu_item_4)
     menu_item2 = Wx::MenuItem.new(menuDialogs, Wx::ID_ANY, 'PropSheet')
-    _svg_string_ = Zlib::Inflate.inflate(Base64.decode64(images.$face_smile_svg))
+    _svg_string_ = Zlib::Inflate.inflate(Base64.decode64($face_smile_svg))
     menu_item2.set_bitmap(Wx::BitmapBundle.from_svg(_svg_string_,
       Wx::Size.new(16, 16)))
     menuDialogs.append(menu_item2)
@@ -248,10 +248,6 @@ class MainFrame < Wx::Frame
   end
 
   def OnWizard(event)
-    event.skip
-  end
-
-  def on_propsheet_dlg(event)
     event.skip
   end
 
@@ -370,6 +366,10 @@ def OnBitmapsDlg(event)
   dlg = BitmapsDlg.new(self)
   dlg.show_modal
   dlg.destroy
+end
+
+def on_propsheet_dlg(event)
+  event.skip
 end
 
 class App < Wx::App
