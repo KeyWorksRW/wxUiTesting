@@ -28,35 +28,35 @@ bool PropSheetBase::Create(wxWindow* parent, wxWindowID id, const wxString& titl
 
     SetIcon(wxue_img::bundle_face_smile_svg(16, 16).GetIconFor(this));
 
-    auto* page2 = new wxPanel(GetBookCtrl(), wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL);
-    GetBookCtrl()->AddPage(page2, "Page 1");
+    auto* page1 = new wxPanel(GetBookCtrl(), wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL);
+    GetBookCtrl()->AddPage(page1, "Page 1");
 
     auto* page_sizer_1 = new wxBoxSizer(wxVERTICAL);
 
-    m_staticText2 = new wxStaticText(page2, wxID_ANY, "TODO: replace this control with something more useful...");
-    m_staticText2->Wrap(200);
-    page_sizer_1->Add(m_staticText2, wxSizerFlags().Border(wxALL));
-    page2->SetSizerAndFit(page_sizer_1);
+    m_staticText1 = new wxStaticText(page1, wxID_ANY, "TODO: replace this control with something more useful...");
+    m_staticText1->Wrap(200);
+    page_sizer_1->Add(m_staticText1, wxSizerFlags().Border(wxALL));
+    page1->SetSizerAndFit(page_sizer_1);
 
-    auto* page3 = new wxPanel(GetBookCtrl(), wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL);
-    GetBookCtrl()->AddPage(page3, "Page 2");
+    auto* page2 = new wxPanel(GetBookCtrl(), wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL);
+    GetBookCtrl()->AddPage(page2, "Page 2");
 
     auto* page_sizer_2 = new wxBoxSizer(wxVERTICAL);
 
-    m_staticText3 = new wxStaticText(page3, wxID_ANY, "TODO: replace this control with something more useful...");
-    m_staticText3->Wrap(200);
-    page_sizer_2->Add(m_staticText3, wxSizerFlags().Border(wxALL));
-    page3->SetSizerAndFit(page_sizer_2);
+    m_staticText2 = new wxStaticText(page2, wxID_ANY, "TODO: replace this control with something more useful...");
+    m_staticText2->Wrap(200);
+    page_sizer_2->Add(m_staticText2, wxSizerFlags().Border(wxALL));
+    page2->SetSizerAndFit(page_sizer_2);
 
-    auto* page = new wxPanel(GetBookCtrl(), wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL);
-    GetBookCtrl()->AddPage(page, "Page 3");
+    auto* page3 = new wxPanel(GetBookCtrl(), wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL);
+    GetBookCtrl()->AddPage(page3, "Page 3");
 
     auto* page_sizer_3 = new wxBoxSizer(wxVERTICAL);
 
-    m_staticText = new wxStaticText(page, wxID_ANY, "TODO: replace this control with something more useful...");
-    m_staticText->Wrap(200);
-    page_sizer_3->Add(m_staticText, wxSizerFlags().Border(wxALL));
-    page->SetSizerAndFit(page_sizer_3);
+    m_staticText3 = new wxStaticText(page3, wxID_ANY, "TODO: replace this control with something more useful...");
+    m_staticText3->Wrap(200);
+    page_sizer_3->Add(m_staticText3, wxSizerFlags().Border(wxALL));
+    page3->SetSizerAndFit(page_sizer_3);
 
     LayoutDialog(wxBOTH);
 

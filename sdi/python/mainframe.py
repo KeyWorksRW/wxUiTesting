@@ -18,6 +18,7 @@ import tools_dlg
 import dlgissue_956
 import dlgissue_960
 import bitmaps_dlg
+import propsheet
 
 import images
 import zlib
@@ -369,7 +370,9 @@ class MainFrame(wx.Frame):
         dlg.Destroy()
 
     def on_propsheet_dlg(self, event):
-        event.Skip()
+        dlg = propsheet.PropSheetBase(self)
+        dlg.ShowModal()
+        dlg.Destroy()
 
 class MyApp(wx.App):
     def OnInit(self):

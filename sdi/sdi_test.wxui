@@ -103,9 +103,9 @@
       derived_file="../ui/mainframe"
       use_derived_class="0"
       python_file="mainframe"
-      python_import_list="main_test_dlg.py;booktest_dlg.py;wizard.py;python_dlg.py;tools_dlg.py;dlgissue_956.py;dlgissue_960.py;bitmaps_dlg.py"
+      python_import_list="main_test_dlg.py;booktest_dlg.py;wizard.py;python_dlg.py;tools_dlg.py;dlgissue_956.py;dlgissue_960.py;bitmaps_dlg.py;propsheet.py"
       python_inherit_name="mainframe"
-      relative_require_list="dlgissue_956.rb;dlgissue_960.rb;booktest_dlg.rb;wizard.rb;main_test_dlg.rb;tools_dlg.rb;bitmaps_dlg.rb"
+      relative_require_list="dlgissue_956.rb;dlgissue_960.rb;booktest_dlg.rb;wizard.rb;main_test_dlg.rb;tools_dlg.rb;bitmaps_dlg.rb;propsheet.rb"
       ruby_file="mainframe"
       xrc_file="mainframe"
       minimum_size="200,100d"
@@ -2122,16 +2122,34 @@
       base_file="propsheet_base"
       derived_class_name="PropSheet"
       derived_file="propsheet"
-      use_derived_class="0">
+      use_derived_class="0"
+      python_file="propsheet"
+      ruby_file="propsheet">
       <node
         class="BookPage"
         label="Page 1"
-        var_name="page2"
+        var_name="page1"
         window_style="wxTAB_TRAVERSAL">
         <node
           class="wxBoxSizer"
           orientation="wxVERTICAL"
           var_name="page_sizer_1">
+          <node
+            class="wxStaticText"
+            label="TODO: replace this control with something more useful..."
+            var_name="m_staticText1"
+            wrap="200" />
+        </node>
+      </node>
+      <node
+        class="BookPage"
+        label="Page 2"
+        var_name="page2"
+        window_style="wxTAB_TRAVERSAL">
+        <node
+          class="wxBoxSizer"
+          orientation="wxVERTICAL"
+          var_name="page_sizer_2">
           <node
             class="wxStaticText"
             label="TODO: replace this control with something more useful..."
@@ -2141,23 +2159,8 @@
       </node>
       <node
         class="BookPage"
-        label="Page 2"
-        var_name="page3"
-        window_style="wxTAB_TRAVERSAL">
-        <node
-          class="wxBoxSizer"
-          orientation="wxVERTICAL"
-          var_name="page_sizer_2">
-          <node
-            class="wxStaticText"
-            label="TODO: replace this control with something more useful..."
-            var_name="m_staticText3"
-            wrap="200" />
-        </node>
-      </node>
-      <node
-        class="BookPage"
         label="Page 3"
+        var_name="page3"
         window_style="wxTAB_TRAVERSAL">
         <node
           class="wxBoxSizer"
@@ -2166,6 +2169,7 @@
           <node
             class="wxStaticText"
             label="TODO: replace this control with something more useful..."
+            var_name="m_staticText3"
             wrap="200" />
         </node>
       </node>

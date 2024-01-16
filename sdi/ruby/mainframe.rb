@@ -18,6 +18,7 @@ require_relative 'wizard'
 require_relative 'main_test_dlg'
 require_relative 'tools_dlg'
 require_relative 'bitmaps_dlg'
+require_relative 'propsheet'
 
 require_relative 'images'
 require 'zlib'
@@ -369,7 +370,9 @@ def OnBitmapsDlg(event)
 end
 
 def on_propsheet_dlg(event)
-  event.skip
+  dlg = PropSheetBase.new(self)
+  dlg.show_modal
+  dlg.destroy
 end
 
 class App < Wx::App

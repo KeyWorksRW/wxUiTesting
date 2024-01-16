@@ -32,9 +32,9 @@ protected:
 
     // Class member variables
 
+    wxStaticText* m_staticText1;
     wxStaticText* m_staticText2;
     wxStaticText* m_staticText3;
-    wxStaticText* m_staticText;
 };
 
 // ************* End of generated code ***********
