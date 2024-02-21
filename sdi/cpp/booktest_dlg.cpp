@@ -7,7 +7,6 @@
 
 // clang-format off
 
-#include <wx/button.h>
 #include <wx/colour.h>
 #include <wx/panel.h>
 #include <wx/settings.h>
@@ -16,6 +15,33 @@
 #include "images.h"
 
 #include "booktest_dlg.h"
+
+#include <wx/mstream.h>  // memory stream classes
+#include <wx/zstream.h>  // zlib stream classes
+
+#include <memory>  // for std::make_unique
+
+// Convert compressed SVG string into a wxBitmapBundle
+#ifdef __cpp_inline_variables
+inline wxBitmapBundle wxueBundleSVG(const unsigned char* data,
+    size_t size_data, size_t size_svg, wxSize def_size)
+#else
+static wxBitmapBundle wxueBundleSVG(const unsigned char* data,
+    size_t size_data, size_t size_svg, wxSize def_size)
+#endif
+{
+    auto str = std::make_unique<char[]>(size_svg);
+    wxMemoryInputStream stream_in(data, size_data);
+    wxZlibInputStream zlib_strm(stream_in);
+    zlib_strm.Read(str.get(), size_svg);
+    return wxBitmapBundle::FromSVG(str.get(), def_size);
+};
+
+namespace wxue_img
+{
+    extern const unsigned char e697a5e381aee4b8b8_svg[209];  // ../art/日の丸.svg
+    extern const unsigned char french_flag_svg[235];  // ../art/french_flag.svg
+}
 
 bool BookTestDlg::Create(wxWindow* parent, wxWindowID id, const wxString& title,
     const wxPoint& pos, const wxSize& size, long style, const wxString &name)
@@ -316,6 +342,82 @@ bool BookTestDlg::Create(wxWindow* parent, wxWindowID id, const wxString& title,
 
     page->SetSizerAndFit(page_sizer_5);
 
+    auto* page2 = new wxPanel(m_notebook, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL);
+    m_notebook->AddPage(page2, "SimpleBook");
+    page2->SetBackgroundColour(wxSystemSettings::GetColour(wxSYS_COLOUR_BTNFACE));
+
+    auto* page_sizer2 = new wxBoxSizer(wxVERTICAL);
+
+    m_simplebook = new wxSimplebook(page2, wxID_ANY);
+    page_sizer2->Add(m_simplebook, wxSizerFlags());
+
+    auto* page3 = new wxPanel(m_simplebook, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL);
+    m_simplebook->AddPage(page3, "English");
+    page3->SetBackgroundColour(wxSystemSettings::GetColour(wxSYS_COLOUR_BTNFACE));
+
+    auto* parent_sizer2 = new wxBoxSizer(wxVERTICAL);
+
+    m_staticText2 = new wxStaticText(page3, wxID_ANY, "This is a sentence in English.");
+    parent_sizer2->Add(m_staticText2, wxSizerFlags().Border(wxALL));
+
+    auto* box_sizer2 = new wxBoxSizer(wxHORIZONTAL);
+
+    m_btn = new wxButton(page3, wxID_ANY, "French");
+        m_btn->SetBitmap(wxueBundleSVG(wxue_img::french_flag_svg, 235, 461, wxSize(24, 16)));
+    box_sizer2->Add(m_btn, wxSizerFlags().Border(wxALL));
+
+    m_btn2 = new wxButton(page3, wxID_ANY, "Japanese");
+        m_btn2->SetBitmap(wxueBundleSVG(wxue_img::e697a5e381aee4b8b8_svg, 209, 308, wxSize(24, 16)));
+    box_sizer2->Add(m_btn2, wxSizerFlags().Border(wxALL));
+
+    parent_sizer2->Add(box_sizer2, wxSizerFlags().Border(wxALL));
+    page3->SetSizerAndFit(parent_sizer2);
+
+    auto* page4 = new wxPanel(m_simplebook, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL);
+    m_simplebook->AddPage(page4, wxString::FromUTF8("Français"));
+    page4->SetBackgroundColour(wxSystemSettings::GetColour(wxSYS_COLOUR_BTNFACE));
+
+    auto* parent_sizer3 = new wxBoxSizer(wxVERTICAL);
+
+    m_staticText3 = new wxStaticText(page4, wxID_ANY, wxString::FromUTF8("Ceci est une phrase en français."));
+    parent_sizer3->Add(m_staticText3, wxSizerFlags().Border(wxALL));
+
+    auto* box_sizer3 = new wxBoxSizer(wxHORIZONTAL);
+
+    m_btn3 = new wxButton(page4, wxID_ANY, "English");
+        m_btn3->SetBitmap(wxue_img::bundle_english_png());
+    box_sizer3->Add(m_btn3, wxSizerFlags().Border(wxALL));
+
+    m_btn4 = new wxButton(page4, wxID_ANY, "Japanese");
+        m_btn4->SetBitmap(wxueBundleSVG(wxue_img::e697a5e381aee4b8b8_svg, 209, 308, wxSize(24, 16)));
+    box_sizer3->Add(m_btn4, wxSizerFlags().Border(wxALL));
+
+    parent_sizer3->Add(box_sizer3, wxSizerFlags().Border(wxALL));
+    page4->SetSizerAndFit(parent_sizer3);
+
+    auto* page5 = new wxPanel(m_simplebook, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL);
+    m_simplebook->AddPage(page5, wxString::FromUTF8("日本語"));
+    page5->SetBackgroundColour(wxSystemSettings::GetColour(wxSYS_COLOUR_BTNFACE));
+
+    auto* parent_sizer4 = new wxBoxSizer(wxVERTICAL);
+
+    m_staticText4 = new wxStaticText(page5, wxID_ANY, wxString::FromUTF8("これは日本語の文章です。"));
+    parent_sizer4->Add(m_staticText4, wxSizerFlags().Border(wxALL));
+
+    auto* box_sizer4 = new wxBoxSizer(wxHORIZONTAL);
+
+    m_btn5 = new wxButton(page5, wxID_ANY, "English");
+    box_sizer4->Add(m_btn5, wxSizerFlags().Border(wxALL));
+
+    m_btn6 = new wxButton(page5, wxID_ANY, "French");
+        m_btn6->SetBitmap(wxueBundleSVG(wxue_img::french_flag_svg, 235, 461, wxSize(24, 16)));
+    box_sizer4->Add(m_btn6, wxSizerFlags().Border(wxALL));
+
+    parent_sizer4->Add(box_sizer4, wxSizerFlags().Border(wxALL));
+    page5->SetSizerAndFit(parent_sizer4);
+
+    page2->SetSizerAndFit(page_sizer2);
+
     auto* stdBtn = CreateStdDialogButtonSizer(wxOK|wxCANCEL);
     dlg_sizer->Add(CreateSeparatedSizer(stdBtn), wxSizerFlags().Expand().Border(wxALL));
 
@@ -333,8 +435,64 @@ bool BookTestDlg::Create(wxWindow* parent, wxWindowID id, const wxString& title,
         {
             m_choicebook->SetSelection(2);
         });
+    m_btn->Bind(wxEVT_BUTTON,
+        [this](wxCommandEvent&)
+        {
+            m_simplebook->ChangeSelection(1);
+        });
+    m_btn2->Bind(wxEVT_BUTTON,
+        [this](wxCommandEvent&)
+        {
+            m_simplebook->ChangeSelection(2);
+        });
+    m_btn3->Bind(wxEVT_BUTTON,
+        [this](wxCommandEvent&)
+        {
+            m_simplebook->ChangeSelection(0);
+        });
+    m_btn4->Bind(wxEVT_BUTTON,
+        [this](wxCommandEvent&)
+        {
+            m_simplebook->ChangeSelection(2);
+        });
+    m_btn5->Bind(wxEVT_BUTTON,
+        [this](wxCommandEvent&)
+        {
+            m_simplebook->ChangeSelection(0);
+        });
+    m_btn6->Bind(wxEVT_BUTTON,
+        [this](wxCommandEvent&)
+        {
+            m_simplebook->ChangeSelection(1);
+        });
 
     return true;
+}
+
+namespace wxue_img
+{
+    // ../art/日の丸.svg
+    const unsigned char e697a5e381aee4b8b8_svg[209] {
+        120,218,85,144,209,110,131,48,12,69,247,41,145,159,86,169,13,37,48,134,2,225,99,22,92,112,23,18,148,164,64,255,
+        126,41,15,213,120,177,229,43,249,232,216,109,88,6,182,82,31,71,5,85,57,111,192,70,164,97,140,10,202,226,53,45,232,
+        3,57,171,32,231,57,176,109,50,54,200,128,158,110,10,198,24,103,153,101,235,186,242,61,225,218,77,25,176,16,159,
+        6,21,220,200,152,139,127,24,148,184,160,117,125,223,104,67,243,49,9,209,187,95,188,24,178,120,119,100,165,119,15,
+        251,78,39,138,232,13,165,38,69,3,93,235,81,71,182,41,184,2,123,238,245,109,253,207,89,240,170,250,62,56,200,117,
+        76,160,6,178,174,213,228,181,65,166,19,164,16,192,116,194,136,156,23,69,1,204,167,3,5,175,143,155,126,248,249,204,
+        235,250,124,61,151,95,167,157,144,165,111,117,31,127,16,114,99,66
+    };
+    // ../art/french_flag.svg
+    const unsigned char french_flag_svg[235] {
+        120,218,133,145,93,110,131,48,16,132,123,20,180,79,173,148,216,252,133,74,38,206,9,210,67,180,97,131,55,53,54,178,
+        29,72,114,250,146,6,65,81,85,245,197,59,30,201,223,140,181,91,223,213,81,79,85,80,18,138,188,189,64,164,144,106,
+        21,36,228,217,253,214,161,243,100,141,132,132,37,16,93,26,109,188,240,232,232,40,65,133,208,10,206,251,190,103,
+        223,14,59,216,134,67,228,195,85,163,132,35,105,189,118,103,141,2,59,52,182,170,202,131,166,118,233,248,224,236,
+        39,174,53,25,60,89,50,194,217,179,153,220,134,2,58,77,195,16,105,9,187,109,251,30,84,84,73,120,139,87,241,62,77,
+        88,150,101,179,200,83,86,20,175,251,120,20,139,22,194,213,31,207,195,163,85,146,111,94,202,185,151,177,230,134,
+        206,150,192,127,192,39,240,3,52,139,49,97,145,183,140,233,213,208,248,63,254,132,45,242,199,49,114,23,41,191,235,
+        167,233,230,254,129,63,251,243,97,141,187,167,47,65,211,141,24
+    };
+
 }
 
 // ************* End of generated code ***********

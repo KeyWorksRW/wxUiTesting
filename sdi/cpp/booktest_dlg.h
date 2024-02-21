@@ -10,15 +10,28 @@
 #pragma once
 
 #include <wx/aui/auibook.h>
+#include <wx/bitmap.h>
+#include <wx/button.h>
 #include <wx/choicebk.h>
 #include <wx/dialog.h>
 #include <wx/event.h>
 #include <wx/gdicmn.h>
+#include <wx/icon.h>
+#include <wx/image.h>
 #include <wx/listbook.h>
 #include <wx/notebook.h>
+#include <wx/simplebook.h>
 #include <wx/stattext.h>
 #include <wx/toolbook.h>
 #include <wx/treebook.h>
+
+namespace wxue_img
+{
+    // ../art/日の丸.svg
+    extern const unsigned char e697a5e381aee4b8b8_svg[209];
+    // ../art/french_flag.svg
+    extern const unsigned char french_flag_svg[235];
+}
 
 class BookTestDlg : public wxDialog
 {
@@ -40,9 +53,19 @@ protected:
     // Class member variables
 
     wxAuiNotebook* m_notebook;
+    wxButton* m_btn2;
+    wxButton* m_btn3;
+    wxButton* m_btn4;
+    wxButton* m_btn5;
+    wxButton* m_btn6;
+    wxButton* m_btn;
     wxChoicebook* m_choicebook;
     wxListbook* m_listbook;
     wxNotebook* m_notebook_2;
+    wxSimplebook* m_simplebook;
+    wxStaticText* m_staticText2;
+    wxStaticText* m_staticText3;
+    wxStaticText* m_staticText4;
     wxStaticText* m_staticText;
     wxStaticText* m_staticText_10;
     wxStaticText* m_staticText_11;
