@@ -23,6 +23,7 @@
 
 namespace wxue_img
 {
+    // ../art/clr_hourglass.gif
     extern const unsigned char clr_hourglass_gif[2017];
 }
 

@@ -34,9 +34,9 @@ static wxImage wxueImage(const unsigned char* data, size_t size_data)
 
 namespace wxue_img
 {
-    extern const unsigned char wxDialog_png[636];
-    extern const unsigned char wxToolBar_png[554];
-    extern const unsigned char wxWizard_png[1047];
+    extern const unsigned char wxDialog_png[636];  // ../art/wxDialog.png
+    extern const unsigned char wxToolBar_png[554];  // ../art/wxToolBar.png
+    extern const unsigned char wxWizard_png[1047];  // ../art/wxWizard.png
 }
 
 bool MainFrame::Create(wxWindow* parent, wxWindowID id, const wxString& title,
@@ -176,7 +176,7 @@ bool MainFrame::Create(wxWindow* parent, wxWindowID id, const wxString& title,
     menu_item_5->SetBitmap(wxue_img::bundle_debug_32_png());
     submenu->Append(menu_item_5);
     auto* menu_item_6 = new wxMenuItem(submenu, wxID_ANY, "DlgIssue_960");
-    menu_item_6->SetBitmap(wxue_img::bundle_Ainsi_a_se_passe_png());
+    menu_item_6->SetBitmap(wxue_img::bundle_Ainsi_c3a7a_se_passe_png());
     submenu->Append(menu_item_6);
     auto* submenu_item = menuDialogs->AppendSubMenu(submenu, "Issue Dialogs");
     submenu_item->SetBitmap(wxBitmapBundle::FromBitmap(wxueImage(wxue_img::wxDialog_png, sizeof(wxue_img::wxDialog_png))));
@@ -247,7 +247,7 @@ bool MainFrame::Create(wxWindow* parent, wxWindowID id, const wxString& title,
 
 namespace wxue_img
 {
-
+    // ../art/wxDialog.png
     const unsigned char wxDialog_png[636] {
         137,80,78,71,13,10,26,10,0,0,0,13,73,72,68,82,0,0,0,22,0,0,0,22,8,6,0,0,0,196,180,108,59,0,0,0,9,112,72,89,115,
         0,0,11,19,0,0,11,19,1,0,154,156,24,0,0,2,46,73,68,65,84,56,203,181,149,65,107,19,81,16,199,127,187,217,46,137,169,
@@ -270,7 +270,7 @@ namespace wxue_img
         242,170,126,240,242,147,138,68,79,141,138,32,106,181,49,72,124,160,229,188,138,36,205,16,209,75,163,23,77,148,221,
         55,15,29,46,82,254,3,136,174,81,14,10,69,149,111,0,0,0,0,73,69,78,68,174,66,96,130
     };
-
+    // ../art/wxToolBar.png
     const unsigned char wxToolBar_png[554] {
         137,80,78,71,13,10,26,10,0,0,0,13,73,72,68,82,0,0,0,22,0,0,0,22,8,6,0,0,0,196,180,108,59,0,0,0,9,112,72,89,115,
         0,0,11,19,0,0,11,19,1,0,154,156,24,0,0,1,220,73,68,65,84,56,203,237,148,49,104,19,81,24,199,127,175,105,114,114,
@@ -290,7 +290,7 @@ namespace wxue_img
         5,165,105,16,137,156,108,201,52,215,8,135,253,135,19,19,195,212,106,221,117,44,22,67,74,73,165,242,142,149,149,
         181,179,250,164,203,229,242,249,31,127,70,241,23,223,2,154,75,171,133,77,36,0,0,0,0,73,69,78,68,174,66,96,130
     };
-
+    // ../art/wxWizard.png
     const unsigned char wxWizard_png[1047] {
         137,80,78,71,13,10,26,10,0,0,0,13,73,72,68,82,0,0,0,22,0,0,0,22,8,6,0,0,0,196,180,108,59,0,0,0,9,112,72,89,115,
         0,0,11,19,0,0,11,19,1,0,154,156,24,0,0,3,201,73,68,65,84,56,203,213,149,77,104,92,85,20,199,127,239,35,51,239,37,

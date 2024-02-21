@@ -1633,6 +1633,118 @@
               </node>
             </node>
           </node>
+          <node
+            class="BookPage"
+            label="SimpleBook"
+            var_name="page2"
+            background_colour="wxSYS_COLOUR_BTNFACE"
+            window_style="wxTAB_TRAVERSAL">
+            <node
+              class="wxBoxSizer"
+              orientation="wxVERTICAL"
+              var_name="page_sizer2">
+              <node
+                class="wxSimplebook">
+                <node
+                  class="BookPage"
+                  bitmap="Embed;english.png"
+                  label="English"
+                  var_name="page3"
+                  background_colour="wxSYS_COLOUR_BTNFACE"
+                  window_style="wxTAB_TRAVERSAL">
+                  <node
+                    class="wxBoxSizer"
+                    orientation="wxVERTICAL"
+                    var_name="parent_sizer2">
+                    <node
+                      class="wxStaticText"
+                      label="This is a sentence in English."
+                      var_name="m_staticText2" />
+                    <node
+                      class="wxBoxSizer"
+                      var_name="box_sizer2">
+                      <node
+                        class="wxButton"
+                        label="French"
+                        bitmap="SVG;../art/french_flag.svg;[24,16]"
+                        wxEVT_BUTTON="[this](wxCommandEvent&amp;)@@{@@m_simplebook->ChangeSelection(1);@@}[python:on_button][ruby:on_button]" />
+                      <node
+                        class="wxButton"
+                        label="Japanese"
+                        var_name="m_btn2"
+                        bitmap="SVG;../art/日の丸.svg;[24,16]"
+                        wxEVT_BUTTON="[this](wxCommandEvent&amp;)@@{@@m_simplebook->ChangeSelection(2);@@}[python:on_button][ruby:on_button]" />
+                    </node>
+                  </node>
+                </node>
+                <node
+                  class="BookPage"
+                  bitmap="Embed;french.png"
+                  label="Français"
+                  var_name="page4"
+                  background_colour="wxSYS_COLOUR_BTNFACE"
+                  window_style="wxTAB_TRAVERSAL">
+                  <node
+                    class="wxBoxSizer"
+                    orientation="wxVERTICAL"
+                    var_name="parent_sizer3">
+                    <node
+                      class="wxStaticText"
+                      label="Ceci est une phrase en français."
+                      var_name="m_staticText3" />
+                    <node
+                      class="wxBoxSizer"
+                      var_name="box_sizer3">
+                      <node
+                        class="wxButton"
+                        label="English"
+                        var_name="m_btn3"
+                        bitmap="Embed;../art/english.png"
+                        wxEVT_BUTTON="[this](wxCommandEvent&amp;)@@{@@m_simplebook->ChangeSelection(0);@@}[python:on_button][ruby:on_button]" />
+                      <node
+                        class="wxButton"
+                        label="Japanese"
+                        var_name="m_btn4"
+                        bitmap="SVG;../art/日の丸.svg;[24,16]"
+                        wxEVT_BUTTON="[this](wxCommandEvent&amp;)@@{@@m_simplebook->ChangeSelection(2);@@}[python:on_button][ruby:on_button]" />
+                    </node>
+                  </node>
+                </node>
+                <node
+                  class="BookPage"
+                  bitmap="Embed;japanese.png"
+                  label="日本語"
+                  var_name="page5"
+                  background_colour="wxSYS_COLOUR_BTNFACE"
+                  window_style="wxTAB_TRAVERSAL">
+                  <node
+                    class="wxBoxSizer"
+                    orientation="wxVERTICAL"
+                    var_name="parent_sizer4">
+                    <node
+                      class="wxStaticText"
+                      label="これは日本語の文章です。"
+                      var_name="m_staticText4" />
+                    <node
+                      class="wxBoxSizer"
+                      var_name="box_sizer4">
+                      <node
+                        class="wxButton"
+                        label="English"
+                        var_name="m_btn5"
+                        wxEVT_BUTTON="[this](wxCommandEvent&amp;)@@{@@m_simplebook->ChangeSelection(0);@@}[python:on_button][ruby:on_button]" />
+                      <node
+                        class="wxButton"
+                        label="French"
+                        var_name="m_btn6"
+                        bitmap="SVG;../art/french_flag.svg;[24,16]"
+                        wxEVT_BUTTON="[this](wxCommandEvent&amp;)@@{@@m_simplebook->ChangeSelection(1);@@}[python:on_button][ruby:on_button]" />
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
         </node>
         <node
           class="wxStdDialogButtonSizer"

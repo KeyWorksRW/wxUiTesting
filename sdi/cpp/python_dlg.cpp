@@ -41,7 +41,7 @@ static wxAnimation wxueAnimation(const unsigned char* data, size_t size_data)
 
 namespace wxue_img
 {
-    extern const unsigned char clr_hourglass_gif[2017];
+    extern const unsigned char clr_hourglass_gif[2017];  // ../art/clr_hourglass.gif
 }
 
 bool PythonDlg::Create(wxWindow* parent, wxWindowID id, const wxString& title,
