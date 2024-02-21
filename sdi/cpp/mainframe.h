@@ -23,8 +23,11 @@
 
 namespace wxue_img
 {
+    // ../art/wxDialog.png
     extern const unsigned char wxDialog_png[636];
+    // ../art/wxToolBar.png
     extern const unsigned char wxToolBar_png[554];
+    // ../art/wxWizard.png
     extern const unsigned char wxWizard_png[1047];
 }
 

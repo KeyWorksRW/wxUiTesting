@@ -17,7 +17,8 @@
 
 namespace wxue_img
 {
-    extern const unsigned char wxPython_svg[1648];
+    // ../art/wxPython.svg
+    extern const unsigned char wxPython_svg[1843];
 }
 
 class BitmapsDlg : public wxDialog

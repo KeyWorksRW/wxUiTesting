@@ -47,7 +47,7 @@ static wxAnimation wxueAnimation(const unsigned char* data, size_t size_data)
 
 namespace wxue_img
 {
-    extern const unsigned char clr_hourglass_gif[2017];
+    extern const unsigned char clr_hourglass_gif[2017];  // ../art/clr_hourglass.gif
 }
 
 bool MainTestDialog::Create(wxWindow* parent, wxWindowID id, const wxString& title,
@@ -132,6 +132,7 @@ bool MainTestDialog::Create(wxWindow* parent, wxWindowID id, const wxString& tit
         m_scintilla->SetMarginLeft(wxSizerFlags::GetDefaultBorder());
         m_scintilla->SetMarginRight(wxSizerFlags::GetDefaultBorder());
         m_scintilla->SetMarginWidth(1, 0); // Remove default margin
+        m_scintilla->SetTabWidth(4);
         m_scintilla->SetBackSpaceUnIndents(true);
     }
     m_scintilla->SetMinSize(ConvertDialogToPixels(wxSize(150, 60)));
@@ -940,7 +941,7 @@ bool MainTestDialog::Create(wxWindow* parent, wxWindowID id, const wxString& tit
 
 namespace wxue_img
 {
-
+    // ../art/clr_hourglass.gif
     const unsigned char clr_hourglass_gif[2017] {
         71,73,70,56,57,97,32,0,32,0,242,0,0,255,255,255,204,204,204,0,255,255,0,153,153,0,0,0,0,0,0,0,0,0,0,0,0,33,255,
         11,78,69,84,83,67,65,80,69,50,46,48,3,1,0,0,0,33,249,4,9,10,0,5,0,44,0,0,0,0,32,0,32,0,0,3,102,88,186,220,254,48,

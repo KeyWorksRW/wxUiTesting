@@ -24,8 +24,11 @@
 
 namespace wxue_img
 {
-    extern const unsigned char left_svg[585];
+    // ../art/left.svg
+    extern const unsigned char left_svg[630];
+    // ../art/redo.png
     extern const unsigned char redo_png[945];
+    // ../art/undo.png
     extern const unsigned char undo_png[962];
 }
 
