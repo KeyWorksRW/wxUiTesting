@@ -219,7 +219,7 @@ bool MainTestDialog::Create(wxWindow* parent, wxWindowID id, const wxString& tit
 
     box_sizer_7->Add(static_box_4, wxSizerFlags().Border(wxALL));
 
-    m_radioBtn__sizer = new wxRadioButton(page_4, wxID_ANY, "Radio");
+    m_radioBtn__sizer = new wxRadioButton(page_4, wxID_ANY, "Radio", wxDefaultPosition, wxDefaultSize, wxRB_SINGLE);
     auto* static_box_5 = new wxStaticBoxSizer(new wxStaticBox(page_4, wxID_ANY, m_radioBtn__sizer), wxVERTICAL);
 
     m_radioBtn_5 = new wxRadioButton(static_box_5->GetStaticBox(), wxID_ANY, "First button");
@@ -728,28 +728,19 @@ bool MainTestDialog::Create(wxWindow* parent, wxWindowID id, const wxString& tit
     Centre(wxBOTH);
 
     // Event handlers
-    m_btn->Bind(wxEVT_BUTTON,
-        [this](wxCommandEvent&)
-        {
-            OnEventName("Button: wxEVT_BUTTON");
-        });
+    btn->Bind(wxEVT_BUTTON, &MainTestDialog::OnClearList, this);
+    btn2->Bind(wxEVT_BUTTON, &MainTestDialog::OnPopupBtn, this);
     m_btn_3->Bind(wxEVT_BUTTON,
         [this](wxCommandEvent&)
         {
             OnEventName("Button: wxEVT_BUTTON");
         });
-    btn2->Bind(wxEVT_BUTTON, &MainTestDialog::OnPopupBtn, this);
-    m_btn_7->Bind(wxEVT_BUTTON,
-        [this](wxCommandEvent&)
-        {
-            OnEventName("Ceci est une phrase en français.");
-        });
-    m_btn_2->Bind(wxEVT_BUTTON,
+    m_btn->Bind(wxEVT_BUTTON,
         [this](wxCommandEvent&)
         {
             OnEventName("Button: wxEVT_BUTTON");
         });
-    m_btn_bitmaps->Bind(wxEVT_BUTTON,
+    m_btn_2->Bind(wxEVT_BUTTON,
         [this](wxCommandEvent&)
         {
             OnEventName("Button: wxEVT_BUTTON");
@@ -759,17 +750,27 @@ bool MainTestDialog::Create(wxWindow* parent, wxWindowID id, const wxString& tit
         {
             OnEventName("Button: wxEVT_BUTTON");
         });
-    m_btn_6->Bind(wxEVT_BUTTON,
+    m_btn_bitmaps->Bind(wxEVT_BUTTON,
         [this](wxCommandEvent&)
         {
-            OnEventName("This is a sentence in English.");
+            OnEventName("Button: wxEVT_BUTTON");
         });
-    btn->Bind(wxEVT_BUTTON, &MainTestDialog::OnClearList, this);
+    m_btn_7->Bind(wxEVT_BUTTON,
+        [this](wxCommandEvent&)
+        {
+            OnEventName("Ceci est une phrase en français.");
+        });
     m_btn_5->Bind(wxEVT_BUTTON,
         [this](wxCommandEvent&)
         {
             OnEventName("CmdLinkBtn: wxEVT_BUTTON");
         });
+    m_btn_6->Bind(wxEVT_BUTTON,
+        [this](wxCommandEvent&)
+        {
+            OnEventName("This is a sentence in English.");
+        });
+    disable_bitmaps->Bind(wxEVT_CHECKBOX, &MainTestDialog::OnDisableBitmapsBtn, this);
     m_checkPlayAnimation->Bind(wxEVT_CHECKBOX,
         [this](wxCommandEvent&)
         {
@@ -782,16 +783,15 @@ bool MainTestDialog::Create(wxWindow* parent, wxWindowID id, const wxString& tit
                 m_animation_ctrl->Stop();
             }
         });
-    disable_bitmaps->Bind(wxEVT_CHECKBOX, &MainTestDialog::OnDisableBitmapsBtn, this);
-    m_checkList2->Bind(wxEVT_CHECKLISTBOX,
-        [this](wxCommandEvent&)
-        {
-            OnEventName("CheckListBox2: wx.EVT_CHECKLISTBOX");
-        });
     m_checkList_2->Bind(wxEVT_CHECKLISTBOX,
         [this](wxCommandEvent&)
         {
             OnEventName("CheckListBox1: wx.EVT_CHECKLISTBOX");
+        });
+    m_checkList2->Bind(wxEVT_CHECKLISTBOX,
+        [this](wxCommandEvent&)
+        {
+            OnEventName("CheckListBox2: wx.EVT_CHECKLISTBOX");
         });
     m_choice->Bind(wxEVT_CHOICE,
         [this](wxCommandEvent&)
@@ -855,37 +855,17 @@ bool MainTestDialog::Create(wxWindow* parent, wxWindowID id, const wxString& tit
         {
             OnEventName("RadioBox: wxEVT_RADIOBOX");
         });
-    m_radioBtn_4->Bind(wxEVT_RADIOBUTTON,
-        [this](wxCommandEvent&)
-        {
-            OnEventName("wxRadioButton: wxEVT_RADIOBUTTON");
-        });
-    m_radioBtn_2->Bind(wxEVT_RADIOBUTTON,
-        [this](wxCommandEvent&)
-        {
-            OnEventName("wxRadioButton: wxEVT_RADIOBUTTON");
-        });
-    m_radioBtn_7->Bind(wxEVT_RADIOBUTTON,
-        [this](wxCommandEvent&)
-        {
-            OnEventName("wxRadioButton: wxEVT_RADIOBUTTON");
-        });
     m_radioBtn->Bind(wxEVT_RADIOBUTTON,
         [this](wxCommandEvent&)
         {
             OnEventName("RadioButton: wxEVT_RADIOBUTTON");
-        });
-    m_radioBtn_6->Bind(wxEVT_RADIOBUTTON,
-        [this](wxCommandEvent&)
-        {
-            OnEventName("wxRadioButton: wxEVT_RADIOBUTTON");
         });
     m_radioBtn2->Bind(wxEVT_RADIOBUTTON,
         [this](wxCommandEvent&)
         {
             OnEventName("RadioButton: wxEVT_RADIOBUTTON");
         });
-    m_radioBtn_5->Bind(wxEVT_RADIOBUTTON,
+    m_radioBtn_2->Bind(wxEVT_RADIOBUTTON,
         [this](wxCommandEvent&)
         {
             OnEventName("wxRadioButton: wxEVT_RADIOBUTTON");
@@ -895,20 +875,40 @@ bool MainTestDialog::Create(wxWindow* parent, wxWindowID id, const wxString& tit
         {
             OnEventName("wxRadioButton: wxEVT_RADIOBUTTON");
         });
+    m_radioBtn_4->Bind(wxEVT_RADIOBUTTON,
+        [this](wxCommandEvent&)
+        {
+            OnEventName("wxRadioButton: wxEVT_RADIOBUTTON");
+        });
+    m_radioBtn_5->Bind(wxEVT_RADIOBUTTON,
+        [this](wxCommandEvent&)
+        {
+            OnEventName("wxRadioButton: wxEVT_RADIOBUTTON");
+        });
+    m_radioBtn_6->Bind(wxEVT_RADIOBUTTON,
+        [this](wxCommandEvent&)
+        {
+            OnEventName("wxRadioButton: wxEVT_RADIOBUTTON");
+        });
+    m_radioBtn_7->Bind(wxEVT_RADIOBUTTON,
+        [this](wxCommandEvent&)
+        {
+            OnEventName("wxRadioButton: wxEVT_RADIOBUTTON");
+        });
     m_scintilla->Bind(wxEVT_STC_CHANGE,
         [this](wxStyledTextEvent&)
         {
             OnEventName("wxStyledTextCtrl: wxEVT_STC_CHANGE");
         });
-    m_text_ctrl->Bind(wxEVT_TEXT,
-        [this](wxCommandEvent&)
-        {
-            OnEventName("wxTextCtrl: wxEVT_TEXT");
-        });
     m_richText->Bind(wxEVT_TEXT,
         [this](wxCommandEvent&)
         {
             OnEventName("wxRichTextCtrl: wxEVT_TEXT");
+        });
+    m_text_ctrl->Bind(wxEVT_TEXT,
+        [this](wxCommandEvent&)
+        {
+            OnEventName("wxTextCtrl: wxEVT_TEXT");
         });
     m_timePicker->Bind(wxEVT_TIME_CHANGED,
         [this](wxDateEvent&)

@@ -223,24 +223,24 @@ bool MainFrame::Create(wxWindow* parent, wxWindowID id, const wxString& title,
     Centre(wxBOTH);
 
     // Event handlers
-    Bind(wxEVT_MENU, &MainFrame::OnQuit, this, wxID_EXIT);
-    Bind(wxEVT_MENU, &MainFrame::OnMainTestDlg, this, menu_item_3->GetId());
-    Bind(wxEVT_MENU, &MainFrame::OnBookTestDlg, this, menu_item_4->GetId());
-    Bind(wxEVT_MENU, &MainFrame::OnPropSheetDlg, this, menu_item2->GetId());
-    Bind(wxEVT_MENU, &MainFrame::OnPythonDlg, this, menu_item_2->GetId());
-    Bind(wxEVT_MENU, &MainFrame::OnToolsDlg, this, menu_tools_dlg2->GetId());
-    Bind(wxEVT_MENU, &MainFrame::OnWizard, this, menuItem3->GetId());
     Bind(wxEVT_MENU, &MainFrame::OnBitmapsDlg, this, menuItem2->GetId());
+    Bind(wxEVT_MENU, &MainFrame::OnBookTestDlg, this, menu_item_4->GetId());
     Bind(wxEVT_MENU, &MainFrame::OnCommonDialog, this, menuItem_2->GetId());
     Bind(wxEVT_MENU, &MainFrame::OnDlgIssue_956, this, menu_item_5->GetId());
     Bind(wxEVT_MENU, &MainFrame::OnDlgIssue_960, this, menu_item_6->GetId());
-    Bind(wxEVT_MENU, &MainFrame::OnWizard, this, menu_item->GetId());
+    Bind(wxEVT_MENU, &MainFrame::OnMainTestDlg, this, menu_item_3->GetId());
+    Bind(wxEVT_MENU, &MainFrame::OnPropSheetDlg, this, menu_item2->GetId());
+    Bind(wxEVT_MENU, &MainFrame::OnPythonDlg, this, menu_item_2->GetId());
+    Bind(wxEVT_MENU, &MainFrame::OnQuit, this, wxID_EXIT);
     Bind(wxEVT_MENU, &MainFrame::OnToolsDlg, this, menu_tools_dlg->GetId());
+    Bind(wxEVT_MENU, &MainFrame::OnToolsDlg, this, menu_tools_dlg2->GetId());
+    Bind(wxEVT_MENU, &MainFrame::OnWizard, this, menuItem3->GetId());
+    Bind(wxEVT_MENU, &MainFrame::OnWizard, this, menu_item->GetId());
     m_kicadGrid->Bind(wxEVT_SIZE, &MainFrame::OnGridSize, this);
-    Bind(wxEVT_TOOL, &MainFrame::OnMainTestDlg, this, tool_4->GetId());
     Bind(wxEVT_TOOL, &MainFrame::OnBookTestDlg, this, tool_5->GetId());
-    Bind(wxEVT_TOOL, &MainFrame::OnPythonDlg, this, tool_3->GetId());
     Bind(wxEVT_TOOL, &MainFrame::OnCommonDialog, this, tool_2->GetId());
+    Bind(wxEVT_TOOL, &MainFrame::OnMainTestDlg, this, tool_4->GetId());
+    Bind(wxEVT_TOOL, &MainFrame::OnPythonDlg, this, tool_3->GetId());
 
     return true;
 }

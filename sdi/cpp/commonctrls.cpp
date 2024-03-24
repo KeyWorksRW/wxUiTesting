@@ -346,13 +346,14 @@ bool CommonCtrls::Create(wxWindow* parent, wxWindowID id, const wxString& title,
     Centre(wxBOTH);
 
     // Event handlers
+    btn2->Bind(wxEVT_BUTTON, &CommonCtrls::OnPopupBtn, this);
     m_btn->Bind(wxEVT_BUTTON,
         [this](wxCommandEvent&)
         {
             m_infoBar->ShowMessage("wxEVT_BUTTON event");
             Fit();
         });
-    btn2->Bind(wxEVT_BUTTON, &CommonCtrls::OnPopupBtn, this);
+    m_checkBox2->Bind(wxEVT_CHECKBOX, &CommonCtrls::OnCheckBox, this);
     m_checkBox->Bind(wxEVT_CHECKBOX,
         [this](wxCommandEvent&)
         {
@@ -360,7 +361,6 @@ bool CommonCtrls::Create(wxWindow* parent, wxWindowID id, const wxString& title,
             Fit();
 
         });
-    m_checkBox2->Bind(wxEVT_CHECKBOX, &CommonCtrls::OnCheckBox, this);
     m_checkPlayAnimation->Bind(wxEVT_CHECKBOX,
         [this](wxCommandEvent&)
         {
@@ -375,13 +375,13 @@ bool CommonCtrls::Create(wxWindow* parent, wxWindowID id, const wxString& title,
 
         });
     m_checkList->Bind(wxEVT_CHECKLISTBOX, &CommonCtrls::OnListChecked, this);
+    m_choice2->Bind(wxEVT_CHOICE, &CommonCtrls::OnChoice, this);
     m_choice->Bind(wxEVT_CHOICE,
         [this](wxCommandEvent&)
         {
             m_infoBar->ShowMessage("wxEVT_CHOICE event");
             Fit();
         });
-    m_choice2->Bind(wxEVT_CHOICE, &CommonCtrls::OnChoice, this);
     m_comboBox->Bind(wxEVT_COMBOBOX,
         [this](wxCommandEvent&)
         {
@@ -402,8 +402,8 @@ bool CommonCtrls::Create(wxWindow* parent, wxWindowID id, const wxString& title,
         });
     Bind(wxEVT_CONTEXT_MENU, &CommonCtrls::OnContextMenu, this);
     Bind(wxEVT_INIT_DIALOG, &CommonCtrls::OnInit, this);
-    m_listbox->Bind(wxEVT_LISTBOX, &CommonCtrls::OnListBox, this);
     m_listBox2->Bind(wxEVT_LISTBOX, &CommonCtrls::OnListBox, this);
+    m_listbox->Bind(wxEVT_LISTBOX, &CommonCtrls::OnListBox, this);
     m_edit_listbox->Bind(wxEVT_LIST_BEGIN_DRAG,
         [this](wxListEvent&)
         {
@@ -411,13 +411,13 @@ bool CommonCtrls::Create(wxWindow* parent, wxWindowID id, const wxString& title,
             Fit();
         });
     m_radioBox->Bind(wxEVT_RADIOBOX, &CommonCtrls::OnRadioBox, this);
+    m_radioBtn2->Bind(wxEVT_RADIOBUTTON, &CommonCtrls::OnRadio, this);
     m_radioBtn->Bind(wxEVT_RADIOBUTTON,
         [this](wxCommandEvent&)
         {
             m_infoBar->ShowMessage("wxEVT_RADIOBUTTON event");
             Fit();
         });
-    m_radioBtn2->Bind(wxEVT_RADIOBUTTON, &CommonCtrls::OnRadio, this);
     m_slider->Bind(wxEVT_SLIDER, &CommonCtrls::OnSlider, this);
     m_textCtrl->Bind(wxEVT_TEXT_ENTER,
         [this](wxCommandEvent&)

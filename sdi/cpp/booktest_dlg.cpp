@@ -435,7 +435,22 @@ bool BookTestDlg::Create(wxWindow* parent, wxWindowID id, const wxString& title,
         {
             m_choicebook->SetSelection(2);
         });
+    m_btn3->Bind(wxEVT_BUTTON,
+        [this](wxCommandEvent&)
+        {
+            m_simplebook->ChangeSelection(0);
+        });
+    m_btn5->Bind(wxEVT_BUTTON,
+        [this](wxCommandEvent&)
+        {
+            m_simplebook->ChangeSelection(0);
+        });
     m_btn->Bind(wxEVT_BUTTON,
+        [this](wxCommandEvent&)
+        {
+            m_simplebook->ChangeSelection(1);
+        });
+    m_btn6->Bind(wxEVT_BUTTON,
         [this](wxCommandEvent&)
         {
             m_simplebook->ChangeSelection(1);
@@ -445,25 +460,10 @@ bool BookTestDlg::Create(wxWindow* parent, wxWindowID id, const wxString& title,
         {
             m_simplebook->ChangeSelection(2);
         });
-    m_btn3->Bind(wxEVT_BUTTON,
-        [this](wxCommandEvent&)
-        {
-            m_simplebook->ChangeSelection(0);
-        });
     m_btn4->Bind(wxEVT_BUTTON,
         [this](wxCommandEvent&)
         {
             m_simplebook->ChangeSelection(2);
-        });
-    m_btn5->Bind(wxEVT_BUTTON,
-        [this](wxCommandEvent&)
-        {
-            m_simplebook->ChangeSelection(0);
-        });
-    m_btn6->Bind(wxEVT_BUTTON,
-        [this](wxCommandEvent&)
-        {
-            m_simplebook->ChangeSelection(1);
         });
 
     return true;
