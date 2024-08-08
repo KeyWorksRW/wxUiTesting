@@ -51,4 +51,11 @@ set (sdi_other_files
     run_pytest.cmd
     run_ruby_test.cmd
 
+    cpp/derived_classes/drv_menubar.h
+    cpp/derived_classes/drv_statusbar.h
+    cpp/derived_classes/drv_frame.h
+    cpp/derived_classes/drv_panel.h
+    cpp/derived_classes/drv_wizard.h
+    cpp/derived_classes/drv_toolbar.h
+
 )
