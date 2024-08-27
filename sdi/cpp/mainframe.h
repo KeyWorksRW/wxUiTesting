@@ -21,6 +21,9 @@
 #include <wx/statusbr.h>
 #include <wx/toolbar.h>
 
+#include "derived_classes/drv_frame.h"
+class drvStatusBar;
+
 namespace wxue_img
 {
     // ../art/wxDialog.png
@@ -31,7 +34,7 @@ namespace wxue_img
     extern const unsigned char wxWizard_png[1047];
 }
 
-class MainFrame : public wxFrame
+class MainFrame : public drvFrame
 {
 public:
     MainFrame() {}
@@ -41,7 +44,6 @@ public:
     {
         Create(parent, id, title, pos, size, style, name);
     }
-
     bool Create(wxWindow *parent, wxWindowID id = wxID_ANY, const wxString& title = "SDI Tests", const wxPoint& pos =
         wxDefaultPosition, const wxSize& size = wxSize(500, 300), long style = wxDEFAULT_FRAME_STYLE|wxTAB_TRAVERSAL,
         const wxString &name = wxFrameNameStr);
@@ -65,6 +67,7 @@ protected:
 
     // Class member variables
 
+    drvStatusBar* m_statusBar;
     wxGrid* m_kicadGrid;  // Grid imported from a kicad dialog, utilizing column sizes and labels
     wxMenu* menu;
     wxPGProperty* propertyGridItem;
@@ -79,7 +82,6 @@ protected:
     wxPropertyGridPage* propertyGridPage;
     wxPropertyGridPage* propertyGridPage_2;
     wxSplitterWindow* splitter;
-    wxStatusBar* m_statusBar;
     wxToolBar* m_toolBar;
 };
 

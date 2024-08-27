@@ -59,7 +59,6 @@ public:
     {
         Create(parent, id, title, pos, size, style, name);
     }
-
     bool Create(wxWindow *parent, wxWindowID id = wxID_ANY, const wxString& title = "Common controls", const wxPoint& pos =
         wxDefaultPosition, const wxSize& size = wxDefaultSize,
         long style = wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER, const wxString &name = wxDialogNameStr);

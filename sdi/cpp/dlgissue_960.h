@@ -37,7 +37,6 @@ public:
     {
         Create(parent, id, title, pos, size, style, name);
     }
-
     bool Create(wxWindow *parent, wxWindowID id = ISSUE_DLG_960, const wxString& title =
         wxString::FromUTF8("C’est une bonne journée pour tester"), const wxPoint& pos = wxDefaultPosition,
         const wxSize& size = wxDefaultSize,

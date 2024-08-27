@@ -52,7 +52,7 @@ bool BookTestDlg::Create(wxWindow* parent, wxWindowID id, const wxString& title,
         wxImage::AddHandler(new wxPNGHandler);
 
     auto* dlg_sizer = new wxBoxSizer(wxVERTICAL);
-    dlg_sizer->SetMinSize(400, 400);
+    dlg_sizer->SetMinSize(800, 1000);
 
     m_notebook = new wxAuiNotebook(this, wxID_ANY);
     dlg_sizer->Add(m_notebook, wxSizerFlags(1).Expand().Border(wxALL));
@@ -63,7 +63,7 @@ bool BookTestDlg::Create(wxWindow* parent, wxWindowID id, const wxString& title,
     auto* page_sizer_1 = new wxBoxSizer(wxVERTICAL);
 
     m_choicebook = new wxChoicebook(page_2, wxID_ANY);
-    m_choicebook->SetMinSize(wxSize(400, 400));
+    m_choicebook->SetMinSize(FromDIP(wxSize(400, 400)));
     page_sizer_1->Add(m_choicebook, wxSizerFlags().Border(wxALL));
 
     auto* btn = new wxButton(m_choicebook, wxID_ANY, "First");
@@ -143,7 +143,7 @@ bool BookTestDlg::Create(wxWindow* parent, wxWindowID id, const wxString& title,
         bundle_list.push_back(wxue_img::bundle_japanese_png());
         m_listbook->SetImages(bundle_list);
     }
-    m_listbook->SetMinSize(wxSize(400, 400));
+    m_listbook->SetMinSize(FromDIP(wxSize(400, 400)));
     page_sizer_2->Add(m_listbook, wxSizerFlags().Border(wxALL));
 
     auto* page_6 = new wxPanel(m_listbook, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL);
@@ -191,7 +191,7 @@ bool BookTestDlg::Create(wxWindow* parent, wxWindowID id, const wxString& title,
         bundle_list.push_back(wxue_img::bundle_japanese_png());
         m_notebook_2->SetImages(bundle_list);
     }
-    m_notebook_2->SetMinSize(wxSize(400, 400));
+    m_notebook_2->SetMinSize(FromDIP(wxSize(400, 400)));
     page_sizer_3->Add(m_notebook_2, wxSizerFlags().Expand().Border(wxALL));
 
     auto* page_9 = new wxPanel(m_notebook_2, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL);
@@ -239,7 +239,7 @@ bool BookTestDlg::Create(wxWindow* parent, wxWindowID id, const wxString& title,
         bundle_list.push_back(wxue_img::bundle_japanese_png());
         m_toolbook->SetImages(bundle_list);
     }
-    m_toolbook->SetMinSize(wxSize(400, 400));
+    m_toolbook->SetMinSize(FromDIP(wxSize(400, 400)));
     page_sizer_4->Add(m_toolbook, wxSizerFlags().Border(wxALL));
 
     auto* page_12 = new wxPanel(m_toolbook, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL);
@@ -287,7 +287,7 @@ bool BookTestDlg::Create(wxWindow* parent, wxWindowID id, const wxString& title,
         bundle_list.push_back(wxue_img::bundle_japanese_png());
         m_treebook->SetImages(bundle_list);
     }
-    m_treebook->SetMinSize(wxSize(400, 400));
+    m_treebook->SetMinSize(FromDIP(wxSize(400, 400)));
     page_sizer_5->Add(m_treebook, wxSizerFlags().Border(wxALL));
 
     auto* page_15 = new wxPanel(m_treebook, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL);
@@ -421,7 +421,24 @@ bool BookTestDlg::Create(wxWindow* parent, wxWindowID id, const wxString& title,
     auto* stdBtn = CreateStdDialogButtonSizer(wxOK|wxCANCEL);
     dlg_sizer->Add(CreateSeparatedSizer(stdBtn), wxSizerFlags().Expand().Border(wxALL));
 
-    SetSizerAndFit(dlg_sizer);
+    if (pos != wxDefaultPosition)
+    {
+        SetPosition(FromDIP(pos));
+    }
+    if (size == wxDefaultSize)
+    {
+        SetSizerAndFit(dlg_sizer);
+    }
+    else
+    {
+        SetSizer(dlg_sizer);
+        if (size.x == wxDefaultCoord || size.y == wxDefaultCoord)
+        {
+            Fit();
+        }
+        SetSize(FromDIP(size));
+        Layout();
+    }
     Centre(wxBOTH);
 
     // Event handlers
@@ -493,7 +510,7 @@ namespace wxue_img
         167,233,230,254,129,63,251,243,97,141,187,167,47,65,211,141,24
     };
 
-}
+    }
 
 // ************* End of generated code ***********
 // DO NOT EDIT THIS COMMENT BLOCK!

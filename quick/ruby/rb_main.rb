@@ -5,7 +5,11 @@
 # Any changes before that block will be lost if it is re-generated!
 ###############################################################################
 
-# rubocop:disable all
+# rubocop:disable Metrics/MethodLength
+# rubocop:disable Metrics/ParameterLists
+# rubocop:disable Style/Documentation
+# rubocop:disable Style/BlockComments
+# rubocop:disable Metrics/AbcSize
 
 WX_GLOBAL_CONSTANTS = true unless defined? WX_GLOBAL_CONSTANTS
 
@@ -19,9 +23,13 @@ class MainFrame < Wx::Frame
                  pos = Wx::DEFAULT_POSITION, size = Wx::DEFAULT_SIZE,
                  style = Wx::DEFAULT_FRAME_STYLE)
 
+    # Don't scale pos and size until after the window has been created.
     super(parent, id, title, pos, size, style)
-
-    set_min_size(convert_dialog_to_pixels(Wx::Size.new(300, -1)))
+    if pos != Wx::DEFAULT_POSITION || size != Wx::DEFAULT_SIZE
+      set_size(from_dip(pos).x, from_dip(pos).y,
+      from_dip(size).x, from_dip(size).y, Wx::SIZE_USE_EXISTING)
+    end
+    set_min_size(from_dip(Wx::Size.new(600, -1)))
 
     @menubar = Wx::MenuBar.new
 
@@ -51,12 +59,12 @@ class MainFrame < Wx::Frame
 
     @text_ctrl = Wx::TextCtrl.new(panel, Wx::ID_ANY, '',
       Wx::DEFAULT_POSITION, Wx::DEFAULT_SIZE, Wx::TE_MULTILINE)
-    @text_ctrl.set_min_size(convert_dialog_to_pixels(Wx::Size.new(200, 100)))
+    @text_ctrl.set_min_size(from_dip(Wx::Size.new(400, 250)))
     panel_sizer.add(@text_ctrl, Wx::SizerFlags.new(1).expand.border(Wx::ALL))
     panel.set_sizer_and_fit(panel_sizer)
     set_sizer_and_fit(box_sizer)
 
-    centre(Wx::BOTH)
+    centre(Wx::VERTICAL)
 
     # Event handlers
     evt_menu(menu_item.get_id, :on_quit)
@@ -82,7 +90,11 @@ class MainFrame < Wx::Frame
 =end
 end
 
-# rubocop:enable all
+# rubocop:enable Metrics/MethodLength
+# rubocop:enable Metrics/ParameterLists
+# rubocop:enable Style/Documentation
+# rubocop:enable Style/BlockComments
+# rubocop:enable Metrics/AbcSize
 
 # ************* End of generated code ***********
 # DO NOT EDIT THIS COMMENT BLOCK!
@@ -109,7 +121,7 @@ end
 
 class App < Wx::App
   def on_init
-    frame = MainFrame.new(nil, Wx::ID_ANY, 'Ruby implementation')
+    frame = MainFrame.new(nil, Wx::ID_ANY, 'Ruby implementation', Wx::Point.new(1536, -1))
     frame.show
     set_top_window(frame)
     true

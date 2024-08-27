@@ -16,9 +16,15 @@ bool MainFrame::Create(wxWindow* parent, wxWindowID id, const wxString& title,
     const wxPoint& pos, const wxSize& size, long style, const wxString &name)
 {
 
+    // Don't scale pos and size until after the window has been created.
     if (!wxFrame::Create(parent, id, title, pos, size, style, name))
         return false;
-    SetMinSize(ConvertDialogToPixels(wxSize(300, -1)));
+    if (pos != wxDefaultPosition || size != wxDefaultSize)
+    {
+        SetSize(FromDIP(pos).x, FromDIP(pos).y,
+        FromDIP(size).x, FromDIP(size).y, wxSIZE_USE_EXISTING);
+    }
+    SetMinSize(FromDIP(wxSize(600, -1)));
 
     menubar = new wxMenuBar();
 
@@ -44,12 +50,12 @@ bool MainFrame::Create(wxWindow* parent, wxWindowID id, const wxString& title,
     auto* panel_sizer = new wxBoxSizer(wxVERTICAL);
 
     text_ctrl = new wxTextCtrl(panel, wxID_ANY, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxTE_MULTILINE);
-    text_ctrl->SetMinSize(ConvertDialogToPixels(wxSize(200, 100)));
+    text_ctrl->SetMinSize(FromDIP(wxSize(400, 250)));
     panel_sizer->Add(text_ctrl, wxSizerFlags(1).Expand().Border(wxALL));
     panel->SetSizerAndFit(panel_sizer);
     SetSizerAndFit(box_sizer);
 
-    Centre(wxBOTH);
+    Centre(wxVERTICAL);
 
     // Event handlers
     Bind(wxEVT_MENU, &MainFrame::OnQuit, this, wxID_EXIT);

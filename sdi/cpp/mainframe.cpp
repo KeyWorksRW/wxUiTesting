@@ -13,6 +13,7 @@
 #include <wx/icon.h>
 #include <wx/image.h>
 
+#include "derived_classes/drv_statusbar.h"
 #include "images.h"
 
 #include "mainframe.h"
@@ -46,14 +47,19 @@ bool MainFrame::Create(wxWindow* parent, wxWindowID id, const wxString& title,
     if (!wxImage::FindHandler(wxBITMAP_TYPE_PNG))
         wxImage::AddHandler(new wxPNGHandler);
 
-    if (!wxFrame::Create(parent, id, title, pos, size, style, name))
+    if (!drvFrame::Create(44, parent, id, title, pos, size, style, name))
         return false;
-    SetMinSize(ConvertDialogToPixels(wxSize(200, 100)));
+    if (pos != wxDefaultPosition || size != wxDefaultSize)
+    {
+        SetSize(FromDIP(pos).x, FromDIP(pos).y,
+        FromDIP(size).x, FromDIP(size).y, wxSIZE_USE_EXISTING);
+    }
+    SetMinSize(FromDIP(wxSize(400, 250)));
 
     splitter = new wxSplitterWindow(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxSP_3D);
     splitter->SetSashGravity(0.0);
     splitter->SetMinimumPaneSize(150);
-    splitter->SetMinSize(ConvertDialogToPixels(wxSize(200, 200)));
+    splitter->SetMinSize(FromDIP(wxSize(400, 500)));
 
     propertyGridManager = new wxPropertyGridManager(splitter, wxID_ANY, wxDefaultPosition, wxDefaultSize,
         wxPG_AUTO_SORT|wxPG_BOLD_MODIFIED|wxPG_SPLITTER_AUTO_CENTER|wxPG_DESCRIPTION|wxPG_TOOLBAR|wxPG_NO_INTERNAL_BORDER);
@@ -121,7 +127,7 @@ bool MainFrame::Create(wxWindow* parent, wxWindowID id, const wxString& title,
         m_kicadGrid->SetRowLabelValue(0, "Reference designator");
         m_kicadGrid->SetRowLabelValue(1, "Value");
     }
-    m_kicadGrid->SetMinSize(wxSize(800, 140));
+    m_kicadGrid->SetMinSize(FromDIP(wxSize(800, 140)));
     splitter->SplitHorizontally(propertyGridManager, m_kicadGrid);
 
     auto* menubar = new wxMenuBar();
@@ -133,7 +139,6 @@ bool MainFrame::Create(wxWindow* parent, wxWindowID id, const wxString& title,
         if (entry.FromString("ALT+X"))
             menuQuit->AddExtraAccel(entry);
     }
-
     menuQuit->SetBitmap(wxArtProvider::GetBitmapBundle(wxART_QUIT, wxART_MENU));
 
     menu->Append(menuQuit);
@@ -208,11 +213,14 @@ bool MainFrame::Create(wxWindow* parent, wxWindowID id, const wxString& title,
 
     m_toolBar->AddStretchableSpace();
 
-    auto* tool_2 = m_toolBar->AddTool(wxID_ANY, "Common Controls...", wxArtProvider::GetBitmapBundle(wxART_TIP, wxART_TOOLBAR));
+    auto* tool_2 = m_toolBar->AddTool(wxID_ANY, "Common Controls...", wxArtProvider::GetBitmapBundle(wxART_TIP, wxART_TOOLBAR,
+        wxSize(24, 24)));
 
     m_toolBar->Realize();
 
-    m_statusBar = CreateStatusBar(2);
+    m_statusBar = new drvStatusBar(this, wxID_ANY, wxSTB_DEFAULT_STYLE);
+    m_statusBar->SetFieldsCount(2);
+    SetStatusBar(m_statusBar);
     {
         const int sb_field_widths[2] = {100, -1};
         m_statusBar->SetStatusWidths(2, sb_field_widths);
@@ -327,7 +335,7 @@ namespace wxue_img
         4,61,95,30,87,232,10,12,187,0,0,0,0,73,69,78,68,174,66,96,130
     };
 
-}
+    }
 
 // ************* End of generated code ***********
 // DO NOT EDIT THIS COMMENT BLOCK!

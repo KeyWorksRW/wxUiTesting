@@ -34,15 +34,13 @@
 
 // Convert a data array into a wxAnimation
 #ifdef __cpp_inline_variables
-inline wxAnimation wxueAnimation(const unsigned char* data, size_t size_data)
+inline void wxueAnimation(const unsigned char* data, size_t size_data, wxAnimation& animation)
 #else
-static wxAnimation wxueAnimation(const unsigned char* data, size_t size_data)
+static void wxueAnimation(const unsigned char* data, size_t size_data, wxAnimation& animation)
 #endif
 {
     wxMemoryInputStream strm(data, size_data);
-    wxAnimation animation;
     animation.Load(strm);
-    return animation;
 };
 
 namespace wxue_img
@@ -119,7 +117,7 @@ bool MainTestDialog::Create(wxWindow* parent, wxWindowID id, const wxString& tit
     m_richText = new wxRichTextCtrl(page_2, ID_RICHTEXT, wxEmptyString, wxDefaultPosition, wxDefaultSize, wxRE_MULTILINE|
         wxVSCROLL | wxHSCROLL | wxNO_BORDER | wxWANTS_CHARS);
     m_richText->SetHint("wxRichTextCtrl");
-    m_richText->SetMinSize(ConvertDialogToPixels(wxSize(150, 30)));
+    m_richText->SetMinSize(FromDIP(wxSize(300, 75)));
     page_sizer_1->Add(m_richText, wxSizerFlags().Expand().Border(wxALL));
 
     m_scintilla = new wxStyledTextCtrl(page_2);
@@ -127,20 +125,18 @@ bool MainTestDialog::Create(wxWindow* parent, wxWindowID id, const wxString& tit
         m_scintilla->SetLexer(wxSTC_LEX_CPP);
         m_scintilla->SetEOLMode(wxSTC_EOL_LF);
         m_scintilla->SetViewWhiteSpace(wxSTC_WS_VISIBLEALWAYS);
-        // Sets text margin scaled appropriately for the current DPI on Windows,
-        // 5 on wxGTK or wxOSX
         m_scintilla->SetMarginLeft(wxSizerFlags::GetDefaultBorder());
         m_scintilla->SetMarginRight(wxSizerFlags::GetDefaultBorder());
-        m_scintilla->SetMarginWidth(1, 0); // Remove default margin
+        m_scintilla->SetMarginWidth(1, 0);
         m_scintilla->SetTabWidth(4);
         m_scintilla->SetBackSpaceUnIndents(true);
     }
-    m_scintilla->SetMinSize(ConvertDialogToPixels(wxSize(150, 60)));
+    m_scintilla->SetMinSize(FromDIP(wxSize(300, 150)));
     page_sizer_1->Add(m_scintilla, wxSizerFlags().Expand().Border(wxALL));
 
     m_htmlWin = new wxHtmlWindow(page_2);
     m_htmlWin->SetPage("This is an <b>HTML</b> window");
-    m_htmlWin->SetMinSize(ConvertDialogToPixels(wxSize(100, 60)));
+    m_htmlWin->SetMinSize(FromDIP(wxSize(200, 150)));
     page_sizer_1->Add(m_htmlWin, wxSizerFlags().Expand().Border(wxALL));
     page_2->SetSizerAndFit(page_sizer_1);
 
@@ -236,8 +232,7 @@ bool MainTestDialog::Create(wxWindow* parent, wxWindowID id, const wxString& tit
 
     box_sizer_3->Add(box_sizer_7, wxSizerFlags().Border(wxALL));
 
-    auto* static_line = new wxStaticLine(page_4, wxID_ANY, wxDefaultPosition, ConvertDialogToPixels(wxSize(20, -1)),
-        wxLI_HORIZONTAL);
+    auto* static_line = new wxStaticLine(page_4, wxID_ANY, wxDefaultPosition, FromDIP(wxSize(40, -1)), wxLI_HORIZONTAL);
     box_sizer_3->Add(static_line, wxSizerFlags().Expand().Border(wxALL));
 
     auto* box_sizer_19 = new wxBoxSizer(wxHORIZONTAL);
@@ -269,9 +264,14 @@ bool MainTestDialog::Create(wxWindow* parent, wxWindowID id, const wxString& tit
         wxDefaultSize, wxBU_EXACTFIT);
     static_box_3->Add(m_toggleBtn_2, wxSizerFlags().Border(wxALL));
 
-    m_animation_ctrl = new wxAnimationCtrl(static_box_3->GetStaticBox(), wxID_ANY, wxueAnimation(wxue_img::clr_hourglass_gif, sizeof(wxue_img::clr_hourglass_gif)),
-        wxDefaultPosition, wxDefaultSize, wxAC_DEFAULT_STYLE);
+    m_animation_ctrl = new wxAnimationCtrl(static_box_3->GetStaticBox(), wxID_ANY, wxNullAnimation, wxDefaultPosition,
+        wxDefaultSize, wxAC_DEFAULT_STYLE);
     m_animation_ctrl->SetInactiveBitmap(wxue_img::bundle_disabled_png());
+    {
+        auto animate = m_animation_ctrl->CreateAnimation();
+        wxueAnimation(wxue_img::clr_hourglass_gif, sizeof(wxue_img::clr_hourglass_gif), animate);
+        m_animation_ctrl->SetAnimation(animate);
+    }
     static_box_3->Add(m_animation_ctrl, wxSizerFlags().Border(wxALL));
 
     box_sizer_19->Add(static_box_3, wxSizerFlags().Border(wxALL));
@@ -354,7 +354,7 @@ bool MainTestDialog::Create(wxWindow* parent, wxWindowID id, const wxString& tit
     html_listbox = new wxSimpleHtmlListBox(page_5, wxID_ANY);
     html_listbox->Append("<b>bold</b>");
     html_listbox->Append("<i>italics</i>");
-    html_listbox->SetMinSize(ConvertDialogToPixels(wxSize(-1, 40)));
+    html_listbox->SetMinSize(FromDIP(wxSize(-1, 100)));
     box_sizer2->Add(html_listbox, wxSizerFlags(1).Expand().Border(wxALL));
 
     flex_grid_sizer->Add(box_sizer2, wxSizerFlags().Border(wxALL));
@@ -718,13 +718,30 @@ bool MainTestDialog::Create(wxWindow* parent, wxWindowID id, const wxString& tit
     dlg_sizer->Add(box_sizer_14, wxSizerFlags().Border(wxALL));
 
     m_events_list = new wxListBox(this, wxID_ANY);
-    m_events_list->SetMinSize(ConvertDialogToPixels(wxSize(-1, 60)));
+    m_events_list->SetMinSize(FromDIP(wxSize(-1, 150)));
     dlg_sizer->Add(m_events_list, wxSizerFlags(1).Expand().Border(wxALL));
 
     auto* stdBtn = CreateStdDialogButtonSizer(wxOK|wxCANCEL);
     dlg_sizer->Add(CreateSeparatedSizer(stdBtn), wxSizerFlags().Expand().Border(wxALL));
 
-    SetSizerAndFit(dlg_sizer);
+    if (pos != wxDefaultPosition)
+    {
+        SetPosition(FromDIP(pos));
+    }
+    if (size == wxDefaultSize)
+    {
+        SetSizerAndFit(dlg_sizer);
+    }
+    else
+    {
+        SetSizer(dlg_sizer);
+        if (size.x == wxDefaultCoord || size.y == wxDefaultCoord)
+        {
+            Fit();
+        }
+        SetSize(FromDIP(size));
+        Layout();
+    }
     Centre(wxBOTH);
 
     // Event handlers
@@ -1006,7 +1023,7 @@ namespace wxue_img
         100,46,104,116,109,108,0,59
     };
 
-}
+    }
 
 // ************* End of generated code ***********
 // DO NOT EDIT THIS COMMENT BLOCK!

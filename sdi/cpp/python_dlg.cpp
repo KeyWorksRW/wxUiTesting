@@ -28,15 +28,13 @@
 
 // Convert a data array into a wxAnimation
 #ifdef __cpp_inline_variables
-inline wxAnimation wxueAnimation(const unsigned char* data, size_t size_data)
+inline void wxueAnimation(const unsigned char* data, size_t size_data, wxAnimation& animation)
 #else
-static wxAnimation wxueAnimation(const unsigned char* data, size_t size_data)
+static void wxueAnimation(const unsigned char* data, size_t size_data, wxAnimation& animation)
 #endif
 {
     wxMemoryInputStream strm(data, size_data);
-    wxAnimation animation;
     animation.Load(strm);
-    return animation;
 };
 
 namespace wxue_img
@@ -72,7 +70,7 @@ bool PythonDlg::Create(wxWindow* parent, wxWindowID id, const wxString& title,
     box_sizer->Add(auiToolBar, wxSizerFlags().Border(wxALL));
 
     m_staticText = new wxStaticText(this, wxID_ANY, wxString::FromUTF8("wxPython est génial n\'est-ce pas?"),
-        ConvertDialogToPixels(wxPoint(50, 100)), ConvertDialogToPixels(wxSize(150, 32)), wxALIGN_CENTER_HORIZONTAL, "my_text");
+        FromDIP(wxPoint(100, 250)), FromDIP(wxSize(300, 80)), wxALIGN_CENTER_HORIZONTAL, "my_text");
     m_staticText->SetWindowVariant(wxWINDOW_VARIANT_LARGE);
     m_staticText->SetForegroundColour(wxColour("#008000"));
     box_sizer->Add(m_staticText, wxSizerFlags().Center().Border(wxALL));
@@ -87,9 +85,14 @@ bool PythonDlg::Create(wxWindow* parent, wxWindowID id, const wxString& title,
         wxDefaultSize, wxBU_EXACTFIT);
     static_box_2->Add(m_toggleBtn, wxSizerFlags().Border(wxALL));
 
-    m_animation_ctrl = new wxAnimationCtrl(static_box_2->GetStaticBox(), wxID_ANY, wxueAnimation(wxue_img::clr_hourglass_gif, sizeof(wxue_img::clr_hourglass_gif)),
-        wxDefaultPosition, wxDefaultSize, wxAC_DEFAULT_STYLE);
+    m_animation_ctrl = new wxAnimationCtrl(static_box_2->GetStaticBox(), wxID_ANY, wxNullAnimation, wxDefaultPosition,
+        wxDefaultSize, wxAC_DEFAULT_STYLE);
     m_animation_ctrl->SetInactiveBitmap(wxue_img::bundle_disabled_png());
+    {
+        auto animate = m_animation_ctrl->CreateAnimation();
+        wxueAnimation(wxue_img::clr_hourglass_gif, sizeof(wxue_img::clr_hourglass_gif), animate);
+        m_animation_ctrl->SetAnimation(animate);
+    }
     static_box_2->Add(m_animation_ctrl, wxSizerFlags().Border(wxALL));
 
     box_sizer->Add(static_box_2, wxSizerFlags().Border(wxALL));
@@ -104,7 +107,24 @@ bool PythonDlg::Create(wxWindow* parent, wxWindowID id, const wxString& title,
     stdBtn->Realize();
     bSizer1->Add(CreateSeparatedSizer(stdBtn), wxSizerFlags().Expand().Border(wxALL));
 
-    SetSizerAndFit(bSizer1);
+    if (pos != wxDefaultPosition)
+    {
+        SetPosition(FromDIP(pos));
+    }
+    if (size == wxDefaultSize)
+    {
+        SetSizerAndFit(bSizer1);
+    }
+    else
+    {
+        SetSizer(bSizer1);
+        if (size.x == wxDefaultCoord || size.y == wxDefaultCoord)
+        {
+            Fit();
+        }
+        SetSize(FromDIP(size));
+        Layout();
+    }
     Centre(wxBOTH);
 
     // Event handlers

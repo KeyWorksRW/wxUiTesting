@@ -18,9 +18,13 @@ class MainFrame(wx.Frame):
                 style=wx.DEFAULT_FRAME_STYLE, name=wx.FrameNameStr):
         wx.Frame.__init__(self)
 
+        # Don't scale pos and size until after the window has been created.
         if not self.Create(parent, id, title, pos, size, style, name):
             return
-        self.SetMinSize(self.ConvertDialogToPixels(wx.Size(300, -1)))
+        if pos != wx.DefaultPosition or size != wx.DefaultSize:
+            self.SetSize(self.FromDIP(pos).x, self.FromDIP(pos).y,
+            self.FromDIP(size).x, self.FromDIP(size).y, wx.SIZE_USE_EXISTING)
+        self.SetMinSize(self.FromDIP(wx.Size(600, -1)))
 
         self.menubar = wx.MenuBar()
 
@@ -48,12 +52,12 @@ class MainFrame(wx.Frame):
 
         self.text_ctrl = wx.TextCtrl(panel, wx.ID_ANY, "", wx.DefaultPosition,
             wx.DefaultSize, wx.TE_MULTILINE)
-        self.text_ctrl.SetMinSize(self.ConvertDialogToPixels(wx.Size(200, 100)))
+        self.text_ctrl.SetMinSize(self.FromDIP(wx.Size(400, 250)))
         panel_sizer.Add(self.text_ctrl, wx.SizerFlags(1).Expand().Border(wx.ALL))
         panel.SetSizerAndFit(panel_sizer)
         self.SetSizerAndFit(box_sizer)
 
-        self.Centre(wx.BOTH)
+        self.Centre(wx.VERTICAL)
 
         # Bind Event handlers
         self.Bind(wx.EVT_MENU, self.on_quit, id=wx.ID_EXIT)
@@ -91,7 +95,7 @@ class App(wx.App):
     """Application class."""
     def OnInit(self):
         """Initialize the application."""
-        frame = MainFrame(None, title="Python implementation")
+        frame = MainFrame(None, title="Python implementation", pos = wx.Point(512, -1))
         self.SetTopWindow(frame)
 
         frame.Show(True)

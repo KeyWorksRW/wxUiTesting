@@ -1,5 +1,5 @@
 /////////////////////////////////////////////////////////////////////////////
-// Purpose:   Derived class for wxFrame 
+// Purpose:   Derived class for wxFrame
 // Author:    Ralph Walden
 // Copyright: Copyright (c) 2024 KeyWorks Software (Ralph Walden)
 // License:   LICENSE -- see ../../../LICENSE
@@ -10,9 +10,18 @@
 class drvFrame : public wxFrame
 {
 public:
-    drvFrame(wxWindow* parent, wxWindowID id, const wxString& title, const wxPoint& pos, const wxSize& size, long style,
-             const wxString& name)
-        : wxFrame(parent, id, title, pos, size, style, name)
+    drvFrame()
     {
+    }
+
+    bool Create(int ignore, wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = "SDI Tests",
+                const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize(500, 300),
+                long style = wxDEFAULT_FRAME_STYLE | wxTAB_TRAVERSAL, const wxString& name = wxFrameNameStr)
+    {
+        ignore;
+        if (!wxFrame::Create(parent, id, title, wxWindow::FromDIP(pos), wxWindow::FromDIP(size), style, name))
+            return false;
+        else
+            return true;
     }
 };

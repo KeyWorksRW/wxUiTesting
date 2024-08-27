@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <wxUiEditorData
-  data_version="16">
+  data_version="15">
   <node
     class="Project"
     art_directory="../art"
@@ -14,6 +14,7 @@
     xrc_directory="xrc">
     <node
       class="wxFrame"
+      center="wxVERTICAL"
       class_name="MainFrame"
       title="Tests"
       base_file="main_frame"
@@ -23,7 +24,7 @@
       relative_require_list="test_dlg.rb;wizard.rb"
       ruby_file="rb_main"
       xrc_file="xrc_main"
-      minimum_size="300,-1d">
+      minimum_size="600,-1">
       <node
         class="wxMenuBar"
         var_name="menubar">
@@ -73,7 +74,7 @@
               class="wxTextCtrl"
               style="wxTE_MULTILINE"
               var_name="text_ctrl"
-              minimum_size="200,100d"
+              minimum_size="400,250"
               flags="wxEXPAND"
               proportion="1" />
           </node>

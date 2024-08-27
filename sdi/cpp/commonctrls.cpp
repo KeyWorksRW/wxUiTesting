@@ -35,15 +35,13 @@
 
 // Convert a data array into a wxAnimation
 #ifdef __cpp_inline_variables
-inline wxAnimation wxueAnimation(const unsigned char* data, size_t size_data)
+inline void wxueAnimation(const unsigned char* data, size_t size_data, wxAnimation& animation)
 #else
-static wxAnimation wxueAnimation(const unsigned char* data, size_t size_data)
+static void wxueAnimation(const unsigned char* data, size_t size_data, wxAnimation& animation)
 #endif
 {
     wxMemoryInputStream strm(data, size_data);
-    wxAnimation animation;
     animation.Load(strm);
-    return animation;
 };
 
 namespace wxue_img
@@ -266,9 +264,14 @@ bool CommonCtrls::Create(wxWindow* parent, wxWindowID id, const wxString& title,
         wxDefaultSize, wxBU_EXACTFIT);
     static_box_2->Add(m_toggleBtn, wxSizerFlags().Border(wxALL));
 
-    m_animation_ctrl = new wxAnimationCtrl(static_box_2->GetStaticBox(), wxID_ANY, wxueAnimation(wxue_img::clr_hourglass_gif, sizeof(wxue_img::clr_hourglass_gif)),
-        wxDefaultPosition, wxDefaultSize, wxAC_DEFAULT_STYLE);
+    m_animation_ctrl = new wxAnimationCtrl(static_box_2->GetStaticBox(), wxID_ANY, wxNullAnimation, wxDefaultPosition,
+        wxDefaultSize, wxAC_DEFAULT_STYLE);
     m_animation_ctrl->SetInactiveBitmap(wxue_img::bundle_disabled_png());
+    {
+        auto animate = m_animation_ctrl->CreateAnimation();
+        wxueAnimation(wxue_img::clr_hourglass_gif, sizeof(wxue_img::clr_hourglass_gif), animate);
+        m_animation_ctrl->SetAnimation(animate);
+    }
     static_box_2->Add(m_animation_ctrl, wxSizerFlags().Border(wxALL));
 
     flex_grid_sizer->Add(static_box_2, wxSizerFlags().Border(wxALL));
@@ -342,7 +345,24 @@ bool CommonCtrls::Create(wxWindow* parent, wxWindowID id, const wxString& title,
     auto* stdBtn = CreateStdDialogButtonSizer(wxOK|wxCANCEL|wxHELP);
     parent_sizer->Add(CreateSeparatedSizer(stdBtn), wxSizerFlags().Expand().Border(wxALL));
 
-    SetSizerAndFit(parent_sizer);
+    if (pos != wxDefaultPosition)
+    {
+        SetPosition(FromDIP(pos));
+    }
+    if (size == wxDefaultSize)
+    {
+        SetSizerAndFit(parent_sizer);
+    }
+    else
+    {
+        SetSizer(parent_sizer);
+        if (size.x == wxDefaultCoord || size.y == wxDefaultCoord)
+        {
+            Fit();
+        }
+        SetSize(FromDIP(size));
+        Layout();
+    }
     Centre(wxBOTH);
 
     // Event handlers

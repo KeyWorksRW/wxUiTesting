@@ -143,9 +143,25 @@ bool ToolBarsDialog::Create(wxWindow* parent, wxWindowID id, const wxString& tit
     }
     rbn_btn_bar->Realize();
 
-    SetSizer(box_sizer);
-    SetMinSize(ConvertDialogToPixels(wxSize(200, -1)));
-    Fit();
+
+    SetMinSize(FromDIP(wxSize(400, -1)));if (pos != wxDefaultPosition)
+    {
+        SetPosition(FromDIP(pos));
+    }
+    if (size == wxDefaultSize)
+    {
+        SetSizerAndFit(box_sizer);
+    }
+    else
+    {
+        SetSizer(box_sizer);
+        if (size.x == wxDefaultCoord || size.y == wxDefaultCoord)
+        {
+            Fit();
+        }
+        SetSize(FromDIP(size));
+        Layout();
+    }
     Centre(wxBOTH);
 
     // Event handlers
@@ -248,7 +264,7 @@ namespace wxue_img
         66,96,130
     };
 
-}
+    }
 
 // ************* End of generated code ***********
 // DO NOT EDIT THIS COMMENT BLOCK!
