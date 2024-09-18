@@ -533,8 +533,9 @@ void MainFrame::OnCommonDialog(wxCommandEvent& WXUNUSED(event))
 
 void CommonCtrls::OnInit(wxInitDialogEvent& event)
 {
+    wxSize menu_size = { 16, 16 };
     m_bmpComboBox->Append("Home", wxArtProvider::GetBitmap(wxART_GO_HOME, wxART_MENU));
-    m_bmpComboBox->Append("Print", wxArtProvider::GetBitmap(wxART_PRINT, wxART_MENU));
+    m_bmpComboBox->Append("Print", wxArtProvider::GetBitmap(wxART_PRINT, wxART_MENU, menu_size));
 
     event.Skip();  // transfer all validator data to their windows and update UI
 }
