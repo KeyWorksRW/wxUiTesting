@@ -11,6 +11,23 @@ import wx
 import wx.aui
 
 import images
+import zlib
+import base64
+from wx.lib.embeddedimage import PyEmbeddedImage
+
+# ../art/french_flag.svg
+french_flag_svg = (
+    b"eNqFkV1ugzAQhHsUtE+tlNj8hUomzgnSQ7Rhgzc1NrIdSHL6kgZBUVX1xTseyd+MtVvf1VFPVVASiry9"
+    b"QKSQahUk5Nn91qHzZI2EhCUQXRptvPDo6ChBhdAKzvu+Z98OO9iGQ+TDVaOEI2m9dmeNAjs0tqrKg6Z2"
+    b"6fjg7CeuNRk8WTLC2bOZ3IYCOk3DEGkJu237HlRUSXiLV/E+TViWZbPIU1YUr/t4FIsWwtUfz8OjVZJv"
+    b"Xsq5l7Hmhs6WwH/AJ/ADNIsxYZG3jOnV0Pg//oQt8scxchcpv+un6eb+gT/782GNu6cvQdONGA==")
+
+# ../art/日の丸.svg
+e697a5e381aee4b8b8_svg = (
+    b"eNpVkNFugzAMRfcpkZ9WqQ0lMIYC4WMWXHAXEpSkQP9+KQ/VeLHlK/no2G1YBrZSH0cFVTlvwEakYYwK"
+    b"yuI1LegDOasg5zmwbTI2yICebgrGGGeZZeu68j3h2k0ZsBCfBhXcyJiLfxiUuKB1fd9oQ/MxCdG7X7wY"
+    b"snh3ZKV3D/tOJ4roDaUmRQNd61FHtim4Anvu9W39z1nwqvo+OMh1TKAGsq7V5LVBphOkEMB0woicF0UB"
+    b"zKcDBa+Pm374+czr+nw9l1+nnZClb3UffxByY0I=")
 
 class BookTestDlg(wx.Dialog):
     def __init__(self, parent, id=wx.ID_ANY, title="Book tests", pos=
@@ -22,19 +39,19 @@ class BookTestDlg(wx.Dialog):
             return
 
         dlg_sizer = wx.BoxSizer(wx.VERTICAL)
-        dlg_sizer.SetMinSize(400, 400)
+        dlg_sizer.SetMinSize(800, 1000)
 
-        self.aui_notebook = wx.aui.AuiNotebook(self, wx.ID_ANY)
-        dlg_sizer.Add(self.aui_notebook, wx.SizerFlags(1).Expand().Border(wx.ALL))
+        self.notebook = wx.aui.AuiNotebook(self, wx.ID_ANY)
+        dlg_sizer.Add(self.notebook, wx.SizerFlags(1).Expand().Border(wx.ALL))
 
-        page_2 = wx.Panel(self.aui_notebook, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize,
+        page_2 = wx.Panel(self.notebook, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize,
             wx.TAB_TRAVERSAL)
-        self.aui_notebook.AddPage(page_2, "ChoiceBook")
+        self.notebook.AddPage(page_2, "ChoiceBook")
 
         page_sizer_1 = wx.BoxSizer(wx.VERTICAL)
 
         self.choicebook = wx.Choicebook(page_2, wx.ID_ANY)
-        self.choicebook.SetMinSize(wx.Size(400, 400))
+        self.choicebook.SetMinSize(self.FromDIP(wx.Size(400, 400)))
         page_sizer_1.Add(self.choicebook, wx.SizerFlags().Border(wx.ALL))
 
         btn = wx.Button(self.choicebook, wx.ID_ANY, "First")
@@ -109,9 +126,9 @@ class BookTestDlg(wx.Dialog):
         page_22.SetSizerAndFit(parent_sizer_14)
         page_2.SetSizerAndFit(page_sizer_1)
 
-        page_3 = wx.Panel(self.aui_notebook, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize,
+        page_3 = wx.Panel(self.notebook, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize,
             wx.TAB_TRAVERSAL)
-        self.aui_notebook.AddPage(page_3, "ListBook")
+        self.notebook.AddPage(page_3, "ListBook")
 
         page_sizer_2 = wx.BoxSizer(wx.VERTICAL)
 
@@ -124,7 +141,7 @@ class BookTestDlg(wx.Dialog):
             wx.BitmapBundle.FromBitmap(images.japanese_png.Bitmap)
         ]
         self.listbook.SetImages(bundle_list)
-        self.listbook.SetMinSize(wx.Size(400, 400))
+        self.listbook.SetMinSize(self.FromDIP(wx.Size(400, 400)))
         page_sizer_2.Add(self.listbook, wx.SizerFlags().Border(wx.ALL))
 
         page_6 = wx.Panel(self.listbook, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize,
@@ -165,9 +182,9 @@ class BookTestDlg(wx.Dialog):
 
         page_3.SetSizerAndFit(page_sizer_2)
 
-        page_4 = wx.Panel(self.aui_notebook, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize,
+        page_4 = wx.Panel(self.notebook, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize,
             wx.TAB_TRAVERSAL)
-        self.aui_notebook.AddPage(page_4, "NoteBook")
+        self.notebook.AddPage(page_4, "NoteBook")
 
         page_sizer_3 = wx.BoxSizer(wx.VERTICAL)
 
@@ -179,7 +196,7 @@ class BookTestDlg(wx.Dialog):
             wx.BitmapBundle.FromBitmap(images.japanese_png.Bitmap)
         ]
         self.notebook_2.SetImages(bundle_list)
-        self.notebook_2.SetMinSize(wx.Size(400, 400))
+        self.notebook_2.SetMinSize(self.FromDIP(wx.Size(400, 400)))
         page_sizer_3.Add(self.notebook_2, wx.SizerFlags().Expand().Border(wx.ALL))
 
         page_9 = wx.Panel(self.notebook_2, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize,
@@ -220,9 +237,9 @@ class BookTestDlg(wx.Dialog):
 
         page_4.SetSizerAndFit(page_sizer_3)
 
-        page_5 = wx.Panel(self.aui_notebook, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize,
+        page_5 = wx.Panel(self.notebook, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize,
             wx.TAB_TRAVERSAL)
-        self.aui_notebook.AddPage(page_5, "ToolBook")
+        self.notebook.AddPage(page_5, "ToolBook")
 
         page_sizer_4 = wx.BoxSizer(wx.VERTICAL)
 
@@ -234,7 +251,7 @@ class BookTestDlg(wx.Dialog):
             wx.BitmapBundle.FromBitmap(images.japanese_png.Bitmap)
         ]
         self.toolbook.SetImages(bundle_list)
-        self.toolbook.SetMinSize(wx.Size(400, 400))
+        self.toolbook.SetMinSize(self.FromDIP(wx.Size(400, 400)))
         page_sizer_4.Add(self.toolbook, wx.SizerFlags().Border(wx.ALL))
 
         page_12 = wx.Panel(self.toolbook, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize,
@@ -275,9 +292,9 @@ class BookTestDlg(wx.Dialog):
 
         page_5.SetSizerAndFit(page_sizer_4)
 
-        page = wx.Panel(self.aui_notebook, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize,
+        page = wx.Panel(self.notebook, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize,
             wx.TAB_TRAVERSAL)
-        self.aui_notebook.AddPage(page, "TreeBook")
+        self.notebook.AddPage(page, "TreeBook")
 
         page_sizer_5 = wx.BoxSizer(wx.VERTICAL)
 
@@ -289,7 +306,7 @@ class BookTestDlg(wx.Dialog):
             wx.BitmapBundle.FromBitmap(images.japanese_png.Bitmap)
         ]
         self.treebook.SetImages(bundle_list)
-        self.treebook.SetMinSize(wx.Size(400, 400))
+        self.treebook.SetMinSize(self.FromDIP(wx.Size(400, 400)))
         page_sizer_5.Add(self.treebook, wx.SizerFlags().Border(wx.ALL))
 
         page_15 = wx.Panel(self.treebook, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize,
@@ -352,6 +369,97 @@ class BookTestDlg(wx.Dialog):
 
         page.SetSizerAndFit(page_sizer_5)
 
+        page2 = wx.Panel(self.notebook, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize,
+            wx.TAB_TRAVERSAL)
+        self.notebook.AddPage(page2, "SimpleBook")
+        page2.SetBackgroundColour(wx.SystemSettings.GetColour(wx.SYS_COLOUR_BTNFACE))
+
+        page_sizer2 = wx.BoxSizer(wx.VERTICAL)
+
+        self.simplebook = wx.Simplebook(page2, wx.ID_ANY)
+        page_sizer2.Add(self.simplebook, wx.SizerFlags())
+
+        page3 = wx.Panel(self.simplebook, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize,
+            wx.TAB_TRAVERSAL)
+        self.simplebook.AddPage(page3, "English")
+        page3.SetBackgroundColour(wx.SystemSettings.GetColour(wx.SYS_COLOUR_BTNFACE))
+
+        parent_sizer2 = wx.BoxSizer(wx.VERTICAL)
+
+        self.staticText2 = wx.StaticText(page3, wx.ID_ANY,
+            "This is a sentence in English.")
+        parent_sizer2.Add(self.staticText2, wx.SizerFlags().Border(wx.ALL))
+
+        box_sizer2 = wx.BoxSizer(wx.HORIZONTAL)
+
+        self.btn = wx.Button(page3, wx.ID_ANY, "French")
+        _svg_string_ = zlib.decompress(base64.b64decode(french_flag_svg))
+        self.btn.SetBitmap(
+            wx.BitmapBundle.FromSVG(_svg_string_, wx.Size(24, 16)))
+        box_sizer2.Add(self.btn, wx.SizerFlags().Border(wx.ALL))
+
+        self.btn2 = wx.Button(page3, wx.ID_ANY, "Japanese")
+        _svg_string_ = zlib.decompress(base64.b64decode(e697a5e381aee4b8b8_svg))
+        self.btn2.SetBitmap(
+            wx.BitmapBundle.FromSVG(_svg_string_, wx.Size(24, 16)))
+        box_sizer2.Add(self.btn2, wx.SizerFlags().Border(wx.ALL))
+
+        parent_sizer2.Add(box_sizer2, wx.SizerFlags().Border(wx.ALL))
+        page3.SetSizerAndFit(parent_sizer2)
+
+        page4 = wx.Panel(self.simplebook, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize,
+            wx.TAB_TRAVERSAL)
+        self.simplebook.AddPage(page4, "Français")
+        page4.SetBackgroundColour(wx.SystemSettings.GetColour(wx.SYS_COLOUR_BTNFACE))
+
+        parent_sizer3 = wx.BoxSizer(wx.VERTICAL)
+
+        self.staticText3 = wx.StaticText(page4, wx.ID_ANY,
+            "Ceci est une phrase en français.")
+        parent_sizer3.Add(self.staticText3, wx.SizerFlags().Border(wx.ALL))
+
+        box_sizer3 = wx.BoxSizer(wx.HORIZONTAL)
+
+        self.btn3 = wx.Button(page4, wx.ID_ANY, "English")
+        self.btn3.SetBitmap(wx.BitmapBundle.FromBitmap(images.english_png.Bitmap))
+        box_sizer3.Add(self.btn3, wx.SizerFlags().Border(wx.ALL))
+
+        self.btn4 = wx.Button(page4, wx.ID_ANY, "Japanese")
+        _svg_string_ = zlib.decompress(base64.b64decode(e697a5e381aee4b8b8_svg))
+        self.btn4.SetBitmap(
+            wx.BitmapBundle.FromSVG(_svg_string_, wx.Size(24, 16)))
+        box_sizer3.Add(self.btn4, wx.SizerFlags().Border(wx.ALL))
+
+        parent_sizer3.Add(box_sizer3, wx.SizerFlags().Border(wx.ALL))
+        page4.SetSizerAndFit(parent_sizer3)
+
+        page5 = wx.Panel(self.simplebook, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize,
+            wx.TAB_TRAVERSAL)
+        self.simplebook.AddPage(page5, "日本語")
+        page5.SetBackgroundColour(wx.SystemSettings.GetColour(wx.SYS_COLOUR_BTNFACE))
+
+        parent_sizer4 = wx.BoxSizer(wx.VERTICAL)
+
+        self.staticText4 = wx.StaticText(page5, wx.ID_ANY,
+            "これは日本語の文章です。")
+        parent_sizer4.Add(self.staticText4, wx.SizerFlags().Border(wx.ALL))
+
+        box_sizer4 = wx.BoxSizer(wx.HORIZONTAL)
+
+        self.btn5 = wx.Button(page5, wx.ID_ANY, "English")
+        box_sizer4.Add(self.btn5, wx.SizerFlags().Border(wx.ALL))
+
+        self.btn6 = wx.Button(page5, wx.ID_ANY, "French")
+        _svg_string_ = zlib.decompress(base64.b64decode(french_flag_svg))
+        self.btn6.SetBitmap(
+            wx.BitmapBundle.FromSVG(_svg_string_, wx.Size(24, 16)))
+        box_sizer4.Add(self.btn6, wx.SizerFlags().Border(wx.ALL))
+
+        parent_sizer4.Add(box_sizer4, wx.SizerFlags().Border(wx.ALL))
+        page5.SetSizerAndFit(parent_sizer4)
+
+        page2.SetSizerAndFit(page_sizer2)
+
         if "wxMac" not in wx.PlatformInfo:
             stdBtn_line = wx.StaticLine(self, wx.ID_ANY, wx.DefaultPosition, wx.Size(20, -1))
             dlg_sizer.Add(stdBtn_line, wx.SizerFlags().Expand().Border(wx.ALL))
@@ -365,16 +473,34 @@ class BookTestDlg(wx.Dialog):
         stdBtn.Realize()
         dlg_sizer.Add(stdBtn, wx.SizerFlags().Expand().Border(wx.ALL))
 
-        self.SetSizerAndFit(dlg_sizer)
+        if pos != wx.DefaultPosition:
+            self.SetPosition(self.FromDIP(pos))
+        if size == wx.DefaultSize:
+            self.SetSizerAndFit(dlg_sizer)
+        else:
+            self.SetSizer(dlg_sizer)
+            if size.x == wx.DefaultCoord or size.y == wx.DefaultCoord:
+                self.Fit()
+            self.SetSize(self.FromDIP(size))
+            self.Layout()
         self.Centre(wx.BOTH)
 
         # Bind Event handlers
         btn.Bind(wx.EVT_BUTTON, lambda event:self.m_choicebook.SetSelection(0))
         btn_2.Bind(wx.EVT_BUTTON, lambda event:self.m_choicebook.SetSelection(2))
+        self.btn3.Bind(wx.EVT_BUTTON, self.on_button)
+        self.btn5.Bind(wx.EVT_BUTTON, self.on_button)
+        self.btn.Bind(wx.EVT_BUTTON, self.on_button)
+        self.btn6.Bind(wx.EVT_BUTTON, self.on_button)
+        self.btn2.Bind(wx.EVT_BUTTON, self.on_button)
+        self.btn4.Bind(wx.EVT_BUTTON, self.on_button)
 
     # Event handler functions
     # Add these below the comment block, or to your inherited class.
     """
+    def on_button(self, event):
+        event.Skip()
+
     """
 
 # ************* End of generated code ***********

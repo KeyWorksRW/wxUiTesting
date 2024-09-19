@@ -21,6 +21,7 @@ class PopupWin(wx.PopupTransientWindow):
             "This is a wxPopupTransientWindow set to use a raised border around it. Note that the default is to not have a border at all.\n\nBTW, right-click anywhere in the dialog to get a popup menu for changing some of the control values.\n\nClick outside this window to dismiss it.")
         self.staticText.Wrap(250)
         parent_sizer.Add(self.staticText, wx.SizerFlags().Border(wx.ALL))
+
         self.SetSizerAndFit(parent_sizer)
 # ************* End of generated code ***********
 # DO NOT EDIT THIS COMMENT BLOCK!

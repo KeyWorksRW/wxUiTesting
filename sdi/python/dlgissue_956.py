@@ -73,7 +73,16 @@ class DlgIssue_956(wx.Dialog):
         stdBtn.Realize()
         dlg_sizer.Add(stdBtn, wx.SizerFlags().Expand().Border(wx.ALL))
 
-        self.SetSizerAndFit(dlg_sizer)
+        if pos != wx.DefaultPosition:
+            self.SetPosition(self.FromDIP(pos))
+        if size == wx.DefaultSize:
+            self.SetSizerAndFit(dlg_sizer)
+        else:
+            self.SetSizer(dlg_sizer)
+            if size.x == wx.DefaultCoord or size.y == wx.DefaultCoord:
+                self.Fit()
+            self.SetSize(self.FromDIP(size))
+            self.Layout()
         self.Centre(wx.BOTH)
 # ************* End of generated code ***********
 # DO NOT EDIT THIS COMMENT BLOCK!

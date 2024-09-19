@@ -14,35 +14,39 @@ import zlib
 import base64
 from wx.lib.embeddedimage import PyEmbeddedImage
 
+# ../art/wxPython.svg
 wxPython_svg = (
-    b"eNrlWU1z2zYQ7U/BMJd0hkTwsQAWspVLDj11emjTQ2+KTMWayJaHUhI7v75vSUoWHUlRHTvTac1DyCWw"
-    b"2Lf73gJUzlef3r8+v6hnKzW/GBdyQ8Xr88X8up40vzSTi3l9vW5fDU0u5YBxq/XyRq3Wd4t6XMh9NV0u"
-    b"ls3oxTuW66w1LW8m0/n6bmQ0ZTY+O3dWqOVstqrX48IUrXMZCJepeHXYZ5rJ9cDnjis7cJXF1ath0Cfh"
-    b"4lT8wxh0OASI89MBso8D5GOKxwrl5DoREHzxMUDvvFwnAfKRzSMBOX8M0IzkGsZg96NxREfQfL6cr+uD"
-    b"fuzAzyOhUEz2GJTZBfl3D0LYXxl48scqM5vVnPwpaOApPBYN6H44hDDJwHMimo7th1x5E3Pmw64GcLI/"
-    b"Bc6tHRfOkXY+51ioOzxaIp1CsqlQt25cVDFobzgYh9du8HpPG8ks02D8MLps6tm4eLGn9Op9//T2er5e"
-    b"jYuPq7r5HXjq367frur71380k+vVbNlcjYu13C4m6/qlNUa7ZFyZs47W2viz4NwDyyanMznDHayUNKWQ"
-    b"2XewXNQRXjJ3qFLU3uLy+1Fl8w1UoMDzo8L6q+nkph6BD4t6iopPFp8nd6sTYtsDKkipnjjm70n8k+FN"
-    b"9gDe/Dx4H6uf5y6wI/5fFdgF8x8t8EHA4TGArybrZn77Esed6ALZ0siFB5xDXVlZq0NOVFZJR5MD/dtJ"
-    b"HviH5eAh76O2KSIx3+a9BDBZfF8K2k+PNgVDb44N6DG9HRcRYVtmEeL0DuF6px0HnGvUbPh2NnzbIPis"
-    b"jcfxwx/L1iZNNqUcI26tYZ3IS36Ol+CZlWApPYcSSOdsbccHVNYnuyFCMDpLh+jFkJ32AVzoiIApSCYk"
-    b"0GvBJ3QV132ZPacWkAX+kVkQwhNnn7osOAOx+MS2z4IPOsbgQp8F+PE5xfTccrDE5juyAIyUTYihrris"
-    b"TNvzcJiOpdUmUIxceo2P0kAh1VUqK8ajMVxacpqiM5KcJ9OiHODlp4nX5zeT9eXmk2A2XyxGH5vFyxdf"
-    b"1//nM3m7+62DBP2qAopoOXEoswZbEzlbV6TeKBDZg7reoeLGOYcWlxQFnUNigsQ1SQ+LGUanrYmIUjKB"
-    b"lOADQ3mjUzT4KkFSDFiSvFWOJSEAUIL2mVKytLVhbgA2Z2NWn5RFdhFUUJcKVGLrAoxeE1YRW7UxVhjY"
-    b"2qYKDTllRyGXRgkzo0XSmEvcMYiZYIxSQPyhJB5d3MN/JaWxbFujLOrQvsSKHcpAy7BGHTiC3MqUDnEH"
-    b"ZTVYkB17wIATDk5FjaIHQq56z8QKMbiHy12q3AP7hHicbiM3oIpmDDVOYVfByoT9BetGqE4cIe6wNfQ5"
-    b"SS3+KSZQoBwgTWX7BPmywvbj2Uba2jDd69imsXJBB283SwNSjN4zUGOWk3AlsuRQn2RVNfAgyDIq/kZF"
-    b"oGNwnUEED8ERFKxC1tjnybfyMA6Sz8YfYthf6qotVCi5y4lBTCkjKqwesbUmYBJOwFwiVZkjhbi1BAQr"
-    b"6ZVq1VXECAD2vi2eizYZjyGmK/L9HLOpOvYpShGgMPd+gMxNiezOnGo7yZpW1ljIRR+8kvJhvyMZsoll"
-    b"Z9bG9KVrRSJTm6n9tehEyYa9kr1SjPaJiKAZqEf40mlGeBn7soJm3qQQRBYs3zdBiJzbv04JMKReShsu"
-    b"YSwUz963EurqTrmMyAkT+x0ubMnUc4lSu2rHJSIlBxwW9clxiSDrHSZ2c40hxZo4eW9RO1A4WmF6dBH7"
-    b"SCmnKbjaMh0RScyQpBARPQh82yV80MxJPDzguyzzp2Jo2Jhs8wAwpHDfUrbWjQdqxSUtJbbiwhaWYbay"
-    b"FnmA4s1Q7IvVVuFgVs7IICTtM9p4hCUy+mcrYNQ0pSiy61qJQAHpWWSIV0RWiIe9ktOOz2rfQl9a+YS2"
-    b"/ZVQY9cbWvEItbEZCbN39CO8TmooBdRtqx4hNbXqEVZ3AmvzV+1KrrN0CpWqDKQDiQ6V049vl6h6hapW"
-    b"n9g3NtKipB6IDZaBakL7a2K9WMxvVvVGODs/oqPjuLN7IX296z8UUvfYfFzUo+vl9Ze6WZ6t1s3yQ/tY"
-    b"9/fV5/nF+nKEHCNxtDFezdd1s5jjn9HWdjFZXU6aZnI3mL4j2y0UztQdAkKQbICy/SEAfMA+mHB6a/AW"
-    b"B6TsTU44PzV4C+VGbKC2+wVf/n/ip78B2GH9kg==")
+    b"eNrlWU1z20YS3Z8yBV+cKmA43x+U6UsOe0rtYTc55AaToIgyCLAAWBL96/MaIClCJhVFtlJbu0a5DPbM"
+    b"9PTrfm8+4A/d3S27K9qubOpFIrlIWLlaJLCqhHXNqtzh7/zUQXAN+3256jeLJGiuvRTS7/qEbYrydtPD"
+    b"hYATIUUgY1l/7pb5rpgXD7um7bN1WRV1vi0WyW7fb5o6q5rbJmvqas939e23/R9Wu3KRKK24Md+27iet"
+    b"D9uq7ubtar1INn2/m89m9/f3/F7zpr2dyRjjTKiZUhl6ZN2+7vOHrO7eHcctl6dhy7bI+/KuWDbbbVN3"
+    b"w/iznqvHnrsvbTU0r5azoiq2Rd13M8nlLPn4YVWsuyGV9GJgqMq6yNt/tvmqRL+haWpSPlr06/pmx7p+"
+    b"XyFL9J4tm6pp5+8+BXpuBlOzy5dlv58LbmIQOip1k7Bmve4KVOBYQnSES5/Mrvv0a3qe+DxzJSeuIrma"
+    b"TYN+Ea7gk78YA7fXAIX44wDJ1wHSzrvnCqXoeSEg+ArPAfqk6XkRIO2CeCUgpZ8DtDb0TGOQl9EoKPE6"
+    b"mvtN2RdX/ciJn1dCMc7L56CsV0Z/ehLC5crAk36uMut1Ebx+CRp4sq9FA7pfD8HmEXheiGZk+zVXWrgY"
+    b"w3VXEzhRvwTOg8TirAxXOkaXsD1+SmO4t156LKZqkWTOci2CFdhT9mrSfGEZiYGGwfh5vmkLLPPvLpSe"
+    b"3R5+/VqXfbdIvnRF+2/gKf5V/9oVj83/afO6WzftdpH09FrlffFeCsGVFyqNkTsppfuJcF6AJb3i0SgR"
+    b"Rljec+NtDHqEpRx38BLDiMo7riUefRlVFH+CChR4e1SnvRV8qIolKp5X9/m+e0FsF0BZKtUPjvl7Ev/D"
+    b"8Hp5BW98G7yv1c9bF1iZ8H9VYGXF/2iBrwK2rwG8zfu2fHiP445T1shU0IMfOIeqNJOS2+hNmnnuRLTm"
+    b"v53kNvxtOXjKe8eld0jMn/OeAsir70vBcPUYUjD1poIAPZYPi8QhbBkCCXG5R7i4dKlgca5h62nretra"
+    b"IvjIhcbxQz+XrWOapPfRObziBsm90ZSf50vwxkqQxr+FEgyPUcqRD6gs7tFHIljBI60QBzFExbUFF0Yi"
+    b"YAiSKem+O2hBe6wqaryZvaUWkIXwd2aBCG9C1H7MghIQi/ZBHrKgLXfOKnvIAvzo6J1/azlIE8R3ZAEY"
+    b"TRTW2SILaSaGNQ+HaZdKLqxxLqSa41JqjfVF5tMs4KcQIZVGceOUoOT8MC3SAZ4+TXz8sMv7zfFKsC6r"
+    b"av6lrd6/+7b+P91Q6/ldBwn6hVkUUQYfbBo52OqNkkVm2M8MRNagrlaouFBKYYnzzFgerQ8GEueG1jAX"
+    b"YVRcCocoKRNICS4YTAvuncCtBEkRYInXkqlACQGAFLSPxntpTjaMtcCmpIvsjklkF0FZtmGgUpDKwqi5"
+    b"wSxky47GDB0H25JhQfZRGRtTwYiZTiJpIaR4CyCmh9FRAfEHJdFYxTX8Z1QaGeRgpEkVli+yWvoyZql6"
+    b"jtvgQG4mUoW4LZMcLIgqaMCAk2AVcxxFtwa5Ong2gSEG9XS6DYsHYHeIR/EhcgGq8ICuQjHsKpjZYH/B"
+    b"vA6qI0eI254Mh5z4Af8SA4w10UKaTB4SpNMM248O0pmTDcM1d0MaM2W51fI4NSA5p3UAaoxSFC5F5hXq"
+    b"4yXLJh4IWUTFf2YO6AK4HlL6puijgYKZjRz7vNGDPISC5KPQ1xj2O9sOhbJpGHMiEJOPiAqzO2ytHpiI"
+    b"EzCnSFUMzlh3slgES+mlahWZQw8A1noonnLSC40uYizy4xhxrDr2KeMdQGHsYwca672RZ2Oy0yApBllj"
+    b"IuW01YzKh/3OUJdjLGejjqav41JEMpXRDF+LXihZe1GyWxawfCIiaAbqIb6MmiFeukNZQTMtvLUki0D3"
+    b"G0tEjsOfUQkw+IOUjlxCXyg+aD1IaKy7ialDToIJ+owLJzIduGT8MOvIJWMYHXACqY+OSwayPmPiOFYI"
+    b"wwI3wWstUTtQ2EliulMO+0hKpym4OjEdEVHMkCQREWsQ+HZOeMtD8OThCd9pmt9YgIaFiDJOAEMKj0vK"
+    b"yXr0YAZx0ZLiBnFhC4swS5rLaIAKx67YF7OTwsGsGJFBSFpHLOMOFhewfg4CRk29dyS7cSkhKCB9IBmi"
+    b"yRhJxMNeGfyZz+zSRF8H+dhh+UuhxnFtGMRD1MZmRMw+0w/x2rOpFFC3k3qI1GZQD7F6FNiQv+xccqNl"
+    b"VChVZSIdSHSqnEP/YYrsoFA26BP7xlFaxrMnYoNloho7fE0sqqrcdcVROGcf0bHiqJtHIX276z8V0viz"
+    b"/VIV87qpvxZtc9P1bfN5+Fkc3rPh/0nmyDESZ47GbdkXbVXin/nJtsq7Td62+X4y/Ey2JyghmvEQYC1l"
+    b"A5Q9HALAB+yDHqe3Fq04IEUtosf5qUUrlOuwgcrxC353d/vxH38ASrdtpw==")
 
 class BitmapsDlg(wx.Dialog):
     def __init__(self, parent, id=wx.ID_ANY, title="Bitmaps Testing",
@@ -142,7 +146,16 @@ class BitmapsDlg(wx.Dialog):
         stdBtn.Realize()
         dlg_sizer.Add(stdBtn, wx.SizerFlags().Expand().Border(wx.ALL))
 
-        self.SetSizerAndFit(dlg_sizer)
+        if pos != wx.DefaultPosition:
+            self.SetPosition(self.FromDIP(pos))
+        if size == wx.DefaultSize:
+            self.SetSizerAndFit(dlg_sizer)
+        else:
+            self.SetSizer(dlg_sizer)
+            if size.x == wx.DefaultCoord or size.y == wx.DefaultCoord:
+                self.Fit()
+            self.SetSize(self.FromDIP(size))
+            self.Layout()
         self.Centre(wx.BOTH)
 # ************* End of generated code ***********
 # DO NOT EDIT THIS COMMENT BLOCK!

@@ -11,6 +11,9 @@ require 'wx/core'
 require 'wx/aui'
 
 require_relative 'images'
+require 'zlib'
+require 'base64'
+require 'stringio'
 
 class BookTestDlg < Wx::Dialog
   def initialize(parent, id = Wx::ID_ANY, title = 'Book tests',
@@ -20,19 +23,19 @@ class BookTestDlg < Wx::Dialog
     super(parent, id, title, pos, size, style)
 
     dlg_sizer = Wx::BoxSizer.new(Wx::VERTICAL)
-    dlg_sizer.set_min_size(400, 400)
+    dlg_sizer.set_min_size(800, 1000)
 
-    @aui_notebook = Wx::AUI::AuiNotebook.new(self, Wx::ID_ANY)
-    dlg_sizer.add(@aui_notebook, Wx::SizerFlags.new(1).expand.border(Wx::ALL))
+    @notebook = Wx::AUI::AuiNotebook.new(self, Wx::ID_ANY)
+    dlg_sizer.add(@notebook, Wx::SizerFlags.new(1).expand.border(Wx::ALL))
 
-    page_2 = Wx::Panel.new(@aui_notebook, Wx::ID_ANY, Wx::DEFAULT_POSITION,
+    page_2 = Wx::Panel.new(@notebook, Wx::ID_ANY, Wx::DEFAULT_POSITION,
       Wx::DEFAULT_SIZE, Wx::TAB_TRAVERSAL)
-    @aui_notebook.add_page(page_2, 'ChoiceBook')
+    @notebook.add_page(page_2, 'ChoiceBook')
 
     page_sizer_1 = Wx::BoxSizer.new(Wx::VERTICAL)
 
     @choicebook = Wx::Choicebook.new(page_2, Wx::ID_ANY)
-    @choicebook.set_min_size(Wx::Size.new(400, 400))
+    @choicebook.set_min_size(from_dip(Wx::Size.new(400, 400)))
     page_sizer_1.add(@choicebook, Wx::SizerFlags.new.border(Wx::ALL))
 
     btn = Wx::Button.new(@choicebook, Wx::ID_ANY, 'First')
@@ -110,9 +113,9 @@ class BookTestDlg < Wx::Dialog
     page_22.set_sizer_and_fit(parent_sizer_14)
     page_2.set_sizer_and_fit(page_sizer_1)
 
-    page_3 = Wx::Panel.new(@aui_notebook, Wx::ID_ANY, Wx::DEFAULT_POSITION,
+    page_3 = Wx::Panel.new(@notebook, Wx::ID_ANY, Wx::DEFAULT_POSITION,
       Wx::DEFAULT_SIZE, Wx::TAB_TRAVERSAL)
-    @aui_notebook.add_page(page_3, 'ListBook')
+    @notebook.add_page(page_3, 'ListBook')
 
     page_sizer_2 = Wx::BoxSizer.new(Wx::VERTICAL)
 
@@ -125,7 +128,7 @@ class BookTestDlg < Wx::Dialog
       wxue_get_bundle($japanese_png)
     ]
     @listbook.set_images(bundle_list)
-    @listbook.set_min_size(Wx::Size.new(400, 400))
+    @listbook.set_min_size(from_dip(Wx::Size.new(400, 400)))
     page_sizer_2.add(@listbook, Wx::SizerFlags.new.border(Wx::ALL))
 
     page_6 = Wx::Panel.new(@listbook, Wx::ID_ANY, Wx::DEFAULT_POSITION,
@@ -169,9 +172,9 @@ class BookTestDlg < Wx::Dialog
 
     page_3.set_sizer_and_fit(page_sizer_2)
 
-    page_4 = Wx::Panel.new(@aui_notebook, Wx::ID_ANY, Wx::DEFAULT_POSITION,
+    page_4 = Wx::Panel.new(@notebook, Wx::ID_ANY, Wx::DEFAULT_POSITION,
       Wx::DEFAULT_SIZE, Wx::TAB_TRAVERSAL)
-    @aui_notebook.add_page(page_4, 'NoteBook')
+    @notebook.add_page(page_4, 'NoteBook')
 
     page_sizer_3 = Wx::BoxSizer.new(Wx::VERTICAL)
 
@@ -183,7 +186,7 @@ class BookTestDlg < Wx::Dialog
       wxue_get_bundle($japanese_png)
     ]
     @notebook_2.set_images(bundle_list)
-    @notebook_2.set_min_size(Wx::Size.new(400, 400))
+    @notebook_2.set_min_size(from_dip(Wx::Size.new(400, 400)))
     page_sizer_3.add(@notebook_2, Wx::SizerFlags.new.expand.border(Wx::ALL))
 
     page_9 = Wx::Panel.new(@notebook_2, Wx::ID_ANY, Wx::DEFAULT_POSITION,
@@ -227,9 +230,9 @@ class BookTestDlg < Wx::Dialog
 
     page_4.set_sizer_and_fit(page_sizer_3)
 
-    page_5 = Wx::Panel.new(@aui_notebook, Wx::ID_ANY, Wx::DEFAULT_POSITION,
+    page_5 = Wx::Panel.new(@notebook, Wx::ID_ANY, Wx::DEFAULT_POSITION,
       Wx::DEFAULT_SIZE, Wx::TAB_TRAVERSAL)
-    @aui_notebook.add_page(page_5, 'ToolBook')
+    @notebook.add_page(page_5, 'ToolBook')
 
     page_sizer_4 = Wx::BoxSizer.new(Wx::VERTICAL)
 
@@ -241,7 +244,7 @@ class BookTestDlg < Wx::Dialog
       wxue_get_bundle($japanese_png)
     ]
     @toolbook.set_images(bundle_list)
-    @toolbook.set_min_size(Wx::Size.new(400, 400))
+    @toolbook.set_min_size(from_dip(Wx::Size.new(400, 400)))
     page_sizer_4.add(@toolbook, Wx::SizerFlags.new.border(Wx::ALL))
 
     page_12 = Wx::Panel.new(@toolbook, Wx::ID_ANY, Wx::DEFAULT_POSITION,
@@ -285,9 +288,9 @@ class BookTestDlg < Wx::Dialog
 
     page_5.set_sizer_and_fit(page_sizer_4)
 
-    page = Wx::Panel.new(@aui_notebook, Wx::ID_ANY, Wx::DEFAULT_POSITION,
+    page = Wx::Panel.new(@notebook, Wx::ID_ANY, Wx::DEFAULT_POSITION,
       Wx::DEFAULT_SIZE, Wx::TAB_TRAVERSAL)
-    @aui_notebook.add_page(page, 'TreeBook')
+    @notebook.add_page(page, 'TreeBook')
 
     page_sizer_5 = Wx::BoxSizer.new(Wx::VERTICAL)
 
@@ -299,7 +302,7 @@ class BookTestDlg < Wx::Dialog
       wxue_get_bundle($japanese_png)
     ]
     @treebook.set_images(bundle_list)
-    @treebook.set_min_size(Wx::Size.new(400, 400))
+    @treebook.set_min_size(from_dip(Wx::Size.new(400, 400)))
     page_sizer_5.add(@treebook, Wx::SizerFlags.new.border(Wx::ALL))
 
     page_15 = Wx::Panel.new(@treebook, Wx::ID_ANY, Wx::DEFAULT_POSITION,
@@ -367,6 +370,101 @@ class BookTestDlg < Wx::Dialog
 
     page.set_sizer_and_fit(page_sizer_5)
 
+    page2 = Wx::Panel.new(@notebook, Wx::ID_ANY, Wx::DEFAULT_POSITION,
+      Wx::DEFAULT_SIZE, Wx::TAB_TRAVERSAL)
+    @notebook.add_page(page2, 'SimpleBook')
+    page2.set_background_colour(Wx::SystemSettings.get_colour(
+      Wx::SYS_COLOUR_BTNFACE))
+
+    page_sizer2 = Wx::BoxSizer.new(Wx::VERTICAL)
+
+    @simplebook = Wx::Simplebook.new(page2, Wx::ID_ANY)
+    page_sizer2.add(@simplebook, Wx::SizerFlags.new())
+
+    page3 = Wx::Panel.new(@simplebook, Wx::ID_ANY, Wx::DEFAULT_POSITION,
+      Wx::DEFAULT_SIZE, Wx::TAB_TRAVERSAL)
+    @simplebook.add_page(page3, 'English')
+    page3.set_background_colour(Wx::SystemSettings.get_colour(
+      Wx::SYS_COLOUR_BTNFACE))
+
+    parent_sizer2 = Wx::BoxSizer.new(Wx::VERTICAL)
+
+    @staticText2 = Wx::StaticText.new(page3, Wx::ID_ANY,
+      'This is a sentence in English.')
+    parent_sizer2.add(@staticText2, Wx::SizerFlags.new.border(Wx::ALL))
+
+    box_sizer2 = Wx::BoxSizer.new(Wx::HORIZONTAL)
+
+    @btn = Wx::Button.new(page3, Wx::ID_ANY, 'French')
+    _svg_string_ = Zlib::Inflate.inflate(Base64.decode64($french_flag_svg))
+    @btn.set_bitmap(Wx::BitmapBundle.from_svg(_svg_string_,
+      Wx::Size.new(24, 16)))
+    box_sizer2.add(@btn, Wx::SizerFlags.new.border(Wx::ALL))
+
+    @btn2 = Wx::Button.new(page3, Wx::ID_ANY, 'Japanese')
+    _svg_string_ = Zlib::Inflate.inflate(Base64.decode64($e697a5e381aee4b8b8_svg))
+    @btn2.set_bitmap(Wx::BitmapBundle.from_svg(_svg_string_,
+      Wx::Size.new(24, 16)))
+    box_sizer2.add(@btn2, Wx::SizerFlags.new.border(Wx::ALL))
+
+    parent_sizer2.add(box_sizer2, Wx::SizerFlags.new.border(Wx::ALL))
+    page3.set_sizer_and_fit(parent_sizer2)
+
+    page4 = Wx::Panel.new(@simplebook, Wx::ID_ANY, Wx::DEFAULT_POSITION,
+      Wx::DEFAULT_SIZE, Wx::TAB_TRAVERSAL)
+    @simplebook.add_page(page4, 'Français')
+    page4.set_background_colour(Wx::SystemSettings.get_colour(
+      Wx::SYS_COLOUR_BTNFACE))
+
+    parent_sizer3 = Wx::BoxSizer.new(Wx::VERTICAL)
+
+    @staticText3 = Wx::StaticText.new(page4, Wx::ID_ANY,
+      'Ceci est une phrase en français.')
+    parent_sizer3.add(@staticText3, Wx::SizerFlags.new.border(Wx::ALL))
+
+    box_sizer3 = Wx::BoxSizer.new(Wx::HORIZONTAL)
+
+    @btn3 = Wx::Button.new(page4, Wx::ID_ANY, 'English')
+    @btn3.set_bitmap(wxue_get_bundle($english_png))
+    box_sizer3.add(@btn3, Wx::SizerFlags.new.border(Wx::ALL))
+
+    @btn4 = Wx::Button.new(page4, Wx::ID_ANY, 'Japanese')
+    _svg_string_ = Zlib::Inflate.inflate(Base64.decode64($e697a5e381aee4b8b8_svg))
+    @btn4.set_bitmap(Wx::BitmapBundle.from_svg(_svg_string_,
+      Wx::Size.new(24, 16)))
+    box_sizer3.add(@btn4, Wx::SizerFlags.new.border(Wx::ALL))
+
+    parent_sizer3.add(box_sizer3, Wx::SizerFlags.new.border(Wx::ALL))
+    page4.set_sizer_and_fit(parent_sizer3)
+
+    page5 = Wx::Panel.new(@simplebook, Wx::ID_ANY, Wx::DEFAULT_POSITION,
+      Wx::DEFAULT_SIZE, Wx::TAB_TRAVERSAL)
+    @simplebook.add_page(page5, '日本語')
+    page5.set_background_colour(Wx::SystemSettings.get_colour(
+      Wx::SYS_COLOUR_BTNFACE))
+
+    parent_sizer4 = Wx::BoxSizer.new(Wx::VERTICAL)
+
+    @staticText4 = Wx::StaticText.new(page5, Wx::ID_ANY,
+      'これは日本語の文章です。')
+    parent_sizer4.add(@staticText4, Wx::SizerFlags.new.border(Wx::ALL))
+
+    box_sizer4 = Wx::BoxSizer.new(Wx::HORIZONTAL)
+
+    @btn5 = Wx::Button.new(page5, Wx::ID_ANY, 'English')
+    box_sizer4.add(@btn5, Wx::SizerFlags.new.border(Wx::ALL))
+
+    @btn6 = Wx::Button.new(page5, Wx::ID_ANY, 'French')
+    _svg_string_ = Zlib::Inflate.inflate(Base64.decode64($french_flag_svg))
+    @btn6.set_bitmap(Wx::BitmapBundle.from_svg(_svg_string_,
+      Wx::Size.new(24, 16)))
+    box_sizer4.add(@btn6, Wx::SizerFlags.new.border(Wx::ALL))
+
+    parent_sizer4.add(box_sizer4, Wx::SizerFlags.new.border(Wx::ALL))
+    page5.set_sizer_and_fit(parent_sizer4)
+
+    page2.set_sizer_and_fit(page_sizer2)
+
     if Wx::PLATFORM != 'WXMAC'
       stdBtn_line = Wx::StaticLine.new(self, Wx::ID_ANY, Wx::DEFAULT_POSITION,
                                   Wx::Size.new(20, -1))
@@ -380,14 +478,57 @@ class BookTestDlg < Wx::Dialog
     stdBtn.realize
     dlg_sizer.add(stdBtn, Wx::SizerFlags.new.expand.border(Wx::ALL))
 
-    set_sizer_and_fit(dlg_sizer)
+    if pos != Wx::DEFAULT_POSITION
+      set_position(from_dip(pos))
+    end
+    if size == Wx::DEFAULT_SIZE
+      set_sizer_and_fit(dlg_sizer)
+    else
+      set_sizer(dlg_sizer)
+      if size.x == Wx::DEFAULT_COORD || size.y == Wx::DEFAULT_COORD
+        fit
+      end
+      set_size(from_dip(size))
+      layout
+    end
     centre(Wx::BOTH)
 
     # Event handlers
     evt_button(btn.get_id, :OnEvent)
     evt_button(btn_2.get_id, :OnEvent)
+    evt_button(@btn3.get_id, :on_button)
+    evt_button(@btn5.get_id, :on_button)
+    evt_button(@btn.get_id, :on_button)
+    evt_button(@btn6.get_id, :on_button)
+    evt_button(@btn2.get_id, :on_button)
+    evt_button(@btn4.get_id, :on_button)
   end
+# Unimplemented Event handler functions
+# Copy any listed and paste them below the comment block, or to your inherited class.
+
+=begin
+  def on_button(event)
+    event.skip
+  end
+
+=end
 end
+
+# ../art/french_flag.svg
+$french_flag_svg = (
+  'eNqFkV1ugzAQhHsUtE+tlNj8hUomzgnSQ7Rhgzc1NrIdSHL6kgZBUVX1xTseyd+MtVvf1VFP' +
+  'VVASiry9QKSQahUk5Nn91qHzZI2EhCUQXRptvPDo6ChBhdAKzvu+Z98OO9iGQ+TDVaOEI2m9' +
+  'dmeNAjs0tqrKg6Z26fjg7CeuNRk8WTLC2bOZ3IYCOk3DEGkJu237HlRUSXiLV/E+TViWZbPI' +
+  'U1YUr/t4FIsWwtUfz8OjVZJvXsq5l7Hmhs6WwH/AJ/ADNIsxYZG3jOnV0Pg//oQt8scxchcp' +
+  'v+un6eb+gT/782GNu6cvQdONGA==')
+
+# ../art/日の丸.svg
+$e697a5e381aee4b8b8_svg = (
+  'eNpVkNFugzAMRfcpkZ9WqQ0lMIYC4WMWXHAXEpSkQP9+KQ/VeLHlK/no2G1YBrZSH0cFVTlv' +
+  'wEakYYwKyuI1LegDOasg5zmwbTI2yICebgrGGGeZZeu68j3h2k0ZsBCfBhXcyJiLfxiUuKB1' +
+  'fd9oQ/MxCdG7X7wYsnh3ZKV3D/tOJ4roDaUmRQNd61FHtim4Anvu9W39z1nwqvo+OMh1TKAG' +
+  'sq7V5LVBphOkEMB0woicF0UBzKcDBa+Pm374+czr+nw9l1+nnZClb3UffxByY0I=')
+
 # ************* End of generated code ***********
 # DO NOT EDIT THIS COMMENT BLOCK!
 #

@@ -77,7 +77,19 @@ class DlgIssue_956 < Wx::Dialog
     stdBtn.realize
     dlg_sizer.add(stdBtn, Wx::SizerFlags.new.expand.border(Wx::ALL))
 
-    set_sizer_and_fit(dlg_sizer)
+    if pos != Wx::DEFAULT_POSITION
+      set_position(from_dip(pos))
+    end
+    if size == Wx::DEFAULT_SIZE
+      set_sizer_and_fit(dlg_sizer)
+    else
+      set_sizer(dlg_sizer)
+      if size.x == Wx::DEFAULT_COORD || size.y == Wx::DEFAULT_COORD
+        fit
+      end
+      set_size(from_dip(size))
+      layout
+    end
     centre(Wx::BOTH)
   end
 end

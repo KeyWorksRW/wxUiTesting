@@ -22,18 +22,21 @@ import base64
 import images
 from wx.lib.embeddedimage import PyEmbeddedImage
 
+# ../art/left.svg
 left_svg = (
-    b"eNqFlU1zmzAQhvtTNPTSztgbrSQkcOyc20OvPeRGw4eZYOMBmtb99V0hEgMytjwwyLt6tNLuK23bt+Jp"
-    b"m2Z5y8p0F9gP1MiDh6dtwcrja/uSnLJN0dS/T4c6zXZBlZyzJriYquRXVu2C74ekyIKeURBABP34vicj"
-    b"KQPWNcmxzevmsAsOSdeUf78gcINKRHrF6Ue92IQaV2sE+29o+s9Y6EjE8ivxTkm3Z213riiKtGxPFMmm"
-    b"PFblMXvMy6rafObU8vyx7Zr6NVv/KdNuv0Gg6QXNT6H8YGIlItCSmmI/mTAgNDXDvjEJMu4bUxBZ24ef"
-    b"5BOzYM/sQE7CzsZxxWcgA5rFwJ3VB1mzfh88oNChCfXGaMnSofYMQfXPDLK3Tsq9/rlYvChQwzAFGp8w"
-    b"sSuK6HkBI7gLFZlAcvMwFztGtG2LGAVqwITXdndkl8sQGuOcJL+C+LDaMT2Er9a0t9ZVAi5RFISOQpHF"
-    b"dzhIeV3icFADB2mFdzgK4gUO5UU6DuXN3OK81xdyiJZgAkRPYygpe8sw3tefza8GY2E68mkR4BBaDOFQ"
-    b"PFeQVmRElG5i2hnogVdFdvELqUjvqmxEmqtsTrotszFrLLMpZVFnozg8nc0DuSW0EccT2pxzS2ljzlxp"
-    b"HmdRamPKNPMeY5Zzd+zb4xnpQPfvhrTuWnuh3D3A89xi+866PiUvZXfe4PQ858CFirS6nOi0wyIcyoDi"
-    b"c/Vja0lwI4w0FL5CFSqjnL4GZ2EmTtNlyBCNv44mS+0yHorhsVfnp/8jr5kh")
+    b"eNqFlUtzmzAQx/tRNOqlnbEVrSQkcIwPPbWHXnvIjYTnBBsPUCfup+8KkZiHseXHALv66b/aXbFtThk5"
+    b"JXVTVIeQAgNKijik+BQ015S8FXGbh1QKSvKkyPLWXZ+K5O1H9R5STjiRAr90t42TtOlm2wvQwOnDbpuR"
+    b"4vDavETHZJPV1d/jvoqTkJbROanpxVRGz0kZ0l/7KEucAlwfLDTr76QvJSVtHR2atKr3Id1HbV28fwPG"
+    b"DSjh6xXHD94FxtOwWmMo+NQz3WUgtC8C+R15x6jNSdOeS1QRF80RlWyKQ1kckse0KMvNV44jTR+btq5e"
+    b"k3UX/wYYLi9wfZTym4iV8JmWOBT5Q4RhQuMw5CeRTAbdIIr51vbpJ/nILMgT2aOTsKtxWPEJyDBNAsad"
+    b"dQ6yZv0xuUeBQyPqRDBk6VA5Aaa63wSSWyfl/v45LTMVoFm/BJg5YWRXqOhpASO4kwpEALrNMBc7+Lht"
+    b"ixjFVI/xru3uwC6XITjHOUl+BfFptXM6CF+tcW+tq2SwRFHMcxRUFtzhAOZ1icOZ6jmAEd7hKBYscDAv"
+    b"0nEwb+YW56O+gDN/CSaY6GgEJGZvGca7+rP51cxYmPbnNJ9BLy1gXl88V5C2yZAo3cK4M6wDXm2yi5+H"
+    b"RXq3ywakaZdNSbfbbMgattmYsthnAx2zPpsKudVoA86s0aacW5025Ew7bcZZbLUhZZz5GWOSc3fs2+MZ"
+    b"8ECfvxviqm3sC+XuAZ6mFtvdrKtj9FK05w2Mz3POuFC+VpcTHXdYeH0ZoD5XP7aWBDfCSIPyFShPGeX6"
+    b"q3cWZuQ0DkN6YOZx1Elsw3jI+h++andf/gNQMqyX")
 
+# ../art/undo.png
 undo_png = PyEmbeddedImage(
     b"iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAADdElE"
     b"QVRIx+2VT2hdRRTGf2dm3n33vveCtkqERGsTUzTd1IYuBMVautSlINiFUFDBohQpVFGhOxWhlG4siApi"
@@ -53,6 +56,7 @@ undo_png = PyEmbeddedImage(
     b"YeoVgUYllpHQCcQ88O3Oltzxiwbw9KlSxRnESVWmVB3060Ej/G//1v4EvrC4VZwjYRAAAAAASUVORK5C"
     b"YII=")
 
+# ../art/redo.png
 redo_png = PyEmbeddedImage(
     b"iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAADY0lE"
     b"QVRIx+2VTWgdVRTHf+fcO/Pe5IO0hQgtVWxNQaiQJrsitAqFbvxAoSAEBBdKRRCpi2xEilLqQkEsSEUs"
@@ -184,9 +188,17 @@ class ToolBarsDialog(wx.Dialog):
             wx.ribbon.RIBBON_BUTTON_NORMAL)
         rbn_btn_bar.Realize()
 
-        self.SetSizer(box_sizer)
-        self.SetMinSize(self.ConvertDialogToPixels(wx.Size(200, -1)))
-        self.Fit()
+        self.SetMinSize(self.FromDIP(wx.Size(400, -1)))
+        if pos != wx.DefaultPosition:
+            self.SetPosition(self.FromDIP(pos))
+        if size == wx.DefaultSize:
+            self.SetSizerAndFit(box_sizer)
+        else:
+            self.SetSizer(box_sizer)
+            if size.x == wx.DefaultCoord or size.y == wx.DefaultCoord:
+                self.Fit()
+            self.SetSize(self.FromDIP(size))
+            self.Layout()
         self.Centre(wx.BOTH)
 
         # Bind Event handlers

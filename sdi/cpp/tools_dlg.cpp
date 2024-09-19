@@ -143,8 +143,8 @@ bool ToolBarsDialog::Create(wxWindow* parent, wxWindowID id, const wxString& tit
     }
     rbn_btn_bar->Realize();
 
-
-    SetMinSize(FromDIP(wxSize(400, -1)));if (pos != wxDefaultPosition)
+    SetMinSize(FromDIP(wxSize(400, -1)));
+    if (pos != wxDefaultPosition)
     {
         SetPosition(FromDIP(pos));
     }

@@ -12,7 +12,7 @@ import wx
 class TestFormPanel(wx.Panel):
 
     def __init__(self, parent, id=wx.ID_ANY, pos=wx.DefaultPosition,
-                size=wx.Size(500, 300), style=wx.TAB_TRAVERSAL,
+                size=self.FromDIP(wx.Size(500, 300)), style=wx.TAB_TRAVERSAL,
                 name=wx.PanelNameStr):
         wx.Panel.__init__(self)
 
@@ -47,7 +47,8 @@ class TestFormPanel(wx.Panel):
         self.splitter.SplitVertically(panel, panel2)
 
         self.SetSizer(parent_sizer)
-        self.SetSize(wx.Size(500, 300))
+        self.SetSize(self.FromDIP(wx.Size(500, 300)))
+        self.Layout()
 # ************* End of generated code ***********
 # DO NOT EDIT THIS COMMENT BLOCK!
 #

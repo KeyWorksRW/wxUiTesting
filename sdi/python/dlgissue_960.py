@@ -42,7 +42,7 @@ class DlgIssue_960(wx.Dialog):
         dlg_sizer.Add(box_sizer, wx.SizerFlags().Border(wx.ALL))
 
         bmp_3 = wx.StaticBitmap(self, wx.ID_ANY, wx.BitmapBundle.FromBitmap(
-            images.Ainsi_a_se_passe_png.Bitmap))
+            images.Ainsi_c3a7a_se_passe_png.Bitmap))
         dlg_sizer.Add(bmp_3, wx.SizerFlags().Border(wx.ALL))
 
         if "wxMac" not in wx.PlatformInfo:
@@ -58,7 +58,16 @@ class DlgIssue_960(wx.Dialog):
         stdBtn.Realize()
         dlg_sizer.Add(stdBtn, wx.SizerFlags().Expand().Border(wx.ALL))
 
-        self.SetSizerAndFit(dlg_sizer)
+        if pos != wx.DefaultPosition:
+            self.SetPosition(self.FromDIP(pos))
+        if size == wx.DefaultSize:
+            self.SetSizerAndFit(dlg_sizer)
+        else:
+            self.SetSizer(dlg_sizer)
+            if size.x == wx.DefaultCoord or size.y == wx.DefaultCoord:
+                self.Fit()
+            self.SetSize(self.FromDIP(size))
+            self.Layout()
         self.Centre(wx.BOTH)
 # ************* End of generated code ***********
 # DO NOT EDIT THIS COMMENT BLOCK!

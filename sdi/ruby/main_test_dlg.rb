@@ -85,25 +85,24 @@ class MainTestDialog < Wx::Dialog
       Wx::DEFAULT_POSITION, Wx::DEFAULT_SIZE, Wx::RTC::RE_MULTILINE|Wx::VSCROLL|
       Wx::HSCROLL|Wx::NO_BORDER|Wx::WANTS_CHARS)
     @richText.set_hint('wxRichTextCtrl')
-    @richText.set_min_size(convert_dialog_to_pixels(Wx::Size.new(150, 30)))
+    @richText.set_min_size(from_dip(Wx::Size.new(300, 75)))
     page_sizer_1.add(@richText, Wx::SizerFlags.new.expand.border(Wx::ALL))
 
     @scintilla = Wx::STC::StyledTextCtrl.new(page_2, Wx::ID_ANY)
     @scintilla.set_lexer(Wx::STC::STC_LEX_CPP)
     @scintilla.set_eol_mode(Wx::STC::STC_EOL_LF)
     @scintilla.set_view_white_space(Wx::STC::STC_WS_VISIBLEALWAYS)
-    # Sets text margin scaled appropriately for the current DPI on Windows,
-    # 5 on wxGTK or wxOSX
     @scintilla.set_margin_left(Wx::SizerFlags.get_default_border())
     @scintilla.set_margin_right(Wx::SizerFlags.get_default_border())
-    @scintilla.set_margin_width(1, 0) # Remove default margin
+    @scintilla.set_margin_width(1, 0)
+    @scintilla.set_tab_width(4)
     @scintilla.set_back_space_un_indents(true)
-    @scintilla.set_min_size(convert_dialog_to_pixels(Wx::Size.new(150, 60)))
+    @scintilla.set_min_size(from_dip(Wx::Size.new(300, 150)))
     page_sizer_1.add(@scintilla, Wx::SizerFlags.new.expand.border(Wx::ALL))
 
     @htmlWin = Wx::HTML::HtmlWindow.new(page_2, Wx::ID_ANY)
     @htmlWin.set_page('This is an <b>HTML</b> window')
-    @htmlWin.set_min_size(convert_dialog_to_pixels(Wx::Size.new(100, 60)))
+    @htmlWin.set_min_size(from_dip(Wx::Size.new(200, 150)))
     page_sizer_1.add(@htmlWin, Wx::SizerFlags.new.expand.border(Wx::ALL))
     page_2.set_sizer_and_fit(page_sizer_1)
 
@@ -218,8 +217,7 @@ class MainTestDialog < Wx::Dialog
     box_sizer_3.add(box_sizer_7, Wx::SizerFlags.new.border(Wx::ALL))
 
     static_line = Wx::StaticLine.new(page_4, Wx::ID_ANY,
-      Wx::DEFAULT_POSITION, convert_dialog_to_pixels(Wx::Size.new(20, -1)),
-      Wx::LI_HORIZONTAL)
+      Wx::DEFAULT_POSITION, from_dip(Wx::Size.new(40, -1)), Wx::LI_HORIZONTAL)
     box_sizer_3.add(static_line, Wx::SizerFlags.new.expand.border(Wx::ALL))
 
     box_sizer_19 = Wx::BoxSizer.new(Wx::HORIZONTAL)
@@ -340,8 +338,7 @@ class MainTestDialog < Wx::Dialog
     @html_listbox = Wx::HTML::SimpleHtmlListBox.new(page_5, Wx::ID_ANY)
     @html_listbox.append('<b>bold</b>')
     @html_listbox.append('<i>italics</i>')
-    @html_listbox.set_min_size(
-      convert_dialog_to_pixels(Wx::Size.new(-1, 40)))
+    @html_listbox.set_min_size(from_dip(Wx::Size.new(-1, 100)))
     box_sizer2.add(@html_listbox, Wx::SizerFlags.new(1).expand.border(Wx::ALL))
 
     flex_grid_sizer.add(box_sizer2, Wx::SizerFlags.new.border(Wx::ALL))
@@ -756,8 +753,7 @@ class MainTestDialog < Wx::Dialog
     dlg_sizer.add(box_sizer_14, Wx::SizerFlags.new.border(Wx::ALL))
 
     @events_list = Wx::ListBox.new(self, Wx::ID_ANY)
-    @events_list.set_min_size(
-      convert_dialog_to_pixels(Wx::Size.new(-1, 60)))
+    @events_list.set_min_size(from_dip(Wx::Size.new(-1, 150)))
     dlg_sizer.add(@events_list, Wx::SizerFlags.new(1).expand.border(Wx::ALL))
 
     if Wx::PLATFORM != 'WXMAC'
@@ -773,24 +769,36 @@ class MainTestDialog < Wx::Dialog
     stdBtn.realize
     dlg_sizer.add(stdBtn, Wx::SizerFlags.new.expand.border(Wx::ALL))
 
-    set_sizer_and_fit(dlg_sizer)
+    if pos != Wx::DEFAULT_POSITION
+      set_position(from_dip(pos))
+    end
+    if size == Wx::DEFAULT_SIZE
+      set_sizer_and_fit(dlg_sizer)
+    else
+      set_sizer(dlg_sizer)
+      if size.x == Wx::DEFAULT_COORD || size.y == Wx::DEFAULT_COORD
+        fit
+      end
+      set_size(from_dip(size))
+      layout
+    end
     centre(Wx::BOTH)
 
     # Event handlers
-    evt_button(@btn.get_id, :OnEvent)
-    evt_button(@btn_3.get_id, :OnEvent)
-    evt_button(btn2.get_id, :OnPopupBtn)
-    evt_button(@btn_7.get_id, :OnEvent)
-    evt_button(@btn_2.get_id, :OnEvent)
-    evt_button(@btn_bitmaps.get_id, :OnEvent)
-    evt_button(@btn_4.get_id, :OnEvent)
-    evt_button(@btn_6.get_id, :OnEvent)
     evt_button(btn.get_id, :OnClearList)
+    evt_button(btn2.get_id, :OnPopupBtn)
+    evt_button(@btn_3.get_id, :OnEvent)
+    evt_button(@btn.get_id, :OnEvent)
+    evt_button(@btn_2.get_id, :OnEvent)
+    evt_button(@btn_4.get_id, :OnEvent)
+    evt_button(@btn_bitmaps.get_id, :OnEvent)
+    evt_button(@btn_7.get_id, :OnEvent)
     evt_button(@btn_5.get_id, :OnEvent)
-    evt_checkbox(@checkPlayAnimation.get_id, :on_check_play_animation)
+    evt_button(@btn_6.get_id, :OnEvent)
     evt_checkbox(disable_bitmaps.get_id, :OnDisableBitmapsBtn)
-    evt_checklistbox(@checkList2.get_id, :OnEvent)
+    evt_checkbox(@checkPlayAnimation.get_id, :on_check_play_animation)
     evt_checklistbox(@checkList_2.get_id, :OnEvent)
+    evt_checklistbox(@checkList2.get_id, :OnEvent)
     evt_choice(@choice.get_id, :OnEvent)
     evt_choice(@choice2.get_id, :OnEvent)
     evt_colourpicker_changed(@colourPicker.get_id, :OnEvent)
@@ -805,17 +813,17 @@ class MainTestDialog < Wx::Dialog
     evt_listbox(@listBox2.get_id, :OnEvent)
     evt_notebook_page_changed(@notebook.get_id, :OnPageChanged)
     evt_radiobox(radioBox.get_id, :OnEvent)
-    evt_radiobutton(@radioBtn_4.get_id, :OnEvent)
-    evt_radiobutton(@radioBtn_2.get_id, :OnEvent)
-    evt_radiobutton(@radioBtn_7.get_id, :OnEvent)
     evt_radiobutton(@radioBtn.get_id, :OnEvent)
-    evt_radiobutton(@radioBtn_6.get_id, :OnEvent)
     evt_radiobutton(@radioBtn2.get_id, :OnEvent)
-    evt_radiobutton(@radioBtn_5.get_id, :OnEvent)
+    evt_radiobutton(@radioBtn_2.get_id, :OnEvent)
     evt_radiobutton(@radioBtn_3.get_id, :OnEvent)
+    evt_radiobutton(@radioBtn_4.get_id, :OnEvent)
+    evt_radiobutton(@radioBtn_5.get_id, :OnEvent)
+    evt_radiobutton(@radioBtn_6.get_id, :OnEvent)
+    evt_radiobutton(@radioBtn_7.get_id, :OnEvent)
     evt_stc_change(@scintilla.get_id, :OnEvent)
-    evt_text(@text_ctrl.get_id, :OnEvent)
     evt_text(@richText.get_id, :OnEvent)
+    evt_text(@text_ctrl.get_id, :OnEvent)
     evt_time_changed(@timePicker.get_id, :OnEvent)
     evt_togglebutton(@toggleBtn.get_id, :OnEvent)
     evt_togglebutton(@toggleBtn_2.get_id, :OnEvent)
@@ -829,6 +837,7 @@ class MainTestDialog < Wx::Dialog
   end
 end
 
+# ../art/clr_hourglass.gif
 $clr_hourglass_gif = Base64.decode64(
   'R0lGODlhIAAgAPIAAP///8zMzAD//wCZmQAAAAAAAAAAAAAAACH/C05FVFNDQVBFMi4wAwEA' +
   'AAAh+QQJCgAFACwAAAAAIAAgAAADZli63P4wykmrvTjnwbvnhFZwQil8QygSbOuqYiDPNKzJ' +

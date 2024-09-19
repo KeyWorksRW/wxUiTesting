@@ -31,14 +31,17 @@ class MainFrame < Wx::Frame
                  style = Wx::DEFAULT_FRAME_STYLE|Wx::TAB_TRAVERSAL)
 
     super(parent, id, title, pos, size, style)
-
-    set_min_size(convert_dialog_to_pixels(Wx::Size.new(200, 100)))
+    if pos != Wx::DEFAULT_POSITION || size != Wx::DEFAULT_SIZE
+      set_size(from_dip(pos).x, from_dip(pos).y,
+      from_dip(size).x, from_dip(size).y, Wx::SIZE_USE_EXISTING)
+    end
+    set_min_size(from_dip(Wx::Size.new(400, 250)))
 
     @splitter = Wx::SplitterWindow.new(self, Wx::ID_ANY,
       Wx::DEFAULT_POSITION, Wx::DEFAULT_SIZE, Wx::SP_3D)
     @splitter.set_sash_gravity(0.0)
     @splitter.set_minimum_pane_size(150)
-    @splitter.set_min_size(convert_dialog_to_pixels(Wx::Size.new(200, 200)))
+    @splitter.set_min_size(from_dip(Wx::Size.new(400, 500)))
 
     @propertyGridManager = Wx::PropertyGridManager.new(@splitter, Wx::ID_ANY,
       Wx::DEFAULT_POSITION, Wx::DEFAULT_SIZE, Wx::PG::PG_AUTO_SORT|
@@ -114,7 +117,7 @@ class MainFrame < Wx::Frame
     @kicadGrid.set_row_label_size(160)
     @kicadGrid.set_row_label_value(0, 'Reference designator')
     @kicadGrid.set_row_label_value(1, 'Value')
-    @kicadGrid.set_min_size(Wx::Size.new(800, 140))
+    @kicadGrid.set_min_size(from_dip(Wx::Size.new(800, 140)))
     @splitter.split_horizontally(@propertyGridManager, @kicadGrid)
 
     menubar = Wx::MenuBar.new
@@ -164,7 +167,7 @@ class MainFrame < Wx::Frame
     menu_item_5.set_bitmap(wxue_get_bundle($debug_32_png))
     submenu.append(menu_item_5)
     menu_item_6 = Wx::MenuItem.new(submenu, Wx::ID_ANY, 'DlgIssue_960')
-    menu_item_6.set_bitmap(wxue_get_bundle($Ainsi_a_se_passe_png))
+    menu_item_6.set_bitmap(wxue_get_bundle($Ainsi_c3a7a_se_passe_png))
     submenu.append(menu_item_6)
     submenu_item = menuDialogs.append_sub_menu(submenu, 'Issue Dialogs')
     submenu_item.set_bitmap(wxue_get_bundle($wxDialog_png))
@@ -198,35 +201,37 @@ class MainFrame < Wx::Frame
     @toolBar.add_stretchable_space
 
     tool_2 = @toolBar.add_tool(Wx::ID_ANY, 'Common Controls...', Wx::ArtProvider.get_bitmap_bundle(
-      Wx::ART_TIP, Wx::ART_TOOLBAR))
+      Wx::ART_TIP, Wx::ART_TOOLBAR, Wx::Size.new(24, 24)))
 
     @toolBar.realize
 
-    @statusBar = create_status_bar(2)
+    @statusBar = Wx::StatusBar.new(self, Wx::ID_ANY, Wx::STB_DEFAULT_STYLE)
+    @statusBar.set_fields_count(2)
+    set_status_bar(@statusBar)
     @statusBar.set_status_widths([100, -1])
     @statusBar.set_status_styles([Wx::SB_FLAT, Wx::SB_FLAT])
 
     centre(Wx::BOTH)
 
     # Event handlers
-    evt_menu(menuQuit.get_id, :on_quit)
-    evt_menu(menu_item_3.get_id, :OnMainTestDlg)
-    evt_menu(menu_item_4.get_id, :OnBookTestDlg)
-    evt_menu(menu_item2.get_id, :on_propsheet_dlg)
-    evt_menu(menu_item_2.get_id, :OnPythonDlg)
-    evt_menu(menu_tools_dlg2.get_id, :on_tools_dlg)
-    evt_menu(menuItem3.get_id, :OnWizard)
     evt_menu(menuItem2.get_id, :OnBitmapsDlg)
+    evt_menu(menu_item_4.get_id, :OnBookTestDlg)
     evt_menu(menuItem_2.get_id, :OnCommonDialog)
     evt_menu(menu_item_5.get_id, :OnDlgIssue_956)
     evt_menu(menu_item_6.get_id, :OnDlgIssue_960)
-    evt_menu(menu_item.get_id, :OnWizard)
+    evt_menu(menu_item_3.get_id, :OnMainTestDlg)
+    evt_menu(menu_item2.get_id, :on_propsheet_dlg)
+    evt_menu(menu_item_2.get_id, :OnPythonDlg)
+    evt_menu(menuQuit.get_id, :on_quit)
     evt_menu(menu_tools_dlg.get_id, :on_tools_dlg)
+    evt_menu(menu_tools_dlg2.get_id, :on_tools_dlg)
+    evt_menu(menuItem3.get_id, :OnWizard)
+    evt_menu(menu_item.get_id, :OnWizard)
     evt_size(:OnGridSize)
-    evt_tool(tool_4.get_id, :OnMainTestDlg)
     evt_tool(tool_5.get_id, :OnBookTestDlg)
-    evt_tool(tool_3.get_id, :OnPythonDlg)
     evt_tool(tool_2.get_id, :OnCommonDialog)
+    evt_tool(tool_4.get_id, :OnMainTestDlg)
+    evt_tool(tool_3.get_id, :OnPythonDlg)
   end
 # Unimplemented Event handler functions
 # Copy any listed and paste them below the comment block, or to your inherited class.
@@ -255,6 +260,7 @@ class MainFrame < Wx::Frame
 =end
 end
 
+# ../art/wxToolBar.png
 $wxToolBar_png = Base64.decode64(
   'iVBORw0KGgoAAAANSUhEUgAAABYAAAAWCAYAAADEtGw7AAAACXBIWXMAAAsTAAALEwEAmpwY' +
   'AAAB3ElEQVQ4y+2UMWgTURjHf69pcnI2BYPeIukiGoQGBIcMthDCG8RBp7aDkw4VS6AdnJ0l' +
@@ -268,6 +274,7 @@ $wxToolBar_png = Base64.decode64(
   'ho+00wWlaRCJnGzJNNcIh/2HExPD1GrddSwWQ0pJpfKOlZW1s/qky+Xy+R9/RvEX3wKaS6uF' +
   'TSQAAAAASUVORK5CYII=')
 
+# ../art/wxWizard.png
 $wxWizard_png = Base64.decode64(
   'iVBORw0KGgoAAAANSUhEUgAAABYAAAAWCAYAAADEtGw7AAAACXBIWXMAAAsTAAALEwEAmpwY' +
   'AAADyUlEQVQ4y9WVTWhcVRTHf+8jM+8lqXmTqJ0nVoy6meAmARW6DIISLaLd1EaKCIJQi9Wm' +
@@ -290,6 +297,7 @@ $wxWizard_png = Base64.decode64(
   'WVDFsS1WVg1Xl018g7z18THaO3zESHLAFRVBNHkagzQcQuxcBCTeelwDjS8eUXZte+y/u/P+' +
   'BD1fHlfoCgy7AAAAAElFTkSuQmCC')
 
+# ../art/wxDialog.png
 $wxDialog_png = Base64.decode64(
   'iVBORw0KGgoAAAANSUhEUgAAABYAAAAWCAYAAADEtGw7AAAACXBIWXMAAAsTAAALEwEAmpwY' +
   'AAACLklEQVQ4y7WVQWsTURDHf7vZLompaVPQg+jFa8DiqQe/gMceetNCEQX9Bl5ERBD8AF4q' +

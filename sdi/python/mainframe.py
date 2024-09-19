@@ -25,6 +25,7 @@ import zlib
 import base64
 from wx.lib.embeddedimage import PyEmbeddedImage
 
+# ../art/wxToolBar.png
 wxToolBar_png = PyEmbeddedImage(
     b"iVBORw0KGgoAAAANSUhEUgAAABYAAAAWCAYAAADEtGw7AAAACXBIWXMAAAsTAAALEwEAmpwYAAAB3ElE"
     b"QVQ4y+2UMWgTURjHf69pcnI2BYPeIukiGoQGBIcMthDCG8RBp7aDkw4VS6AdnJ0llHSQDgWXCiGgi2AT"
@@ -37,6 +38,7 @@ wxToolBar_png = PyEmbeddedImage(
     b"XZ/if2EYho+00wWlaRCJnGzJNNcIh/2HExPD1GrddSwWQ0pJpfKOlZW1s/qky+Xy+R9/RvEX3wKaS6uF"
     b"TSQAAAAASUVORK5CYII=")
 
+# ../art/wxWizard.png
 wxWizard_png = PyEmbeddedImage(
     b"iVBORw0KGgoAAAANSUhEUgAAABYAAAAWCAYAAADEtGw7AAAACXBIWXMAAAsTAAALEwEAmpwYAAADyUlE"
     b"QVQ4y9WVTWhcVRTHf+8jM+8lqXmTqJ0nVoy6meAmARW6DIISLaLd1EaKCIJQi9WmiG03UkEEN0oHRFo/"
@@ -57,6 +59,7 @@ wxWizard_png = PyEmbeddedImage(
     b"SEOVkwUKjz65nWPFWVDFsS1WVg1Xl018g7z18THaO3zESHLAFRVBNHkagzQcQuxcBCTeelwDjS8eUXZt"
     b"e+y/u/P+BD1fHlfoCgy7AAAAAElFTkSuQmCC")
 
+# ../art/wxDialog.png
 wxDialog_png = PyEmbeddedImage(
     b"iVBORw0KGgoAAAANSUhEUgAAABYAAAAWCAYAAADEtGw7AAAACXBIWXMAAAsTAAALEwEAmpwYAAACLklE"
     b"QVQ4y7WVQWsTURDHf7vZLompaVPQg+jFa8DiqQe/gMceetNCEQX9Bl5ERBD8AF4qKt562EPqKQfpPSJK"
@@ -80,13 +83,16 @@ class MainFrame(wx.Frame):
 
         if not self.Create(parent, id, title, pos, size, style, name):
             return
-        self.SetMinSize(self.ConvertDialogToPixels(wx.Size(200, 100)))
+        if pos != wx.DefaultPosition or size != wx.DefaultSize:
+            self.SetSize(self.FromDIP(pos).x, self.FromDIP(pos).y,
+            self.FromDIP(size).x, self.FromDIP(size).y, wx.SIZE_USE_EXISTING)
+        self.SetMinSize(self.FromDIP(wx.Size(400, 250)))
 
         self.splitter = wx.SplitterWindow(self, wx.ID_ANY, wx.DefaultPosition,
             wx.DefaultSize, wx.SP_3D)
         self.splitter.SetSashGravity(0.0)
         self.splitter.SetMinimumPaneSize(150)
-        self.splitter.SetMinSize(self.ConvertDialogToPixels(wx.Size(200, 200)))
+        self.splitter.SetMinSize(self.FromDIP(wx.Size(400, 500)))
 
         self.propertyGridManager = wx.propgrid.PropertyGridManager(self.splitter, wx.ID_ANY,
             wx.DefaultPosition, wx.DefaultSize, wx.propgrid.PG_AUTO_SORT|
@@ -162,7 +168,7 @@ class MainFrame(wx.Frame):
         self.kicadGrid.SetRowLabelSize(160)
         self.kicadGrid.SetRowLabelValue(0, "Reference designator")
         self.kicadGrid.SetRowLabelValue(1, "Value")
-        self.kicadGrid.SetMinSize(wx.Size(800, 140))
+        self.kicadGrid.SetMinSize(self.FromDIP(wx.Size(800, 140)))
         self.splitter.SplitHorizontally(self.propertyGridManager, self.kicadGrid)
 
         menubar = wx.MenuBar()
@@ -217,7 +223,7 @@ class MainFrame(wx.Frame):
         menu_item_5.SetBitmap(wx.BitmapBundle.FromBitmap(images.debug_32_png.Bitmap))
         submenu.Append(menu_item_5)
         menu_item_6 = wx.MenuItem(submenu, wx.ID_ANY, "DlgIssue_960")
-        menu_item_6.SetBitmap(wx.BitmapBundle.FromBitmap(images.Ainsi_a_se_passe_png.Bitmap))
+        menu_item_6.SetBitmap(wx.BitmapBundle.FromBitmap(images.Ainsi_c3a7a_se_passe_png.Bitmap))
         submenu.Append(menu_item_6)
         submenu_item = menuDialogs.AppendSubMenu(submenu, "Issue Dialogs")
         submenu_item.SetBitmap(wx.BitmapBundle.FromBitmap(wxDialog_png.Bitmap))
@@ -249,35 +255,37 @@ class MainFrame(wx.Frame):
         self.toolBar.AddStretchableSpace()
 
         tool_2 = self.toolBar.AddTool(wx.ID_ANY, "Common Controls...", wx.ArtProvider.GetBitmapBundle(
-            wx.ART_TIP, wx.ART_TOOLBAR))
+            wx.ART_TIP, wx.ART_TOOLBAR, wx.Size(24, 24)))
 
         self.toolBar.Realize()
 
-        self.statusBar = self.CreateStatusBar(2)
+        self.statusBar = wx.StatusBar(self, wx.ID_ANY, wx.STB_DEFAULT_STYLE)
+        self.statusBar.SetFieldsCount(2)
+        self.SetStatusBar(self.statusBar)
         self.statusBar.SetStatusWidths([100, -1])
         self.statusBar.SetStatusStyles([wx.SB_FLAT, wx.SB_FLAT])
 
         self.Centre(wx.BOTH)
 
         # Bind Event handlers
-        self.Bind(wx.EVT_MENU, self.on_quit, id=wx.ID_EXIT)
-        self.Bind(wx.EVT_MENU, self.OnMainTestDlg, id=menu_item_3.GetId())
-        self.Bind(wx.EVT_MENU, self.OnBookTestDlg, id=menu_item_4.GetId())
-        self.Bind(wx.EVT_MENU, self.on_propsheet_dlg, id=menu_item2.GetId())
-        self.Bind(wx.EVT_MENU, self.OnPythonDlg, id=menu_item_2.GetId())
-        self.Bind(wx.EVT_MENU, self.on_tools_dlg, id=menu_tools_dlg2.GetId())
-        self.Bind(wx.EVT_MENU, self.OnWizard, id=menuItem3.GetId())
         self.Bind(wx.EVT_MENU, self.OnBitmapsDlg, id=menuItem2.GetId())
+        self.Bind(wx.EVT_MENU, self.OnBookTestDlg, id=menu_item_4.GetId())
         self.Bind(wx.EVT_MENU, self.OnCommonDialog, id=menuItem_2.GetId())
         self.Bind(wx.EVT_MENU, self.OnDlgIssue_956, id=menu_item_5.GetId())
         self.Bind(wx.EVT_MENU, self.OnDlgIssue_960, id=menu_item_6.GetId())
-        self.Bind(wx.EVT_MENU, self.OnWizard, id=menu_item.GetId())
+        self.Bind(wx.EVT_MENU, self.OnMainTestDlg, id=menu_item_3.GetId())
+        self.Bind(wx.EVT_MENU, self.on_propsheet_dlg, id=menu_item2.GetId())
+        self.Bind(wx.EVT_MENU, self.OnPythonDlg, id=menu_item_2.GetId())
+        self.Bind(wx.EVT_MENU, self.on_quit, id=wx.ID_EXIT)
         self.Bind(wx.EVT_MENU, self.on_tools_dlg, id=menu_tools_dlg.GetId())
+        self.Bind(wx.EVT_MENU, self.on_tools_dlg, id=menu_tools_dlg2.GetId())
+        self.Bind(wx.EVT_MENU, self.OnWizard, id=menuItem3.GetId())
+        self.Bind(wx.EVT_MENU, self.OnWizard, id=menu_item.GetId())
         self.kicadGrid.Bind(wx.EVT_SIZE, self.OnGridSize)
-        self.Bind(wx.EVT_TOOL, self.OnMainTestDlg, id=tool_4.GetId())
         self.Bind(wx.EVT_TOOL, self.OnBookTestDlg, id=tool_5.GetId())
-        self.Bind(wx.EVT_TOOL, self.OnPythonDlg, id=tool_3.GetId())
         self.Bind(wx.EVT_TOOL, self.OnCommonDialog, id=tool_2.GetId())
+        self.Bind(wx.EVT_TOOL, self.OnMainTestDlg, id=tool_4.GetId())
+        self.Bind(wx.EVT_TOOL, self.OnPythonDlg, id=tool_3.GetId())
 
     # Unimplemented Event handler functions
     # Copy any listed and paste them below the comment block, or to your inherited class.

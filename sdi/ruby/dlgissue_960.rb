@@ -38,7 +38,7 @@ class DlgIssue_960 < Wx::Dialog
 
     dlg_sizer.add(box_sizer, Wx::SizerFlags.new.border(Wx::ALL))
 
-    bmp_3 = Wx::StaticBitmap.new(self, Wx::ID_ANY, wxue_get_bundle($Ainsi_a_se_passe_png))
+    bmp_3 = Wx::StaticBitmap.new(self, Wx::ID_ANY, wxue_get_bundle($Ainsi_c3a7a_se_passe_png))
     dlg_sizer.add(bmp_3, Wx::SizerFlags.new.border(Wx::ALL))
 
     if Wx::PLATFORM != 'WXMAC'
@@ -54,7 +54,19 @@ class DlgIssue_960 < Wx::Dialog
     stdBtn.realize
     dlg_sizer.add(stdBtn, Wx::SizerFlags.new.expand.border(Wx::ALL))
 
-    set_sizer_and_fit(dlg_sizer)
+    if pos != Wx::DEFAULT_POSITION
+      set_position(from_dip(pos))
+    end
+    if size == Wx::DEFAULT_SIZE
+      set_sizer_and_fit(dlg_sizer)
+    else
+      set_sizer(dlg_sizer)
+      if size.x == Wx::DEFAULT_COORD || size.y == Wx::DEFAULT_COORD
+        fit
+      end
+      set_size(from_dip(size))
+      layout
+    end
     centre(Wx::BOTH)
   end
 end

@@ -117,9 +117,20 @@ class ToolBarsDialog < Wx::Dialog
       Wx::RBN::RIBBON_BUTTON_NORMAL)
     rbn_btn_bar.realize
 
-    set_sizer(box_sizer)
-    set_min_size(convert_dialog_to_pixels(Wx::Size.new(200, -1)))
-    fit
+    set_min_size(from_dip(Wx::Size.new(400, -1)))
+    if pos != Wx::DEFAULT_POSITION
+      set_position(from_dip(pos))
+    end
+    if size == Wx::DEFAULT_SIZE
+      set_sizer_and_fit(box_sizer)
+    else
+      set_sizer(box_sizer)
+      if size.x == Wx::DEFAULT_COORD || size.y == Wx::DEFAULT_COORD
+        fit
+      end
+      set_size(from_dip(size))
+      layout
+    end
     centre(Wx::BOTH)
 
     # Event handlers
@@ -128,19 +139,22 @@ class ToolBarsDialog < Wx::Dialog
   end
 end
 
+# ../art/left.svg
 $left_svg = (
-  'eNqFlU1zmzAQhvtTNPTSztgbrSQkcOyc20OvPeRGw4eZYOMBmtb99V0hEgMytjwwyLt6tNLu' +
-  'K23bt+Jpm2Z5y8p0F9gP1MiDh6dtwcrja/uSnLJN0dS/T4c6zXZBlZyzJriYquRXVu2C74ek' +
-  'yIKeURBABP34vicjKQPWNcmxzevmsAsOSdeUf78gcINKRHrF6Ue92IQaV2sE+29o+s9Y6EjE' +
-  '8ivxTkm3Z213riiKtGxPFMmmPFblMXvMy6rafObU8vyx7Zr6NVv/KdNuv0Gg6QXNT6H8YGIl' +
-  'ItCSmmI/mTAgNDXDvjEJMu4bUxBZ24ef5BOzYM/sQE7CzsZxxWcgA5rFwJ3VB1mzfh88oNCh' +
-  'CfXGaMnSofYMQfXPDLK3Tsq9/rlYvChQwzAFGp8wsSuK6HkBI7gLFZlAcvMwFztGtG2LGAVq' +
-  'wITXdndkl8sQGuOcJL+C+LDaMT2Er9a0t9ZVAi5RFISOQpHFdzhIeV3icFADB2mFdzgK4gUO' +
-  '5UU6DuXN3OK81xdyiJZgAkRPYygpe8sw3tefza8GY2E68mkR4BBaDOFQPFeQVmRElG5i2hno' +
-  'gVdFdvELqUjvqmxEmqtsTrotszFrLLMpZVFnozg8nc0DuSW0EccT2pxzS2ljzlxpHmdRamPK' +
-  'NPMeY5Zzd+zb4xnpQPfvhrTuWnuh3D3A89xi+866PiUvZXfe4PQ858CFirS6nOi0wyIcyoDi' +
-  'c/Vja0lwI4w0FL5CFSqjnL4GZ2EmTtNlyBCNv44mS+0yHorhsVfnp/8jr5kh')
+  'eNqFlUtzmzAQx/tRNOqlnbEVrSQkcIwPPbWHXnvIjYTnBBsPUCfup+8KkZiHseXHALv66b/a' +
+  'XbFtThk5JXVTVIeQAgNKijik+BQ015S8FXGbh1QKSvKkyPLWXZ+K5O1H9R5STjiRAr90t42T' +
+  'tOlm2wvQwOnDbpuR4vDavETHZJPV1d/jvoqTkJbROanpxVRGz0kZ0l/7KEucAlwfLDTr76Qv' +
+  'JSVtHR2atKr3Id1HbV28fwPGDSjh6xXHD94FxtOwWmMo+NQz3WUgtC8C+R15x6jNSdOeS1QR' +
+  'F80RlWyKQ1kckse0KMvNV44jTR+btq5ek3UX/wYYLi9wfZTym4iV8JmWOBT5Q4RhQuMw5CeR' +
+  'TAbdIIr51vbpJ/nILMgT2aOTsKtxWPEJyDBNAsaddQ6yZv0xuUeBQyPqRDBk6VA5Aaa63wSS' +
+  'Wyfl/v45LTMVoFm/BJg5YWRXqOhpASO4kwpEALrNMBc7+LhtixjFVI/xru3uwC6XITjHOUl+' +
+  'BfFptXM6CF+tcW+tq2SwRFHMcxRUFtzhAOZ1icOZ6jmAEd7hKBYscDAv0nEwb+YW56O+gDN/' +
+  'CSaY6GgEJGZvGca7+rP51cxYmPbnNJ9BLy1gXl88V5C2yZAo3cK4M6wDXm2yi5+HRXq3ywak' +
+  'aZdNSbfbbMgattmYsthnAx2zPpsKudVoA86s0aacW5025Ew7bcZZbLUhZZz5GWOSc3fs2+MZ' +
+  '8ECfvxviqm3sC+XuAZ6mFtvdrKtj9FK05w2Mz3POuFC+VpcTHXdYeH0ZoD5XP7aWBDfCSIPy' +
+  'FShPGeX6q3cWZuQ0DkN6YOZx1Elsw3jI+h++andf/gNQMqyX')
 
+# ../art/undo.png
 $undo_png = Base64.decode64(
   'iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwY' +
   'AAADdElEQVRIx+2VT2hdRRTGf2dm3n33vveCtkqERGsTUzTd1IYuBMVautSlINiFUFDBohQp' +
@@ -161,6 +175,7 @@ $undo_png = Base64.decode64(
   'hy81gxiBqESvhCIQ2oHQ9lhbcOK5XvlHD872r6bVJgbbcLjUYeoVgUYllpHQCcQ88O3Oltzx' +
   'iwbw9KlSxRnESVWmVB3060Ej/G//1v4EvrC4VZwjYRAAAAAASUVORK5CYII=')
 
+# ../art/redo.png
 $redo_png = Base64.decode64(
   'iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwY' +
   'AAADY0lEQVRIx+2VTWgdVRTHf+fcO/Pe5IO0hQgtVWxNQaiQJrsitAqFbvxAoSAEBBdKRRCp' +
