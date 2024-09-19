@@ -7,4 +7,4 @@ echo Generating C++ files...
 ..\..\wxUiEditor\build\stage\bin\debug\wxUiEditor.exe --gen_cpp sdi_test.wxui
 type sdi_test.log
 cmake.exe --build build --config Debug --target sdi_test
-build\Debug\sdi_test.exe
+..\wxWidgets32\build\Debug\sdi_test.exe
