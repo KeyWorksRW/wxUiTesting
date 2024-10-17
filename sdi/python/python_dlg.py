@@ -83,7 +83,8 @@ class PythonDlg(wx.Dialog):
         bSizer1.Add(box_sizer, wx.SizerFlags().Expand().Border(wx.ALL))
 
         if "wxMac" not in wx.PlatformInfo:
-            stdBtn_line = wx.StaticLine(self, wx.ID_ANY, wx.DefaultPosition, wx.Size(20, -1))
+            stdBtn_line = \
+                wx.StaticLine(self, wx.ID_ANY, wx.DefaultPosition, wx.Size(20, -1))
             bSizer1.Add(stdBtn_line, wx.SizerFlags().Expand().Border(wx.ALL))
 
         stdBtn = wx.StdDialogButtonSizer()

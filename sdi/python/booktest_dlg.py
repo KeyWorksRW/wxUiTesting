@@ -461,17 +461,18 @@ class BookTestDlg(wx.Dialog):
         page2.SetSizerAndFit(page_sizer2)
 
         if "wxMac" not in wx.PlatformInfo:
-            stdBtn_line = wx.StaticLine(self, wx.ID_ANY, wx.DefaultPosition, wx.Size(20, -1))
-            dlg_sizer.Add(stdBtn_line, wx.SizerFlags().Expand().Border(wx.ALL))
+            self.stdBtn_line = \
+                wx.StaticLine(self, wx.ID_ANY, wx.DefaultPosition, wx.Size(20, -1))
+            dlg_sizer.Add(self.stdBtn_line, wx.SizerFlags().Expand().Border(wx.ALL))
 
-        stdBtn = wx.StdDialogButtonSizer()
-        stdBtn_OK = wx.Button(self, wx.ID_OK)
-        stdBtn.SetAffirmativeButton(stdBtn_OK)
-        stdBtn_Cancel = wx.Button(self, wx.ID_CANCEL)
-        stdBtn.SetCancelButton(stdBtn_Cancel)
-        stdBtn_OK.SetDefault()
-        stdBtn.Realize()
-        dlg_sizer.Add(stdBtn, wx.SizerFlags().Expand().Border(wx.ALL))
+        self.stdBtn = wx.StdDialogButtonSizer()
+        self.stdBtn_OK = wx.Button(self, wx.ID_OK)
+        self.stdBtn.SetAffirmativeButton(self.stdBtn_OK)
+        self.stdBtn_Cancel = wx.Button(self, wx.ID_CANCEL)
+        self.stdBtn.SetCancelButton(self.stdBtn_Cancel)
+        self.stdBtn_OK.SetDefault()
+        self.stdBtn.Realize()
+        dlg_sizer.Add(self.stdBtn, wx.SizerFlags().Expand().Border(wx.ALL))
 
         if pos != wx.DefaultPosition:
             self.SetPosition(self.FromDIP(pos))
@@ -495,12 +496,9 @@ class BookTestDlg(wx.Dialog):
         self.btn2.Bind(wx.EVT_BUTTON, self.on_button)
         self.btn4.Bind(wx.EVT_BUTTON, self.on_button)
 
-    # Event handler functions
-    # Add these below the comment block, or to your inherited class.
+    # Unimplemented Event handler functions
+    # Copy any listed and paste them below the comment block, or to your inherited class.
     """
-    def on_button(self, event):
-        event.Skip()
-
     """
 
 # ************* End of generated code ***********
@@ -509,3 +507,6 @@ class BookTestDlg(wx.Dialog):
 # Code below this comment block will be preserved
 # if the code for this class is re-generated.
 # ***********************************************
+
+    def on_button(self, event):
+        event.Skip()

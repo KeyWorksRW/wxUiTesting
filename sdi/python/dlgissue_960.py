@@ -46,7 +46,8 @@ class DlgIssue_960(wx.Dialog):
         dlg_sizer.Add(bmp_3, wx.SizerFlags().Border(wx.ALL))
 
         if "wxMac" not in wx.PlatformInfo:
-            stdBtn_line = wx.StaticLine(self, wx.ID_ANY, wx.DefaultPosition, wx.Size(20, -1))
+            stdBtn_line = \
+                wx.StaticLine(self, wx.ID_ANY, wx.DefaultPosition, wx.Size(20, -1))
             dlg_sizer.Add(stdBtn_line, wx.SizerFlags().Expand().Border(wx.ALL))
 
         stdBtn = wx.StdDialogButtonSizer()
