@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <wxUiEditorData
-  data_version="21">
+  data_version="17">
   <node
     class="Project"
     art_directory="../art"
@@ -11,7 +11,6 @@
     cpp_line_length="125"
     derived_directory="cpp"
     generate_cmake="1"
-    wxWidgets_version="3.2"
     python_output_folder="python"
     ruby_output_folder="ruby"
     combine_all_forms="0"
@@ -1753,6 +1752,8 @@
         </node>
         <node
           class="wxStdDialogButtonSizer"
+          class_access="protected:"
+          var_name="m_stdBtn"
           flags="wxEXPAND" />
       </node>
     </node>
