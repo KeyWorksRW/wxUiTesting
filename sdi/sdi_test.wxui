@@ -2326,22 +2326,45 @@
                 orientation="wxVERTICAL"
                 var_name="parent_sizer2">
                 <node
-                  class="wxStaticText"
-                  label="Left Panel" />
+                  class="wxPanel"
+                  class_access="protected:"
+                  var_name="m_panel"
+                  window_style="wxTAB_TRAVERSAL">
+                  <node
+                    class="wxBoxSizer"
+                    orientation="wxVERTICAL"
+                    var_name="panel_sizer"
+                    flags="wxEXPAND">
+                    <node
+                      class="wxStaticBoxSizer"
+                      var_name="_static_box" />
+                  </node>
+                </node>
               </node>
             </node>
             <node
               class="wxPanel"
-              var_name="m_panel2"
+              var_name="panel2"
               window_style="wxTAB_TRAVERSAL">
               <node
                 class="wxBoxSizer"
                 orientation="wxVERTICAL"
                 var_name="parent_sizer3">
                 <node
-                  class="wxStaticText"
-                  label="Right Panel"
-                  var_name="m_staticText2" />
+                  class="wxPanel"
+                  class_access="protected:"
+                  var_name="m_panel2"
+                  window_style="wxTAB_TRAVERSAL">
+                  <node
+                    class="wxBoxSizer"
+                    orientation="wxVERTICAL"
+                    var_name="panel_sizer2"
+                    flags="wxEXPAND">
+                    <node
+                      class="wxStaticBoxSizer"
+                      var_name="_static_box2" />
+                  </node>
+                </node>
               </node>
             </node>
           </node>

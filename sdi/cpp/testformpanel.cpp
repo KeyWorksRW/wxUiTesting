@@ -8,6 +8,7 @@
 // clang-format off
 
 #include <wx/sizer.h>
+#include <wx/statbox.h>
 
 #include "testformpanel.h"
 
@@ -29,18 +30,32 @@ bool TestFormPanel::Create(wxWindow* parent, wxWindowID id, const wxPoint& pos, 
 
     auto* parent_sizer2 = new wxBoxSizer(wxVERTICAL);
 
-    m_staticText = new wxStaticText(panel, wxID_ANY, "Left Panel");
-    parent_sizer2->Add(m_staticText, wxSizerFlags().Border(wxALL));
+    m_panel = new wxPanel(panel, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL);
+    parent_sizer2->Add(m_panel, wxSizerFlags().Border(wxALL));
+
+    auto* panel_sizer = new wxBoxSizer(wxVERTICAL);
+
+    auto* static_box = new wxStaticBoxSizer(wxVERTICAL, m_panel, "label");
+
+    panel_sizer->Add(static_box, wxSizerFlags().Border(wxALL));
+    m_panel->SetSizerAndFit(panel_sizer);
     panel->SetSizerAndFit(parent_sizer2);
 
-    auto* m_panel2 = new wxPanel(m_splitter, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL);
+    auto* panel2 = new wxPanel(m_splitter, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL);
 
     auto* parent_sizer3 = new wxBoxSizer(wxVERTICAL);
 
-    m_staticText2 = new wxStaticText(m_panel2, wxID_ANY, "Right Panel");
-    parent_sizer3->Add(m_staticText2, wxSizerFlags().Border(wxALL));
-    m_panel2->SetSizerAndFit(parent_sizer3);
-    m_splitter->SplitVertically(panel, m_panel2);
+    m_panel2 = new wxPanel(panel2, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL);
+    parent_sizer3->Add(m_panel2, wxSizerFlags().Border(wxALL));
+
+    auto* panel_sizer2 = new wxBoxSizer(wxVERTICAL);
+
+    auto* static_box2 = new wxStaticBoxSizer(wxVERTICAL, m_panel2, "label");
+
+    panel_sizer2->Add(static_box2, wxSizerFlags().Border(wxALL));
+    m_panel2->SetSizerAndFit(panel_sizer2);
+    panel2->SetSizerAndFit(parent_sizer3);
+    m_splitter->SplitVertically(panel, panel2);
 
     SetSizer(parent_sizer);
     SetSize(FromDIP(wxSize(500, 300)));

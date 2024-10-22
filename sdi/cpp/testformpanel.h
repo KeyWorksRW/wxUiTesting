@@ -12,7 +12,6 @@
 #include <wx/gdicmn.h>
 #include <wx/panel.h>
 #include <wx/splitter.h>
-#include <wx/stattext.h>
 
 class TestFormPanel : public wxPanel
 {
@@ -30,9 +29,9 @@ protected:
 
     // Class member variables
 
+    wxPanel* m_panel2;
+    wxPanel* m_panel;
     wxSplitterWindow* m_splitter;
-    wxStaticText* m_staticText2;
-    wxStaticText* m_staticText;
 };
 
 // ************* End of generated code ***********

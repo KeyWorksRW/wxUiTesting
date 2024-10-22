@@ -144,10 +144,10 @@ class MainFrame < Wx::Frame
     menu_item_2 = Wx::MenuItem.new(menuDialogs, Wx::ID_ANY, 'PythonDlg')
     menu_item_2.set_bitmap(wxue_get_bundle($wxPython_png, $wxPython_1_5x_png, $wxPython_2x_png))
     menuDialogs.append(menu_item_2)
-    menu_tools_dlg2 = Wx::MenuItem.new(menuDialogs, Wx::ID_ANY, 'Tools Dialog',
+    _menu_tools_dlg2 = Wx::MenuItem.new(menuDialogs, Wx::ID_ANY, 'Tools Dialog',
       'Dialog for testing different types of toolbars', Wx::ITEM_NORMAL)
-    menu_tools_dlg2.set_bitmap(wxue_get_bundle($wxToolBar_png))
-    menuDialogs.append(menu_tools_dlg2)
+    _menu_tools_dlg2.set_bitmap(wxue_get_bundle($wxToolBar_png))
+    menuDialogs.append(_menu_tools_dlg2)
     menuItem3 = Wx::MenuItem.new(menuDialogs, Wx::ID_ANY, 'Wizard')
     menuItem3.set_bitmap(wxue_get_bundle($wxWizard_png))
     menuDialogs.append(menuItem3)
@@ -184,11 +184,11 @@ class MainFrame < Wx::Frame
     menu_item.set_bitmap(Wx::ArtProvider.get_bitmap_bundle(Wx::ART_FIND,
       Wx::ART_MENU))
     tool_dropdown_menu.append(menu_item)
-    menu_tools_dlg = Wx::MenuItem.new(tool_dropdown_menu, Wx::ID_ANY,
+    _menu_tools_dlg = Wx::MenuItem.new(tool_dropdown_menu, Wx::ID_ANY,
       'Tools Dialog', 'Dialog for testing different types of toolbars',
       Wx::ITEM_NORMAL)
-    menu_tools_dlg.set_bitmap(wxue_get_bundle($wxToolBar_png))
-    tool_dropdown_menu.append(menu_tools_dlg)
+    _menu_tools_dlg.set_bitmap(wxue_get_bundle($wxToolBar_png))
+    tool_dropdown_menu.append(_menu_tools_dlg)
     tool_dropdown.set_dropdown_menu(tool_dropdown_menu)
     tool_4 = @toolBar.add_tool(Wx::ID_ANY, 'MainTestDlg', wxue_get_bundle($debug_32_png))
 
@@ -223,8 +223,8 @@ class MainFrame < Wx::Frame
     evt_menu(menu_item2.get_id, :on_propsheet_dlg)
     evt_menu(menu_item_2.get_id, :OnPythonDlg)
     evt_menu(menuQuit.get_id, :on_quit)
-    evt_menu(menu_tools_dlg.get_id, :on_tools_dlg)
-    evt_menu(menu_tools_dlg2.get_id, :on_tools_dlg)
+    evt_menu(_menu_tools_dlg.get_id, :on_tools_dlg)
+    evt_menu(_menu_tools_dlg2.get_id, :on_tools_dlg)
     evt_menu(menuItem3.get_id, :OnWizard)
     evt_menu(menu_item.get_id, :OnWizard)
     evt_size(:OnGridSize)

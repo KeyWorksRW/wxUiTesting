@@ -466,17 +466,17 @@ class BookTestDlg < Wx::Dialog
     page2.set_sizer_and_fit(page_sizer2)
 
     if Wx::PLATFORM != 'WXMAC'
-      stdBtn_line = Wx::StaticLine.new(self, Wx::ID_ANY, Wx::DEFAULT_POSITION,
-                                  Wx::Size.new(20, -1))
-      dlg_sizer.add(stdBtn_line, Wx::SizerFlags.new.expand.border(Wx::ALL))
+      @stdBtn_line = Wx::StaticLine.new(self, Wx::ID_ANY, Wx::DEFAULT_POSITION,
+                                      Wx::Size.new(20, -1))
+      dlg_sizer.add(@stdBtn_line, Wx::SizerFlags.new.expand.border(Wx::ALL))
     end
-    stdBtn = Wx::StdDialogButtonSizer.new
+    @stdBtn = Wx::StdDialogButtonSizer.new
     _ok_btn = Wx::Button.new(self, Wx::ID_OK)
-    stdBtn.add_button(_ok_btn)
+    @stdBtn.add_button(_ok_btn)
     _ok_btn.set_default
-    stdBtn.add_button(Wx::Button.new(self, Wx::ID_CANCEL))
-    stdBtn.realize
-    dlg_sizer.add(stdBtn, Wx::SizerFlags.new.expand.border(Wx::ALL))
+    @stdBtn.add_button(Wx::Button.new(self, Wx::ID_CANCEL))
+    @stdBtn.realize
+    dlg_sizer.add(@stdBtn, Wx::SizerFlags.new.expand.border(Wx::ALL))
 
     if pos != Wx::DEFAULT_POSITION
       set_position(from_dip(pos))
