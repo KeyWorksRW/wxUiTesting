@@ -10,7 +10,6 @@
 #include <wx/colour.h>
 #include <wx/panel.h>
 #include <wx/settings.h>
-#include <wx/sizer.h>
 
 #include "images.h"
 
@@ -418,8 +417,8 @@ bool BookTestDlg::Create(wxWindow* parent, wxWindowID id, const wxString& title,
 
     page2->SetSizerAndFit(page_sizer2);
 
-    auto* stdBtn = CreateStdDialogButtonSizer(wxOK|wxCANCEL);
-    dlg_sizer->Add(CreateSeparatedSizer(stdBtn), wxSizerFlags().Expand().Border(wxALL));
+    m_stdBtn = CreateStdDialogButtonSizer(wxOK|wxCANCEL);
+    dlg_sizer->Add(CreateSeparatedSizer(m_stdBtn), wxSizerFlags().Expand().Border(wxALL));
 
     if (pos != wxDefaultPosition)
     {

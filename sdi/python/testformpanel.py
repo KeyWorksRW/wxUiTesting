@@ -32,8 +32,16 @@ class TestFormPanel(wx.Panel):
 
         parent_sizer2 = wx.BoxSizer(wx.VERTICAL)
 
-        self.staticText = wx.StaticText(panel, wx.ID_ANY, "Left Panel")
-        parent_sizer2.Add(self.staticText, wx.SizerFlags().Border(wx.ALL))
+        self.panel = wx.Panel(panel, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize,
+            wx.TAB_TRAVERSAL)
+        parent_sizer2.Add(self.panel, wx.SizerFlags().Border(wx.ALL))
+
+        panel_sizer = wx.BoxSizer(wx.VERTICAL)
+
+        _static_box = wx.StaticBoxSizer(wx.VERTICAL, self.panel, "label")
+
+        panel_sizer.Add(_static_box, wx.SizerFlags().Border(wx.ALL))
+        self.panel.SetSizerAndFit(panel_sizer)
         panel.SetSizerAndFit(parent_sizer2)
 
         panel2 = wx.Panel(self.splitter, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize,
@@ -41,8 +49,16 @@ class TestFormPanel(wx.Panel):
 
         parent_sizer3 = wx.BoxSizer(wx.VERTICAL)
 
-        self.staticText2 = wx.StaticText(panel2, wx.ID_ANY, "Right Panel")
-        parent_sizer3.Add(self.staticText2, wx.SizerFlags().Border(wx.ALL))
+        self.panel2 = wx.Panel(panel2, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize,
+            wx.TAB_TRAVERSAL)
+        parent_sizer3.Add(self.panel2, wx.SizerFlags().Border(wx.ALL))
+
+        panel_sizer2 = wx.BoxSizer(wx.VERTICAL)
+
+        _static_box2 = wx.StaticBoxSizer(wx.VERTICAL, self.panel2, "label")
+
+        panel_sizer2.Add(_static_box2, wx.SizerFlags().Border(wx.ALL))
+        self.panel2.SetSizerAndFit(panel_sizer2)
         panel2.SetSizerAndFit(parent_sizer3)
         self.splitter.SplitVertically(panel, panel2)
 

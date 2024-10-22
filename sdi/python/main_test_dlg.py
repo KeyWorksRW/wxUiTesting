@@ -362,18 +362,18 @@ class MainTestDialog(wx.Dialog):
 
         flex_grid_sizer.Add(box_sizer_13, wx.SizerFlags().Border(wx.ALL))
 
-        box_sizer2 = wx.BoxSizer(wx.VERTICAL)
+        _box_sizer2 = wx.BoxSizer(wx.VERTICAL)
 
         staticText2 = wx.StaticText(page_5, wx.ID_ANY, "wxSimpleHtmlLiseBox")
-        box_sizer2.Add(staticText2, wx.SizerFlags().Expand().Border(wx.ALL))
+        _box_sizer2.Add(staticText2, wx.SizerFlags().Expand().Border(wx.ALL))
 
         self.html_listbox = wx.html.SimpleHtmlListBox(page_5, wx.ID_ANY)
         self.html_listbox.Append("<b>bold</b>")
         self.html_listbox.Append("<i>italics</i>")
         self.html_listbox.SetMinSize(self.FromDIP(wx.Size(-1, 100)))
-        box_sizer2.Add(self.html_listbox, wx.SizerFlags(1).Expand().Border(wx.ALL))
+        _box_sizer2.Add(self.html_listbox, wx.SizerFlags(1).Expand().Border(wx.ALL))
 
-        flex_grid_sizer.Add(box_sizer2, wx.SizerFlags().Border(wx.ALL))
+        flex_grid_sizer.Add(_box_sizer2, wx.SizerFlags().Border(wx.ALL))
 
         box_sizer_5.Add(flex_grid_sizer, wx.SizerFlags().Expand().Border(wx.ALL))
         page_5.SetSizerAndFit(box_sizer_5)

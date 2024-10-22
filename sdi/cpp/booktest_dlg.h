@@ -21,6 +21,7 @@
 #include <wx/listbook.h>
 #include <wx/notebook.h>
 #include <wx/simplebook.h>
+#include <wx/sizer.h>
 #include <wx/stattext.h>
 #include <wx/toolbook.h>
 #include <wx/treebook.h>
@@ -85,6 +86,7 @@ protected:
     wxStaticText* m_staticText_9;
     wxStaticText* m_staticText__2;
     wxStaticText* m_staticText__3;
+    wxStdDialogButtonSizer* m_stdBtn;
     wxToolbook* m_toolbook;
     wxTreebook* m_treebook;
 };

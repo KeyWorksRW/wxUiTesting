@@ -201,10 +201,10 @@ class MainFrame(wx.Frame):
                     images.wxPython_2x_png.Bitmap ]
         menu_item_2.SetBitmap(wx.BitmapBundle.FromBitmaps(bitmaps))
         menuDialogs.Append(menu_item_2)
-        menu_tools_dlg2 = wx.MenuItem(menuDialogs, wx.ID_ANY, "Tools Dialog",
+        _menu_tools_dlg2 = wx.MenuItem(menuDialogs, wx.ID_ANY, "Tools Dialog",
             "Dialog for testing different types of toolbars", wx.ITEM_NORMAL)
-        menu_tools_dlg2.SetBitmap(wx.BitmapBundle.FromBitmap(wxToolBar_png.Bitmap))
-        menuDialogs.Append(menu_tools_dlg2)
+        _menu_tools_dlg2.SetBitmap(wx.BitmapBundle.FromBitmap(wxToolBar_png.Bitmap))
+        menuDialogs.Append(_menu_tools_dlg2)
         menuItem3 = wx.MenuItem(menuDialogs, wx.ID_ANY, "Wizard")
         menuItem3.SetBitmap(wx.BitmapBundle.FromBitmap(wxWizard_png.Bitmap))
         menuDialogs.Append(menuItem3)
@@ -239,10 +239,10 @@ class MainFrame(wx.Frame):
         menu_item = wx.MenuItem(tool_dropdown_menu, wx.ID_ANY, "Wizard...")
         menu_item.SetBitmap(wx.ArtProvider.GetBitmapBundle(wx.ART_FIND, wx.ART_MENU))
         tool_dropdown_menu.Append(menu_item)
-        menu_tools_dlg = wx.MenuItem(tool_dropdown_menu, wx.ID_ANY, "Tools Dialog",
+        _menu_tools_dlg = wx.MenuItem(tool_dropdown_menu, wx.ID_ANY, "Tools Dialog",
             "Dialog for testing different types of toolbars", wx.ITEM_NORMAL)
-        menu_tools_dlg.SetBitmap(wx.BitmapBundle.FromBitmap(wxToolBar_png.Bitmap))
-        tool_dropdown_menu.Append(menu_tools_dlg)
+        _menu_tools_dlg.SetBitmap(wx.BitmapBundle.FromBitmap(wxToolBar_png.Bitmap))
+        tool_dropdown_menu.Append(_menu_tools_dlg)
         tool_dropdown.SetDropdownMenu(tool_dropdown_menu)
         tool_4 = self.toolBar.AddTool(wx.ID_ANY, "MainTestDlg", images.debug_32_png.Bitmap)
 
@@ -277,8 +277,8 @@ class MainFrame(wx.Frame):
         self.Bind(wx.EVT_MENU, self.on_propsheet_dlg, id=menu_item2.GetId())
         self.Bind(wx.EVT_MENU, self.OnPythonDlg, id=menu_item_2.GetId())
         self.Bind(wx.EVT_MENU, self.on_quit, id=wx.ID_EXIT)
-        self.Bind(wx.EVT_MENU, self.on_tools_dlg, id=menu_tools_dlg.GetId())
-        self.Bind(wx.EVT_MENU, self.on_tools_dlg, id=menu_tools_dlg2.GetId())
+        self.Bind(wx.EVT_MENU, self.on_tools_dlg, id=_menu_tools_dlg.GetId())
+        self.Bind(wx.EVT_MENU, self.on_tools_dlg, id=_menu_tools_dlg2.GetId())
         self.Bind(wx.EVT_MENU, self.OnWizard, id=menuItem3.GetId())
         self.Bind(wx.EVT_MENU, self.OnWizard, id=menu_item.GetId())
         self.kicadGrid.Bind(wx.EVT_SIZE, self.OnGridSize)

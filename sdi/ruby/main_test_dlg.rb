@@ -330,18 +330,18 @@ class MainTestDialog < Wx::Dialog
 
     flex_grid_sizer.add(box_sizer_13, Wx::SizerFlags.new.border(Wx::ALL))
 
-    box_sizer2 = Wx::BoxSizer.new(Wx::VERTICAL)
+    _box_sizer2 = Wx::BoxSizer.new(Wx::VERTICAL)
 
     staticText2 = Wx::StaticText.new(page_5, Wx::ID_ANY, 'wxSimpleHtmlLiseBox')
-    box_sizer2.add(staticText2, Wx::SizerFlags.new.expand.border(Wx::ALL))
+    _box_sizer2.add(staticText2, Wx::SizerFlags.new.expand.border(Wx::ALL))
 
     @html_listbox = Wx::HTML::SimpleHtmlListBox.new(page_5, Wx::ID_ANY)
     @html_listbox.append('<b>bold</b>')
     @html_listbox.append('<i>italics</i>')
     @html_listbox.set_min_size(from_dip(Wx::Size.new(-1, 100)))
-    box_sizer2.add(@html_listbox, Wx::SizerFlags.new(1).expand.border(Wx::ALL))
+    _box_sizer2.add(@html_listbox, Wx::SizerFlags.new(1).expand.border(Wx::ALL))
 
-    flex_grid_sizer.add(box_sizer2, Wx::SizerFlags.new.border(Wx::ALL))
+    flex_grid_sizer.add(_box_sizer2, Wx::SizerFlags.new.border(Wx::ALL))
 
     box_sizer_5.add(flex_grid_sizer, Wx::SizerFlags.new.expand.border(Wx::ALL))
     page_5.set_sizer_and_fit(box_sizer_5)
