@@ -17,6 +17,8 @@ import zlib
 import base64
 from wx.lib.embeddedimage import PyEmbeddedImage
 
+from main_test_dlg import clr_hourglass_gif
+
 class PythonDlg(wx.Dialog):
     def __init__(self, parent, id=wx.ID_ANY, title="Hello Python Dialog!",
                 pos=wx.DefaultPosition, size=wx.DefaultSize,
@@ -83,20 +85,20 @@ class PythonDlg(wx.Dialog):
         bSizer1.Add(box_sizer, wx.SizerFlags().Expand().Border(wx.ALL))
 
         if "wxMac" not in wx.PlatformInfo:
-            stdBtn_line = \
+            self.stdBtn_line = \
                 wx.StaticLine(self, wx.ID_ANY, wx.DefaultPosition, wx.Size(20, -1))
-            bSizer1.Add(stdBtn_line, wx.SizerFlags().Expand().Border(wx.ALL))
+            bSizer1.Add(self.stdBtn_line, wx.SizerFlags().Expand().Border(wx.ALL))
 
-        stdBtn = wx.StdDialogButtonSizer()
-        stdBtn_OK = wx.Button(self, wx.ID_OK)
-        stdBtn.SetAffirmativeButton(stdBtn_OK)
-        stdBtn_Cancel = wx.Button(self, wx.ID_CANCEL)
-        stdBtn.SetCancelButton(stdBtn_Cancel)
-        stdBtn_ContextHelp = wx.ContextHelpButton(self, wx.ID_CONTEXT_HELP)
-        stdBtn.AddButton(stdBtn_ContextHelp)
-        stdBtn_OK.SetDefault()
-        stdBtn.Realize()
-        bSizer1.Add(stdBtn, wx.SizerFlags().Expand().Border(wx.ALL))
+        self.stdBtn = wx.StdDialogButtonSizer()
+        self.stdBtn_ok = wx.Button(self, wx.ID_OK)
+        self.stdBtn.SetAffirmativeButton(self.stdBtn_ok)
+        self.stdBtn_close = wx.Button(self, wx.ID_CLOSE)
+        self.stdBtn.SetCancelButton(self.stdBtn_close)
+        self.stdBtn_ctx_help = wx.ContextHelpButton(self, wx.ID_CONTEXT_HELP)
+        self.stdBtn.AddButton(self.stdBtn_ctx_help)
+        self.stdBtn_ok.SetDefault()
+        self.stdBtn.Realize()
+        bSizer1.Add(self.stdBtn, wx.SizerFlags().Expand().Border(wx.ALL))
 
         if pos != wx.DefaultPosition:
             self.SetPosition(self.FromDIP(pos))
@@ -111,15 +113,14 @@ class PythonDlg(wx.Dialog):
         self.Centre(wx.BOTH)
 
         # Bind Event handlers
+        self.Bind(wx.EVT_UPDATE_UI, self.on_update_close, self.stdBtn_close, self.on_update_close)
+        self.Bind(wx.EVT_BUTTON, self.on_close, self.stdBtn_close, self.on_close)
         self.Bind(wx.EVT_INIT_DIALOG, self.OnInit)
         self.toggleBtn.Bind(wx.EVT_TOGGLEBUTTON, lambda event:self.animation_ctrl.Play())
 
     # Unimplemented Event handler functions
     # Copy any listed and paste them below the comment block, or to your inherited class.
     """
-    def (self, event):
-        event.Skip()
-
     """
 
 # ************* End of generated code ***********
@@ -133,3 +134,9 @@ class PythonDlg(wx.Dialog):
     def OnInit(self, event):
         # self.m_staticText.SetLabel("Hello Python!")
         event.Skip()
+
+    def on_close(self, event):
+        self.EndModal(wx.ID_CLOSE)
+
+    def on_update_close(self, event):
+        self.stdBtn_close.SetLabel("Close Me!")

@@ -466,11 +466,11 @@ class BookTestDlg(wx.Dialog):
             dlg_sizer.Add(self.stdBtn_line, wx.SizerFlags().Expand().Border(wx.ALL))
 
         self.stdBtn = wx.StdDialogButtonSizer()
-        self.stdBtn_OK = wx.Button(self, wx.ID_OK)
-        self.stdBtn.SetAffirmativeButton(self.stdBtn_OK)
-        self.stdBtn_Cancel = wx.Button(self, wx.ID_CANCEL)
-        self.stdBtn.SetCancelButton(self.stdBtn_Cancel)
-        self.stdBtn_OK.SetDefault()
+        self.stdBtn_ok = wx.Button(self, wx.ID_OK)
+        self.stdBtn.SetAffirmativeButton(self.stdBtn_ok)
+        self.stdBtn_cancel = wx.Button(self, wx.ID_CANCEL)
+        self.stdBtn.SetCancelButton(self.stdBtn_cancel)
+        self.stdBtn_ok.SetDefault()
         self.stdBtn.Realize()
         dlg_sizer.Add(self.stdBtn, wx.SizerFlags().Expand().Border(wx.ALL))
 

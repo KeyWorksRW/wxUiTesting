@@ -11,12 +11,14 @@
 
 #include <wx/animate.h>
 #include <wx/aui/auibar.h>
+#include <wx/button.h>
 #include <wx/checkbox.h>
 #include <wx/colour.h>
 #include <wx/dialog.h>
 #include <wx/event.h>
 #include <wx/gdicmn.h>
 #include <wx/settings.h>
+#include <wx/sizer.h>
 #include <wx/spinctrl.h>
 #include <wx/stattext.h>
 #include <wx/tglbtn.h>
@@ -45,7 +47,9 @@ protected:
 
     // Event handlers
 
+    void OnClose(wxCommandEvent& event);
     void OnInit(wxInitDialogEvent& event);
+    void OnUpdateClose(wxUpdateUIEvent& event);
 
     // Class member variables
 
@@ -54,6 +58,10 @@ protected:
     wxCheckBox* m_checkPlayAnimation;
     wxSpinCtrl* spinCtrl;
     wxStaticText* m_staticText;
+    wxStdDialogButtonSizer* m_stdBtn;
+    wxButton* m_stdBtnOK;
+    wxButton* m_stdBtnClose;
+    wxButton* m_stdBtnContextHelp;
     wxToggleButton* m_toggleBtn;
 };
 
