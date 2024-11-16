@@ -11,6 +11,15 @@ import wx
 import wx.adv
 
 import images
+from wx.lib.embeddedimage import PyEmbeddedImage
+
+# ../art/hide.png
+hide_png = PyEmbeddedImage(
+    b"iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAAApElE"
+    b"QVRIx+2VSwKAIAhEGe9/Z1rUQhFksNrJDoWefBM5kgiMriIiqnpfAvgF0EMeEOtPGVQhS1B04UIm5xmK"
+    b"UgQMxAENSttJj9XNAzSipR+35zYyL5JWSYeFJZEMEWho4HRPoSZo7MAUWla8IiNztDmPbPvXU0XOwAso"
+    b"6FWxAUF5VTBd1Z0jGrSRDtAFDWuSNU91PT/zAXrdJiAENq//I59FfEQuFbZYJnQT96gAAAAASUVORK5C"
+    b"YII=")
 
 class Wizard(wx.adv.Wizard):
 
@@ -117,6 +126,10 @@ class Wizard(wx.adv.Wizard):
         box_sizer_6.Add(self.searchCtrl, wx.SizerFlags(1).Border(wx.ALL))
 
         box_sizer3.Add(box_sizer_6, wx.SizerFlags().Expand().Border(wx.ALL))
+
+        bmp = wx.StaticBitmap(wizPage3, wx.ID_ANY, wx.BitmapBundle.FromBitmap(
+            hide_png.Bitmap))
+        box_sizer3.Add(bmp, wx.SizerFlags().Border(wx.ALL))
         wizPage3.SetSizerAndFit(box_sizer3)
 
         wizPage.Chain(wizPage2).Chain(wizPage3)

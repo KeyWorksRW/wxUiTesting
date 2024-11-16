@@ -15,9 +15,38 @@ import wx.aui
 import images
 import zlib
 import base64
+
+from wizard import hide_png
+from main_test_dlg import clr_hourglass_gif
+
 from wx.lib.embeddedimage import PyEmbeddedImage
 
-from main_test_dlg import clr_hourglass_gif
+# ../art/timer.png
+timer_png = PyEmbeddedImage(
+    b"iVBORw0KGgoAAAANSUhEUgAAABYAAAAWCAYAAADEtGw7AAAACXBIWXMAAAsTAAALEwEAmpwYAAAFFklE"
+    b"QVQ4y32VT2wcVx3HP+/N7O7M7Oza7jrEyaZpnDg1TRy71KYJopRDD60qDlS95YLEAQkOVFyIAhVIiEhI"
+    b"RUElggPqAZVDqVRBkBJiooZKpE6t1CTZ2G7XcbzeFMde29m1vX88s/Nm5nFwHVSa9Ht8T7+Pvu+n3+/7"
+    b"BA/RO++8qy0rhWFIhBBorQkChecFtFotVlbWOHnyu+Jh9Z+7OHfushZC0NubJ5/fgZtOEbQDwigmjiIM"
+    b"M8HaepO5uQWuXZuhWl3m1KkfiS8EX7gwpm3b4ujRAYSA6eIChVs1AulgmAYtr01SrfHlfV0c7O3ZrmF2"
+    b"9javvfZj8UDw6OgVvWvXDgYH+5golJmtSg705ujdnYbNkLN/W+H5b/fgG5LS3QYfT37CgVSNoaEDXL5c"
+    b"4OrV65w589P7PAlw/vz72nFSDA728f7YJB+1Ojh2bC+P9jgANEONlTFph5qEAY/lXZ57/jAFcYiL/5zi"
+    b"6NHD9PX18uKLx/VnwIYhefrpASYKd7ja2s1XhrrwI42vBV4MVkeCF771JUzHwI80JAV+BM8MdzFr9HHj"
+    b"+i2eGh7gyJGR+62QZ8++p/fvzwPw7i3N8GAXXgBKiy14DA0FawE0NUhL8Mbp3/DRzWmafszgU/t4+7pJ"
+    b"1N5k584eXn75+xpAWlaKnp5uJouLyM4uWn5My4vZVBov2nLmR+BrUAp+deIkr//sBJWlFfy2higkNzDC"
+    b"xNQi/f176ejYseU4kTDJuDYTxRoYSVqepunH1D1o+DHNtqbZ1igDzpz6OX/+w+84/dcPODD0DJtt8NXW"
+    b"069XXAxD4rouTz75rDYBwqDN7VqKrB2xUReQNYijCA/QwmB6fJSJ9y4w+vYf+cWbl9jdP0y9EXBvPWLi"
+    b"4zb/ntykP+vQbgdksw6WlcbcbrYfSqbOVxj+Rhd7+jLUGgopTZbLN6BwjnszN3Ayj/CnX/8ETJdvfu/3"
+    b"NMI0tSUfVVxFfC2BUj4ASgWYSoWEUUynHdL/7B78lGDhnqLDkWQcyA308/pvPyAIIw599esoFSFMC9tU"
+    b"GJYk3mdjOnlcv4gKFK2WB4DZbgcIw2RvusmENthhaXIZg2xa0pEWpO00v3zrEnGkSGe78ZWg6WvWNgLW"
+    b"m/H98XIXN4giycZGg2q1grnZ8qjXWxzq7aB816PDcejMSHIZSWdGYqckZmcXUkCswVeapAmQBAJUCEEA"
+    b"ubhCbS1Dvd6gXJ7GXFldY35+kScO7uFGpYKR7qXLlVuObUlKagwpSAhQGqTY2too0gSBxIsSrEz8nV3d"
+    b"aUrlZe7cmQYQ8pVXjotC4RZxHHMoW8fCw05J0p9CLUOQSYBrgCXBMcFJClwbnJRELc+RlxXaSrO0tMCH"
+    b"H17830qvrFS4+I9xjhzpI7d8E7+6jJ0EyxC4BiTDmOqSRwKNJSElNem0ZONuGX/6Mj093czNfcL4+Oj9"
+    b"YJMAr776AzF7e5YrVwqMjDxBslJi5so1jE+zaqMW8OYbC2yuK6TcOhv7yyirV//FY3u6mZoqUSwWKJVu"
+    b"PjiPT5w4rR9/fD8jI4dptTzK5UXcRzpxHRsVGcSErK7WuFv6D53ZNCqMmJmZp1gscOnSW5/hfS75X3rp"
+    b"O3po6Bj5/C4OHnyUZDKB5/koFeL7bcIwolarMz+/xMLCAmNj57edii/8mrZ1/PgPdS63E9fNYNsWhiFo"
+    b"Nj1qtXUajSal0iTj4xceyngoeFvDw89p23YIw5AoiqhWKw90+P/6L1FsVhPeLgUHAAAAAElFTkSuQmCC"
+    b"")
 
 class PythonDlg(wx.Dialog):
     def __init__(self, parent, id=wx.ID_ANY, title="Hello Python Dialog!",
@@ -58,10 +87,22 @@ class PythonDlg(wx.Dialog):
         self.staticText.SetForegroundColour(wx.Colour("#008000"))
         box_sizer.Add(self.staticText, wx.SizerFlags().Center().Border(wx.ALL))
 
+        box_sizer2 = wx.BoxSizer(wx.HORIZONTAL)
+
         _svg_string_ = zlib.decompress(base64.b64decode(images.face_smile_svg))
         bmp = wx.StaticBitmap(self, wx.ID_ANY,
             wx.BitmapBundle.FromSVG(_svg_string_, wx.Size(32, 32)))
-        box_sizer.Add(bmp, wx.SizerFlags().Border(wx.ALL))
+        box_sizer2.Add(bmp, wx.SizerFlags().Border(wx.ALL))
+
+        bmp2 = wx.StaticBitmap(self, wx.ID_ANY, wx.BitmapBundle.FromBitmap(
+            hide_png.Bitmap))
+        box_sizer2.Add(bmp2, wx.SizerFlags().Border(wx.ALL))
+
+        bmp3 = wx.StaticBitmap(self, wx.ID_ANY, wx.BitmapBundle.FromBitmap(
+            timer_png.Bitmap))
+        box_sizer2.Add(bmp3, wx.SizerFlags().Border(wx.ALL))
+
+        box_sizer.Add(box_sizer2, wx.SizerFlags().Border(wx.ALL))
 
         # wxPython currently does not support a checkbox as a static box label
         static_box_2 = wx.StaticBoxSizer(wx.VERTICAL, self, "Play Animation")

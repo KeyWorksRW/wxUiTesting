@@ -1877,6 +1877,9 @@
               hint="Search for something..."
               proportion="1" />
           </node>
+          <node
+            class="wxStaticBitmap"
+            bitmap="Embed;hide.png" />
         </node>
       </node>
     </node>
@@ -1887,7 +1890,6 @@
       size="-1,-1"
       base_file="python_dlg"
       use_derived_class="0"
-      insert_python_code="from main_test_dlg import clr_hourglass_gif"
       python_file="python_dlg"
       python_inherit_name="PythonDlg"
       ruby_file="python_dlg"
@@ -1934,8 +1936,20 @@
             window_name="my_text"
             alignment="|wxALIGN_CENTER_HORIZONTAL" />
           <node
-            class="wxStaticBitmap"
-            bitmap="SVG;face-smile.svg;[32,32]" />
+            class="wxBoxSizer"
+            var_name="box_sizer2">
+            <node
+              class="wxStaticBitmap"
+              bitmap="SVG;face-smile.svg;[32,32]" />
+            <node
+              class="wxStaticBitmap"
+              bitmap="Embed;hide.png"
+              var_name="bmp2" />
+            <node
+              class="wxStaticBitmap"
+              bitmap="Embed;../art/timer.png"
+              var_name="bmp3" />
+          </node>
           <node
             class="StaticCheckboxBoxSizer"
             checkbox_var_name="m_checkPlayAnimation"
