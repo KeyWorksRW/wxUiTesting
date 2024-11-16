@@ -9,9 +9,7 @@
 
 #include <wx/aui/framemanager.h>
 #include <wx/bmpbndl.h>
-#include <wx/button.h>
 #include <wx/cshelp.h>
-#include <wx/sizer.h>
 #include <wx/statbmp.h>
 #include <wx/statbox.h>
 
@@ -99,13 +97,16 @@ bool PythonDlg::Create(wxWindow* parent, wxWindowID id, const wxString& title,
 
     bSizer1->Add(box_sizer, wxSizerFlags().Expand().Border(wxALL));
 
-    auto* stdBtn = new wxStdDialogButtonSizer();
-    stdBtn->AddButton(new wxButton(this, wxID_OK));
-    stdBtn->AddButton(new wxButton(this, wxID_CANCEL));
-    stdBtn->AddButton(new wxContextHelpButton(this, wxID_CONTEXT_HELP));
-    stdBtn->GetAffirmativeButton()->SetDefault();
-    stdBtn->Realize();
-    bSizer1->Add(CreateSeparatedSizer(stdBtn), wxSizerFlags().Expand().Border(wxALL));
+    m_stdBtn = new wxStdDialogButtonSizer();
+    m_stdBtn->AddButton(new wxButton(this, wxID_OK));
+    m_stdBtn->AddButton(new wxButton(this, wxID_CLOSE));
+    m_stdBtn->AddButton(new wxContextHelpButton(this, wxID_CONTEXT_HELP));
+    m_stdBtn->GetAffirmativeButton()->SetDefault();
+    m_stdBtn->Realize();
+    m_stdBtnOK = wxStaticCast(FindWindowById(wxID_OK), wxButton);
+    m_stdBtnClose = wxStaticCast(FindWindowById(wxID_CLOSE), wxButton);
+    m_stdBtnContextHelp = wxStaticCast(FindWindowById(wxID_CONTEXT_HELP), wxButton);
+    bSizer1->Add(CreateSeparatedSizer(m_stdBtn), wxSizerFlags().Expand().Border(wxALL));
 
     if (pos != wxDefaultPosition)
     {
@@ -128,6 +129,8 @@ bool PythonDlg::Create(wxWindow* parent, wxWindowID id, const wxString& title,
     Centre(wxBOTH);
 
     // Event handlers
+    Bind(wxEVT_UPDATE_UI, &PythonDlg::OnUpdateClose, this, wxID_CLOSE);
+    Bind(wxEVT_BUTTON, &PythonDlg::OnClose, this, wxID_CLOSE);
     m_checkPlayAnimation->Bind(wxEVT_CHECKBOX,
         [this](wxCommandEvent&)
         {
@@ -187,3 +190,18 @@ void MainFrame::OnPythonDlg(wxCommandEvent& WXUNUSED(event))
     PythonDlg dlg(this);
     dlg.ShowModal();
 }
+
+
+void PythonDlg::OnClose(wxCommandEvent& WXUNUSED(event))
+{
+    EndModal(wxID_CLOSE);
+}
+
+
+void PythonDlg::OnUpdateClose(wxUpdateUIEvent& WXUNUSED(event))
+{
+    auto btn = m_stdBtn->GetCancelButton();
+    wxASSERT_MSG(btn, "Close button should have been set to SetCancelButton()!");
+    btn->SetLabel("Close Me!");
+}
+

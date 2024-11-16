@@ -47,10 +47,11 @@ class DlgIssue_960 < Wx::Dialog
       dlg_sizer.add(stdBtn_line, Wx::SizerFlags.new.expand.border(Wx::ALL))
     end
     stdBtn = Wx::StdDialogButtonSizer.new
-    _ok_btn = Wx::Button.new(self, Wx::ID_OK)
-    stdBtn.add_button(_ok_btn)
-    _ok_btn.set_default
-    stdBtn.add_button(Wx::Button.new(self, Wx::ID_CANCEL))
+    stdBtn_ok = Wx::Button.new(self, Wx::ID_OK)
+    stdBtn.add_button(stdBtn_ok)
+    stdBtn_ok.set_default
+    stdBtn_cancel = Wx::Button.new(self, Wx::ID_CANCEL)
+    stdBtn.add_button(stdBtn_cancel)
     stdBtn.realize
     dlg_sizer.add(stdBtn, Wx::SizerFlags.new.expand.border(Wx::ALL))
 

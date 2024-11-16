@@ -139,11 +139,11 @@ class BitmapsDlg(wx.Dialog):
             dlg_sizer.Add(stdBtn_line, wx.SizerFlags().Expand().Border(wx.ALL))
 
         stdBtn = wx.StdDialogButtonSizer()
-        stdBtn_OK = wx.Button(self, wx.ID_OK)
-        stdBtn.SetAffirmativeButton(stdBtn_OK)
-        stdBtn_Cancel = wx.Button(self, wx.ID_CANCEL)
-        stdBtn.SetCancelButton(stdBtn_Cancel)
-        stdBtn_OK.SetDefault()
+        stdBtn_ok = wx.Button(self, wx.ID_OK)
+        stdBtn.SetAffirmativeButton(stdBtn_ok)
+        stdBtn_cancel = wx.Button(self, wx.ID_CANCEL)
+        stdBtn.SetCancelButton(stdBtn_cancel)
+        stdBtn_ok.SetDefault()
         stdBtn.Realize()
         dlg_sizer.Add(stdBtn, wx.SizerFlags().Expand().Border(wx.ALL))
 
