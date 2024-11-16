@@ -19,6 +19,7 @@ require_relative 'main_test_dlg'
 require_relative 'tools_dlg'
 require_relative 'bitmaps_dlg'
 require_relative 'propsheet'
+require_relative 'python_dlg'
 
 require_relative 'images'
 require 'zlib'
@@ -348,7 +349,9 @@ def OnMainTestDlg
 end
 
 def OnPythonDlg(event)
-  event.skip
+  dlg = PythonDlg.new(self)
+  dlg.show_modal
+  dlg.destroy
 end
 
 def OnGridSize(event)
