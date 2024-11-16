@@ -51,10 +51,20 @@ class PythonDlg < Wx::Dialog
     @staticText.set_foreground_colour(Wx::Colour.new('#008000'))
     box_sizer.add(@staticText, Wx::SizerFlags.new.center.border(Wx::ALL))
 
+    box_sizer2 = Wx::BoxSizer.new(Wx::HORIZONTAL)
+
     _svg_string_ = Zlib::Inflate.inflate(Base64.decode64($face_smile_svg))
     bmp = Wx::StaticBitmap.new(self, Wx::ID_ANY, Wx::BitmapBundle.from_svg(_svg_string_,
       Wx::Size.new(32, 32)))
-    box_sizer.add(bmp, Wx::SizerFlags.new.border(Wx::ALL))
+    box_sizer2.add(bmp, Wx::SizerFlags.new.border(Wx::ALL))
+
+    bmp2 = Wx::StaticBitmap.new(self, Wx::ID_ANY, wxue_get_bundle($hide_png))
+    box_sizer2.add(bmp2, Wx::SizerFlags.new.border(Wx::ALL))
+
+    bmp3 = Wx::StaticBitmap.new(self, Wx::ID_ANY, wxue_get_bundle($timer_png))
+    box_sizer2.add(bmp3, Wx::SizerFlags.new.border(Wx::ALL))
+
+    box_sizer.add(box_sizer2, Wx::SizerFlags.new.border(Wx::ALL))
 
     @checkPlayAnimation = Wx::CheckBox.new(self, Wx::ID_ANY, 'Play Animation')
     static_box_2 = Wx::StaticBoxSizer.new(Wx::StaticBox.new(self, Wx::ID_ANY, @checkPlayAnimation
@@ -119,6 +129,35 @@ class PythonDlg < Wx::Dialog
     return animation
   end
 end
+
+# ../art/timer.png
+$timer_png = Base64.decode64(
+  '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')
 
 # ************* End of generated code ***********
 # DO NOT EDIT THIS COMMENT BLOCK!

@@ -23,6 +23,12 @@
 #include <wx/stattext.h>
 #include <wx/wizard.h>
 
+namespace wxue_img
+{
+    // ../art/hide.png
+    extern const unsigned char hide_png[242];
+}
+
 class Wizard : public wxWizard
 {
 public:

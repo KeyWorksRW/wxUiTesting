@@ -27,6 +27,10 @@ namespace wxue_img
 {
     // ../art/clr_hourglass.gif
     extern const unsigned char clr_hourglass_gif[2017];
+    // ../art/hide.png
+    extern const unsigned char hide_png[242];
+    // ../art/timer.png
+    extern const unsigned char timer_png[1380];
 }
 
 class PythonDlg : public wxDialog

@@ -10,6 +10,7 @@ WX_GLOBAL_CONSTANTS = true unless defined? WX_GLOBAL_CONSTANTS
 require 'wx/core'
 
 require_relative 'images'
+require 'base64'
 
 class Wizard < Wx::Wizard
   def initialize(parent, id = Wx::ID_ANY, title = 'Wizard Tests',
@@ -114,6 +115,9 @@ class Wizard < Wx::Wizard
     box_sizer_6.add(@searchCtrl, Wx::SizerFlags.new(1).border(Wx::ALL))
 
     box_sizer3.add(box_sizer_6, Wx::SizerFlags.new.expand.border(Wx::ALL))
+
+    bmp = Wx::StaticBitmap.new(wizPage3, Wx::ID_ANY, wxue_get_bundle($hide_png))
+    box_sizer3.add(bmp, Wx::SizerFlags.new.border(Wx::ALL))
     wizPage3.set_sizer_and_fit(box_sizer3)
 
     wizPage.chain(wizPage2).chain(wizPage3)
@@ -125,6 +129,15 @@ class Wizard < Wx::Wizard
     evt_wizard_before_page_changed(get_id, :on_before_page_change)
   end
 end
+
+# ../art/hide.png
+$hide_png = Base64.decode64(
+  'iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwY' +
+  'AAAApElEQVRIx+2VSwKAIAhEGe9/Z1rUQhFksNrJDoWefBM5kgiMriIiqnpfAvgF0EMeEOtP' +
+  'GVQhS1B04UIm5xmKUgQMxAENSttJj9XNAzSipR+35zYyL5JWSYeFJZEMEWho4HRPoSZo7MAU' +
+  'Wla8IiNztDmPbPvXU0XOwAso6FWxAUF5VTBd1Z0jGrSRDtAFDWuSNU91PT/zAXrdJiAENq//' +
+  'I59FfEQuFbZYJnQT96gAAAAASUVORK5CYII=')
+
 # ************* End of generated code ***********
 # DO NOT EDIT THIS COMMENT BLOCK!
 #
