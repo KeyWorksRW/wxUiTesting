@@ -18,7 +18,7 @@ public:
                 const wxPoint& pos = wxDefaultPosition, const wxSize& size = wxSize(500, 300),
                 long style = wxDEFAULT_FRAME_STYLE | wxTAB_TRAVERSAL, const wxString& name = wxFrameNameStr)
     {
-        ignore;
+        wxUnusedVar(ignore);
         if (!wxFrame::Create(parent, id, title, wxWindow::FromDIP(pos), wxWindow::FromDIP(size), style, name))
             return false;
         else

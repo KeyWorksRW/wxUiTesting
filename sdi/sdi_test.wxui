@@ -55,6 +55,9 @@
         bitmap="Embed;french.png" />
       <node
         class="embedded_image"
+        bitmap="SVG;grid.svg;[24,24]" />
+      <node
+        class="embedded_image"
         bitmap="Embed;japanese.png" />
       <node
         class="embedded_image"
@@ -102,7 +105,7 @@
       derived_file="../ui/mainframe"
       use_derived_class="0"
       python_file="mainframe"
-      python_import_list="main_test_dlg.py;booktest_dlg.py;wizard.py;python_dlg.py;tools_dlg.py;dlgissue_956.py;dlgissue_960.py;bitmaps_dlg.py;propsheet.py"
+      python_import_list="bitmaps_dlg.py;booktest_dlg.py;data_dlg.py;main_test_dlg.py;propsheet.py;python_dlg.py;tools_dlg.py;wizard.py;dlgissue_956.py;dlgissue_960.py"
       python_inherit_name="mainframe"
       relative_require_list="dlgissue_956.rb;dlgissue_960.rb;booktest_dlg.rb;wizard.rb;main_test_dlg.rb;tools_dlg.rb;bitmaps_dlg.rb;propsheet.rb;python_dlg.rb"
       ruby_file="mainframe"
@@ -266,6 +269,12 @@
             var_name="menuItem2"
             wxEVT_MENU="OnBitmapsDlg" />
           <node
+            class="wxMenuItem"
+            bitmap="SVG;grid.svg;[24,24]"
+            label="Data"
+            var_name="menuItem4"
+            wxEVT_MENU="OnDataDlg" />
+          <node
             class="separator"
             var_name="_separator" />
           <node
@@ -336,6 +345,11 @@
           label="PythonDlg"
           var_name="tool_3"
           wxEVT_TOOL="OnPythonDlg" />
+        <node
+          class="tool"
+          bitmap="SVG;grid.svg;[24,24]"
+          label="DataDlg"
+          wxEVT_TOOL="OnDataDlg" />
         <node
           class="toolStretchable" />
         <node
@@ -1151,36 +1165,6 @@
               </node>
             </node>
           </node>
-          <node
-            class="BookPage"
-            label="Data"
-            var_name="page_8"
-            background_colour="wxSYS_COLOUR_BTNFACE"
-            window_style="wxTAB_TRAVERSAL">
-            <node
-              class="wxBoxSizer"
-              orientation="wxVERTICAL"
-              var_name="page_sizer_4">
-              <node
-                class="wxPropertyGrid"
-                var_name="propertyGrid"
-                flags="wxEXPAND">
-                <node
-                  class="propGridCategory"
-                  var_name="propertyGridItem">
-                  <node
-                    class="propGridItem"
-                    label="String"
-                    var_name="propertyGridItem_2" />
-                  <node
-                    class="propGridItem"
-                    label="Integer"
-                    type="Int"
-                    var_name="propertyGridItem_3" />
-                </node>
-              </node>
-            </node>
-          </node>
         </node>
         <node
           class="wxBoxSizer"
@@ -1947,7 +1931,7 @@
               var_name="bmp2" />
             <node
               class="wxStaticBitmap"
-              bitmap="Embed;../art/timer.png"
+              bitmap="Embed;timer.png"
               var_name="bmp3" />
           </node>
           <node
@@ -2312,6 +2296,233 @@
             var_name="m_staticText3"
             wrap="200" />
         </node>
+      </node>
+    </node>
+    <node
+      class="wxDialog"
+      class_name="DataDlg"
+      style="wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER"
+      title="Data testing"
+      base_file="data_dlg"
+      class_methods="&quot;void OnEventName(const std::string&amp; event_name);&quot;"
+      use_derived_class="0"
+      python_file="data_dlg"
+      wxEVT_INIT_DIALOG="OnInit[python:on_init][ruby:on_init]">
+      <node
+        class="wxBoxSizer"
+        orientation="wxVERTICAL"
+        var_name="dlg_sizer">
+        <node
+          class="wxNotebook">
+          <node
+            class="BookPage"
+            label="Grid"
+            var_name="grid_tab"
+            window_style="wxTAB_TRAVERSAL">
+            <node
+              class="wxBoxSizer"
+              orientation="wxVERTICAL"
+              var_name="page_sizer_2">
+              <node
+                class="wxGrid"
+                col_label_size="24"
+                col_label_values="Text Items;Show;Width;Height;Thickness;Italic;Layer;Orientation;Unconstrained;X Offset;Y Offset"
+                cols="11"
+                column_sizes="124;60;110;110;110;60;110;110;110;110;110"
+                drag_row_size="0"
+                label_font=",90,92,-1,70,0"
+                row_label_horiz_alignment="wxALIGN_LEFT"
+                row_label_size="160"
+                row_label_values="Reference designator;Value"
+                rows="2"
+                var_comment="Grid imported from a kicad dialog, utilizing column sizes and labels"
+                var_name="m_kicadGrid"
+                minimum_size="800,140"
+                size="-1,-1"
+                borders="wxLEFT|wxRIGHT|wxBOTTOM"
+                flags="wxEXPAND"
+                proportion="1"
+                wxEVT_GRID_COL_SIZE="OnColumnResize"
+                wxEVT_SIZE="OnGridSize" />
+            </node>
+          </node>
+          <node
+            class="BookPage"
+            label="PropertyGrid"
+            var_name="prop_grid_tab"
+            window_style="wxTAB_TRAVERSAL">
+            <node
+              class="wxBoxSizer"
+              orientation="wxVERTICAL"
+              var_name="page_sizer_4">
+              <node
+                class="wxPropertyGrid"
+                flags="wxEXPAND"
+                wxEVT_PG_CHANGED="OnChanged[python:on_changed][ruby:on_changed]">
+                <node
+                  class="propGridCategory"
+                  var_name="m_propertyGridICategory">
+                  <node
+                    class="propGridItem"
+                    label="String"
+                    var_name="m_pgi_string" />
+                  <node
+                    class="propGridItem"
+                    label="Integer"
+                    type="Int"
+                    var_name="m_pgi_integer" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node
+            class="BookPage"
+            label="Trees"
+            var_name="tree_tab"
+            window_style="wxTAB_TRAVERSAL">
+            <node
+              class="wxBoxSizer"
+              orientation="wxVERTICAL"
+              var_name="page_sizer_3">
+              <node
+                class="wxFlexGridSizer"
+                growablecols="0,1"
+                flags="wxEXPAND"
+                proportion="1">
+                <node
+                  class="wxStaticText"
+                  label="wxTreeCtrl"
+                  var_name="m_static_text"
+                  flags="wxEXPAND"
+                  proportion="1" />
+                <node
+                  class="wxStaticText"
+                  label="wxTreeListCtrl"
+                  var_name="m_static_text2"
+                  flags="wxEXPAND"
+                  proportion="1" />
+                <node
+                  class="wxTreeCtrl"
+                  var_name="m_tree_ctrl"
+                  flags="wxEXPAND"
+                  proportion="1"
+                  wxEVT_TREE_ITEM_EXPANDED="OnTreeItemExpanded[python:on_tree_item_expanded][ruby:on_tree_item_expanded]" />
+                <node
+                  class="wxTreeListCtrl"
+                  var_name="m_tree_list_ctrl"
+                  flags="wxEXPAND"
+                  proportion="1"
+                  wxEVT_TREELIST_SELECTION_CHANGED="OnTreeListSelChanged[python:on_tree_list_sel_changed][ruby:on_tree_list_sel_changed]">
+                  <node
+                    class="TreeListCtrlColumn"
+                    label="Column 1" />
+                  <node
+                    class="TreeListCtrlColumn"
+                    label="Column 2" />
+                </node>
+              </node>
+            </node>
+          </node>
+          <node
+            class="BookPage"
+            label="DataView"
+            var_name="dataview_tab"
+            background_colour="wxSYS_COLOUR_BTNFACE"
+            window_style="wxTAB_TRAVERSAL">
+            <node
+              class="wxBoxSizer"
+              orientation="wxVERTICAL"
+              var_name="page_sizer">
+              <node
+                class="wxFlexGridSizer"
+                cols="3"
+                rows="3"
+                var_name="flex_grid_sizer2"
+                growablecols="0,1,2"
+                flags="wxEXPAND"
+                proportion="1">
+                <node
+                  class="wxStaticText"
+                  class_access="none"
+                  label="wxDataView"
+                  var_name="static_text3"
+                  flags="wxEXPAND" />
+                <node
+                  class="wxStaticText"
+                  label="wxDataViewList"
+                  var_name="m_static_text5"
+                  flags="wxEXPAND" />
+                <node
+                  class="wxStaticText"
+                  label="wxDataViewtree"
+                  var_name="m_static_text4"
+                  flags="wxEXPAND" />
+                <node
+                  class="wxDataViewCtrl"
+                  style="wxDV_SINGLE"
+                  var_name="m_data_view_ctrl"
+                  flags="wxEXPAND"
+                  proportion="1">
+                  <node
+                    class="dataViewColumn"
+                    label="Column 1"
+                    var_name="m_data_view_column" />
+                  <node
+                    class="dataViewColumn"
+                    label="Column 2"
+                    var_name="m_data_view_column2" />
+                </node>
+                <node
+                  class="wxDataViewListCtrl"
+                  var_name="m_data_view_list_ctrl"
+                  minimum_size="-1,100"
+                  flags="wxEXPAND"
+                  proportion="1"
+                  wxEVT_DATAVIEW_SELECTION_CHANGED="OnDataViewCtrlSelectionChanged[python:on_data_view_ctrl_selection_changed][ruby:on_data_view_ctrl_selection_changed]">
+                  <node
+                    class="dataViewListColumn"
+                    label="List 1"
+                    var_name="m_data_view_list_column" />
+                  <node
+                    class="dataViewListColumn"
+                    label="List 2"
+                    var_name="m_data_view_list_column2" />
+                </node>
+                <node
+                  class="wxDataViewTreeCtrl"
+                  var_name="m_data_view_tree_ctrl"
+                  flags="wxEXPAND"
+                  proportion="1"
+                  wxEVT_DATAVIEW_SELECTION_CHANGED="OnDataViewCtrlSelectionChanged[python:on_data_view_ctrl_selection_changed][ruby:on_data_view_ctrl_selection_changed]" />
+              </node>
+            </node>
+          </node>
+        </node>
+        <node
+          class="wxBoxSizer"
+          var_name="box_sizer_14">
+          <node
+            class="wxStaticText"
+            class_access="none"
+            label="Events:"
+            var_name="staticText_4"
+            alignment="wxALIGN_CENTER_VERTICAL" />
+          <node
+            class="wxButton"
+            class_access="none"
+            label="Clear Events"
+            var_name="btn"
+            wxEVT_BUTTON="OnClearList" />
+        </node>
+        <node
+          class="wxListBox"
+          var_name="m_events_list"
+          minimum_size="-1,150"
+          flags="wxEXPAND"
+          proportion="1" />
+        <node
+          class="wxStdDialogButtonSizer"
+          flags="wxEXPAND" />
       </node>
     </node>
     <node

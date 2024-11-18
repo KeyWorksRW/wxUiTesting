@@ -169,6 +169,9 @@ bool MainFrame::Create(wxWindow* parent, wxWindowID id, const wxString& title,
     auto* menuItem2 = new wxMenuItem(menuDialogs, wxID_ANY, "Bitmaps");
     menuItem2->SetBitmap(wxue_img::bundle_normal_png());
     menuDialogs->Append(menuItem2);
+    auto* menuItem4 = new wxMenuItem(menuDialogs, wxID_ANY, "Data");
+    menuItem4->SetBitmap(wxue_img::bundle_grid_svg(24, 24));
+    menuDialogs->Append(menuItem4);
     menuDialogs->AppendSeparator();
     auto* menuItem_2 = new wxMenuItem(menuDialogs, wxID_ANY, "Common Controls...", "Common controls", wxITEM_NORMAL);
     menuItem_2->SetBitmap(wxArtProvider::GetBitmapBundle(wxART_TIP, wxART_MENU));
@@ -211,6 +214,9 @@ bool MainFrame::Create(wxWindow* parent, wxWindowID id, const wxString& title,
     m_toolBar->AddSeparator();
     auto* tool_3 = m_toolBar->AddTool(wxID_ANY, "PythonDlg", wxue_img::bundle_wxPython_1_5x_png());
 
+    auto* tool = m_toolBar->AddTool(wxID_ANY, "DataDlg",
+        wxue_img::bundle_grid_svg(FromDIP(24), FromDIP(24)));
+
     m_toolBar->AddStretchableSpace();
 
     auto* tool_2 = m_toolBar->AddTool(wxID_ANY, "Common Controls...", wxArtProvider::GetBitmapBundle(wxART_TIP, wxART_TOOLBAR,
@@ -234,6 +240,7 @@ bool MainFrame::Create(wxWindow* parent, wxWindowID id, const wxString& title,
     Bind(wxEVT_MENU, &MainFrame::OnBitmapsDlg, this, menuItem2->GetId());
     Bind(wxEVT_MENU, &MainFrame::OnBookTestDlg, this, menu_item_4->GetId());
     Bind(wxEVT_MENU, &MainFrame::OnCommonDialog, this, menuItem_2->GetId());
+    Bind(wxEVT_MENU, &MainFrame::OnDataDlg, this, menuItem4->GetId());
     Bind(wxEVT_MENU, &MainFrame::OnDlgIssue_956, this, menu_item_5->GetId());
     Bind(wxEVT_MENU, &MainFrame::OnDlgIssue_960, this, menu_item_6->GetId());
     Bind(wxEVT_MENU, &MainFrame::OnMainTestDlg, this, menu_item_3->GetId());
@@ -247,6 +254,7 @@ bool MainFrame::Create(wxWindow* parent, wxWindowID id, const wxString& title,
     m_kicadGrid->Bind(wxEVT_SIZE, &MainFrame::OnGridSize, this);
     Bind(wxEVT_TOOL, &MainFrame::OnBookTestDlg, this, tool_5->GetId());
     Bind(wxEVT_TOOL, &MainFrame::OnCommonDialog, this, tool_2->GetId());
+    Bind(wxEVT_TOOL, &MainFrame::OnDataDlg, this, tool->GetId());
     Bind(wxEVT_TOOL, &MainFrame::OnMainTestDlg, this, tool_4->GetId());
     Bind(wxEVT_TOOL, &MainFrame::OnPythonDlg, this, tool_3->GetId());
 

@@ -11,7 +11,6 @@ import wx
 import io
 import wx.adv
 import wx.html
-import wx.propgrid
 import wx.ribbon
 import wx.richtext
 import wx.stc
@@ -732,26 +731,6 @@ class MainTestDialog(wx.Dialog):
 
         page_sizer.Add(box_sizer_18, wx.SizerFlags().Border(wx.ALL))
         page_7.SetSizerAndFit(page_sizer)
-
-        page_8 = wx.Panel(self.notebook, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize,
-            wx.TAB_TRAVERSAL)
-        self.notebook.AddPage(page_8, "Data")
-        page_8.SetBackgroundColour(wx.SystemSettings.GetColour(wx.SYS_COLOUR_BTNFACE))
-
-        page_sizer_4 = wx.BoxSizer(wx.VERTICAL)
-
-        self.propertyGrid = wx.propgrid.PropertyGrid(page_8, wx.ID_ANY)
-        page_sizer_4.Add(self.propertyGrid, wx.SizerFlags().Expand().Border(wx.ALL))
-
-        self.propertyGridItem = self.propertyGrid.Append(wx.propgrid.PropertyCategory(
-        "CategoryName", "CategoryName"))
-
-        self.propertyGridItem_2 = self.propertyGrid.Append(wx.propgrid.StringProperty(
-        "String", ""))
-
-        self.propertyGridItem_3 = self.propertyGrid.Append(wx.propgrid.IntProperty(
-        "Integer", ""))
-        page_8.SetSizerAndFit(page_sizer_4)
 
         box_sizer_14 = wx.BoxSizer(wx.HORIZONTAL)
 

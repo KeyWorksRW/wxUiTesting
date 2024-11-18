@@ -28,6 +28,7 @@ namespace wxue_img
     wxBitmapBundle bundle_focus_png();  // focus.png
     wxBitmapBundle bundle_fontPicker_png();  // fontPicker.png
     wxBitmapBundle bundle_french_png();  // french.png
+    wxBitmapBundle bundle_grid_svg(int width, int height);
     wxBitmapBundle bundle_japanese_png();  // japanese.png
     wxBitmapBundle bundle_left_png();  // left.png
     wxBitmapBundle bundle_no_hour_png();  // no_hour.png

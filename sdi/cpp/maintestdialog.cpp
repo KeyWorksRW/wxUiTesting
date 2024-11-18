@@ -691,22 +691,6 @@ bool MainTestDialog::Create(wxWindow* parent, wxWindowID id, const wxString& tit
     page_sizer->Add(box_sizer_18, wxSizerFlags().Border(wxALL));
     page_7->SetSizerAndFit(page_sizer);
 
-    auto* page_8 = new wxPanel(m_notebook, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL);
-    m_notebook->AddPage(page_8, "Data");
-    page_8->SetBackgroundColour(wxSystemSettings::GetColour(wxSYS_COLOUR_BTNFACE));
-
-    auto* page_sizer_4 = new wxBoxSizer(wxVERTICAL);
-
-    propertyGrid = new wxPropertyGrid(page_8, wxID_ANY);
-    page_sizer_4->Add(propertyGrid, wxSizerFlags().Expand().Border(wxALL));
-
-    propertyGridItem = propertyGrid->Append(new wxPropertyCategory("CategoryName", "CategoryName"));
-
-    propertyGridItem_2 = propertyGrid->Append(new wxStringProperty("String", wxEmptyString));
-
-    propertyGridItem_3 = propertyGrid->Append(new wxIntProperty("Integer", wxEmptyString));
-    page_8->SetSizerAndFit(page_sizer_4);
-
     auto* box_sizer_14 = new wxBoxSizer(wxHORIZONTAL);
 
     auto* staticText_4 = new wxStaticText(this, wxID_ANY, "Events:");

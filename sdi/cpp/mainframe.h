@@ -55,6 +55,7 @@ protected:
     void OnBitmapsDlg(wxCommandEvent& event);
     void OnBookTestDlg(wxCommandEvent& event);
     void OnCommonDialog(wxCommandEvent& event);
+    void OnDataDlg(wxCommandEvent& event);
     void OnDlgIssue_956(wxCommandEvent& event);
     void OnDlgIssue_960(wxCommandEvent& event);
     void OnGridSize(wxSizeEvent& event);

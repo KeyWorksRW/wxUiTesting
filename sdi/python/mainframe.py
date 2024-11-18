@@ -10,17 +10,20 @@
 import wx
 import wx.grid
 import wx.propgrid
-import main_test_dlg
+import bitmaps_dlg
 import booktest_dlg
-import wizard
+import data_dlg
+import main_test_dlg
+import propsheet
 import python_dlg
 import tools_dlg
+import wizard
 import dlgissue_956
 import dlgissue_960
-import bitmaps_dlg
-import propsheet
 
 import images
+import zlib
+import base64
 import zlib
 import base64
 from wx.lib.embeddedimage import PyEmbeddedImage
@@ -211,6 +214,11 @@ class MainFrame(wx.Frame):
         menuItem2 = wx.MenuItem(menuDialogs, wx.ID_ANY, "Bitmaps")
         menuItem2.SetBitmap(wx.BitmapBundle.FromBitmap(images.normal_png.Bitmap))
         menuDialogs.Append(menuItem2)
+        menuItem4 = wx.MenuItem(menuDialogs, wx.ID_ANY, "Data")
+        _svg_string_ = zlib.decompress(base64.b64decode(images.grid_svg))
+        menuItem4.SetBitmap(
+            wx.BitmapBundle.FromSVG(_svg_string_, wx.Size(24, 24)))
+        menuDialogs.Append(menuItem4)
         menuDialogs.AppendSeparator()
         menuItem_2 = wx.MenuItem(menuDialogs, wx.ID_ANY, "Common Controls...",
             "Common controls", wx.ITEM_NORMAL)
@@ -252,6 +260,10 @@ class MainFrame(wx.Frame):
         tool_3 = self.toolBar.AddTool(wx.ID_ANY, "PythonDlg", wx.BitmapBundle.FromBitmaps(
             images.wxPython_1_5x_png.Bitmap, images.wxPython_2x_png.Bitmap))
 
+        _svg_string_ = zlib.decompress(base64.b64decode(images.grid_svg))
+        tool = self.toolBar.AddTool(wx.ID_ANY, "DataDlg",
+            wx.BitmapBundle.FromSVG(_svg_string_, wx.Size(24, 24)))
+
         self.toolBar.AddStretchableSpace()
 
         tool_2 = self.toolBar.AddTool(wx.ID_ANY, "Common Controls...", wx.ArtProvider.GetBitmapBundle(
@@ -271,6 +283,7 @@ class MainFrame(wx.Frame):
         self.Bind(wx.EVT_MENU, self.OnBitmapsDlg, id=menuItem2.GetId())
         self.Bind(wx.EVT_MENU, self.OnBookTestDlg, id=menu_item_4.GetId())
         self.Bind(wx.EVT_MENU, self.OnCommonDialog, id=menuItem_2.GetId())
+        self.Bind(wx.EVT_MENU, self.OnDataDlg, id=menuItem4.GetId())
         self.Bind(wx.EVT_MENU, self.OnDlgIssue_956, id=menu_item_5.GetId())
         self.Bind(wx.EVT_MENU, self.OnDlgIssue_960, id=menu_item_6.GetId())
         self.Bind(wx.EVT_MENU, self.OnMainTestDlg, id=menu_item_3.GetId())
@@ -284,6 +297,7 @@ class MainFrame(wx.Frame):
         self.kicadGrid.Bind(wx.EVT_SIZE, self.OnGridSize)
         self.Bind(wx.EVT_TOOL, self.OnBookTestDlg, id=tool_5.GetId())
         self.Bind(wx.EVT_TOOL, self.OnCommonDialog, id=tool_2.GetId())
+        self.Bind(wx.EVT_TOOL, self.OnDataDlg, id=tool.GetId())
         self.Bind(wx.EVT_TOOL, self.OnMainTestDlg, id=tool_4.GetId())
         self.Bind(wx.EVT_TOOL, self.OnPythonDlg, id=tool_3.GetId())
 
@@ -374,6 +388,11 @@ class MainFrame(wx.Frame):
 
     def OnBitmapsDlg(self, event):
         dlg = bitmaps_dlg.BitmapsDlg(self)
+        dlg.ShowModal()
+        dlg.Destroy()
+
+    def OnDataDlg(self, event):
+        dlg = data_dlg.DataDlg(self)
         dlg.ShowModal()
         dlg.Destroy()
 
