@@ -75,7 +75,7 @@ bool PythonDlg::Create(wxWindow* parent, wxWindowID id, const wxString& title,
     auiToolBar = new wxAuiToolBar(this, wxID_ANY, wxDefaultPosition, wxDefaultSize,
         wxAUI_TB_PLAIN_BACKGROUND);
     auiToolBar->AddLabel(wxID_ANY, "Label");
-    auto* tool_2 = auiToolBar->AddTool(wxID_ANY, "Search", wxue_img::bundle_fontPicker_png(), wxNullBitmap, wxITEM_NORMAL,
+    auto* tool_2 = auiToolBar->AddTool(wxID_ANY, "Searching", wxue_img::bundle_fontPicker_png(), wxNullBitmap, wxITEM_NORMAL,
         "This tool should be initially disabled.", "This tool should be initially disabled.", nullptr);
     tool_2->SetState(wxAUI_BUTTON_STATE_NORMAL|wxAUI_BUTTON_STATE_DISABLED);
     auiToolBar->AddSpacer(auiToolBar->FromDIP(10));
@@ -271,12 +271,10 @@ void MainFrame::OnPythonDlg(wxCommandEvent& WXUNUSED(event))
     dlg.ShowModal();
 }
 
-
 void PythonDlg::OnClose(wxCommandEvent& WXUNUSED(event))
 {
     EndModal(wxID_CLOSE);
 }
-
 
 void PythonDlg::OnUpdateClose(wxUpdateUIEvent& WXUNUSED(event))
 {
@@ -284,4 +282,3 @@ void PythonDlg::OnUpdateClose(wxUpdateUIEvent& WXUNUSED(event))
     wxASSERT_MSG(btn, "Close button should have been set to SetCancelButton()!");
     btn->SetLabel("Close Me!");
 }
-

@@ -4,7 +4,7 @@
 <resource xmlns="http://www.wxwidgets.org/wxxrc" version="2.5.3.0">
 	<object class="wxWizard" name="Wizard">
 		<title>Wizard Tests</title>
-		<bitmap>art/../art/wiztest.png</bitmap>
+		<bitmap>../art/wiztest.png</bitmap>
 		<centered>1</centered>
 		<style>wxDEFAULT_DIALOG_STYLE|wxWIZARD_EX_HELPBUTTON</style>
 		<border>15</border>
@@ -28,7 +28,7 @@
 				</object>
 			</object>
 		</object>
-		<object class="wxWizardPageSimple" name="m_wizPage2">
+		<object class="wxWizardPageSimple" name="wizPage2">
 			<object class="wxBoxSizer" name="box_sizer2">
 				<orient>wxVERTICAL</orient>
 				<object class="sizeritem">
@@ -151,8 +151,8 @@
 				</object>
 			</object>
 		</object>
-		<object class="wxWizardPageSimple" name="m_wizPage3">
-			<bitmap>art/../art/wiztest2.png</bitmap>
+		<object class="wxWizardPageSimple" name="wizPage3">
+			<bitmap>../art/wiztest2.png</bitmap>
 			<object class="wxBoxSizer" name="box_sizer3">
 				<orient>wxVERTICAL</orient>
 				<object class="sizeritem">
@@ -185,6 +185,13 @@
 								<hint>Search for something...</hint>
 							</object>
 						</object>
+					</object>
+				</object>
+				<object class="sizeritem">
+					<flag>wxALL</flag>
+					<border>5</border>
+					<object class="wxStaticBitmap" name="bmp">
+						<bitmap>../art/hide.png</bitmap>
 					</object>
 				</object>
 			</object>

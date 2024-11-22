@@ -128,7 +128,7 @@ bool DataDlg::Create(wxWindow* parent, wxWindowID id, const wxString& title,
 
     auto* page_sizer = new wxBoxSizer(wxVERTICAL);
 
-    auto* flex_grid_sizer2 = new wxFlexGridSizer(3, 3, 0, 0);
+    auto* flex_grid_sizer2 = new wxFlexGridSizer(3, 0, 0);
     {
         flex_grid_sizer2->AddGrowableCol(0);
         flex_grid_sizer2->AddGrowableCol(1);

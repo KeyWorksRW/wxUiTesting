@@ -179,6 +179,11 @@ bool MainFrame::Create(wxWindow* parent, wxWindowID id, const wxString& title,
     menuDialogs->Append(menuItem_2);
     menuDialogs->AppendSeparator();
 
+    auto* submenu2 = new wxMenu();
+    auto* menu_item3 = new wxMenuItem(submenu2, wxID_ANY, "XrcPythonDlg");
+    submenu2->Append(menu_item3);
+    menuDialogs->AppendSubMenu(submenu2, "XRC");
+
     auto* submenu = new wxMenu();
     auto* menu_item_5 = new wxMenuItem(submenu, wxID_ANY, "DlgIssue_956");
     menu_item_5->SetBitmap(wxue_img::bundle_debug_32_png());
@@ -251,6 +256,7 @@ bool MainFrame::Create(wxWindow* parent, wxWindowID id, const wxString& title,
     Bind(wxEVT_MENU, &MainFrame::OnToolsDlg, this, menu_tools_dlg2->GetId());
     Bind(wxEVT_MENU, &MainFrame::OnWizard, this, menuItem3->GetId());
     Bind(wxEVT_MENU, &MainFrame::OnWizard, this, menu_item->GetId());
+    Bind(wxEVT_MENU, &MainFrame::OnXrcPythonDlg, this, menu_item3->GetId());
     m_kicadGrid->Bind(wxEVT_SIZE, &MainFrame::OnGridSize, this);
     Bind(wxEVT_TOOL, &MainFrame::OnBookTestDlg, this, tool_5->GetId());
     Bind(wxEVT_TOOL, &MainFrame::OnCommonDialog, this, tool_2->GetId());
@@ -357,9 +363,15 @@ namespace wxue_img
 /////////////////// Non-generated Copyright/License Info ////////////////////
 // Purpose:   Main Window
 // Author:    Ralph Walden
-// Copyright: Copyright (c) 2020-2023 KeyWorks Software (Ralph Walden)
+// Copyright: Copyright (c) 2020-2024 KeyWorks Software (Ralph Walden)
 // License:   Apache License -- see ../../LICENSE
 /////////////////////////////////////////////////////////////////////////////
+
+#include <wx/xrc/xmlres.h>
+
+#include <wx/xrc/xh_aui.h>
+#include <wx/xrc/xh_auitoolb.h>
+#include <wx/xrc/xh_ribbon.h>
 
 void MainFrame::OnQuit(wxCommandEvent& WXUNUSED(event))
 {
@@ -367,6 +379,17 @@ void MainFrame::OnQuit(wxCommandEvent& WXUNUSED(event))
     Close(true);
 }
 
-void MainFrame::OnGridSize(wxSizeEvent& WXUNUSED(event))
+void MainFrame::OnGridSize(wxSizeEvent& WXUNUSED(event)) {}
+
+void MainFrame::InitializeXmlResource()
 {
+    if (!m_xrc_initialized)
+    {
+        wxXmlResource::Get()->InitAllHandlers();
+        wxXmlResource::Get()->AddHandler(new wxAuiXmlHandler);
+        wxXmlResource::Get()->AddHandler(new wxAuiToolBarXmlHandler);
+        wxXmlResource::Get()->AddHandler(new wxRibbonXmlHandler);
+
+        m_xrc_initialized = true;
+    }
 }

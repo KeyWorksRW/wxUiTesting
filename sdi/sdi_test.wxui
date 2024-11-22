@@ -1,9 +1,10 @@
 <?xml version="1.0"?>
 <wxUiEditorData
-  data_version="17">
+  data_version="19">
   <node
     class="Project"
     art_directory="../art"
+    generate_languages="C++|Python|Ruby|XRC"
     id_prefixes="ISSUE_"
     id_suffixes="_TEST; _PYTHON"
     base_directory="cpp"
@@ -97,10 +98,19 @@
         bitmap="Embed;wxPython_2x.png" />
     </node>
     <node
+      class="Data">
+      <node
+        class="data_xml"
+        data_file="../xrc/python_dlg.xrc"
+        var_name="xrc_python_dlg" />
+    </node>
+    <node
       class="wxFrame"
       class_name="MainFrame"
       title="SDI Tests"
       base_file="mainframe"
+      class_members="&quot;bool m_xrc_initialized { false };&quot;"
+      class_methods="&quot;void InitializeXmlResource();&quot;"
       derived_class_name="MainFrame"
       derived_file="../ui/mainframe"
       use_derived_class="0"
@@ -287,6 +297,16 @@
           <node
             class="separator"
             var_name="separator_2" />
+          <node
+            class="submenu"
+            label="XRC"
+            var_name="submenu2">
+            <node
+              class="wxMenuItem"
+              label="XrcPythonDlg"
+              var_name="menu_item3"
+              wxEVT_MENU="OnXrcPythonDlg[python:on_menu_selection][ruby:on_menu_selection]" />
+          </node>
           <node
             class="submenu"
             bitmap="Embed;wxDialog.png"
@@ -1899,7 +1919,7 @@
               class="auitool"
               bitmap="Embed;fontPicker.png"
               initial_state="wxAUI_BUTTON_STATE_NORMAL|wxAUI_BUTTON_STATE_DISABLED"
-              label="Search"
+              label="Searching"
               statusbar="This tool should be initially disabled."
               tooltip="This tool should be initially disabled."
               var_name="tool_2" />
@@ -2436,7 +2456,6 @@
               <node
                 class="wxFlexGridSizer"
                 cols="3"
-                rows="3"
                 var_name="flex_grid_sizer2"
                 growablecols="0,1,2"
                 flags="wxEXPAND"

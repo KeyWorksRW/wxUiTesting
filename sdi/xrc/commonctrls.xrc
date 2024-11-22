@@ -40,7 +40,7 @@
 					<object class="sizeritem">
 						<flag>wxALL</flag>
 						<border>5</border>
-						<object class="wxTextCtrl" name="m_textCtrl">
+						<object class="wxTextCtrl" name="TXT_CTRL">
 							<value>Text "ctrl"</value>
 							<style>wxTE_PROCESS_ENTER</style>
 							<value>Text "ctrl"</value>
@@ -370,7 +370,7 @@
 								<flag>wxALL</flag>
 								<border>5</border>
 								<object class="wxStaticBitmap" name="bmp">
-									<bitmap default_size="64,64">../art/face-smile.svg</bitmap>
+									<bitmap default_size="64,64">face-smile.svg</bitmap>
 								</object>
 							</object>
 							<object class="sizeritem">
@@ -396,7 +396,7 @@
 						<object class="wxStaticBoxSizer" name="static_box_2">
 							<orient>wxVERTICAL</orient>
 							<windowlabel>
-								<object class="wxCheckBox">
+								<object class="wxCheckBox" name="m_checkPlayAnimation">
 									<label>Play Animation</label>
 								</object>
 							</windowlabel>
@@ -414,7 +414,7 @@
 								<object class="wxAnimationCtrl" name="m_animation_ctrl">
 									<style>wxAC_DEFAULT_STYLE</style>
 									<animation>art/clr_hourglass.gif</animation>
-									<inactive-bitmap>art/disabled.png</inactive-bitmap>
+									<inactive-bitmap>disabled.png</inactive-bitmap>
 								</object>
 							</object>
 						</object>
@@ -484,6 +484,13 @@
 							<range>100</range>
 							<value>0</value>
 							<style>wxGA_HORIZONTAL</style>
+						</object>
+					</object>
+					<object class="sizeritem">
+						<flag>wxALL</flag>
+						<border>5</border>
+						<object class="wxStaticBitmap" name="bmp2">
+							<bitmap stock_id="wxART_GO_HOME" stock_client="wxART_OTHER" />
 						</object>
 					</object>
 				</object>

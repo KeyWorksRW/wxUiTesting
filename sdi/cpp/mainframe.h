@@ -48,6 +48,8 @@ public:
         wxDefaultPosition, const wxSize& size = wxSize(500, 300), long style = wxDEFAULT_FRAME_STYLE|wxTAB_TRAVERSAL,
         const wxString &name = wxFrameNameStr);
 
+    void InitializeXmlResource();
+
 protected:
 
     // Event handlers
@@ -65,6 +67,7 @@ protected:
     void OnQuit(wxCommandEvent& event);
     void OnToolsDlg(wxCommandEvent& event);
     void OnWizard(wxCommandEvent& event);
+    void OnXrcPythonDlg(wxCommandEvent& event);
 
     // Class member variables
 
@@ -84,6 +87,8 @@ protected:
     wxPropertyGridPage* propertyGridPage_2;
     wxSplitterWindow* splitter;
     wxToolBar* m_toolBar;
+
+    bool m_xrc_initialized { false };
 };
 
 // ************* End of generated code ***********
