@@ -25,8 +25,10 @@
 								<bitmap stock_id="wxART_QUESTION" stock_client="wxART_TOOLBAR" />
 							</object>
 							<object class="tool" name="tool_2">
-								<label>Search</label>
-								<bitmap>art/fontPicker.png</bitmap>
+								<label>Searching</label>
+								<tooltip>This tool should be initially disabled.</tooltip>
+								<longhelp>This tool should be initially disabled.</longhelp>
+								<bitmap>../art/fontPicker.png;../art/fontPicker@1_25x.png;../art/fontPicker@1_5x.png;../art/fontPicker@1_75x.png;../art/fontPicker@2x.png</bitmap>
 							</object>
 							<object class="space" name="">
 								<width>10</width>
@@ -40,14 +42,14 @@
 						</object>
 					</object>
 					<object class="sizeritem">
-						<flag>wxALL|wxALIGN_CENTER_VERTICAL|wxALIGN_CENTER_HORIZONTAL</flag>
+						<flag>wxALL||wxALIGN_CENTER_HORIZONTAL</flag>
 						<border>5</border>
 						<object class="wxStaticText" name="m_staticText">
 							<label>wxPython est génial n'est-ce pas?</label>
 							<wrap>-1</wrap>
 							<style>wxALIGN_CENTER_HORIZONTAL</style>
-							<pos>50,100d</pos>
-							<size>150,32d</size>
+							<pos>100,250</pos>
+							<size>300,80</size>
 							<variant>large</variant>
 							<fg>#008000</fg>
 						</object>
@@ -55,8 +57,29 @@
 					<object class="sizeritem">
 						<flag>wxALL</flag>
 						<border>5</border>
-						<object class="wxStaticBitmap" name="bmp">
-							<bitmap default_size="32,32">art/face-smile.svg</bitmap>
+						<object class="wxBoxSizer" name="box_sizer2">
+							<orient>wxHORIZONTAL</orient>
+							<object class="sizeritem">
+								<flag>wxALL</flag>
+								<border>5</border>
+								<object class="wxStaticBitmap" name="bmp">
+									<bitmap default_size="32,32">face-smile.svg</bitmap>
+								</object>
+							</object>
+							<object class="sizeritem">
+								<flag>wxALL</flag>
+								<border>5</border>
+								<object class="wxStaticBitmap" name="bmp2">
+									<bitmap>../art/hide.png</bitmap>
+								</object>
+							</object>
+							<object class="sizeritem">
+								<flag>wxALL</flag>
+								<border>5</border>
+								<object class="wxStaticBitmap" name="bmp3">
+									<bitmap>../art/timer.png</bitmap>
+								</object>
+							</object>
 						</object>
 					</object>
 					<object class="sizeritem">
@@ -82,8 +105,8 @@
 								<border>5</border>
 								<object class="wxAnimationCtrl" name="m_animation_ctrl">
 									<style>wxAC_DEFAULT_STYLE</style>
-									<animation>art/clr_hourglass.gif</animation>
-									<inactive-bitmap>art/disabled.png</inactive-bitmap>
+									<animation>clr_hourglass.gif</animation>
+									<inactive-bitmap>disabled.png</inactive-bitmap>
 								</object>
 							</object>
 						</object>
@@ -105,14 +128,19 @@
 			<object class="sizeritem">
 				<flag>wxALL|wxEXPAND</flag>
 				<border>5</border>
-				<object class="wxStdDialogButtonSizer" name="stdBtn">
+				<object class="wxStdDialogButtonSizer" name="m_stdBtn">
 					<object class="button">
 						<object class="wxButton" name="wxID_OK">
 							<default>1</default>
 						</object>
 					</object>
 					<object class="button">
-						<object class="wxButton" name="wxID_CANCEL" />
+						<object class="wxButton" name="wxID_CLOSE" />
+					</object>
+					<object class="button">
+						<object class="wxButton" name="wxID_CONTEXT_HELP">
+							<label>?</label>
+						</object>
 					</object>
 				</object>
 			</object>

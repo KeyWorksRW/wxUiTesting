@@ -8,13 +8,12 @@
 		<centered>1</centered>
 		<object class="wxBoxSizer" name="dlg_sizer">
 			<orient>wxVERTICAL</orient>
-			<minsize>400,400d</minsize>
+			<minsize>800,1000</minsize>
 			<object class="sizeritem">
 				<flag>wxALL|wxEXPAND</flag>
 				<border>5</border>
 				<option>1</option>
 				<object class="wxAuiNotebook" name="m_notebook">
-					<style>wxAUI_NB_TOP|wxAUI_NB_TAB_SPLIT|wxAUI_NB_TAB_MOVE|wxAUI_NB_SCROLL_BUTTONS|wxAUI_NB_CLOSE_ON_ACTIVE_TAB|wxAUI_NB_MIDDLE_CLICK_CLOSE</style>
 					<object class="notebookpage" name="page_2">
 						<label>ChoiceBook</label>
 						<style>wxTAB_TRAVERSAL</style>
@@ -35,7 +34,7 @@
 											<label>Last</label>
 										</object>
 										<object class="choicebookpage" name="page_20">
-											<bitmap>art/english.png</bitmap>
+											<bitmap>../art/english.png</bitmap>
 											<label>English</label>
 											<style>wxTAB_TRAVERSAL</style>
 											<bg>#F0F0F0</bg>
@@ -70,7 +69,7 @@
 											</object>
 										</object>
 										<object class="choicebookpage" name="page_21">
-											<bitmap>art/french.png</bitmap>
+											<bitmap>../art/french.png</bitmap>
 											<label>Français</label>
 											<style>wxTAB_TRAVERSAL</style>
 											<bg>#F0F0F0</bg>
@@ -105,7 +104,7 @@
 											</object>
 										</object>
 										<object class="choicebookpage" name="page_22">
-											<bitmap>art/japanese.png</bitmap>
+											<bitmap>../art/japanese.png</bitmap>
 											<label>日本語</label>
 											<style>wxTAB_TRAVERSAL</style>
 											<bg>#F0F0F0</bg>
@@ -158,7 +157,7 @@
 									<object class="wxListbook" name="m_listbook">
 										<style>wxLB_LEFT|</style>
 										<object class="listbookpage" name="page_6">
-											<bitmap>art/english.png</bitmap>
+											<bitmap>../art/english.png</bitmap>
 											<label>English</label>
 											<style>wxTAB_TRAVERSAL</style>
 											<bg>#F0F0F0</bg>
@@ -178,7 +177,7 @@
 											</object>
 										</object>
 										<object class="listbookpage" name="page_7">
-											<bitmap>art/french.png</bitmap>
+											<bitmap>../art/french.png</bitmap>
 											<label>Français</label>
 											<style>wxTAB_TRAVERSAL</style>
 											<bg>#F0F0F0</bg>
@@ -198,7 +197,7 @@
 											</object>
 										</object>
 										<object class="listbookpage" name="page_8">
-											<bitmap>art/japanese.png</bitmap>
+											<bitmap>../art/japanese.png</bitmap>
 											<label>日本語</label>
 											<style>wxTAB_TRAVERSAL</style>
 											<bg>#F0F0F0</bg>
@@ -235,7 +234,7 @@
 									<minsize>400,400</minsize>
 									<object class="wxNotebook" name="m_notebook_2">
 										<object class="notebookpage" name="page_9">
-											<bitmap>art/english.png</bitmap>
+											<bitmap>../art/english.png</bitmap>
 											<label>English</label>
 											<style>wxTAB_TRAVERSAL</style>
 											<bg>#F0F0F0</bg>
@@ -255,7 +254,7 @@
 											</object>
 										</object>
 										<object class="notebookpage" name="page_10">
-											<bitmap>art/french.png</bitmap>
+											<bitmap>../art/french.png</bitmap>
 											<label>Français</label>
 											<style>wxTAB_TRAVERSAL</style>
 											<bg>#F0F0F0</bg>
@@ -275,7 +274,7 @@
 											</object>
 										</object>
 										<object class="notebookpage" name="page_11">
-											<bitmap>art/japanese.png</bitmap>
+											<bitmap>../art/japanese.png</bitmap>
 											<label>日本語</label>
 											<style>wxTAB_TRAVERSAL</style>
 											<bg>#F0F0F0</bg>
@@ -312,7 +311,7 @@
 									<minsize>400,400</minsize>
 									<object class="wxToolbook" name="m_toolbook">
 										<object class="toolbookpage" name="page_12">
-											<bitmap>art/english.png</bitmap>
+											<bitmap>../art/english.png</bitmap>
 											<label>English</label>
 											<style>wxTAB_TRAVERSAL</style>
 											<bg>#F0F0F0</bg>
@@ -332,7 +331,7 @@
 											</object>
 										</object>
 										<object class="toolbookpage" name="page_13">
-											<bitmap>art/french.png</bitmap>
+											<bitmap>../art/french.png</bitmap>
 											<label>Français</label>
 											<style>wxTAB_TRAVERSAL</style>
 											<bg>#F0F0F0</bg>
@@ -352,7 +351,7 @@
 											</object>
 										</object>
 										<object class="toolbookpage" name="page_14">
-											<bitmap>art/japanese.png</bitmap>
+											<bitmap>../art/japanese.png</bitmap>
 											<label>日本語</label>
 											<style>wxTAB_TRAVERSAL</style>
 											<bg>#F0F0F0</bg>
@@ -389,7 +388,7 @@
 									<minsize>400,400</minsize>
 									<object class="wxTreebook" name="m_treebook">
 										<object class="treebookpage" name="page_15">
-											<bitmap>art/english.png</bitmap>
+											<bitmap>../art/english.png</bitmap>
 											<label>English</label>
 											<style>wxTAB_TRAVERSAL</style>
 											<bg>#F0F0F0</bg>
@@ -410,7 +409,7 @@
 										</object>
 										<object class="treebookpage" name="page_16">
 											<depth>1</depth>
-											<bitmap>art/../art/re.png</bitmap>
+											<bitmap>../art/re.png</bitmap>
 											<label>British</label>
 											<style>wxTAB_TRAVERSAL</style>
 											<bg>#F0F0F0</bg>
@@ -431,7 +430,7 @@
 										</object>
 										<object class="treebookpage" name="page_17">
 											<depth>1</depth>
-											<bitmap>art/../art/er.png</bitmap>
+											<bitmap>../art/er.png</bitmap>
 											<label>United States</label>
 											<style>wxTAB_TRAVERSAL</style>
 											<bg>#F0F0F0</bg>
@@ -451,7 +450,7 @@
 											</object>
 										</object>
 										<object class="treebookpage" name="page_18">
-											<bitmap>art/french.png</bitmap>
+											<bitmap>../art/french.png</bitmap>
 											<label>Français</label>
 											<style>wxTAB_TRAVERSAL</style>
 											<bg>#F0F0F0</bg>
@@ -471,7 +470,7 @@
 											</object>
 										</object>
 										<object class="treebookpage" name="page_19">
-											<bitmap>art/japanese.png</bitmap>
+											<bitmap>../art/japanese.png</bitmap>
 											<label>日本語</label>
 											<style>wxTAB_TRAVERSAL</style>
 											<bg>#F0F0F0</bg>
@@ -485,6 +484,151 @@
 														<object class="wxStaticText" name="m_staticText">
 															<label>これは日本語の文章です。</label>
 															<wrap>-1</wrap>
+														</object>
+													</object>
+												</object>
+											</object>
+										</object>
+									</object>
+								</object>
+							</object>
+						</object>
+					</object>
+					<object class="notebookpage" name="page2">
+						<label>SimpleBook</label>
+						<style>wxTAB_TRAVERSAL</style>
+						<bg>#F0F0F0</bg>
+						<object class="wxPanel" name="page2">
+							<style>wxTAB_TRAVERSAL</style>
+							<object class="wxBoxSizer" name="page_sizer2">
+								<orient>wxVERTICAL</orient>
+								<object class="sizeritem">
+									<flag></flag>
+									<option></option>
+									<object class="wxSimplebook" name="m_simplebook">
+										<object class="simplebookpage" name="page3">
+											<bitmap>../art/english.png</bitmap>
+											<label>English</label>
+											<style>wxTAB_TRAVERSAL</style>
+											<bg>#F0F0F0</bg>
+											<object class="wxPanel" name="page3">
+												<style>wxTAB_TRAVERSAL</style>
+												<object class="wxBoxSizer" name="parent_sizer2">
+													<orient>wxVERTICAL</orient>
+													<object class="sizeritem">
+														<flag>wxALL</flag>
+														<border>5</border>
+														<object class="wxStaticText" name="m_staticText2">
+															<label>This is a sentence in English.</label>
+															<wrap>-1</wrap>
+														</object>
+													</object>
+													<object class="sizeritem">
+														<flag>wxALL</flag>
+														<border>5</border>
+														<object class="wxBoxSizer" name="box_sizer2">
+															<orient>wxHORIZONTAL</orient>
+															<object class="sizeritem">
+																<flag>wxALL</flag>
+																<border>5</border>
+																<object class="wxButton" name="m_btn">
+																	<label>French</label>
+																	<bitmap default_size="24,16">french_flag.svg</bitmap>
+																</object>
+															</object>
+															<object class="sizeritem">
+																<flag>wxALL</flag>
+																<border>5</border>
+																<object class="wxButton" name="m_btn2">
+																	<label>Japanese</label>
+																	<bitmap default_size="24,16">日の丸.svg</bitmap>
+																</object>
+															</object>
+														</object>
+													</object>
+												</object>
+											</object>
+										</object>
+										<object class="simplebookpage" name="page4">
+											<bitmap>../art/french.png</bitmap>
+											<label>Français</label>
+											<style>wxTAB_TRAVERSAL</style>
+											<bg>#F0F0F0</bg>
+											<object class="wxPanel" name="page4">
+												<style>wxTAB_TRAVERSAL</style>
+												<object class="wxBoxSizer" name="parent_sizer3">
+													<orient>wxVERTICAL</orient>
+													<object class="sizeritem">
+														<flag>wxALL</flag>
+														<border>5</border>
+														<object class="wxStaticText" name="m_staticText3">
+															<label>Ceci est une phrase en français.</label>
+															<wrap>-1</wrap>
+														</object>
+													</object>
+													<object class="sizeritem">
+														<flag>wxALL</flag>
+														<border>5</border>
+														<object class="wxBoxSizer" name="box_sizer3">
+															<orient>wxHORIZONTAL</orient>
+															<object class="sizeritem">
+																<flag>wxALL</flag>
+																<border>5</border>
+																<object class="wxButton" name="m_btn3">
+																	<label>English</label>
+																	<bitmap>../art/english.png</bitmap>
+																</object>
+															</object>
+															<object class="sizeritem">
+																<flag>wxALL</flag>
+																<border>5</border>
+																<object class="wxButton" name="m_btn4">
+																	<label>Japanese</label>
+																	<bitmap default_size="24,16">日の丸.svg</bitmap>
+																</object>
+															</object>
+														</object>
+													</object>
+												</object>
+											</object>
+										</object>
+										<object class="simplebookpage" name="page5">
+											<bitmap>../art/japanese.png</bitmap>
+											<label>日本語</label>
+											<style>wxTAB_TRAVERSAL</style>
+											<bg>#F0F0F0</bg>
+											<object class="wxPanel" name="page5">
+												<style>wxTAB_TRAVERSAL</style>
+												<object class="wxBoxSizer" name="parent_sizer4">
+													<orient>wxVERTICAL</orient>
+													<object class="sizeritem">
+														<flag>wxALL</flag>
+														<border>5</border>
+														<object class="wxStaticText" name="m_staticText4">
+															<label>これは日本語の文章です。</label>
+															<wrap>-1</wrap>
+														</object>
+													</object>
+													<object class="sizeritem">
+														<flag>wxALL</flag>
+														<border>5</border>
+														<object class="wxBoxSizer" name="box_sizer4">
+															<orient>wxHORIZONTAL</orient>
+															<object class="sizeritem">
+																<flag>wxALL</flag>
+																<border>5</border>
+																<object class="wxButton" name="m_btn5">
+																	<label>English</label>
+																</object>
+															</object>
+															<object class="sizeritem">
+																<flag>wxALL</flag>
+																<border>5</border>
+																<object class="wxButton" name="m_btn6">
+																	<label>French</label>
+																	<bitmap default_size="24,16">french_flag.svg</bitmap>
+																</object>
+															</object>
 														</object>
 													</object>
 												</object>
@@ -512,7 +656,7 @@
 			<object class="sizeritem">
 				<flag>wxALL|wxEXPAND</flag>
 				<border>5</border>
-				<object class="wxStdDialogButtonSizer" name="stdBtn">
+				<object class="wxStdDialogButtonSizer" name="m_stdBtn">
 					<object class="button">
 						<object class="wxButton" name="wxID_OK">
 							<default>1</default>
