@@ -48,6 +48,8 @@ public:
         wxDefaultPosition, const wxSize& size = wxSize(500, 300), long style = wxDEFAULT_FRAME_STYLE|wxTAB_TRAVERSAL,
         const wxString &name = wxFrameNameStr);
 
+    void InitializeXmlResource();
+
 protected:
 
     // Event handlers
@@ -85,6 +87,8 @@ protected:
     wxPropertyGridPage* propertyGridPage_2;
     wxSplitterWindow* splitter;
     wxToolBar* m_toolBar;
+
+    bool m_xrc_initialized { false };
 };
 
 // ************* End of generated code ***********

@@ -396,7 +396,7 @@
 						<object class="wxStaticBoxSizer" name="static_box_2">
 							<orient>wxVERTICAL</orient>
 							<windowlabel>
-								<object class="wxCheckBox">
+								<object class="wxCheckBox" name="m_checkPlayAnimation">
 									<label>Play Animation</label>
 								</object>
 							</windowlabel>

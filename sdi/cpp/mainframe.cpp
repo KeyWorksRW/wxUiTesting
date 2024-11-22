@@ -363,9 +363,15 @@ namespace wxue_img
 /////////////////// Non-generated Copyright/License Info ////////////////////
 // Purpose:   Main Window
 // Author:    Ralph Walden
-// Copyright: Copyright (c) 2020-2023 KeyWorks Software (Ralph Walden)
+// Copyright: Copyright (c) 2020-2024 KeyWorks Software (Ralph Walden)
 // License:   Apache License -- see ../../LICENSE
 /////////////////////////////////////////////////////////////////////////////
+
+#include <wx/xrc/xmlres.h>
+
+#include <wx/xrc/xh_aui.h>
+#include <wx/xrc/xh_auitoolb.h>
+#include <wx/xrc/xh_ribbon.h>
 
 void MainFrame::OnQuit(wxCommandEvent& WXUNUSED(event))
 {
@@ -373,6 +379,17 @@ void MainFrame::OnQuit(wxCommandEvent& WXUNUSED(event))
     Close(true);
 }
 
-void MainFrame::OnGridSize(wxSizeEvent& WXUNUSED(event))
+void MainFrame::OnGridSize(wxSizeEvent& WXUNUSED(event)) {}
+
+void MainFrame::InitializeXmlResource()
 {
+    if (!m_xrc_initialized)
+    {
+        wxXmlResource::Get()->InitAllHandlers();
+        wxXmlResource::Get()->AddHandler(new wxAuiXmlHandler);
+        wxXmlResource::Get()->AddHandler(new wxAuiToolBarXmlHandler);
+        wxXmlResource::Get()->AddHandler(new wxRibbonXmlHandler);
+
+        m_xrc_initialized = true;
+    }
 }

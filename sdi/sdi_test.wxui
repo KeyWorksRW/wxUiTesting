@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <wxUiEditorData
-  data_version="17">
+  data_version="19">
   <node
     class="Project"
     art_directory="../art"
@@ -98,10 +98,19 @@
         bitmap="Embed;wxPython_2x.png" />
     </node>
     <node
+      class="Data">
+      <node
+        class="data_xml"
+        data_file="../xrc/python_dlg.xrc"
+        var_name="xrc_python_dlg" />
+    </node>
+    <node
       class="wxFrame"
       class_name="MainFrame"
       title="SDI Tests"
       base_file="mainframe"
+      class_members="&quot;bool m_xrc_initialized { false };&quot;"
+      class_methods="&quot;void InitializeXmlResource();&quot;"
       derived_class_name="MainFrame"
       derived_file="../ui/mainframe"
       use_derived_class="0"

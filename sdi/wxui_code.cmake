@@ -16,6 +16,7 @@ set (sdi_generated_code
     ${CMAKE_CURRENT_LIST_DIR}/cpp/python_dlg.cpp
     ${CMAKE_CURRENT_LIST_DIR}/cpp/testformpanel.cpp
     ${CMAKE_CURRENT_LIST_DIR}/cpp/wizard.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/cpp/wxue_data.cpp
 
     # Base classes
     ${CMAKE_CURRENT_LIST_DIR}/cpp/dlgissue_956.cpp
@@ -23,5 +24,11 @@ set (sdi_generated_code
     ${CMAKE_CURRENT_LIST_DIR}/cpp/form_toolbar_base.cpp
     ${CMAKE_CURRENT_LIST_DIR}/cpp/maintestdialog.cpp
     ${CMAKE_CURRENT_LIST_DIR}/cpp/tools_dlg.cpp
+
+)
+
+set (sdi_generated_code_data
+
+    ${CMAKE_CURRENT_LIST_DIR}/../xrc/python_dlg.xrc
 
 )

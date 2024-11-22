@@ -233,7 +233,7 @@
 											<object class="wxStaticBoxSizer" name="static_box_4">
 												<orient>wxVERTICAL</orient>
 												<windowlabel>
-													<object class="wxCheckBox">
+													<object class="wxCheckBox" name="m_checkBox_sizer">
 														<label>Checkbox</label>
 														<checked>1</checked>
 													</object>
@@ -268,7 +268,7 @@
 											<object class="wxStaticBoxSizer" name="static_box_5">
 												<orient>wxVERTICAL</orient>
 												<windowlabel>
-													<object class="wxRadioButton">
+													<object class="wxRadioButton" name="m_radioBtn__sizer">
 														<label>Radio</label>
 														<checked>1</checked>
 													</object>
@@ -364,7 +364,7 @@
 											<object class="wxStaticBoxSizer" name="static_box_3">
 												<orient>wxVERTICAL</orient>
 												<windowlabel>
-													<object class="wxCheckBox">
+													<object class="wxCheckBox" name="m_checkPlayAnimation">
 														<label>Play Animation</label>
 													</object>
 												</windowlabel>

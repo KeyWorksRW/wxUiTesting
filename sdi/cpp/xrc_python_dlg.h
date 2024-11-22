@@ -41,4 +41,5 @@ protected:
     // Event handlers
 
     void OnClose(wxCommandEvent& event);
+    void OnUpdateClose(wxUpdateUIEvent& event);
 };
