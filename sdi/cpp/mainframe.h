@@ -65,6 +65,7 @@ protected:
     void OnQuit(wxCommandEvent& event);
     void OnToolsDlg(wxCommandEvent& event);
     void OnWizard(wxCommandEvent& event);
+    void OnXrcPythonDlg(wxCommandEvent& event);
 
     // Class member variables
 

@@ -5,6 +5,8 @@ set (file_list
     cpp/cpptest.rc
     cpp/mainapp.cpp
 
+    cpp/xrc_python_dlg.cpp
+
     cpp/custom_ctrls/split_button.cpp  # Split Button Custom widget (button + menu)
 
 )

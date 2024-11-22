@@ -179,6 +179,11 @@ bool MainFrame::Create(wxWindow* parent, wxWindowID id, const wxString& title,
     menuDialogs->Append(menuItem_2);
     menuDialogs->AppendSeparator();
 
+    auto* submenu2 = new wxMenu();
+    auto* menu_item3 = new wxMenuItem(submenu2, wxID_ANY, "XrcPythonDlg");
+    submenu2->Append(menu_item3);
+    menuDialogs->AppendSubMenu(submenu2, "XRC");
+
     auto* submenu = new wxMenu();
     auto* menu_item_5 = new wxMenuItem(submenu, wxID_ANY, "DlgIssue_956");
     menu_item_5->SetBitmap(wxue_img::bundle_debug_32_png());
@@ -251,6 +256,7 @@ bool MainFrame::Create(wxWindow* parent, wxWindowID id, const wxString& title,
     Bind(wxEVT_MENU, &MainFrame::OnToolsDlg, this, menu_tools_dlg2->GetId());
     Bind(wxEVT_MENU, &MainFrame::OnWizard, this, menuItem3->GetId());
     Bind(wxEVT_MENU, &MainFrame::OnWizard, this, menu_item->GetId());
+    Bind(wxEVT_MENU, &MainFrame::OnXrcPythonDlg, this, menu_item3->GetId());
     m_kicadGrid->Bind(wxEVT_SIZE, &MainFrame::OnGridSize, this);
     Bind(wxEVT_TOOL, &MainFrame::OnBookTestDlg, this, tool_5->GetId());
     Bind(wxEVT_TOOL, &MainFrame::OnCommonDialog, this, tool_2->GetId());
