@@ -129,7 +129,7 @@ class DataDlg(wx.Dialog):
 
         page_sizer = wx.BoxSizer(wx.VERTICAL)
 
-        flex_grid_sizer2 = wx.FlexGridSizer(3, 3, 0, 0)
+        flex_grid_sizer2 = wx.FlexGridSizer(3, 0, 0)
         flex_grid_sizer2.AddGrowableCol(0)
         flex_grid_sizer2.AddGrowableCol(1)
         flex_grid_sizer2.AddGrowableCol(2)

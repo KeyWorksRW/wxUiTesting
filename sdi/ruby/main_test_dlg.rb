@@ -9,7 +9,6 @@ WX_GLOBAL_CONSTANTS = true unless defined? WX_GLOBAL_CONSTANTS
 
 require 'wx/core'
 require 'wx/html'
-require 'wx/pg'
 require 'wx/rbn'
 require 'wx/rtc'
 require 'wx/stc'
@@ -720,27 +719,6 @@ class MainTestDialog < Wx::Dialog
 
     page_sizer.add(box_sizer_18, Wx::SizerFlags.new.border(Wx::ALL))
     page_7.set_sizer_and_fit(page_sizer)
-
-    page_8 = Wx::Panel.new(@notebook, Wx::ID_ANY, Wx::DEFAULT_POSITION,
-      Wx::DEFAULT_SIZE, Wx::TAB_TRAVERSAL)
-    @notebook.add_page(page_8, 'Data')
-    page_8.set_background_colour(Wx::SystemSettings.get_colour(
-      Wx::SYS_COLOUR_BTNFACE))
-
-    page_sizer_4 = Wx::BoxSizer.new(Wx::VERTICAL)
-
-    @propertyGrid = Wx::PropertyGrid.new(page_8, Wx::ID_ANY)
-    page_sizer_4.add(@propertyGrid, Wx::SizerFlags.new.expand.border(Wx::ALL))
-
-    @propertyGridItem = @propertyGrid.append(Wx::PG::PropertyCategory.new(
-    'CategoryName', 'CategoryName'))
-
-    @propertyGridItem_2 = @propertyGrid.append(Wx::PG::StringProperty.new(
-    'String', ''))
-
-    @propertyGridItem_3 = @propertyGrid.append(Wx::PG::IntProperty.new('Integer', ''
-      ))
-    page_8.set_sizer_and_fit(page_sizer_4)
 
     box_sizer_14 = Wx::BoxSizer.new(Wx::HORIZONTAL)
 

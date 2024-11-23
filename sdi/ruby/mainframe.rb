@@ -11,15 +11,16 @@ require 'wx/core'
 require 'wx/grid'
 require 'wx/pg'
 
+require_relative 'bitmaps_dlg'
+require_relative 'booktest_dlg'
+require_relative 'data_dlg'
 require_relative 'dlgissue_956'
 require_relative 'dlgissue_960'
-require_relative 'booktest_dlg'
-require_relative 'wizard'
 require_relative 'main_test_dlg'
-require_relative 'tools_dlg'
-require_relative 'bitmaps_dlg'
 require_relative 'propsheet'
 require_relative 'python_dlg'
+require_relative 'tools_dlg'
+require_relative 'wizard'
 
 require_relative 'images'
 require 'zlib'
@@ -155,6 +156,11 @@ class MainFrame < Wx::Frame
     menuItem2 = Wx::MenuItem.new(menuDialogs, Wx::ID_ANY, 'Bitmaps')
     menuItem2.set_bitmap(wxue_get_bundle($normal_png))
     menuDialogs.append(menuItem2)
+    menuItem4 = Wx::MenuItem.new(menuDialogs, Wx::ID_ANY, 'Data')
+    _svg_string_ = Zlib::Inflate.inflate(Base64.decode64($grid_svg))
+    menuItem4.set_bitmap(Wx::BitmapBundle.from_svg(_svg_string_,
+      Wx::Size.new(24, 24)))
+    menuDialogs.append(menuItem4)
     menuDialogs.append_separator
     menuItem_2 = Wx::MenuItem.new(menuDialogs, Wx::ID_ANY, 'Common Controls...',
       'Common controls', Wx::ITEM_NORMAL)
@@ -162,6 +168,11 @@ class MainFrame < Wx::Frame
       Wx::ART_MENU))
     menuDialogs.append(menuItem_2)
     menuDialogs.append_separator
+
+    submenu2 = Wx::Menu.new
+    menu_item3 = Wx::MenuItem.new(submenu2, Wx::ID_ANY, 'XrcPythonDlg')
+    submenu2.append(menu_item3)
+    menuDialogs.append_sub_menu(submenu2, 'XRC')
 
     submenu = Wx::Menu.new
     menu_item_5 = Wx::MenuItem.new(submenu, Wx::ID_ANY, 'DlgIssue_956')
@@ -199,6 +210,10 @@ class MainFrame < Wx::Frame
     tool_3 = @toolBar.add_tool(Wx::ID_ANY, 'PythonDlg', wxue_get_bundle($wxPython_1_5x_png,
       $wxPython_2x_png))
 
+    _svg_string_ = Zlib::Inflate.inflate(Base64.decode64($grid_svg))
+    tool = @toolBar.add_tool(Wx::ID_ANY, 'DataDlg', Wx::BitmapBundle.from_svg(_svg_string_,
+      Wx::Size.new(24, 24)))
+
     @toolBar.add_stretchable_space
 
     tool_2 = @toolBar.add_tool(Wx::ID_ANY, 'Common Controls...', Wx::ArtProvider.get_bitmap_bundle(
@@ -218,6 +233,7 @@ class MainFrame < Wx::Frame
     evt_menu(menuItem2.get_id, :OnBitmapsDlg)
     evt_menu(menu_item_4.get_id, :OnBookTestDlg)
     evt_menu(menuItem_2.get_id, :OnCommonDialog)
+    evt_menu(menuItem4.get_id, :OnDataDlg)
     evt_menu(menu_item_5.get_id, :OnDlgIssue_956)
     evt_menu(menu_item_6.get_id, :OnDlgIssue_960)
     evt_menu(menu_item_3.get_id, :OnMainTestDlg)
@@ -231,6 +247,7 @@ class MainFrame < Wx::Frame
     evt_size(:OnGridSize)
     evt_tool(tool_5.get_id, :OnBookTestDlg)
     evt_tool(tool_2.get_id, :OnCommonDialog)
+    evt_tool(tool.get_id, :OnDataDlg)
     evt_tool(tool_4.get_id, :OnMainTestDlg)
     evt_tool(tool_3.get_id, :OnPythonDlg)
   end
@@ -382,6 +399,12 @@ end
 
 def on_propsheet_dlg(event)
   dlg = PropSheetBase.new(self)
+  dlg.show_modal
+  dlg.destroy
+end
+
+def OnDataDlg(event)
+  dlg = DataDlg.new(self)
   dlg.show_modal
   dlg.destroy
 end

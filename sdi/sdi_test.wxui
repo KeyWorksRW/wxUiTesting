@@ -117,7 +117,7 @@
       python_file="mainframe"
       python_import_list="bitmaps_dlg.py;booktest_dlg.py;data_dlg.py;main_test_dlg.py;propsheet.py;python_dlg.py;tools_dlg.py;wizard.py;dlgissue_956.py;dlgissue_960.py"
       python_inherit_name="mainframe"
-      relative_require_list="dlgissue_956.rb;dlgissue_960.rb;booktest_dlg.rb;wizard.rb;main_test_dlg.rb;tools_dlg.rb;bitmaps_dlg.rb;propsheet.rb;python_dlg.rb"
+      relative_require_list="bitmaps_dlg.rb;booktest_dlg.rb;data_dlg.rb;dlgissue_956.rb;dlgissue_960.rb;main_test_dlg.rb;propsheet.rb;python_dlg.rb;tools_dlg.rb;wizard.rb"
       ruby_file="mainframe"
       xrc_file="mainframe"
       minimum_size="400,250"
@@ -305,7 +305,7 @@
               class="wxMenuItem"
               label="XrcPythonDlg"
               var_name="menu_item3"
-              wxEVT_MENU="OnXrcPythonDlg[python:on_menu_selection][ruby:on_menu_selection]" />
+              wxEVT_MENU="OnXrcPythonDlg[python:OnMenuSelection][ruby:]" />
           </node>
           <node
             class="submenu"
@@ -2327,6 +2327,7 @@
       class_methods="&quot;void OnEventName(const std::string&amp; event_name);&quot;"
       use_derived_class="0"
       python_file="data_dlg"
+      ruby_file="data_dlg"
       wxEVT_INIT_DIALOG="OnInit[python:on_init][ruby:on_init]">
       <node
         class="wxBoxSizer"

@@ -30,7 +30,7 @@ class PythonDlg < Wx::Dialog
       Wx::DEFAULT_POSITION, Wx::DEFAULT_SIZE, Wx::AUI::AUI_TB_PLAIN_BACKGROUND|
       Wx::AUI::AUI_TB_DEFAULT_STYLE)
     @auiToolBar.add_label(Wx::ID_ANY, 'Label')
-    tool_2 = @auiToolBar.add_tool(Wx::ID_ANY, 'Search', wxue_get_bundle($fontPicker_png,
+    tool_2 = @auiToolBar.add_tool(Wx::ID_ANY, 'Searching', wxue_get_bundle($fontPicker_png,
       $fontPicker_1_25x_png, $fontPicker_1_5x_png), Wx::NULL_BITMAP,
       Wx::ITEM_NORMAL, 'This tool should be initially disabled.',
       'This tool should be initially disabled.', nil)
