@@ -226,6 +226,11 @@ class MainFrame(wx.Frame):
         menuDialogs.Append(menuItem_2)
         menuDialogs.AppendSeparator()
 
+        submenu2 = wx.Menu()
+        menu_item3 = wx.MenuItem(submenu2, wx.ID_ANY, "XrcPythonDlg")
+        submenu2.Append(menu_item3)
+        menuDialogs.AppendSubMenu(submenu2, "XRC")
+
         submenu = wx.Menu()
         menu_item_5 = wx.MenuItem(submenu, wx.ID_ANY, "DlgIssue_956")
         menu_item_5.SetBitmap(wx.BitmapBundle.FromBitmap(images.debug_32_png.Bitmap))
@@ -294,6 +299,7 @@ class MainFrame(wx.Frame):
         self.Bind(wx.EVT_MENU, self.on_tools_dlg, id=_menu_tools_dlg2.GetId())
         self.Bind(wx.EVT_MENU, self.OnWizard, id=menuItem3.GetId())
         self.Bind(wx.EVT_MENU, self.OnWizard, id=menu_item.GetId())
+        # self.Bind(wx.EVT_MENU, self.OnMenuSelection, id=menu_item3.GetId())
         self.kicadGrid.Bind(wx.EVT_SIZE, self.OnGridSize)
         self.Bind(wx.EVT_TOOL, self.OnBookTestDlg, id=tool_5.GetId())
         self.Bind(wx.EVT_TOOL, self.OnCommonDialog, id=tool_2.GetId())
@@ -304,6 +310,9 @@ class MainFrame(wx.Frame):
     # Unimplemented Event handler functions
     # Copy any listed and paste them below the comment block, or to your inherited class.
     """
+    def OnMenuSelection(self, event):
+        event.Skip()
+
     """
 
 # ************* End of generated code ***********

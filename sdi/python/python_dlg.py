@@ -64,7 +64,7 @@ class PythonDlg(wx.Dialog):
         self.auiToolBar = wx.aui.AuiToolBar(self, wx.ID_ANY, wx.DefaultPosition,
             wx.DefaultSize, wx.aui.AUI_TB_PLAIN_BACKGROUND|wx.aui.AUI_TB_DEFAULT_STYLE)
         self.auiToolBar.AddLabel(wx.ID_ANY, "Label")
-        tool_2 = self.auiToolBar.AddTool(wx.ID_ANY, "Search", wx.BitmapBundle.FromBitmaps([
+        tool_2 = self.auiToolBar.AddTool(wx.ID_ANY, "Searching", wx.BitmapBundle.FromBitmaps([
             images.fontPicker_png.Bitmap,
                     images.fontPicker_1_25x_png.Bitmap,
                     images.fontPicker_1_5x_png.Bitmap,
