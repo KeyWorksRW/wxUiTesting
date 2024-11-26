@@ -504,16 +504,6 @@ class BookTestDlg < Wx::Dialog
     evt_button(@btn2.get_id, :on_button)
     evt_button(@btn4.get_id, :on_button)
   end
-# Unimplemented Event handler functions
-# Copy any listed and paste them below the comment block, or to your inherited class.
-
-=begin
-  def on_button(event)
-    event.skip
-  end
-
-=end
-end
 
 # ../art/french_flag.svg
 $french_flag_svg = (
@@ -537,6 +527,12 @@ $e697a5e381aee4b8b8_svg = (
 # if the code for this class is re-generated.
 # ***********************************************
 
-def OnEvent(event)
-  event.skip
+  def on_button(event)
+    event.skip
+  end
+
+  def OnEvent(event)
+    event.skip
+  end
+
 end

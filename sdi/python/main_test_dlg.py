@@ -61,8 +61,8 @@ clr_hourglass_gif = PyEmbeddedImage(
 import popupwin
 
 class MainTestDialog(wx.Dialog):
-    def __init__(self, parent, id=DLG_MAINTEST, title="", pos=
-                wx.DefaultPosition, size=wx.DefaultSize,
+    def __init__(self, parent, id=DLG_MAINTEST, title="Main Testing Dialog",
+                pos=wx.DefaultPosition, size=wx.DefaultSize,
                 style=wx.DEFAULT_DIALOG_STYLE, name=wx.DialogNameStr):
         wx.Dialog.__init__(self)
 
@@ -87,7 +87,7 @@ class MainTestDialog(wx.Dialog):
         page_sizer_1 = wx.BoxSizer(wx.VERTICAL)
 
         self.text_ctrl = wx.TextCtrl(page_2, TXT_CTRL, "", wx.DefaultPosition,
-            wx.DefaultSize, wx.TE_MULTILINE|wx.TE_READONLY|wx.TE_RICH2)
+            wx.DefaultSize, wx.TE_MULTILINE|wx.TE_RICH2)
         self.text_ctrl.SetHint("wxTextCtrl")
         page_sizer_1.Add(self.text_ctrl, wx.SizerFlags().Expand().Border(wx.ALL))
 

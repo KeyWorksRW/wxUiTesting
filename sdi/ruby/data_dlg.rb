@@ -193,13 +193,13 @@ class DataDlg < Wx::Dialog
 
     # Event handlers
     evt_button(btn.get_id, :OnClearList)
-    # evt_grid_col_size(@kicadGrid.get_id, :OnColumnResize)
+    evt_grid_col_size(:OnColumnResize)
     evt_init_dialog(:on_init)
-    evt_pg_changed(@propertyGrid.get_id, :on_changed)
+    evt_pg_changed(@propertyGrid.get_id, :on_property_change)
+    evt_pg_selected(@propertyGrid.get_id, :on_selected)
     evt_size(:OnGridSize)
     evt_tree_item_expanded(@tree_ctrl.get_id, :on_tree_item_expanded)
   end
-end
 # ************* End of generated code ***********
 # DO NOT EDIT THIS COMMENT BLOCK!
 #
@@ -207,49 +207,55 @@ end
 # if the code for this class is re-generated.
 # ***********************************************
 
-def OnEventName(event_name)
-  pos = @events_list.Append(event_name)
-  @events_list.Select(pos)
-end
+  def OnEventName(event_name)
+    pos = @events_list.append(event_name)
+    @events_list.select(pos)
+  end
 
-def on_init(event)
-  @kicadGrid.SetCellValue(0, 0, "cat")
-  @kicadGrid.SetCellValue(0, 1, "dog")
+  def on_init(event)
+    @kicadGrid.set_cell_value(0, 0, "cat")
+    @kicadGrid.set_cell_value(0, 1, "dog")
 
-  @propertyGrid.set_property_value(@pgi_string, "cat")
-  @propertyGrid.SetPropertyValue(@pgi_integer, 3)
+    @propertyGrid.set_property_value(@pgi_string, "cat")
+    @propertyGrid.set_property_value(@pgi_integer, 3)
 
-  root = @tree_ctrl.AddRoot("Root")
-  child = @tree_ctrl.AppendItem(root, "Child # 1")
-  @tree_ctrl.AppendItem(child, "Grandchild")
-  @tree_ctrl.AppendItem(root, "Child # 2")
+    root = @tree_ctrl.add_root("Root")
+    child = @tree_ctrl.append_item(root, "Child # 1")
+    @tree_ctrl.append_item(child, "Grandchild")
+    @tree_ctrl.append_item(root, "Child # 2")
 
-end
+  end
 
-def OnClearList(event)
-  @events_list.clear()
-end
+  def OnClearList(event)
+      @events_list.clear()
+  end
 
-def OnColumnResize(event)
-  OnEventName("wxEVT_SIZE")
-end
+  def OnColumnResize(event)
+      OnEventName("wxEVT_GRID_COL_SIZE")
+  end
 
-def OnGridSize(event)
-  OnEventName("wxEVT_SIZE")
-end
+  def OnGridSize(event)
+      OnEventName("wxEVT_SIZE")
+  end
 
-def on_changed(event)
-  OnEventName("wxEVT_PG_CHANGED")
-end
+  def on_property_change(event)
+      OnEventName("wxEVT_PG_CHANGED")
+  end
 
-def on_data_view_ctrl_selection_changed(event)
-  OnEventName("wxEVT_DATAVIEW_SELECTION_CHANGED")
-end
+  def on_data_view_ctrl_selection_changed(event)
+      OnEventName("wxEVT_DATAVIEW_SELECTION_CHANGED")
+  end
 
-def on_tree_item_expanded(event)
-  OnEventName("wxEVT_TREE_ITEM_EXPANDED")
-end
+  def on_tree_item_expanded(event)
+      OnEventName("wxEVT_TREE_ITEM_EXPANDED")
+  end
 
-def on_tree_list_sel_changed(event)
-  OnEventName("wxEVT_TREELIST_SELECTION_CHANGED")
+  def on_tree_list_sel_changed(event)
+      OnEventName("wxEVT_TREELIST_SELECTION_CHANGED")
+  end
+
+  def on_selected(event)
+      OnEventName("wxEVT_PG_SELECTED")
+  end
+
 end

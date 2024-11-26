@@ -128,7 +128,6 @@ class PythonDlg < Wx::Dialog
     animation.load(StringIO.new(image_name))
     return animation
   end
-end
 
 # ../art/timer.png
 $timer_png = Base64.decode64(
@@ -166,18 +165,20 @@ $timer_png = Base64.decode64(
 # if the code for this class is re-generated.
 # ***********************************************
 
-def OnEvent(event)
-  event.skip
-end
+  def OnEvent(event)
+    event.skip
+  end
 
-def OnInit(event)
-  event.skip
-end
+  def OnInit(event)
+    event.skip
+  end
 
-def on_close(event)
-  end_modal(Wx::ID_CLOSE)
-end
+  def on_close(event)
+    end_modal(Wx::ID_CLOSE)
+  end
 
-def on_update_close(event)
-  @stdBtn_close.set_label('Close Me!')
+  def on_update_close(event)
+    @stdBtn_close.set_label('Close Me!')
+  end
+
 end

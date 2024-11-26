@@ -120,7 +120,6 @@ class BitmapsDlg < Wx::Dialog
     end
     centre(Wx::BOTH)
   end
-end
 
 # ../art/wxPython.svg
 $wxPython_svg = (
@@ -166,3 +165,5 @@ $wxPython_svg = (
 # Code below this comment block will be preserved
 # if the code for this class is re-generated.
 # ***********************************************
+
+end

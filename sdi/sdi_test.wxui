@@ -388,6 +388,7 @@
     <node
       class="wxDialog"
       class_name="MainTestDialog"
+      title="Main Testing Dialog"
       id="DLG_MAINTEST = wxID_HIGHEST + 100"
       base_file="maintestdialog"
       inserted_hdr_code="void OnEventName(const std::string&amp; event_name)@@{@@    m_events_list->Select(m_events_list->Append(wxString().FromUTF8(event_name)));@@}"
@@ -420,7 +421,7 @@
               <node
                 class="wxTextCtrl"
                 hint="wxTextCtrl"
-                style="wxTE_MULTILINE|wxTE_READONLY|wxTE_RICH2"
+                style="wxTE_MULTILINE|wxTE_RICH2"
                 var_name="m_text_ctrl"
                 id="TXT_CTRL"
                 flags="wxEXPAND"
@@ -2379,7 +2380,8 @@
               <node
                 class="wxPropertyGrid"
                 flags="wxEXPAND"
-                wxEVT_PG_CHANGED="OnChanged[python:on_changed][ruby:on_changed]">
+                wxEVT_PG_CHANGED="OnChanged[python:on_changed][ruby:on_property_change]"
+                wxEVT_PG_SELECTED="OnSelected[python:on_selected][ruby:on_selected]">
                 <node
                   class="propGridCategory"
                   var_name="m_propertyGridICategory">

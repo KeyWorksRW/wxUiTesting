@@ -64,10 +64,11 @@ class PropSheetBase < Wx::PropertySheetDialog
 
     layout_dialog(Wx::BOTH)
   end
-end
 # ************* End of generated code ***********
 # DO NOT EDIT THIS COMMENT BLOCK!
 #
 # Code below this comment block will be preserved
 # if the code for this class is re-generated.
 # ***********************************************
+
+end

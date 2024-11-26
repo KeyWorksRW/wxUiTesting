@@ -299,7 +299,7 @@ class MainFrame(wx.Frame):
         self.Bind(wx.EVT_MENU, self.on_tools_dlg, id=_menu_tools_dlg2.GetId())
         self.Bind(wx.EVT_MENU, self.OnWizard, id=menuItem3.GetId())
         self.Bind(wx.EVT_MENU, self.OnWizard, id=menu_item.GetId())
-        # self.Bind(wx.EVT_MENU, self.OnMenuSelection, id=menu_item3.GetId())
+        self.Bind(wx.EVT_MENU, self.OnMenuSelection, id=menu_item3.GetId())
         self.kicadGrid.Bind(wx.EVT_SIZE, self.OnGridSize)
         self.Bind(wx.EVT_TOOL, self.OnBookTestDlg, id=tool_5.GetId())
         self.Bind(wx.EVT_TOOL, self.OnCommonDialog, id=tool_2.GetId())
@@ -310,9 +310,6 @@ class MainFrame(wx.Frame):
     # Unimplemented Event handler functions
     # Copy any listed and paste them below the comment block, or to your inherited class.
     """
-    def OnMenuSelection(self, event):
-        event.Skip()
-
     """
 
 # ************* End of generated code ***********
@@ -359,6 +356,8 @@ class MainFrame(wx.Frame):
     def OnGridSize(self, event):
         event.Skip()
 
+    def OnMenuSelection(self, event):
+        event.Skip()
 
     def OnMainTestDlg(self, event):
         dlg = main_test_dlg.MainTestDialog(self, title="Main Dialog Tests")

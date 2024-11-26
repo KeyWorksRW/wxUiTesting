@@ -222,6 +222,7 @@ class DataDlg(wx.Dialog):
         self.kicadGrid.Bind(wx.grid.EVT_GRID_COL_SIZE, self.OnColumnResize)
         self.Bind(wx.EVT_INIT_DIALOG, self.on_init)
         self.propertyGrid.Bind(wx.propgrid.EVT_PG_CHANGED, self.on_changed)
+        self.propertyGrid.Bind(wx.propgrid.EVT_PG_SELECTED, self.on_selected)
         self.kicadGrid.Bind(wx.EVT_SIZE, self.OnGridSize)
         self.tree_list_ctrl.Bind(wx.dataview.EVT_TREELIST_SELECTION_CHANGED, self.on_tree_list_sel_changed)
         self.tree_ctrl.Bind(wx.EVT_TREE_ITEM_EXPANDED, self.on_tree_item_expanded)
@@ -229,6 +230,9 @@ class DataDlg(wx.Dialog):
     # Unimplemented Event handler functions
     # Copy any listed and paste them below the comment block, or to your inherited class.
     """
+    def on_selected(self, event):
+        event.Skip()
+
     """
 
 # ************* End of generated code ***********
@@ -286,3 +290,6 @@ class DataDlg(wx.Dialog):
     def OnEventName(self, event_name):
         pos = self.events_list.Append(event_name)
         self.events_list.Select(pos)
+
+    def on_selected(self, event):
+        self.OnEventName("wxEVT_PG_SELECTED")

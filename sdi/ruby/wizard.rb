@@ -128,7 +128,6 @@ class Wizard < Wx::Wizard
     evt_init_dialog(:OnInit)
     evt_wizard_before_page_changed(get_id, :on_before_page_change)
   end
-end
 
 # ../art/hide.png
 $hide_png = Base64.decode64(
@@ -145,10 +144,12 @@ $hide_png = Base64.decode64(
 # if the code for this class is re-generated.
 # ***********************************************
 
-def on_before_page_change(event)
-  event.skip
-end
+  def on_before_page_change(event)
+    event.skip
+  end
 
-def OnInit(event)
-  event.skip
+  def OnInit(event)
+    event.skip
+  end
+
 end

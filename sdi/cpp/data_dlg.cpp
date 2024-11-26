@@ -213,6 +213,7 @@ bool DataDlg::Create(wxWindow* parent, wxWindowID id, const wxString& title,
     m_kicadGrid->Bind(wxEVT_GRID_COL_SIZE, &DataDlg::OnColumnResize, this);
     Bind(wxEVT_INIT_DIALOG, &DataDlg::OnInit, this);
     m_propertyGrid->Bind(wxEVT_PG_CHANGED, &DataDlg::OnChanged, this);
+    m_propertyGrid->Bind(wxEVT_PG_SELECTED, &DataDlg::OnSelected, this);
     m_kicadGrid->Bind(wxEVT_SIZE, &DataDlg::OnGridSize, this);
     m_tree_list_ctrl->Bind(wxEVT_TREELIST_SELECTION_CHANGED, &DataDlg::OnTreeListSelChanged, this);
     m_tree_ctrl->Bind(wxEVT_TREE_ITEM_EXPANDED, &DataDlg::OnTreeItemExpanded, this);

@@ -48,6 +48,7 @@ protected:
     void OnDataViewCtrlSelectionChanged(wxDataViewEvent& event);
     void OnGridSize(wxSizeEvent& event);
     void OnInit(wxInitDialogEvent& event);
+    void OnSelected(wxPropertyGridEvent& event);
     void OnTreeItemExpanded(wxTreeEvent& event);
     void OnTreeListSelChanged(wxTreeListEvent& event);
 

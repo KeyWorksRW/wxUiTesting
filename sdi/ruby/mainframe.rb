@@ -258,25 +258,20 @@ class MainFrame < Wx::Frame
   def OnBookTestDlg(event)
     event.skip
   end
-
   def OnDlgIssue_956(event)
     event.skip
   end
-
   def OnDlgIssue_960(event)
     event.skip
   end
-
   def OnMainTestDlg(event)
     event.skip
   end
-
   def OnWizard(event)
     event.skip
   end
-
-=end
 end
+=end
 
 # ../art/wxToolBar.png
 $wxToolBar_png = Base64.decode64(
@@ -337,76 +332,77 @@ $wxDialog_png = Base64.decode64(
 # if the code for this class is re-generated.
 # ***********************************************
 
-def OnBookTestDlg
-  dlg = BookTestDlg.new(self)
-  dlg.show_modal
-  dlg.destroy
-end
-
-def OnCommonDialog(event)
-  event.skip
-end
-
-def OnDlgIssue_956
-  dlg = DlgIssue_956.new(self)
-  dlg.show_modal
-  dlg.destroy
-end
-
-def OnDlgIssue_960
-  dlg = DlgIssue_960.new(self)
-  dlg.show_modal
-  dlg.destroy
-end
-
-def OnMainTestDlg
-  dlg = MainTestDialog.new(self)
-  dlg.show_modal
-  dlg.destroy
-end
-
-def OnPythonDlg(event)
-  dlg = PythonDlg.new(self)
-  dlg.show_modal
-  dlg.destroy
-end
-
-def OnGridSize(event)
-  event.skip
-end
-
-def on_quit(event)
-  close(true)
-end
-
-def OnWizard
-  my_wizard = Wizard.new(self)
-  my_wizard.run_wizard(my_wizard.get_page_area_sizer.get_item(0).get_window)
-  my_wizard.destroy
-end
-
-def on_tools_dlg(event)
-  dlg = ToolBarsDialog.new(self)
-  dlg.show_modal
-  dlg.destroy
-end
-
-def OnBitmapsDlg(event)
-  dlg = BitmapsDlg.new(self)
-  dlg.show_modal
-  dlg.destroy
-end
-
-def on_propsheet_dlg(event)
-  dlg = PropSheetBase.new(self)
-  dlg.show_modal
-  dlg.destroy
-end
-
-def OnDataDlg(event)
-  dlg = DataDlg.new(self)
-  dlg.show_modal
-  dlg.destroy
+  def OnBookTestDlg
+    dlg = BookTestDlg.new(self)
+    dlg.show_modal
+    dlg.destroy
+  end
+  
+  def OnCommonDialog(event)
+    event.skip
+  end
+  
+  def OnDlgIssue_956
+    dlg = DlgIssue_956.new(self)
+    dlg.show_modal
+    dlg.destroy
+  end
+  
+  def OnDlgIssue_960
+    dlg = DlgIssue_960.new(self)
+    dlg.show_modal
+    dlg.destroy
+  end
+  
+  def OnMainTestDlg
+    dlg = MainTestDialog.new(self)
+    dlg.show_modal
+    dlg.destroy
+  end
+  
+  def OnPythonDlg(event)
+    dlg = PythonDlg.new(self)
+    dlg.show_modal
+    dlg.destroy
+  end
+  
+  def OnGridSize(event)
+    event.skip
+  end
+  
+  def on_quit(event)
+    close(true)
+  end
+  
+  def OnWizard
+    my_wizard = Wizard.new(self)
+    my_wizard.run_wizard(my_wizard.get_page_area_sizer.get_item(0).get_window)
+    my_wizard.destroy
+  end
+  
+  def on_tools_dlg(event)
+    dlg = ToolBarsDialog.new(self)
+    dlg.show_modal
+    dlg.destroy
+  end
+  
+  def OnBitmapsDlg(event)
+    dlg = BitmapsDlg.new(self)
+    dlg.show_modal
+    dlg.destroy
+  end
+  
+  def on_propsheet_dlg(event)
+    dlg = PropSheetBase.new(self)
+    dlg.show_modal
+    dlg.destroy
+  end
+  
+  def OnDataDlg(event)
+    dlg = DataDlg.new(self)
+    dlg.show_modal
+    dlg.destroy
+  end
 end
 
 class App < Wx::App

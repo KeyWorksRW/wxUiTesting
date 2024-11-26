@@ -21,7 +21,7 @@ require_relative 'images'
 require 'base64'
 
 class MainTestDialog < Wx::Dialog
-  def initialize(parent, id = $DLG_MAINTEST, title = '',
+  def initialize(parent, id = $DLG_MAINTEST, title = 'Main Testing Dialog',
                  pos = Wx::DEFAULT_POSITION, size = Wx::DEFAULT_SIZE,
                  style = Wx::DEFAULT_DIALOG_STYLE)
 
@@ -45,8 +45,7 @@ class MainTestDialog < Wx::Dialog
     page_sizer_1 = Wx::BoxSizer.new(Wx::VERTICAL)
 
     @text_ctrl = Wx::TextCtrl.new(page_2, $TXT_CTRL, '',
-      Wx::DEFAULT_POSITION, Wx::DEFAULT_SIZE, Wx::TE_MULTILINE|Wx::TE_READONLY|
-      Wx::TE_RICH2)
+      Wx::DEFAULT_POSITION, Wx::DEFAULT_SIZE, Wx::TE_MULTILINE|Wx::TE_RICH2)
     @text_ctrl.set_hint('wxTextCtrl')
     page_sizer_1.add(@text_ctrl, Wx::SizerFlags.new.expand.border(Wx::ALL))
 
@@ -814,7 +813,6 @@ class MainTestDialog < Wx::Dialog
     animation.load(StringIO.new(image_name))
     return animation
   end
-end
 
 # ../art/clr_hourglass.gif
 $clr_hourglass_gif = Base64.decode64(
@@ -864,30 +862,32 @@ $clr_hourglass_gif = Base64.decode64(
 # if the code for this class is re-generated.
 # ***********************************************
 
-def OnClearList(event)
-  event.skip
-end
+  def OnClearList(event)
+    event.skip
+  end
 
-def OnDisableBitmapsBtn(event)
-  event.skip
-end
+  def OnDisableBitmapsBtn(event)
+    event.skip
+  end
 
-def OnEvent(event)
-  event.skip
-end
+  def OnEvent(event)
+    Wx.message_box('OnEvent')
+    event.skip
+  end
 
-def OnInit(event)
-  event.skip
-end
+  def OnInit(event)
+    event.skip
+  end
 
-def OnPageChanged(event)
-  event.skip
-end
+  def OnPageChanged(event)
+    event.skip
+  end
 
-def OnPopupBtn(event)
-  event.skip
-end
+  def OnPopupBtn(event)
+    event.skip
+  end
 
-def on_check_play_animation(event)
-  event.skip
+  def on_check_play_animation(event)
+    event.skip
+  end
 end

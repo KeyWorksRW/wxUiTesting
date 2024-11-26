@@ -137,7 +137,6 @@ class ToolBarsDialog < Wx::Dialog
     evt_init_dialog(:on_init)
     evt_tool(@tool_svg.get_id, :OnTool)
   end
-end
 
 # ../art/left.svg
 $left_svg = (
@@ -203,10 +202,12 @@ $redo_png = Base64.decode64(
 # if the code for this class is re-generated.
 # ***********************************************
 
-def OnTool(event)
-  event.skip
-end
+  def OnTool(event)
+    event.skip
+  end
 
-def on_init(event)
-  event.skip
+  def on_init(event)
+    event.skip
+  end
+
 end
