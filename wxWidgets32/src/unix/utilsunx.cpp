@@ -904,11 +904,10 @@ long wxExecute(const char* const* argv, int flags, wxProcess* process,
 const wxChar* wxGetHomeDir( wxString *home  )
 {
     *home = wxGetUserHome();
-    wxString tmp;
     if ( home->empty() )
         *home = wxT("/");
 #ifdef __VMS
-    tmp = *home;
+    wxString tmp = *home;
     if ( tmp.Last() != wxT(']'))
         if ( tmp.Last() != wxT('/')) *home << wxT('/');
 #endif
@@ -1152,6 +1151,7 @@ wxString wxGetNativeCpuArchitectureName()
 static bool
 wxGetValuesFromOSRelease(const wxString& filename, wxLinuxDistributionInfo& ret)
 {
+#if wxUSE_CONFIG
     if ( !wxFileName::Exists(filename) )
     {
         return false;
@@ -1164,6 +1164,9 @@ wxGetValuesFromOSRelease(const wxString& filename, wxLinuxDistributionInfo& ret)
     ret.CodeName = fc.Read(wxS("VERSION_CODENAME"), wxEmptyString);
 
     return true;
+#else
+    return false;
+#endif
 }
 
 static bool
