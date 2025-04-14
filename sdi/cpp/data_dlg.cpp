@@ -321,3 +321,8 @@ void DataDlg::OnEventName(const std::string& event_name)
 {
     m_events_list->Select(m_events_list->Append(wxString().FromUTF8(event_name)));
 }
+
+void DataDlg::OnSelected(wxPropertyGridEvent& event)
+{
+    event.Skip();
+}
