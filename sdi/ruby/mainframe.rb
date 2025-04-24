@@ -399,13 +399,15 @@ $wxDialog_png = Base64.decode64(
   end
   
   def OnDataDlg(event)
-    dlg = DataDlg.new(self)
-    dlg.show_modal
-    dlg.destroy
+    Wx::message_box('wxRuby does not currently support Dataview controls', 'Information', Wx::OK | Wx::ICON_INFORMATION, self)
+    # dlg = DataDlg.new(self)
+    # dlg.show_modal
+    # dlg.destroy
   end
 end
 
 class App < Wx::App
+  puts "Ruby version: #{Wx::WXRUBY_VERSION}"
   def on_init
     frame = MainFrame.new(nil)
     frame.set_title('Ruby SDI Tests')
