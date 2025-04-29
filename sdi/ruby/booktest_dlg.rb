@@ -298,6 +298,8 @@ class BookTestDlg < Wx::Dialog
 
     bundle_list = [
       wxue_get_bundle($english_png),
+      wxue_get_bundle($re_png),
+      wxue_get_bundle($er_png),
       wxue_get_bundle($french_png),
       wxue_get_bundle($japanese_png)
     ]
@@ -379,7 +381,7 @@ class BookTestDlg < Wx::Dialog
     page_sizer2 = Wx::BoxSizer.new(Wx::VERTICAL)
 
     @simplebook = Wx::Simplebook.new(page2, Wx::ID_ANY)
-    page_sizer2.add(@simplebook, Wx::SizerFlags.new())
+    page_sizer2.add(@simplebook, Wx::SizerFlags.new.border(Wx::ALL))
 
     page3 = Wx::Panel.new(@simplebook, Wx::ID_ANY, Wx::DEFAULT_POSITION,
       Wx::DEFAULT_SIZE, Wx::TAB_TRAVERSAL)
@@ -465,33 +467,11 @@ class BookTestDlg < Wx::Dialog
 
     page2.set_sizer_and_fit(page_sizer2)
 
-    if Wx::PLATFORM != 'WXMAC'
-      @stdBtn_line = Wx::StaticLine.new(self, Wx::ID_ANY, Wx::DEFAULT_POSITION,
-                                      Wx::Size.new(20, -1))
-      dlg_sizer.add(@stdBtn_line, Wx::SizerFlags.new.expand.border(Wx::ALL))
-    end
-    @stdBtn = Wx::StdDialogButtonSizer.new
-    @stdBtn_ok = Wx::Button.new(self, Wx::ID_OK)
-    @stdBtn.add_button(@stdBtn_ok)
-    @stdBtn_ok.set_default
-    @stdBtn_cancel = Wx::Button.new(self, Wx::ID_CANCEL)
-    @stdBtn.add_button(@stdBtn_cancel)
-    @stdBtn.realize
-    dlg_sizer.add(@stdBtn, Wx::SizerFlags.new.expand.border(Wx::ALL))
+    @stdBtn = create_std_dialog_button_sizer(Wx::OK|Wx::CANCEL)
+    dlg_sizer.add(create_separated_sizer(@stdBtn),
+      Wx::SizerFlags.new.expand.border(Wx::ALL))
 
-    if pos != Wx::DEFAULT_POSITION
-      set_position(from_dip(pos))
-    end
-    if size == Wx::DEFAULT_SIZE
-      set_sizer_and_fit(dlg_sizer)
-    else
-      set_sizer(dlg_sizer)
-      if size.x == Wx::DEFAULT_COORD || size.y == Wx::DEFAULT_COORD
-        fit
-      end
-      set_size(from_dip(size))
-      layout
-    end
+    set_sizer_and_fit(dlg_sizer)
     centre(Wx::BOTH)
 
     # Event handlers

@@ -66,6 +66,8 @@ class PythonDlg < Wx::Dialog
 
     box_sizer.add(box_sizer2, Wx::SizerFlags.new.border(Wx::ALL))
 
+    box_sizer3 = Wx::BoxSizer.new(Wx::HORIZONTAL)
+
     @checkPlayAnimation = Wx::CheckBox.new(self, Wx::ID_ANY, 'Play Animation')
     static_box_2 = Wx::StaticBoxSizer.new(Wx::StaticBox.new(self, Wx::ID_ANY, @checkPlayAnimation
       ), Wx::VERTICAL)
@@ -80,15 +82,24 @@ class PythonDlg < Wx::Dialog
     @animation_ctrl.set_inactive_bitmap(wxue_get_bundle($disabled_png))
     static_box_2.add(@animation_ctrl, Wx::SizerFlags.new.border(Wx::ALL))
 
-    box_sizer.add(static_box_2, Wx::SizerFlags.new.border(Wx::ALL))
+    box_sizer3.add(static_box_2, Wx::SizerFlags.new.border(Wx::ALL))
+
+    @scroll_panel = Wx::ScrolledWindow.new(self, Wx::ID_ANY,
+      Wx::DEFAULT_POSITION, Wx::DEFAULT_SIZE, Wx::HSCROLL|Wx::VSCROLL)
+    @scroll_panel.set_scroll_rate(5, 5)
+    box_sizer3.add(@scroll_panel, Wx::SizerFlags.new.border(Wx::ALL))
+
+    panel_sizer = Wx::BoxSizer.new(Wx::VERTICAL)
+
+    @static_text2 = Wx::StaticText.new(@scroll_panel, Wx::ID_ANY,
+      'Some static text in a scroll panel')
+    panel_sizer.add(@static_text2, Wx::SizerFlags.new.border(Wx::ALL))
+    @scroll_panel.set_sizer_and_fit(panel_sizer)
+
+    box_sizer.add(box_sizer3, Wx::SizerFlags.new.border(Wx::ALL))
 
     bSizer1.add(box_sizer, Wx::SizerFlags.new.expand.border(Wx::ALL))
 
-    if Wx::PLATFORM != 'WXMAC'
-      @stdBtn_line = Wx::StaticLine.new(self, Wx::ID_ANY, Wx::DEFAULT_POSITION,
-                                      Wx::Size.new(20, -1))
-      bSizer1.add(@stdBtn_line, Wx::SizerFlags.new.expand.border(Wx::ALL))
-    end
     @stdBtn = Wx::StdDialogButtonSizer.new
     @stdBtn_ok = Wx::Button.new(self, Wx::ID_OK)
     @stdBtn.add_button(@stdBtn_ok)
@@ -97,21 +108,10 @@ class PythonDlg < Wx::Dialog
     @stdBtn.add_button(@stdBtn_close)
     @stdBtn.add_button(Wx::ContextHelpButton.new(self, Wx::ID_CONTEXT_HELP))
     @stdBtn.realize
-    bSizer1.add(@stdBtn, Wx::SizerFlags.new.expand.border(Wx::ALL))
+    bSizer1.add(create_separated_sizer(@stdBtn),
+      Wx::SizerFlags.new.expand.border(Wx::ALL))
 
-    if pos != Wx::DEFAULT_POSITION
-      set_position(from_dip(pos))
-    end
-    if size == Wx::DEFAULT_SIZE
-      set_sizer_and_fit(bSizer1)
-    else
-      set_sizer(bSizer1)
-      if size.x == Wx::DEFAULT_COORD || size.y == Wx::DEFAULT_COORD
-        fit
-      end
-      set_size(from_dip(size))
-      layout
-    end
+    set_sizer_and_fit(bSizer1)
     centre(Wx::BOTH)
 
     # Event handlers

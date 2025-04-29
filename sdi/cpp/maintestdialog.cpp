@@ -52,7 +52,9 @@ bool MainTestDialog::Create(wxWindow* parent, wxWindowID id, const wxString& tit
     const wxPoint& pos, const wxSize& size, long style, const wxString &name)
 {
     if (!wxDialog::Create(parent, id, title, pos, size, style, name))
+    {
         return false;
+    }
     if (!wxImage::FindHandler(wxBITMAP_TYPE_GIF))
         wxImage::AddHandler(new wxGIFHandler);
     if (!wxImage::FindHandler(wxBITMAP_TYPE_PNG))
@@ -774,12 +776,12 @@ bool MainTestDialog::Create(wxWindow* parent, wxWindowID id, const wxString& tit
     m_checkPlayAnimation->Bind(wxEVT_CHECKBOX,
         [this](wxCommandEvent&)
         {
-            if (m_checkPlayAnimation->GetValue()) 
+            if (m_checkPlayAnimation->GetValue())
             {
                 m_animation_ctrl->Play();
             }
-            else 
-            {  
+            else
+            { 
                 m_animation_ctrl->Stop();
             }
         });
@@ -923,17 +925,17 @@ bool MainTestDialog::Create(wxWindow* parent, wxWindowID id, const wxString& tit
     m_toggleBtn_2->Bind(wxEVT_TOGGLEBUTTON,
         [this](wxCommandEvent&)
         {
-            if (m_toggleBtn->GetValue()) 
+            if (m_toggleBtn->GetValue())
             {
                 m_animation_ctrl->Play();
                 m_checkPlayAnimation->SetValue(true);
             }
-            else 
-            {  
+            else
+            { 
                 m_animation_ctrl->Stop();
                 m_checkPlayAnimation->SetValue(false);
             }
-
+                    
         });
 
     return true;

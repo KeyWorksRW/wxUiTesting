@@ -183,6 +183,8 @@
 							<option>1</option>
 							<object class="wxSearchCtrl" name="m_searchCtrl">
 								<hint>Search for something...</hint>
+								<!--XRC does not support ShowSearchButton()-->
+								<!--XRC does not support ShowCancelButton()-->
 							</object>
 						</object>
 					</object>

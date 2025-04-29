@@ -46,7 +46,9 @@ bool BookTestDlg::Create(wxWindow* parent, wxWindowID id, const wxString& title,
     const wxPoint& pos, const wxSize& size, long style, const wxString &name)
 {
     if (!wxDialog::Create(parent, id, title, pos, size, style, name))
+    {
         return false;
+    }
     if (!wxImage::FindHandler(wxBITMAP_TYPE_PNG))
         wxImage::AddHandler(new wxPNGHandler);
 
@@ -282,6 +284,8 @@ bool BookTestDlg::Create(wxWindow* parent, wxWindowID id, const wxString& title,
     {
         wxWithImages::Images bundle_list;
         bundle_list.push_back(wxue_img::bundle_english_png());
+        bundle_list.push_back(wxue_img::bundle_re_png());
+        bundle_list.push_back(wxue_img::bundle_er_png());
         bundle_list.push_back(wxue_img::bundle_french_png());
         bundle_list.push_back(wxue_img::bundle_japanese_png());
         m_treebook->SetImages(bundle_list);
@@ -348,7 +352,7 @@ bool BookTestDlg::Create(wxWindow* parent, wxWindowID id, const wxString& title,
     auto* page_sizer2 = new wxBoxSizer(wxVERTICAL);
 
     m_simplebook = new wxSimplebook(page2, wxID_ANY);
-    page_sizer2->Add(m_simplebook, wxSizerFlags());
+    page_sizer2->Add(m_simplebook, wxSizerFlags().Border(wxALL));
 
     auto* page3 = new wxPanel(m_simplebook, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTAB_TRAVERSAL);
     m_simplebook->AddPage(page3, "English");

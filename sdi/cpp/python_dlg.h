@@ -17,6 +17,7 @@
 #include <wx/dialog.h>
 #include <wx/event.h>
 #include <wx/gdicmn.h>
+#include <wx/scrolwin.h>
 #include <wx/settings.h>
 #include <wx/sizer.h>
 #include <wx/spinctrl.h>
@@ -60,8 +61,10 @@ protected:
     wxAnimationCtrl* m_animation_ctrl;
     wxAuiToolBar* auiToolBar;
     wxCheckBox* m_checkPlayAnimation;
+    wxScrolledWindow* m_scroll_panel;
     wxSpinCtrl* spinCtrl;
     wxStaticText* m_staticText;
+    wxStaticText* m_static_text2;
     wxStdDialogButtonSizer* m_stdBtn;
     wxButton* m_stdBtnOK;
     wxButton* m_stdBtnClose;

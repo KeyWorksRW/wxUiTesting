@@ -53,7 +53,9 @@ bool CommonCtrls::Create(wxWindow* parent, wxWindowID id, const wxString& title,
     const wxPoint& pos, const wxSize& size, long style, const wxString &name)
 {
     if (!wxDialog::Create(parent, id, title, pos, size, style, name))
+    {
         return false;
+    }
     if (!wxImage::FindHandler(wxBITMAP_TYPE_GIF))
         wxImage::AddHandler(new wxGIFHandler);
     if (!wxImage::FindHandler(wxBITMAP_TYPE_PNG))
@@ -379,20 +381,20 @@ bool CommonCtrls::Create(wxWindow* parent, wxWindowID id, const wxString& title,
         {
             m_infoBar->ShowMessage("wxEVT_CHECKBOX event");
             Fit();
-
+                    
         });
     m_checkPlayAnimation->Bind(wxEVT_CHECKBOX,
         [this](wxCommandEvent&)
         {
-            if (m_checkPlayAnimation->GetValue()) 
+            if (m_checkPlayAnimation->GetValue())
             {
                 m_animation_ctrl->Play();
             }
-            else 
-            {  
+            else
+            { 
                 m_animation_ctrl->Stop();
             }
-
+                    
         });
     m_checkList->Bind(wxEVT_CHECKLISTBOX, &CommonCtrls::OnListChecked, this);
     m_choice2->Bind(wxEVT_CHOICE, &CommonCtrls::OnChoice, this);
@@ -448,27 +450,38 @@ bool CommonCtrls::Create(wxWindow* parent, wxWindowID id, const wxString& title,
     m_toggleBtn->Bind(wxEVT_TOGGLEBUTTON,
         [this](wxCommandEvent&)
         {
-            if (m_toggleBtn->GetValue()) 
+            if (m_toggleBtn->GetValue())
             {
                 m_animation_ctrl->Play();
                 m_checkPlayAnimation->SetValue(true);
             }
-            else 
-            {  
+            else
+            { 
                 m_animation_ctrl->Stop();
                 m_checkPlayAnimation->SetValue(false);
             }
-
+                    
             m_infoBar->ShowMessage("wxEVT_TOGGLEBUTTON event");
             Fit();
         });
+
+// Unimplemented Event handler functions
+// Copy any of the following and paste them below the comment block, or to your inherited class.
+
+/*
+void CommonCtrls::OnContextMenu(
+{
+    event.Skip();
+}
+
+*/
 
     return true;
 }
 void CommonCtrls::OnContextMenu(wxContextMenuEvent& event)
 {
     wxMenu ctx_menu;
-    auto p_ctx_menu = &ctx_menu;  // convenience variable for the auto-generated code
+    auto* p_ctx_menu = &ctx_menu;  // convenience variable for the auto-generated code
     auto* menu_item = new wxMenuItem(p_ctx_menu, wxID_ANY, "Play Animation");
     p_ctx_menu->Append(menu_item);
     auto* menu_item_2 = new wxMenuItem(p_ctx_menu, wxID_ANY, "Stop Animation");
@@ -484,23 +497,23 @@ void CommonCtrls::OnContextMenu(wxContextMenuEvent& event)
     p_ctx_menu->Append(menu_item_6);
 
     ctx_menu.Bind(wxEVT_MENU,
-        [this](wxCommandEvent&) { m_animation_ctrl->Play(); },
-        menu_item->GetId());
+[this](wxCommandEvent&) { m_animation_ctrl->Play(); },
+    menu_item->GetId());
     ctx_menu.Bind(wxEVT_MENU,
-        [this](wxCommandEvent&) { m_animation_ctrl->Stop(); },
-        menu_item_2->GetId());
+[this](wxCommandEvent&) { m_animation_ctrl->Stop(); },
+    menu_item_2->GetId());
     ctx_menu.Bind(wxEVT_MENU,
-        [this](wxCommandEvent&) { m_slider->SetValue(25); },
-        menu_item_3->GetId());
+[this](wxCommandEvent&) { m_slider->SetValue(25); },
+    menu_item_3->GetId());
     ctx_menu.Bind(wxEVT_MENU,
-        [this](wxCommandEvent&) { m_slider->SetValue(75); },
-        menu_item_4->GetId());
+[this](wxCommandEvent&) { m_slider->SetValue(75); },
+    menu_item_4->GetId());
     ctx_menu.Bind(wxEVT_MENU,
-        [this](wxCommandEvent&) { m_gauge->SetValue(25); },
-        menu_item_5->GetId());
+[this](wxCommandEvent&) { m_gauge->SetValue(25); },
+    menu_item_5->GetId());
     ctx_menu.Bind(wxEVT_MENU,
-        [this](wxCommandEvent&) { m_gauge->SetValue(75); },
-        menu_item_6->GetId());
+[this](wxCommandEvent&) { m_gauge->SetValue(75); },
+    menu_item_6->GetId());
 
     wxStaticCast(event.GetEventObject(), wxWindow)->PopupMenu(&ctx_menu);
 }

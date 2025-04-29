@@ -48,7 +48,9 @@ bool MainFrame::Create(wxWindow* parent, wxWindowID id, const wxString& title,
         wxImage::AddHandler(new wxPNGHandler);
 
     if (!drvFrame::Create(44, parent, id, title, pos, size, style, name))
+    {
         return false;
+    }
     if (pos != wxDefaultPosition || size != wxDefaultSize)
     {
         SetSize(FromDIP(pos).x, FromDIP(pos).y,
@@ -263,6 +265,61 @@ bool MainFrame::Create(wxWindow* parent, wxWindowID id, const wxString& title,
     Bind(wxEVT_TOOL, &MainFrame::OnDataDlg, this, tool->GetId());
     Bind(wxEVT_TOOL, &MainFrame::OnMainTestDlg, this, tool_4->GetId());
     Bind(wxEVT_TOOL, &MainFrame::OnPythonDlg, this, tool_3->GetId());
+
+// Unimplemented Event handler functions
+// Copy any of the following and paste them below the comment block, or to your inherited class.
+
+/*
+void MainFrame::OnBitmapsDlg(
+{
+    event.Skip();
+}
+void MainFrame::OnBookTestDlg(
+{
+    event.Skip();
+}
+void MainFrame::OnCommonDialog(
+{
+    event.Skip();
+}
+void MainFrame::OnDataDlg(
+{
+    event.Skip();
+}
+void MainFrame::OnDlgIssue_956(
+{
+    event.Skip();
+}
+void MainFrame::OnDlgIssue_960(
+{
+    event.Skip();
+}
+void MainFrame::OnMainTestDlg(
+{
+    event.Skip();
+}
+void MainFrame::OnPropSheetDlg(
+{
+    event.Skip();
+}
+void MainFrame::OnPythonDlg(
+{
+    event.Skip();
+}
+void MainFrame::OnToolsDlg(
+{
+    event.Skip();
+}
+void MainFrame::OnWizard(
+{
+    event.Skip();
+}
+void MainFrame::OnXrcPythonDlg(
+{
+    event.Skip();
+}
+
+*/
 
     return true;
 }

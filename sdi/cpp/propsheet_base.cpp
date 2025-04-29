@@ -22,7 +22,9 @@ bool PropSheetBase::Create(wxWindow* parent, wxWindowID id, const wxString& titl
     SetSheetStyle(wxPROPSHEET_NOTEBOOK);
     SetSheetInnerBorder(20);
     if (!wxPropertySheetDialog::Create(parent, id, title, pos, size, style, name))
+    {
         return false;
+    }
 
     CreateButtons(wxOK|wxCANCEL);
 

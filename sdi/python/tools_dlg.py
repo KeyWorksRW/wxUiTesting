@@ -189,16 +189,7 @@ class ToolBarsDialog(wx.Dialog):
         rbn_btn_bar.Realize()
 
         self.SetMinSize(self.FromDIP(wx.Size(400, -1)))
-        if pos != wx.DefaultPosition:
-            self.SetPosition(self.FromDIP(pos))
-        if size == wx.DefaultSize:
-            self.SetSizerAndFit(box_sizer)
-        else:
-            self.SetSizer(box_sizer)
-            if size.x == wx.DefaultCoord or size.y == wx.DefaultCoord:
-                self.Fit()
-            self.SetSize(self.FromDIP(size))
-            self.Layout()
+        self.SetSizerAndFit(box_sizer)
         self.Centre(wx.BOTH)
 
         # Bind Event handlers

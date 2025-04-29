@@ -45,6 +45,7 @@
 							<style>wxTE_PROCESS_ENTER</style>
 							<value>Text "ctrl"</value>
 							<tooltip>Auto-complete contains "foo" and "bar"</tooltip>
+							<!-- auto complete cannot be be set in the XRC file. -->
 						</object>
 					</object>
 					<object class="sizeritem">
@@ -151,6 +152,7 @@
 											</content>
 											<value>item #2</value>
 											<tooltip>Item #0 should be selected by default</tooltip>
+											<!--You cannot use selection_string for the selection in XRC.-->
 										</object>
 									</object>
 									<object class="sizeritem">
@@ -173,6 +175,7 @@
 											<value>item #2</value>
 											<style>wxCB_SORT</style>
 											<tooltip>Item #2 should be selected by default</tooltip>
+											<!--You cannot use selection_string for the selection in XRC.-->
 										</object>
 									</object>
 								</object>
@@ -422,7 +425,9 @@
 					<object class="sizeritem">
 						<flag>wxALL</flag>
 						<border>10</border>
-						<object class="unknown" name="m_split_button" />
+						<object class="unknown" name="m_split_button">
+							<!--control with button + menu-->
+						</object>
 					</object>
 					<object class="spacer">
 						<size>0,0</size>
@@ -525,5 +530,6 @@
 				</object>
 			</object>
 		</object>
+		<object />
 	</object>
 </resource>

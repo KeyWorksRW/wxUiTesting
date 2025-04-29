@@ -503,8 +503,8 @@
 							<object class="wxBoxSizer" name="page_sizer2">
 								<orient>wxVERTICAL</orient>
 								<object class="sizeritem">
-									<flag></flag>
-									<option></option>
+									<flag>wxALL</flag>
+									<border>5</border>
 									<object class="wxSimplebook" name="m_simplebook">
 										<object class="simplebookpage" name="page3">
 											<bitmap>../art/english.png</bitmap>

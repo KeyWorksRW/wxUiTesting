@@ -45,30 +45,11 @@ class DlgIssue_960(wx.Dialog):
             images.Ainsi_c3a7a_se_passe_png.Bitmap))
         dlg_sizer.Add(bmp_3, wx.SizerFlags().Border(wx.ALL))
 
-        if "wxMac" not in wx.PlatformInfo:
-            stdBtn_line = \
-                wx.StaticLine(self, wx.ID_ANY, wx.DefaultPosition, wx.Size(20, -1))
-            dlg_sizer.Add(stdBtn_line, wx.SizerFlags().Expand().Border(wx.ALL))
+        stdBtn = self.CreateStdDialogButtonSizer(wx.OK|wx.CANCEL)
+        dlg_sizer.Add(self.CreateSeparatedSizer(stdBtn),
+            wx.SizerFlags().Expand().Border(wx.ALL))
 
-        stdBtn = wx.StdDialogButtonSizer()
-        stdBtn_ok = wx.Button(self, wx.ID_OK)
-        stdBtn.SetAffirmativeButton(stdBtn_ok)
-        stdBtn_cancel = wx.Button(self, wx.ID_CANCEL)
-        stdBtn.SetCancelButton(stdBtn_cancel)
-        stdBtn_ok.SetDefault()
-        stdBtn.Realize()
-        dlg_sizer.Add(stdBtn, wx.SizerFlags().Expand().Border(wx.ALL))
-
-        if pos != wx.DefaultPosition:
-            self.SetPosition(self.FromDIP(pos))
-        if size == wx.DefaultSize:
-            self.SetSizerAndFit(dlg_sizer)
-        else:
-            self.SetSizer(dlg_sizer)
-            if size.x == wx.DefaultCoord or size.y == wx.DefaultCoord:
-                self.Fit()
-            self.SetSize(self.FromDIP(size))
-            self.Layout()
+        self.SetSizerAndFit(dlg_sizer)
         self.Centre(wx.BOTH)
 # ************* End of generated code ***********
 # DO NOT EDIT THIS COMMENT BLOCK!

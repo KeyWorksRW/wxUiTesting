@@ -12,6 +12,7 @@
 				<flag>wxALL</flag>
 				<border>5</border>
 				<object class="wxStaticText" name="m_staticText">
+					<!--Test of a public member-->
 					<label>The following are bitmaps that have filenames which are invalid as C++ or Python variables. This is used to test resolution of issue #960.</label>
 					<wrap>300</wrap>
 				</object>

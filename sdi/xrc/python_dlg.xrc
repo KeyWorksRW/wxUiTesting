@@ -85,28 +85,54 @@
 					<object class="sizeritem">
 						<flag>wxALL</flag>
 						<border>5</border>
-						<object class="wxStaticBoxSizer" name="static_box_2">
-							<orient>wxVERTICAL</orient>
-							<windowlabel>
-								<object class="wxCheckBox" name="m_checkPlayAnimation">
-									<label>Play Animation</label>
-								</object>
-							</windowlabel>
+						<object class="wxBoxSizer" name="box_sizer3">
+							<orient>wxHORIZONTAL</orient>
 							<object class="sizeritem">
 								<flag>wxALL</flag>
 								<border>5</border>
-								<object class="wxToggleButton" name="m_toggleBtn">
-									<label>Play Animation</label>
-									<style>wxBU_EXACTFIT</style>
+								<object class="wxStaticBoxSizer" name="static_box_2">
+									<orient>wxVERTICAL</orient>
+									<windowlabel>
+										<object class="wxCheckBox" name="m_checkPlayAnimation">
+											<label>Play Animation</label>
+										</object>
+									</windowlabel>
+									<object class="sizeritem">
+										<flag>wxALL</flag>
+										<border>5</border>
+										<object class="wxToggleButton" name="m_toggleBtn">
+											<label>Play Animation</label>
+											<style>wxBU_EXACTFIT</style>
+										</object>
+									</object>
+									<object class="sizeritem">
+										<flag>wxALL</flag>
+										<border>5</border>
+										<object class="wxAnimationCtrl" name="m_animation_ctrl">
+											<style>wxAC_DEFAULT_STYLE</style>
+											<animation>clr_hourglass.gif</animation>
+											<inactive-bitmap>disabled.png</inactive-bitmap>
+										</object>
+									</object>
 								</object>
 							</object>
 							<object class="sizeritem">
 								<flag>wxALL</flag>
 								<border>5</border>
-								<object class="wxAnimationCtrl" name="m_animation_ctrl">
-									<style>wxAC_DEFAULT_STYLE</style>
-									<animation>clr_hourglass.gif</animation>
-									<inactive-bitmap>disabled.png</inactive-bitmap>
+								<object class="wxScrolledWindow" name="m_scroll_panel">
+									<style>wxHSCROLL | wxVSCROLL</style>
+									<scrollrate>5,5</scrollrate>
+									<object class="wxBoxSizer" name="panel_sizer">
+										<orient>wxVERTICAL</orient>
+										<object class="sizeritem">
+											<flag>wxALL</flag>
+											<border>5</border>
+											<object class="wxStaticText" name="m_static_text2">
+												<label>Some static text in a scroll panel</label>
+												<wrap>-1</wrap>
+											</object>
+										</object>
+									</object>
 								</object>
 							</object>
 						</object>

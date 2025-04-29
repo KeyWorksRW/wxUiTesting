@@ -46,6 +46,7 @@
 							<object class="wxButton" name="m_btn">
 								<label>&amp;Refresh</label>
 								<markup>1</markup>
+								<!-- markup cannot be be set in the XRC file. -->
 							</object>
 						</object>
 						<object class="sizeritem">
@@ -56,6 +57,7 @@
 							<object class="wxButton" name="m_btn_2">
 								<label>&amp;New</label>
 								<markup>1</markup>
+								<!-- markup cannot be be set in the XRC file. -->
 							</object>
 						</object>
 						<object class="sizeritem">
@@ -66,6 +68,7 @@
 							<object class="wxButton" name="m_btn_3">
 								<label>&amp;Edit</label>
 								<markup>1</markup>
+								<!-- markup cannot be be set in the XRC file. -->
 							</object>
 						</object>
 						<object class="sizeritem">
@@ -76,6 +79,7 @@
 							<object class="wxButton" name="m_btn_4">
 								<label>&amp;Delete</label>
 								<markup>1</markup>
+								<!-- markup cannot be be set in the XRC file. -->
 							</object>
 						</object>
 						<object class="sizeritem">

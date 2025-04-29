@@ -91,33 +91,11 @@ class BitmapsDlg < Wx::Dialog
 
     dlg_sizer.add(grid_sizer, Wx::SizerFlags.new.border(Wx::ALL))
 
-    if Wx::PLATFORM != 'WXMAC'
-      stdBtn_line = Wx::StaticLine.new(self, Wx::ID_ANY, Wx::DEFAULT_POSITION,
-                                  Wx::Size.new(20, -1))
-      dlg_sizer.add(stdBtn_line, Wx::SizerFlags.new.expand.border(Wx::ALL))
-    end
-    stdBtn = Wx::StdDialogButtonSizer.new
-    stdBtn_ok = Wx::Button.new(self, Wx::ID_OK)
-    stdBtn.add_button(stdBtn_ok)
-    stdBtn_ok.set_default
-    stdBtn_cancel = Wx::Button.new(self, Wx::ID_CANCEL)
-    stdBtn.add_button(stdBtn_cancel)
-    stdBtn.realize
-    dlg_sizer.add(stdBtn, Wx::SizerFlags.new.expand.border(Wx::ALL))
+    stdBtn = create_std_dialog_button_sizer(Wx::OK|Wx::CANCEL)
+    dlg_sizer.add(create_separated_sizer(stdBtn),
+      Wx::SizerFlags.new.expand.border(Wx::ALL))
 
-    if pos != Wx::DEFAULT_POSITION
-      set_position(from_dip(pos))
-    end
-    if size == Wx::DEFAULT_SIZE
-      set_sizer_and_fit(dlg_sizer)
-    else
-      set_sizer(dlg_sizer)
-      if size.x == Wx::DEFAULT_COORD || size.y == Wx::DEFAULT_COORD
-        fit
-      end
-      set_size(from_dip(size))
-      layout
-    end
+    set_sizer_and_fit(dlg_sizer)
     centre(Wx::BOTH)
   end
 

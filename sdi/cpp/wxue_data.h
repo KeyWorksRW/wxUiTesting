@@ -22,7 +22,7 @@ namespace wxue_data
     std::string get_xrc_python_dlg();
 
     // xrc/python_dlg.xrc
-    extern const unsigned char xrc_python_dlg[1053]; // 3734
+    extern const unsigned char xrc_python_dlg[1144]; // 4364
 }
 
 // ************* End of generated code ***********

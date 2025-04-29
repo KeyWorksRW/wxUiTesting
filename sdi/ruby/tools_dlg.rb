@@ -118,19 +118,7 @@ class ToolBarsDialog < Wx::Dialog
     rbn_btn_bar.realize
 
     set_min_size(from_dip(Wx::Size.new(400, -1)))
-    if pos != Wx::DEFAULT_POSITION
-      set_position(from_dip(pos))
-    end
-    if size == Wx::DEFAULT_SIZE
-      set_sizer_and_fit(box_sizer)
-    else
-      set_sizer(box_sizer)
-      if size.x == Wx::DEFAULT_COORD || size.y == Wx::DEFAULT_COORD
-        fit
-      end
-      set_size(from_dip(size))
-      layout
-    end
+    set_sizer_and_fit(box_sizer)
     centre(Wx::BOTH)
 
     # Event handlers

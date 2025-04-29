@@ -302,6 +302,8 @@ class BookTestDlg(wx.Dialog):
 
         bundle_list = [
             wx.BitmapBundle.FromBitmap(images.english_png.Bitmap),
+            wx.BitmapBundle.FromBitmap(images.re_png.Bitmap),
+            wx.BitmapBundle.FromBitmap(images.er_png.Bitmap),
             wx.BitmapBundle.FromBitmap(images.french_png.Bitmap),
             wx.BitmapBundle.FromBitmap(images.japanese_png.Bitmap)
         ]
@@ -377,7 +379,7 @@ class BookTestDlg(wx.Dialog):
         page_sizer2 = wx.BoxSizer(wx.VERTICAL)
 
         self.simplebook = wx.Simplebook(page2, wx.ID_ANY)
-        page_sizer2.Add(self.simplebook, wx.SizerFlags())
+        page_sizer2.Add(self.simplebook, wx.SizerFlags().Border(wx.ALL))
 
         page3 = wx.Panel(self.simplebook, wx.ID_ANY, wx.DefaultPosition, wx.DefaultSize,
             wx.TAB_TRAVERSAL)
@@ -460,30 +462,11 @@ class BookTestDlg(wx.Dialog):
 
         page2.SetSizerAndFit(page_sizer2)
 
-        if "wxMac" not in wx.PlatformInfo:
-            self.stdBtn_line = \
-                wx.StaticLine(self, wx.ID_ANY, wx.DefaultPosition, wx.Size(20, -1))
-            dlg_sizer.Add(self.stdBtn_line, wx.SizerFlags().Expand().Border(wx.ALL))
+        self.stdBtn = self.CreateStdDialogButtonSizer(wx.OK|wx.CANCEL)
+        dlg_sizer.Add(self.CreateSeparatedSizer(self.stdBtn),
+            wx.SizerFlags().Expand().Border(wx.ALL))
 
-        self.stdBtn = wx.StdDialogButtonSizer()
-        self.stdBtn_ok = wx.Button(self, wx.ID_OK)
-        self.stdBtn.SetAffirmativeButton(self.stdBtn_ok)
-        self.stdBtn_cancel = wx.Button(self, wx.ID_CANCEL)
-        self.stdBtn.SetCancelButton(self.stdBtn_cancel)
-        self.stdBtn_ok.SetDefault()
-        self.stdBtn.Realize()
-        dlg_sizer.Add(self.stdBtn, wx.SizerFlags().Expand().Border(wx.ALL))
-
-        if pos != wx.DefaultPosition:
-            self.SetPosition(self.FromDIP(pos))
-        if size == wx.DefaultSize:
-            self.SetSizerAndFit(dlg_sizer)
-        else:
-            self.SetSizer(dlg_sizer)
-            if size.x == wx.DefaultCoord or size.y == wx.DefaultCoord:
-                self.Fit()
-            self.SetSize(self.FromDIP(size))
-            self.Layout()
+        self.SetSizerAndFit(dlg_sizer)
         self.Centre(wx.BOTH)
 
         # Bind Event handlers

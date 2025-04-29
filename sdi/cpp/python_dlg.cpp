@@ -62,7 +62,9 @@ bool PythonDlg::Create(wxWindow* parent, wxWindowID id, const wxString& title,
     const wxPoint& pos, const wxSize& size, long style, const wxString &name)
 {
     if (!wxDialog::Create(parent, id, title, pos, size, style, name))
+    {
         return false;
+    }
     if (!wxImage::FindHandler(wxBITMAP_TYPE_GIF))
         wxImage::AddHandler(new wxGIFHandler);
     if (!wxImage::FindHandler(wxBITMAP_TYPE_PNG))
@@ -104,6 +106,8 @@ bool PythonDlg::Create(wxWindow* parent, wxWindowID id, const wxString& title,
 
     box_sizer->Add(box_sizer2, wxSizerFlags().Border(wxALL));
 
+    auto* box_sizer3 = new wxBoxSizer(wxHORIZONTAL);
+
     m_checkPlayAnimation = new wxCheckBox(this, wxID_ANY, "Play Animation");
     auto* static_box_2 = new wxStaticBoxSizer(new wxStaticBox(this, wxID_ANY, m_checkPlayAnimation), wxVERTICAL);
 
@@ -121,19 +125,30 @@ bool PythonDlg::Create(wxWindow* parent, wxWindowID id, const wxString& title,
     }
     static_box_2->Add(m_animation_ctrl, wxSizerFlags().Border(wxALL));
 
-    box_sizer->Add(static_box_2, wxSizerFlags().Border(wxALL));
+    box_sizer3->Add(static_box_2, wxSizerFlags().Border(wxALL));
+
+    m_scroll_panel = new wxScrolledWindow(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxHSCROLL | wxVSCROLL);
+    m_scroll_panel->SetScrollRate(5, 5);
+    box_sizer3->Add(m_scroll_panel, wxSizerFlags().Border(wxALL));
+
+    auto* panel_sizer = new wxBoxSizer(wxVERTICAL);
+
+    m_static_text2 = new wxStaticText(m_scroll_panel, wxID_ANY, "Some static text in a scroll panel");
+    panel_sizer->Add(m_static_text2, wxSizerFlags().Border(wxALL));
+    m_scroll_panel->SetSizerAndFit(panel_sizer);
+
+    box_sizer->Add(box_sizer3, wxSizerFlags().Border(wxALL));
 
     bSizer1->Add(box_sizer, wxSizerFlags().Expand().Border(wxALL));
 
     m_stdBtn = new wxStdDialogButtonSizer();
-    m_stdBtn->AddButton(new wxButton(this, wxID_OK));
-    m_stdBtn->AddButton(new wxButton(this, wxID_CLOSE));
+    m_stdBtnOK = new wxButton(this, wxID_OK);
+    m_stdBtn->AddButton(m_stdBtnOK);
+    m_stdBtnOK->SetDefault();
+    m_stdBtnClose = new wxButton(this, wxID_CLOSE);
+    m_stdBtn->AddButton(m_stdBtnClose);
     m_stdBtn->AddButton(new wxContextHelpButton(this, wxID_CONTEXT_HELP));
-    m_stdBtn->GetAffirmativeButton()->SetDefault();
     m_stdBtn->Realize();
-    m_stdBtnOK = wxStaticCast(FindWindowById(wxID_OK), wxButton);
-    m_stdBtnClose = wxStaticCast(FindWindowById(wxID_CLOSE), wxButton);
-    m_stdBtnContextHelp = wxStaticCast(FindWindowById(wxID_CONTEXT_HELP), wxButton);
     bSizer1->Add(CreateSeparatedSizer(m_stdBtn), wxSizerFlags().Expand().Border(wxALL));
 
     if (pos != wxDefaultPosition)
@@ -162,12 +177,12 @@ bool PythonDlg::Create(wxWindow* parent, wxWindowID id, const wxString& title,
     m_checkPlayAnimation->Bind(wxEVT_CHECKBOX,
         [this](wxCommandEvent&)
         {
-            if (m_checkPlayAnimation->GetValue()) 
+            if (m_checkPlayAnimation->GetValue())
             {
                 m_animation_ctrl->Play();
             }
-            else 
-            {  
+            else
+            { 
                 m_animation_ctrl->Stop();
             }
         });
@@ -175,13 +190,13 @@ bool PythonDlg::Create(wxWindow* parent, wxWindowID id, const wxString& title,
     m_toggleBtn->Bind(wxEVT_TOGGLEBUTTON,
         [this](wxCommandEvent&)
         {
-            if (m_toggleBtn->GetValue()) 
+            if (m_toggleBtn->GetValue())
             {
                 m_animation_ctrl->Play();
                 m_checkPlayAnimation->SetValue(true);
             }
-            else 
-            {  
+            else
+            { 
                 m_animation_ctrl->Stop();
                 m_checkPlayAnimation->SetValue(false);
             }

@@ -419,4 +419,5 @@ class MyApp(wx.App):
         return True
 
 app = MyApp()
+print(wx.version())
 app.MainLoop()

@@ -46,7 +46,9 @@ Wizard::Wizard(wxWindow* parent, wxWindowID id, const wxString& title, const wxP
     SetExtraStyle(GetExtraStyle() | wxWIZARD_EX_HELPBUTTON);
     SetBorder(15);
     if (!Create(parent, id, title, wxue_img::bundle_wiztest_png(), pos, style))
+    {
         return;
+    }
 
     auto* wizPage = new wxWizardPageSimple(this);
 
@@ -147,6 +149,7 @@ Wizard::Wizard(wxWindow* parent, wxWindowID id, const wxString& title, const wxP
     // Event handlers
     Bind(wxEVT_INIT_DIALOG, &Wizard::OnInit, this);
     Bind(wxEVT_WIZARD_BEFORE_PAGE_CHANGED, &Wizard::OnBeforeChange, this);
+
 }
 
 namespace wxue_img

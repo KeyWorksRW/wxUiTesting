@@ -104,6 +104,8 @@ class PythonDlg(wx.Dialog):
 
         box_sizer.Add(box_sizer2, wx.SizerFlags().Border(wx.ALL))
 
+        box_sizer3 = wx.BoxSizer(wx.HORIZONTAL)
+
         # wxPython currently does not support a checkbox as a static box label
         static_box_2 = wx.StaticBoxSizer(wx.VERTICAL, self, "Play Animation")
 
@@ -121,36 +123,36 @@ class PythonDlg(wx.Dialog):
         self.animation_ctrl.SetAnimation(animate)
         static_box_2.Add(self.animation_ctrl, wx.SizerFlags().Border(wx.ALL))
 
-        box_sizer.Add(static_box_2, wx.SizerFlags().Border(wx.ALL))
+        box_sizer3.Add(static_box_2, wx.SizerFlags().Border(wx.ALL))
+
+        self.scroll_panel = wx.ScrolledWindow(self, wx.ID_ANY, wx.DefaultPosition,
+            wx.DefaultSize, wx.HSCROLL|wx.VSCROLL)
+        self.scroll_panel.SetScrollRate(5, 5)
+        box_sizer3.Add(self.scroll_panel, wx.SizerFlags().Border(wx.ALL))
+
+        panel_sizer = wx.BoxSizer(wx.VERTICAL)
+
+        self.static_text2 = wx.StaticText(self.scroll_panel, wx.ID_ANY,
+            "Some static text in a scroll panel")
+        panel_sizer.Add(self.static_text2, wx.SizerFlags().Border(wx.ALL))
+        self.scroll_panel.SetSizerAndFit(panel_sizer)
+
+        box_sizer.Add(box_sizer3, wx.SizerFlags().Border(wx.ALL))
 
         bSizer1.Add(box_sizer, wx.SizerFlags().Expand().Border(wx.ALL))
 
-        if "wxMac" not in wx.PlatformInfo:
-            self.stdBtn_line = \
-                wx.StaticLine(self, wx.ID_ANY, wx.DefaultPosition, wx.Size(20, -1))
-            bSizer1.Add(self.stdBtn_line, wx.SizerFlags().Expand().Border(wx.ALL))
-
         self.stdBtn = wx.StdDialogButtonSizer()
         self.stdBtn_ok = wx.Button(self, wx.ID_OK)
-        self.stdBtn.SetAffirmativeButton(self.stdBtn_ok)
-        self.stdBtn_close = wx.Button(self, wx.ID_CLOSE)
-        self.stdBtn.SetCancelButton(self.stdBtn_close)
-        self.stdBtn_ctx_help = wx.ContextHelpButton(self, wx.ID_CONTEXT_HELP)
-        self.stdBtn.AddButton(self.stdBtn_ctx_help)
+        self.stdBtn.AddButton(self.stdBtn_ok)
         self.stdBtn_ok.SetDefault()
+        self.stdBtn_close = wx.Button(self, wx.ID_CLOSE)
+        self.stdBtn.AddButton(self.stdBtn_close)
+        self.stdBtn.AddButton(wx.ContextHelpButton(self, wx.ID_CONTEXT_HELP))
         self.stdBtn.Realize()
-        bSizer1.Add(self.stdBtn, wx.SizerFlags().Expand().Border(wx.ALL))
+        bSizer1.Add(self.CreateSeparatedSizer(self.stdBtn),
+            wx.SizerFlags().Expand().Border(wx.ALL))
 
-        if pos != wx.DefaultPosition:
-            self.SetPosition(self.FromDIP(pos))
-        if size == wx.DefaultSize:
-            self.SetSizerAndFit(bSizer1)
-        else:
-            self.SetSizer(bSizer1)
-            if size.x == wx.DefaultCoord or size.y == wx.DefaultCoord:
-                self.Fit()
-            self.SetSize(self.FromDIP(size))
-            self.Layout()
+        self.SetSizerAndFit(bSizer1)
         self.Centre(wx.BOTH)
 
         # Bind Event handlers
