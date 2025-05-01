@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<wxUiEditorData
+  data_version="15">
+  <node
+    class="Project"
+    base_directory="cpp"
+    cpp_line_length="125"
+    generate_cmake="1">
+    <node
+      class="wxFrame"
+      class_name="NormalFrame"
+      base_file="cpp/normal_frame"
+      use_derived_class="0">
+      <node
+        class="wxToolBar" />
+      <node
+        class="wxMenuBar" />
+      <node
+        class="wxStatusBar" />
+    </node>
+    <node
+      class="wxDocParentFrame"
+      class_name="SdiFrame"
+      base_file="cpp/sdi_frame"
+      use_derived_class="0">
+      <node
+        class="wxToolBar" />
+      <node
+        class="wxMenuBar" />
+      <node
+        class="wxStatusBar" />
+    </node>
+    <node
+      class="wxDocMDIParentFrame"
+      class_name="MdiFrame"
+      base_file="cpp/mdi_frame"
+      use_derived_class="0">
+      <node
+        class="wxToolBar" />
+      <node
+        class="wxMenuBar" />
+      <node
+        class="wxStatusBar" />
+    </node>
+    <node
+      class="wxAuiMDIParentFrame"
+      class_name="AuiFrame"
+      base_file="cpp/aui_frame"
+      use_derived_class="0">
+      <node
+        class="wxToolBar" />
+      <node
+        class="wxMenuBar" />
+      <node
+        class="wxStatusBar" />
+    </node>
+  </node>
+</wxUiEditorData>
