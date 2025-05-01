@@ -8,6 +8,9 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 ####################### Options #######################
 
+# creates a compile_commands.json file in the build directory, suitable for clangd
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
 option(BUILD_SHARED_LIBS "Build with wxWidgets shared libraries" ON)
 
 if (BUILD_SHARED_LIBS)
@@ -17,7 +20,7 @@ else()
 endif()
 
 set(BUILD_ROOT ${CMAKE_CURRENT_LIST_DIR}/../../wxWidgets33 CACHE PATH "${CMAKE_CURRENT_LIST_DIR}/../../wxWidgets33" FORCE)
-set(WIDGETS_LIB ../../wxWidgets33)
+set(WIDGETS_LIB ${CMAKE_CURRENT_LIST_DIR}/../../wxWidgets33)
 
 message(NOTICE "wxWidgets lib: ${WIDGETS_LIB}")
 message(NOTICE "BUILD_ROOT: ${BUILD_ROOT}")
@@ -59,11 +62,12 @@ endif()
 include_directories(
     ${BUILD_ROOT}/include
     ${setup_dir}
+    ${CMAKE_CURRENT_LIST_DIR}/
 )
 
 link_directories(
-    $<$<CONFIG:Debug>:${BUILD_ROOT}//build/Debug>
-    $<$<CONFIG:Release>:${BUILD_ROOT}//build/Release>
+    $<$<CONFIG:Debug>:${BUILD_ROOT}/build/Debug>
+    $<$<CONFIG:Release>:${BUILD_ROOT}/build/Release>
 )
 
 if (MSVC)
@@ -75,9 +79,6 @@ if (MSVC)
     # This can considerably speed up build times at the cost of larger object files.
     string(REPLACE "/Zi" "/Z7" z_seven ${CMAKE_CXX_FLAGS_DEBUG})
     set(CMAKE_CXX_FLAGS_DEBUG ${z_seven} CACHE STRING "C++ Debug flags" FORCE)
-
-    # Use static runtime to run with Wine without needing to install the dlls
-    set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
 else()
     # Use the package PkgConfig to detect GTK+ headers/library files
     find_package(PkgConfig REQUIRED)
