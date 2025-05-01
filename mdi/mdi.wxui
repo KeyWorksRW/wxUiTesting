@@ -1,0 +1,109 @@
+<?xml version="1.0"?>
+<wxUiEditorData
+  data_version="15">
+  <node
+    class="Project"
+    base_directory="cpp"
+    cpp_line_length="125"
+    generate_cmake="1">
+    <node
+      class="wxFrame"
+      class_name="NormalFrame"
+      base_file="cpp/normal_frame"
+      use_derived_class="0">
+      <node
+        class="wxToolBar" />
+      <node
+        class="wxMenuBar" />
+      <node
+        class="wxStatusBar" />
+    </node>
+    <node
+      class="wxDocParentFrame"
+      class_name="SdiFrame"
+      base_file="cpp/sdi_frame"
+      use_derived_class="0">
+      <node
+        class="wxToolBar" />
+      <node
+        class="wxMenuBar" />
+      <node
+        class="wxStatusBar" />
+    </node>
+    <node
+      class="wxDocMDIParentFrame"
+      class_name="MdiFrame"
+      base_file="cpp/mdi_frame"
+      local_src_includes="mainapp.h"
+      use_derived_class="0">
+      <node
+        class="wxToolBar" />
+      <node
+        class="wxMenuBar">
+        <node
+          class="wxMenu"
+          label="&amp;File"
+          stock_id="wxID_FILE">
+          <node
+            class="wxMenuItem"
+            bitmap="Art;wxART_NEW|wxART_MENU"
+            help="Create new document"
+            id="wxID_NEW"
+            label="&amp;New"
+            stock_id="wxID_NEW" />
+          <node
+            class="wxMenuItem"
+            bitmap="Art;wxART_FILE_OPEN|wxART_MENU"
+            help="Open an existing document"
+            id="wxID_OPEN"
+            label="&amp;Open..."
+            stock_id="wxID_OPEN"
+            var_name="menu_item2" />
+          <node
+            class="separator" />
+          <node
+            class="wxMenuItem"
+            bitmap="Art;wxART_QUIT|wxART_MENU"
+            help="Quit this program"
+            id="wxID_EXIT"
+            label="&amp;Quit"
+            stock_id="wxID_EXIT"
+            var_name="menu_item3" />
+        </node>
+        <node
+          class="wxMenu"
+          label="&amp;Edit"
+          stock_id="wxID_EDIT"
+          var_name="m_menu2" />
+        <node
+          class="wxMenu"
+          label="&amp;Help"
+          stock_id="wxID_HELP"
+          var_name="m_menu3">
+          <node
+            class="wxMenuItem"
+            help="Show about dialog"
+            id="wxID_ABOUT"
+            label="&amp;About"
+            stock_id="wxID_ABOUT"
+            var_name="menu_item4"
+            wxEVT_MENU="[](wxCommandEvent&amp; event)@@{@@wxDynamicCast(wxApp::GetInstance(), MainApp)->OnAbout(event);@@}[python:OnAbout][ruby:OnAbout]" />
+        </node>
+      </node>
+      <node
+        class="wxStatusBar" />
+    </node>
+    <node
+      class="wxAuiMDIParentFrame"
+      class_name="AuiFrame"
+      base_file="cpp/aui_frame"
+      use_derived_class="0">
+      <node
+        class="wxToolBar" />
+      <node
+        class="wxMenuBar" />
+      <node
+        class="wxStatusBar" />
+    </node>
+  </node>
+</wxUiEditorData>

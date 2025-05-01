@@ -1,0 +1,11 @@
+#include "winres.h"
+
+CREATEPROCESS_MANIFEST_RESOURCE_ID RT_MANIFEST "mdi_test.manifest"
+
+// Set this to 1 if you don't want to use manifest resource provided by
+// wxWidgets but wxUSE_RC_MANIFEST is somehow defined elsewhere.
+#define wxUSE_NO_MANIFEST 0
+
+// this file contains the standard icons, cursors etc. and also includes the application
+// manifest mentioned above
+#include "wx/msw/wx.rc"
