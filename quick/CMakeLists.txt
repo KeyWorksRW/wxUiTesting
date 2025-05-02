@@ -9,6 +9,9 @@ project(quick_test
 
 ####################### Options #######################
 
+# creates a compile_commands.json file in the build directory, suitable for clangd
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
 option(BUILD_SHARED_LIBS "Build with wxWidgets shared libraries" ON)
 
 if (BUILD_SHARED_LIBS)
