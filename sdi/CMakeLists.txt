@@ -9,6 +9,9 @@ project(sdi_test
 
 ####################### Options #######################
 
+# creates a compile_commands.json file in the build directory, suitable for clangd
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
 option(BUILD_SHARED_LIBS "Build with wxWidgets shared libraries" ON)
 
 if (BUILD_SHARED_LIBS)
@@ -21,17 +24,9 @@ endif()
 # build with the current wxWidgets sources (assuming the wxWidgets fork is in sync).
 # Realistically, this is only going to be usable by the maintainers of this project.
 
-option(BUILD_31 "Builds wxWidgets using wxWidgets31")
 option(BUILD_33 "Builds wxWidgets using wxWidgets33")
 
-if (BUILD_31 AND BUILD_33)
-    message(FATAL_ERROR "BUILD_33 and BUILD_31 cannot be combined")
-endif()
-
-if (BUILD_31)
-    set(BUILD_ROOT ${CMAKE_CURRENT_LIST_DIR}/../wxWidgets31 CACHE PATH "${CMAKE_CURRENT_LIST_DIR}/../wxWidgets31" FORCE)
-    set(WIDGETS_LIB wxWidgets31)
-elseif (BUILD_33)
+if (BUILD_33)
     set(BUILD_ROOT ${CMAKE_CURRENT_LIST_DIR}/../wxWidgets33 CACHE PATH "${CMAKE_CURRENT_LIST_DIR}/../wxWidgets33" FORCE)
     set(WIDGETS_LIB wxWidgets33)
 else()
