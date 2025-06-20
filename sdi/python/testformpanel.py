@@ -38,7 +38,7 @@ class TestFormPanel(wx.Panel):
 
         panel_sizer = wx.BoxSizer(wx.VERTICAL)
 
-        _static_box = wx.StaticBoxSizer(wx.VERTICAL, self.panel, "label")
+        _static_box = wx.StaticBoxSizer(wx.VERTICAL, self.self.panel, "label")
 
         panel_sizer.Add(_static_box, wx.SizerFlags().Border(wx.ALL))
         self.panel.SetSizerAndFit(panel_sizer)
@@ -55,7 +55,7 @@ class TestFormPanel(wx.Panel):
 
         panel_sizer2 = wx.BoxSizer(wx.VERTICAL)
 
-        _static_box2 = wx.StaticBoxSizer(wx.VERTICAL, self.panel2, "label")
+        _static_box2 = wx.StaticBoxSizer(wx.VERTICAL, self.self.panel2, "label")
 
         panel_sizer2.Add(_static_box2, wx.SizerFlags().Border(wx.ALL))
         self.panel2.SetSizerAndFit(panel_sizer2)

@@ -71,7 +71,7 @@ bool BitmapsDlg::Create(wxWindow* parent, wxWindowID id, const wxString& title,
     m_tool_bar->AddTool(wxID_ANY, "xpm", wxBitmap(english_xpm));
 
     m_tool_bar->AddTool(wxID_ANY, "svg",
-        wxueBundleSVG(wxue_img::wxPython_svg, 1843, 6649, FromDIP(wxSize(16, 16))));
+        wxueBundleSVG(wxue_img::wxPython_svg, 1843, 6649, wxSize(16, 16)));
 
     m_tool_bar->AddTool(wxID_ANY, "art", wxArtProvider::GetBitmapBundle(wxART_TIP, wxART_TOOLBAR));
 

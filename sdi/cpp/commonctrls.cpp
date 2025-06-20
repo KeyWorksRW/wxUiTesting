@@ -469,7 +469,7 @@ bool CommonCtrls::Create(wxWindow* parent, wxWindowID id, const wxString& title,
 // Copy any of the following and paste them below the comment block, or to your inherited class.
 
 /*
-void CommonCtrls::OnContextMenu(
+void CommonCtrls::OnContextMenu(wxContextMenuEvent& event)
 {
     event.Skip();
 }

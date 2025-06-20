@@ -222,7 +222,7 @@ bool MainFrame::Create(wxWindow* parent, wxWindowID id, const wxString& title,
     auto* tool_3 = m_toolBar->AddTool(wxID_ANY, "PythonDlg", wxue_img::bundle_wxPython_1_5x_png());
 
     auto* tool = m_toolBar->AddTool(wxID_ANY, "DataDlg",
-        wxue_img::bundle_grid_svg(FromDIP(24), FromDIP(24)));
+        wxue_img::bundle_grid_svg(24, 24));
 
     m_toolBar->AddStretchableSpace();
 
@@ -270,51 +270,51 @@ bool MainFrame::Create(wxWindow* parent, wxWindowID id, const wxString& title,
 // Copy any of the following and paste them below the comment block, or to your inherited class.
 
 /*
-void MainFrame::OnBitmapsDlg(
+void MainFrame::OnBitmapsDlg(wxCommandEvent& event)
 {
     event.Skip();
 }
-void MainFrame::OnBookTestDlg(
+void MainFrame::OnBookTestDlg(wxCommandEvent& event)
 {
     event.Skip();
 }
-void MainFrame::OnCommonDialog(
+void MainFrame::OnCommonDialog(wxCommandEvent& event)
 {
     event.Skip();
 }
-void MainFrame::OnDataDlg(
+void MainFrame::OnDataDlg(wxCommandEvent& event)
 {
     event.Skip();
 }
-void MainFrame::OnDlgIssue_956(
+void MainFrame::OnDlgIssue_956(wxCommandEvent& event)
 {
     event.Skip();
 }
-void MainFrame::OnDlgIssue_960(
+void MainFrame::OnDlgIssue_960(wxCommandEvent& event)
 {
     event.Skip();
 }
-void MainFrame::OnMainTestDlg(
+void MainFrame::OnMainTestDlg(wxCommandEvent& event)
 {
     event.Skip();
 }
-void MainFrame::OnPropSheetDlg(
+void MainFrame::OnPropSheetDlg(wxCommandEvent& event)
 {
     event.Skip();
 }
-void MainFrame::OnPythonDlg(
+void MainFrame::OnPythonDlg(wxCommandEvent& event)
 {
     event.Skip();
 }
-void MainFrame::OnToolsDlg(
+void MainFrame::OnToolsDlg(wxCommandEvent& event)
 {
     event.Skip();
 }
-void MainFrame::OnWizard(
+void MainFrame::OnWizard(wxCommandEvent& event)
 {
     event.Skip();
 }
-void MainFrame::OnXrcPythonDlg(
+void MainFrame::OnXrcPythonDlg(wxCommandEvent& event)
 {
     event.Skip();
 }
