@@ -2568,11 +2568,6 @@
       class="folder"
       label="Forms">
       <node
-        class="MenuBar">
-        <node
-          class="wxMenu" />
-      </node>
-      <node
         class="PanelForm"
         class_name="TestFormPanel"
         size="500,300"
@@ -2669,6 +2664,70 @@
           class="wxComboBox"
           contents="&quot;English&quot; &quot;French&quot; &quot;Japanese&quot;"
           selection_string="English" />
+      </node>
+      <node
+        class="AuiToolBar"
+        base_file="form_aui_toolbar">
+        <node
+          class="auitool"
+          bitmap="SVG;face-smile.svg;[24,24]"
+          label="" />
+      </node>
+      <node
+        class="RibbonBar"
+        class_name="RibbonBarTool"
+        base_file="form_ribbonbar_tool"
+        derived_class_name="RibbonBarToolDerived"
+        derived_file="ribbonbartool_derived">
+        <node
+          class="wxRibbonPage"
+          label="Page 1">
+          <node
+            class="wxRibbonPanel"
+            label="Page 1, panel 1">
+            <node
+              class="wxRibbonToolBar">
+              <node
+                class="ribbonTool"
+                bitmap="SVG;face-smile.svg;[24,24]"
+                id="tool1" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node
+        class="RibbonBar"
+        class_name="RibbonBarGallery"
+        base_file="form_ribbonbar_gallery">
+        <node
+          class="wxRibbonPage"
+          label="Page 1">
+          <node
+            class="wxRibbonPanel"
+            label="Page 1, panel 1">
+            <node
+              class="wxRibbonGallery">
+              <node
+                class="ribbonGalleryItem"
+                bitmap="SVG;face-smile.svg;[24,24]" />
+            </node>
+          </node>
+        </node>
+      </node>
+      <node
+        class="MenuBar"
+        base_file="form_menu_bar">
+        <node
+          class="wxMenu">
+          <node
+            class="wxMenuItem" />
+        </node>
+      </node>
+      <node
+        class="PopupMenu"
+        base_file="form_popup_menu">
+        <node
+          class="wxMenuItem" />
       </node>
     </node>
     <node

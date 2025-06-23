@@ -21,6 +21,11 @@ set (sdi_generated_code
     # Base classes
     ${CMAKE_CURRENT_LIST_DIR}/cpp/dlgissue_956.cpp
     ${CMAKE_CURRENT_LIST_DIR}/cpp/dlgissue_960.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/cpp/form_aui_toolbar.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/cpp/form_menu_bar.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/cpp/form_popup_menu.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/cpp/form_ribbonbar_gallery.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/cpp/form_ribbonbar_tool.cpp
     ${CMAKE_CURRENT_LIST_DIR}/cpp/form_toolbar_base.cpp
     ${CMAKE_CURRENT_LIST_DIR}/cpp/maintestdialog.cpp
     ${CMAKE_CURRENT_LIST_DIR}/cpp/tools_dlg.cpp

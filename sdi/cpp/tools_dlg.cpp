@@ -17,6 +17,7 @@
 
 #include "tools_dlg.h"
 
+#include <wx/bmpbndl.h>  // wxBitmapBundle class
 #include <wx/mstream.h>  // memory stream classes
 #include <wx/zstream.h>  // zlib stream classes
 
