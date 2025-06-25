@@ -1,15 +1,20 @@
-set (file_list
-    cpp/quick_test.rc
+# lang_test.cmake
 
+set (file_list
     cpp/mainapp.cpp
-    cpp/main_frame.cpp
+    cpp/quick_test.rc
 )
 
-# quick_code.cmake
-
 set (other_files
-    python/py_main.py
-    ruby/rb_main.rb
+    # mainframe and app launch files
+    perl/language_test.pl
+    python/language_test.py
+    ruby/language_test.rb
+
+    # dialog files
+    perl/maindtest_dlg.pl
+    python/maindtest_dlg.py
+    ruby/maindtest_dlg.rb
 )
 
 set (samples

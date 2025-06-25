@@ -28,7 +28,7 @@
 
 #include "mainapp.h"     // MainApp
 
-#include "main_frame.h"  // CMainFrame
+#include "language_test.h"  // CMainFrame
 
 wxIMPLEMENT_APP(MainApp);
 
@@ -41,7 +41,7 @@ bool MainApp::OnInit()
     SetAppDisplayName(txtAppname);
     SetVendorName("KeyWorks");
 
-    m_mainframe = new MainFrame(nullptr, wxID_ANY, "C++ implementation", wxPoint(1024, -1));
+    m_mainframe = new LanguageTest(nullptr, wxID_ANY, "C++ implementation", wxPoint(1024, -1));
     m_mainframe->Show(true);
     return true;
 }
