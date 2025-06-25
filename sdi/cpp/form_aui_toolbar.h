@@ -9,21 +9,17 @@
 
 #pragma once
 
-#include <memory>  // for std::make_unique
+#include <wx/aui/auibar.h>
+#include <wx/gdicmn.h>
 
-namespace wxue_data
+class MyAuiToolBarBase : public wxAuiToolBar
 {
-    std::unique_ptr<unsigned char[]> get_data(const unsigned char* data, size_t size_data, size_t size_data_uncompressed);
+public:
+    MyAuiToolBarBase(wxWindow* parent, wxWindowID id = wxID_ANY, const wxPoint& pos = wxDefaultPosition,
+        const wxSize& size = wxDefaultSize, long style = wxAUI_TB_DEFAULT_STYLE|wxAUI_TB_PLAIN_BACKGROUND);
 
-}
-
-namespace wxue_data
-{
-    std::string get_xrc_python_dlg();  // xrc/python_dlg.xrc
-
-    // xrc/python_dlg.xrc
-    extern const unsigned char xrc_python_dlg[1144];
-}
+protected:
+};
 
 // ************* End of generated code ***********
 // DO NOT EDIT THIS COMMENT BLOCK!

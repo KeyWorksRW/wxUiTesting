@@ -7,22 +7,14 @@
 
 // clang-format off
 
-#pragma once
+#include "form_menu_bar.h"
 
-#include <memory>  // for std::make_unique
-
-namespace wxue_data
+MyMenuBarBase::MyMenuBarBase(long style) : wxMenuBar(style)
 {
-    std::unique_ptr<unsigned char[]> get_data(const unsigned char* data, size_t size_data, size_t size_data_uncompressed);
-
-}
-
-namespace wxue_data
-{
-    std::string get_xrc_python_dlg();  // xrc/python_dlg.xrc
-
-    // xrc/python_dlg.xrc
-    extern const unsigned char xrc_python_dlg[1144];
+    m_menu = new wxMenu();
+    auto* menu_item = new wxMenuItem(m_menu, wxID_ANY, "MyMenuItem");
+    m_menu->Append(menu_item);
+    Append(m_menu, "MyMenu");
 }
 
 // ************* End of generated code ***********

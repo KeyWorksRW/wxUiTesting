@@ -17,6 +17,7 @@
 
 #include "tools_dlg.h"
 
+#include <wx/bmpbndl.h>  // wxBitmapBundle class
 #include <wx/mstream.h>  // memory stream classes
 #include <wx/zstream.h>  // zlib stream classes
 
@@ -72,7 +73,7 @@ bool ToolBarsDialog::Create(wxWindow* parent, wxWindowID id, const wxString& tit
 
     m_tool_bar = new wxToolBar(this, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTB_HORIZONTAL);
     m_tool_svg = m_tool_bar->AddTool(wxID_ANY, wxEmptyString,
-        wxueBundleSVG(wxue_img::left_svg, 630, 1927, FromDIP(wxSize(24, 24))));
+        wxueBundleSVG(wxue_img::left_svg, 630, 1927, wxSize(24, 24)));
 
     m_tool_bar->AddTool(wxID_ANY, wxEmptyString, wxArtProvider::GetBitmapBundle(wxART_CUT, wxART_TOOLBAR));
 
@@ -92,7 +93,7 @@ bool ToolBarsDialog::Create(wxWindow* parent, wxWindowID id, const wxString& tit
     m_aui_tool_bar = new wxAuiToolBar(this, wxID_ANY, wxDefaultPosition, wxDefaultSize,
         wxAUI_TB_PLAIN_BACKGROUND);
     m_aui_tool_svg = m_aui_tool_bar->AddTool(wxID_ANY, wxEmptyString,
-        wxueBundleSVG(wxue_img::left_svg, 630, 1927, FromDIP(wxSize(24, 24))));
+        wxueBundleSVG(wxue_img::left_svg, 630, 1927, wxSize(24, 24)));
     m_aui_tool_bar->AddTool(wxID_ANY, wxEmptyString, wxArtProvider::GetBitmapBundle(wxART_CUT, wxART_TOOLBAR));
     m_aui_tool_bar->AddTool(wxID_ANY, wxEmptyString,
         wxueImage(wxue_img::redo_png, sizeof(wxue_img::redo_png)));

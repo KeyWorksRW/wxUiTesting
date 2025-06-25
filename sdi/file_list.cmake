@@ -14,6 +14,12 @@ set (file_list
 # Manually maintained from wxui_code.cmake
 set(sdi_wxui_file_list
 
+    cpp/form_aui_toolbar.cpp
+    cpp/form_menu_bar.cpp
+    cpp/form_popup_menu.cpp
+    cpp/form_ribbonbar_gallery.cpp
+    cpp/form_ribbonbar_tool.cpp
+
     cpp/bitmaps_dlg.cpp
     cpp/bitmaps_dlg_manual.cpp
     cpp/booktest_dlg.cpp

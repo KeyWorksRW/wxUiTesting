@@ -7,22 +7,18 @@
 
 // clang-format off
 
-#pragma once
+#include "images.h"
 
-#include <memory>  // for std::make_unique
+#include "form_aui_toolbar.h"
 
-namespace wxue_data
+MyAuiToolBarBase::MyAuiToolBarBase(wxWindow* parent, wxWindowID id, const wxPoint& pos, const wxSize& size, long style)
+     : wxAuiToolBar(parent, id, pos, size, style)
 {
-    std::unique_ptr<unsigned char[]> get_data(const unsigned char* data, size_t size_data, size_t size_data_uncompressed);
 
-}
+    AddTool(wxID_ANY, wxEmptyString,
+        wxue_img::bundle_face_smile_svg(24, 24));
 
-namespace wxue_data
-{
-    std::string get_xrc_python_dlg();  // xrc/python_dlg.xrc
-
-    // xrc/python_dlg.xrc
-    extern const unsigned char xrc_python_dlg[1144];
+    Realize();
 }
 
 // ************* End of generated code ***********

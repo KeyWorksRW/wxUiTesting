@@ -9,21 +9,19 @@
 
 #pragma once
 
-#include <memory>  // for std::make_unique
+#include <wx/gdicmn.h>
+#include <wx/menu.h>
 
-namespace wxue_data
+class MyMenuBarBase : public wxMenuBar
 {
-    std::unique_ptr<unsigned char[]> get_data(const unsigned char* data, size_t size_data, size_t size_data_uncompressed);
+public:
+    MyMenuBarBase(long style = 0);
+protected:
 
-}
+    // Class member variables
 
-namespace wxue_data
-{
-    std::string get_xrc_python_dlg();  // xrc/python_dlg.xrc
-
-    // xrc/python_dlg.xrc
-    extern const unsigned char xrc_python_dlg[1144];
-}
+    wxMenu* m_menu;
+};
 
 // ************* End of generated code ***********
 // DO NOT EDIT THIS COMMENT BLOCK!

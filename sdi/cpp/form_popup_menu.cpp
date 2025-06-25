@@ -7,22 +7,11 @@
 
 // clang-format off
 
-#pragma once
+#include "form_popup_menu.h"
 
-#include <memory>  // for std::make_unique
-
-namespace wxue_data
+MyPopupMenuBase::MyPopupMenuBase() : wxMenu()
 {
-    std::unique_ptr<unsigned char[]> get_data(const unsigned char* data, size_t size_data, size_t size_data_uncompressed);
-
-}
-
-namespace wxue_data
-{
-    std::string get_xrc_python_dlg();  // xrc/python_dlg.xrc
-
-    // xrc/python_dlg.xrc
-    extern const unsigned char xrc_python_dlg[1144];
+    auto* menu_item = Append(wxID_ANY, "MyMenuItem");
 }
 
 // ************* End of generated code ***********
