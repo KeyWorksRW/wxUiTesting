@@ -98,9 +98,9 @@ endif()
 
 # ###################### Set wxWidgets location macros #######################
 if( WIN32 )
-    set( wxWidgets_REQUIRED_COMPONENTS base core lunasvg html media xml aui richtext ribbon propgrid webview stc xrc )
+    set( wxWidgets_REQUIRED_COMPONENTS base core lunasvg html xml aui richtext ribbon propgrid webview stc xrc )
 else()
-    set( wxWidgets_REQUIRED_COMPONENTS lunasvg html media xml aui richtext ribbon propgrid stc xrc core base )
+    set( wxWidgets_REQUIRED_COMPONENTS base core lunasvg html xml aui richtext ribbon propgrid stc xrc )
 endif()
 
 include( FetchContent )
