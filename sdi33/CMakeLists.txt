@@ -1,6 +1,5 @@
 cmake_minimum_required( VERSION 3.24 )
 
-project( sdi33 LANGUAGES CXX )
 project( sdi33
     LANGUAGES CXX
     VERSION 3.3.0
