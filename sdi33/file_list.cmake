@@ -2,7 +2,7 @@ set (sdi_test_dir ${CMAKE_CURRENT_LIST_DIR})
 
 set (file_list
 
-    cpp/sdi32.rc
+    cpp/sdi33.rc
     cpp/mainapp.cpp
 
     cpp/xrc_python_dlg.cpp
