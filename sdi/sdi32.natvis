@@ -14,7 +14,7 @@
     -->
 
     <Type Name="wxString">
-        <DisplayString>"{m_impl,sb}"</DisplayString>
+        <DisplayString>"{m_impl,su}"</DisplayString>
         <StringView>m_impl</StringView>
     </Type>
 

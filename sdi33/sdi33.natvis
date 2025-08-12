@@ -14,6 +14,7 @@
     -->
 
     <Type Name="wxString">
+        <!-- Assumes wxWidgets built with wxUSE_UNICODE_UTF8 and wxUSE_UTF8_LOCALE_ONLY -->
         <DisplayString>"{m_impl,sb}"</DisplayString>
         <StringView>m_impl</StringView>
     </Type>
