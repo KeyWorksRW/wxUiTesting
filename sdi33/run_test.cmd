@@ -34,7 +34,7 @@ echo Checking Python files for syntax errors...
 
 cd python
 for %%f in (*.py) do (
-    echo Processing %f >> ..\results.log
+    echo Processing %%f >> ..\results.log
     python -m py_compile "%%f" >> ..\results.log 2>&1
     if %errorlevel%==0 echo Syntax OK >> ..\results.log
 )
@@ -47,7 +47,7 @@ echo Checking Ruby files for syntax errors...
 
 cd ruby
 for %%f in (*.rb) do (
-    echo Processing %f >> ..\results.log
+    echo Processing %%f >> ..\results.log
     ruby -c "%%f" >> ..\results.log 2>&1
 )
 cd ..
@@ -59,7 +59,7 @@ echo Checking Perl files for syntax errors...
 
 cd perl
 for %%f in (*.pl) do (
-    echo Processing %f >> ..\results.log
+    echo Processing %%f >> ..\results.log
     perl -c "%%f" >> ..\results.log 2>&1
 )
 cd ..
