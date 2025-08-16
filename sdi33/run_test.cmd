@@ -16,17 +16,21 @@ echo View results.log when this script finishes.
 
 endlocal & set "BUILD_TYPE=%BUILD_TYPE%"
 
-..\..\wxUiEditor\build\bin\%BUILD_TYPE%\wxUiEditor.exe --gen_coverage sdi_test.wxui
-copy /Y sdi_test.log results.log >nul
+..\..\wxUiEditor\build\bin\%BUILD_TYPE%\wxUiEditor.exe --gen_coverage sdi33.wxui
+copy /Y sdi33.log results.log >nul
 
 echo. >> results.log
 echo -------------- C++ code -------------- >> results.log
 
+echo Building sdi33 with CMake
+
 echo Running CMake build... >> results.log
-cmake --build build --config Debug --target sdi32 >> results.log 2>&1
+cmake --build build --config Debug --target sdi33 >> results.log 2>&1
 
 echo. >> results.log
 echo -------------- wxPython -------------- >> results.log
+
+echo Checking Python files for syntax errors...
 
 cd python
 for %%f in (*.py) do (
@@ -39,6 +43,8 @@ cd ..
 echo. >> results.log
 echo -------------- wxRuby -------------- >> results.log
 
+echo Checking Ruby files for syntax errors...
+
 cd ruby
 for %%f in (*.rb) do (
     echo Processing %%f >> ..\results.log
@@ -48,6 +54,8 @@ cd ..
 
 echo. >> results.log
 echo -------------- wxPerl -------------- >> results.log
+
+echo Checking Perl files for syntax errors...
 
 cd perl
 for %%f in (*.pl) do (
@@ -62,5 +70,5 @@ if /i "%1"=="code" set "RUN_CODE=1"
 if /i "%2"=="code" set "RUN_CODE=1"
 
 if defined RUN_CODE (
-    cmd /c code ..\..\wxUiTesting\sdi\results.log
+    cmd /c code ..\..\wxUiTesting\sdi33\results.log
 )
