@@ -23,15 +23,15 @@ echo. >> results.log
 echo -------------- C++ code -------------- >> results.log
 
 echo Running CMake build... >> results.log
-cmake --build build --config Debug --target check_build >> results.log 2>&1
+cmake --build build --config Debug --target sdi32 >> results.log 2>&1
 
 echo. >> results.log
 echo -------------- wxPython -------------- >> results.log
 
 cd python
-for %f in (*.py) do (
-    echo Processing %f >> ..\results.log
-    python -m py_compile "%f" >> ..\results.log 2>&1
+for %%f in (*.py) do (
+    echo Processing %%f >> ..\results.log
+    python -m py_compile "%%f" >> ..\results.log 2>&1
     if %errorlevel%==0 echo Syntax OK >> ..\results.log
 )
 cd ..
@@ -40,9 +40,9 @@ echo. >> results.log
 echo -------------- wxRuby -------------- >> results.log
 
 cd ruby
-for %f in (*.rb) do (
-    echo Processing %f >> ..\results.log
-    ruby -c "%f" >> ..\results.log 2>&1
+for %%f in (*.rb) do (
+    echo Processing %%f >> ..\results.log
+    ruby -c "%%f" >> ..\results.log 2>&1
 )
 cd ..
 
@@ -50,9 +50,9 @@ echo. >> results.log
 echo -------------- wxPerl -------------- >> results.log
 
 cd perl
-for %f in (*.pl) do (
-    echo Processing %f >> ..\results.log
-    perl -c "%f" >> ..\results.log 2>&1
+for %%f in (*.pl) do (
+    echo Processing %%f >> ..\results.log
+    perl -c "%%f" >> ..\results.log 2>&1
 )
 cd ..
 
@@ -62,7 +62,5 @@ if /i "%1"=="code" set "RUN_CODE=1"
 if /i "%2"=="code" set "RUN_CODE=1"
 
 if defined RUN_CODE (
-    cd ..\..\wxUiEditor\src
     cmd /c code ..\..\wxUiTesting\sdi\results.log
-    cd ..\..\wxUiTesting\sdi
 )
