@@ -69,6 +69,9 @@ set "RUN_CODE="
 if /i "%1"=="code" set "RUN_CODE=1"
 if /i "%2"=="code" set "RUN_CODE=1"
 
-if defined RUN_CODE (
-    cmd /c code ..\..\wxUiTesting\sdi33\results.log
-)
+@REM This closes the current editor then launches a new instance. Without the -r it still
+@REM launches a new instance, though at least it doesn't close the existing instance.
+
+@REM if defined RUN_CODE (
+    @REM cmd /c code -r ..\..\wxUiTesting\sdi33\results.log
+@REM )
