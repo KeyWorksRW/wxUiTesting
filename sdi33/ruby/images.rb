@@ -634,5 +634,3 @@ $wxPython_2x_png = Base64.decode64(
 # Code below this comment block will be preserved
 # if the code for this class is re-generated.
 # ***********************************************
-
-end  # end of  class

@@ -2566,6 +2566,100 @@
       </node>
     </node>
     <node
+      class="wxDialog"
+      center="no"
+      class_name="GenericControlsDialog"
+      persist="1"
+      style="wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER"
+      title="Generic Controls Test Dialog"
+      font="large"
+      foreground_colour="#FF0000"
+      minimum_size="-1,-1"
+      pos="-1,-1"
+      size="-1,-1"
+      base_file="generic_dlg.cpp"
+      generate_const_values="1"
+      inserted_hdr_code="// Inserted code"
+      no_closing_brace="1"
+      derived_class_name="TestDialogDerived_copy"
+      derived_file="cpp/derived_code/testdialog_derived.cpp"
+      use_derived_class="0"
+      insert_python_code="# What hath God wrought?"
+      python_file="generic_dlg"
+      ruby_file="test_dlg">
+      <node
+        class="wxBoxSizer"
+        orientation="wxVERTICAL"
+        flags="wxEXPAND">
+        <node
+          class="wxPanel"
+          window_style="wxTAB_TRAVERSAL">
+          <node
+            class="wxBoxSizer"
+            var_name="panel_sizer"
+            flags="wxEXPAND">
+            <node
+              class="wxStaticBitmap"
+              subclass="wxGeneric"
+              subclass_params="&quot;test&quot;" />
+            <node
+              class="wxAnimationCtrl"
+              animation="Embed;art/clr_hourglass.gif"
+              subclass="wxGeneric" />
+            <node
+              class="wxBoxSizer"
+              orientation="wxVERTICAL"
+              var_name="box_sizer2"
+              flags="wxEXPAND">
+              <node
+                class="wxStaticText"
+                pos="50,-1"
+                size="100,-1"
+                subclass="wxGeneric" />
+              <node
+                class="wxBoxSizer"
+                var_name="box_sizer4"
+                proportion="2">
+                <node
+                  class="wxStaticBitmap"
+                  var_name="bmp2" />
+              </node>
+              <node
+                class="wxCollapsiblePane"
+                flags="wxEXPAND">
+                <node
+                  class="wxBoxSizer"
+                  var_name="box_sizer3">
+                  <node
+                    class="wxStaticText"
+                    var_name="m_staticText2" />
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node
+          class="wxGridBagSizer"
+          growablecols="1:3, 3">
+          <node
+            class="wxHyperlinkCtrl"
+            subclass="wxGeneric" />
+          <node
+            class="wxCalendarCtrl"
+            subclass="wxGeneric"
+            row="1" />
+          <node
+            class="wxTreeCtrl"
+            subclass="wxGeneric"
+            column="2"
+            row="1" />
+        </node>
+        <node
+          class="wxStdDialogButtonSizer"
+          flags="wxEXPAND" />
+      </node>
+    </node>
+    <node
       class="folder"
       label="Forms">
       <node
