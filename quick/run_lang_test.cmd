@@ -12,7 +12,7 @@ if /i "%1"=="debug" set "BUILD_TYPE=Debug"
 if /i "%1"=="release" set "BUILD_TYPE=Release"
 
 echo Using build type: %BUILD_TYPE%
-echo View results.log when this script finishes.
+echo View c:/rwCode/wxUiTesting/quick/results.log when this script finishes.
 
 endlocal & set "BUILD_TYPE=%BUILD_TYPE%"
 
@@ -23,9 +23,9 @@ echo. >> results.log
 echo -------------- wxPython -------------- >> results.log
 
 cd python
-for %f in (*.py) do (
-    echo Processing %f >> ..\results.log
-    python -m py_compile "%f" >> ..\results.log 2>&1
+for %%f in (*.py) do (
+    echo Processing c:/rwCode/wxUiTesting/quick/python/%%f >> ..\results.log
+    python -m py_compile "%%f" >> ..\results.log 2>&1
     if %errorlevel%==0 echo Syntax OK >> ..\results.log
 )
 cd ..
@@ -34,9 +34,9 @@ echo. >> results.log
 echo -------------- wxRuby -------------- >> results.log
 
 cd ruby
-for %f in (*.rb) do (
-    echo Processing %f >> ..\results.log
-    ruby -c "%f" >> ..\results.log 2>&1
+for %%f in (*.rb) do (
+    echo Processing c:/rwCode/wxUiTesting/quick/ruby/%%f >> ..\results.log
+    ruby -c "%%f" >> ..\results.log 2>&1
 )
 cd ..
 
@@ -44,19 +44,8 @@ echo. >> results.log
 echo -------------- wxPerl -------------- >> results.log
 
 cd perl
-for %f in (*.pl) do (
-    echo Processing %f >> ..\results.log
-    perl -c "%f" >> ..\results.log 2>&1
+for %%f in (*.pl) do (
+    echo Processing c:/rwCode/wxUiTesting/quick/perl/%%f >> ..\results.log
+    perl -c "%%f" >> ..\results.log 2>&1
 )
 cd ..
-
-REM Check if first or second parameter is "code"
-set "RUN_CODE="
-if /i "%1"=="code" set "RUN_CODE=1"
-if /i "%2"=="code" set "RUN_CODE=1"
-
-if defined RUN_CODE (
-    cd ..\..\wxUiEditor\src
-    cmd /c code ..\..\wxUiTesting\quick\results.log
-    cd ..\..\wxUiTesting\quick
-)
