@@ -258,20 +258,11 @@ class MainFrame < Wx::Frame
     evt_tool(tool_3.get_id, :OnPythonDlg)
     evt_update_ui(menu_item4.get_id, :on_update_ui)
   end
-# Event handler functions
-# Add these below the comment block, or to your inherited class.
+# Unimplemented Event handler functions
+# Copy any listed and paste them below the comment block, or to your inherited class.
 
 =begin
-  def OnBitmapsDlg(event)
-    event.skip
-  end
   def OnBookTestDlg(event)
-    event.skip
-  end
-  def OnCommonDialog(event)
-    event.skip
-  end
-  def OnDataDlg(event)
     event.skip
   end
   def OnDlgIssue_956(event)
@@ -280,31 +271,10 @@ class MainFrame < Wx::Frame
   def OnDlgIssue_960(event)
     event.skip
   end
-  def OnGridSize(event)
-    event.skip
-  end
   def OnMainTestDlg(event)
     event.skip
   end
-  def OnPythonDlg(event)
-    event.skip
-  end
   def OnWizard(event)
-    event.skip
-  end
-  def on_check_dark_mode(event)
-    event.skip
-  end
-  def on_propsheet_dlg(event)
-    event.skip
-  end
-  def on_quit(event)
-    event.skip
-  end
-  def on_tools_dlg(event)
-    event.skip
-  end
-  def on_update_ui(event)
     event.skip
   end
 end
