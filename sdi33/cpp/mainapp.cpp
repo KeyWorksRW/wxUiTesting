@@ -5,24 +5,7 @@
 // License:   Apache License see ../LICENSE
 /////////////////////////////////////////////////////////////////////////////
 
-#ifdef _MSC_VER
-    #if defined(_WIN32)
-
-        #pragma comment(lib, "kernel32.lib")
-        #pragma comment(lib, "user32.lib")
-        #pragma comment(lib, "gdi32.lib")
-        #pragma comment(lib, "comctl32.lib")
-        #pragma comment(lib, "comdlg32.lib")
-        #pragma comment(lib, "shell32.lib")
-
-        #pragma comment(lib, "rpcrt4.lib")
-        #pragma comment(lib, "advapi32.lib")
-
-        #if wxUSE_URL_NATIVE
-            #pragma comment(lib, "wininet.lib")
-        #endif
-    #endif
-#endif
+#include <memory>
 
 #include <wx/cshelp.h>
 
