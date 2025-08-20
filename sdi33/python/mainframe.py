@@ -21,6 +21,8 @@ import wizard
 import dlgissue_956
 import dlgissue_960
 
+ID_DARKMODE = wx.ID_HIGHEST + 1
+
 import images
 import zlib
 import base64
@@ -177,6 +179,8 @@ class MainFrame(wx.Frame):
         menubar = wx.MenuBar()
 
         self.menu = wx.Menu()
+        menu_item4 = wx.MenuItem(self.menu, ID_DARKMODE, "Dark Mode", "", wx.ITEM_CHECK)
+        self.menu.Append(menu_item4)
         menuQuit = wx.MenuItem(self.menu, wx.ID_EXIT)
         entry = wx.AcceleratorEntry()
         if entry.FromString("ALT+X") :
@@ -287,6 +291,7 @@ class MainFrame(wx.Frame):
         # Bind Event handlers
         self.Bind(wx.EVT_MENU, self.OnBitmapsDlg, id=menuItem2.GetId())
         self.Bind(wx.EVT_MENU, self.OnBookTestDlg, id=menu_item_4.GetId())
+        self.Bind(wx.EVT_MENU, self.on_menu_selection, id=ID_DARKMODE)
         self.Bind(wx.EVT_MENU, self.OnCommonDialog, id=menuItem_2.GetId())
         self.Bind(wx.EVT_MENU, self.OnDataDlg, id=menuItem4.GetId())
         self.Bind(wx.EVT_MENU, self.OnDlgIssue_956, id=menu_item_5.GetId())
@@ -306,52 +311,11 @@ class MainFrame(wx.Frame):
         self.Bind(wx.EVT_TOOL, self.OnDataDlg, id=tool.GetId())
         self.Bind(wx.EVT_TOOL, self.OnMainTestDlg, id=tool_4.GetId())
         self.Bind(wx.EVT_TOOL, self.OnPythonDlg, id=tool_3.GetId())
+        self.Bind(wx.EVT_UPDATE_UI, self.on_update_ui, id=ID_DARKMODE)
 
-    # Event handler functions
-    # Add these below the comment block, or to your inherited class.
+    # Unimplemented Event handler functions
+    # Copy any listed and paste them below the comment block, or to your inherited class.
     """
-    def OnBitmapsDlg(self, event):
-        event.Skip()
-
-    def OnBookTestDlg(self, event):
-        event.Skip()
-
-    def OnCommonDialog(self, event):
-        event.Skip()
-
-    def OnDataDlg(self, event):
-        event.Skip()
-
-    def OnDlgIssue_956(self, event):
-        event.Skip()
-
-    def OnDlgIssue_960(self, event):
-        event.Skip()
-
-    def OnGridSize(self, event):
-        event.Skip()
-
-    def OnMainTestDlg(self, event):
-        event.Skip()
-
-    def OnMenuSelection(self, event):
-        event.Skip()
-
-    def OnPythonDlg(self, event):
-        event.Skip()
-
-    def OnWizard(self, event):
-        event.Skip()
-
-    def on_propsheet_dlg(self, event):
-        event.Skip()
-
-    def on_quit(self, event):
-        event.Skip()
-
-    def on_tools_dlg(self, event):
-        event.Skip()
-
     """
 
 # ************* End of generated code ***********
@@ -360,3 +324,120 @@ class MainFrame(wx.Frame):
 # Code below this comment block will be preserved
 # if the code for this class is re-generated.
 # ***********************************************
+
+    # Event handler functions
+
+    def on_menu_selection(self, event):
+        if (event.GetId() == ID_DARKMODE):
+            wx.MessageBox(
+                "Dark mode is not supported in wxPython.",
+                "Dark Mode",
+                wx.OK | wx.ICON_INFORMATION,
+                self
+            )
+            event.Check(False)
+
+    def on_update_ui(self, event):
+        event.Skip()
+
+    def OnChoicebook(self, event):
+        event.Skip()
+
+    def OnCommonDialog(self, event):
+        event.Skip()
+
+    def OnImportTest(self, event):
+        event.Skip()
+
+    def OnListbook(self, event):
+        event.Skip()
+
+    def OnMultiTestDialog(self, event):
+        event.Skip()
+
+    def OnNotebook(self, event):
+        event.Skip()
+
+    def OnOtherCtrls(self, event):
+        event.Skip()
+
+    def on_quit(self, event):
+        self.Close()
+
+    def OnRibbonDialog(self, event):
+        event.Skip()
+
+    def OnToolbook(self, event):
+        event.Skip()
+
+    def OnTreebook(self, event):
+        event.Skip()
+
+    def OnGridSize(self, event):
+        event.Skip()
+
+    def OnMenuSelection(self, event):
+        event.Skip()
+
+    def OnMainTestDlg(self, event):
+        dlg = main_test_dlg.MainTestDialog(self, title="Main Dialog Tests")
+        dlg.ShowModal()
+        dlg.Destroy()
+
+    def OnBookTestDlg(self, event):
+        dlg = booktest_dlg.BookTestDlg(self)
+        dlg.ShowModal()
+        dlg.Destroy()
+
+    def OnWizard(self, event):
+        my_wizard = wizard.Wizard(self)
+        my_wizard.Run()
+        my_wizard.Destroy()
+
+    def OnPythonDlg(self, event):
+        dlg = python_dlg.PythonDlg(self, title="PythonDlg")
+        dlg.ShowModal()
+        dlg.Destroy()
+
+    def OnDlgIssue_956(self, event):
+        dlg = dlgissue_956.DlgIssue_956(self)
+        dlg.ShowModal()
+        dlg.Destroy()
+
+    def OnDlgIssue_960(self, event):
+        dlg = dlgissue_960.DlgIssue_960(self)
+        dlg.ShowModal()
+        dlg.Destroy()
+
+    def on_tools_dlg(self, event):
+        dlg = tools_dlg.ToolBarsDialog(self)
+        dlg.ShowModal()
+        dlg.Destroy()
+
+    def OnBitmapsDlg(self, event):
+        dlg = bitmaps_dlg.BitmapsDlg(self)
+        dlg.ShowModal()
+        dlg.Destroy()
+
+    def OnDataDlg(self, event):
+        dlg = data_dlg.DataDlg(self)
+        dlg.ShowModal()
+        dlg.Destroy()
+
+    def on_propsheet_dlg(self, event):
+        dlg = propsheet.PropSheetBase(self)
+        dlg.ShowModal()
+        dlg.Destroy()
+
+class MyApp(wx.App):
+    def OnInit(self):
+        frame = MainFrame(None)
+        frame.SetTitle("Python SDI Tests")
+        self.SetTopWindow(frame)
+
+        frame.Show(True)
+        return True
+
+app = MyApp()
+print(wx.version())
+app.MainLoop()
