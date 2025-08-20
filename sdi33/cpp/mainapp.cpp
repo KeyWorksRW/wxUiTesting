@@ -1,13 +1,14 @@
 /////////////////////////////////////////////////////////////////////////////
 // Purpose:   Main application class
 // Author:    Ralph Walden
-// Copyright: Copyright (c) 2020 KeyWorks Software (Ralph Walden)
+// Copyright: Copyright (c) 2020-2025 KeyWorks Software (Ralph Walden)
 // License:   Apache License see ../LICENSE
 /////////////////////////////////////////////////////////////////////////////
 
 #include <memory>
 
 #include <wx/cshelp.h>
+#include <wx/config.h>
 
 #include "mainapp.h"  // MainApp
 
@@ -57,6 +58,11 @@ bool MainApp::OnInit()
     SetAppDisplayName(txtAppname);
     SetVendorName("KeyWorks");
 
+    auto config = std::make_unique<wxConfig>(txtAppname);
+    long darkmode = 0;
+    config->Read("/Appearance/DarkMode", &darkmode);
+    SetAppearance(darkmode == 0 ? wxApp::Appearance::Light : wxApp::Appearance::Dark);
+
     return true;
 }
 
@@ -72,4 +78,11 @@ int MainApp::OnRun()
 int MainApp::OnExit()
 {
     return wxApp::OnExit();
+}
+
+void MainApp::SetDarkMode(long darkMode)
+{
+    auto config = std::make_unique<wxConfig>(txtAppname);
+    config->Write("/Appearance/DarkMode", darkMode);
+    wxMessageBox("Please restart the application to enable the change to dark mode.", "Restart Required", wxOK | wxICON_INFORMATION);
 }

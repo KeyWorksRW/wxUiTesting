@@ -136,6 +136,8 @@ bool MainFrame::Create(wxWindow* parent, wxWindowID id, const wxString& title,
     auto* menubar = new wxMenuBar();
 
     menu = new wxMenu();
+    auto* menu_item4 = new wxMenuItem(menu, ID_DARKMODE, "Dark Mode", wxEmptyString, wxITEM_CHECK);
+    menu->Append(menu_item4);
     auto* menuQuit = new wxMenuItem(menu, wxID_EXIT);
     {
         wxAcceleratorEntry entry;
@@ -247,6 +249,7 @@ bool MainFrame::Create(wxWindow* parent, wxWindowID id, const wxString& title,
     // Event handlers
     Bind(wxEVT_MENU, &MainFrame::OnBitmapsDlg, this, menuItem2->GetId());
     Bind(wxEVT_MENU, &MainFrame::OnBookTestDlg, this, menu_item_4->GetId());
+    Bind(wxEVT_MENU, &MainFrame::OnCheckDarkMode, this, ID_DARKMODE);
     Bind(wxEVT_MENU, &MainFrame::OnCommonDialog, this, menuItem_2->GetId());
     Bind(wxEVT_MENU, &MainFrame::OnDataDlg, this, menuItem4->GetId());
     Bind(wxEVT_MENU, &MainFrame::OnDlgIssue_956, this, menu_item_5->GetId());
@@ -266,6 +269,7 @@ bool MainFrame::Create(wxWindow* parent, wxWindowID id, const wxString& title,
     Bind(wxEVT_TOOL, &MainFrame::OnDataDlg, this, tool->GetId());
     Bind(wxEVT_TOOL, &MainFrame::OnMainTestDlg, this, tool_4->GetId());
     Bind(wxEVT_TOOL, &MainFrame::OnPythonDlg, this, tool_3->GetId());
+    Bind(wxEVT_UPDATE_UI, &MainFrame::OnUpdateUI, this, ID_DARKMODE);
 
 // Unimplemented Event handler functions
 // Copy any of the following and paste them below the comment block, or to your inherited class.
@@ -427,9 +431,12 @@ namespace wxue_img
 
 #include <wx/xrc/xmlres.h>
 
+#include <wx/config.h>
 #include <wx/xrc/xh_aui.h>
 #include <wx/xrc/xh_auitoolb.h>
 #include <wx/xrc/xh_ribbon.h>
+
+#include "mainapp.h"
 
 void MainFrame::OnQuit(wxCommandEvent& WXUNUSED(event))
 {
@@ -449,5 +456,22 @@ void MainFrame::InitializeXmlResource()
         wxXmlResource::Get()->AddHandler(new wxRibbonXmlHandler);
 
         m_xrc_initialized = true;
+    }
+}
+
+void MainFrame::OnCheckDarkMode(wxCommandEvent& event)
+{
+    wxGetApp().SetDarkMode(event.IsChecked() ? 1 : 0);
+}
+
+void MainFrame::OnUpdateUI(wxUpdateUIEvent& event)
+{
+    if (event.GetId() == ID_DARKMODE)
+    {
+        auto config = std::make_unique<wxConfig>(txtAppname);
+        long darkmode = 0;
+        config->Read("/Appearance/DarkMode", &darkmode);
+        // Update the UI for the dark mode toggle
+        event.Check(darkmode == 1);
     }
 }

@@ -22,6 +22,8 @@ require_relative 'python_dlg'
 require_relative 'tools_dlg'
 require_relative 'wizard'
 
+$ID_DARKMODE = 6000
+
 require_relative 'images'
 require 'zlib'
 require 'base64'
@@ -125,6 +127,9 @@ class MainFrame < Wx::Frame
     menubar = Wx::MenuBar.new
 
     @menu = Wx::Menu.new
+    menu_item4 = Wx::MenuItem.new(@menu, $ID_DARKMODE, 'Dark Mode', '',
+      Wx::ITEM_CHECK)
+    @menu.append(menu_item4)
     menuQuit = Wx::MenuItem.new(@menu, Wx::ID_EXIT)
     menuQuit.set_bitmap(Wx::ArtProvider.get_bitmap_bundle(Wx::ART_QUIT,
       Wx::ART_MENU))
@@ -232,6 +237,7 @@ class MainFrame < Wx::Frame
     # Event handlers
     evt_menu(menuItem2.get_id, :OnBitmapsDlg)
     evt_menu(menu_item_4.get_id, :OnBookTestDlg)
+    evt_menu(menu_item4.get_id, :on_check_dark_mode)
     evt_menu(menuItem_2.get_id, :OnCommonDialog)
     evt_menu(menuItem4.get_id, :OnDataDlg)
     evt_menu(menu_item_5.get_id, :OnDlgIssue_956)
@@ -250,6 +256,7 @@ class MainFrame < Wx::Frame
     evt_tool(tool.get_id, :OnDataDlg)
     evt_tool(tool_4.get_id, :OnMainTestDlg)
     evt_tool(tool_3.get_id, :OnPythonDlg)
+    evt_update_ui(menu_item4.get_id, :on_update_ui)
   end
 # Event handler functions
 # Add these below the comment block, or to your inherited class.
@@ -285,6 +292,9 @@ class MainFrame < Wx::Frame
   def OnWizard(event)
     event.skip
   end
+  def on_check_dark_mode(event)
+    event.skip
+  end
   def on_propsheet_dlg(event)
     event.skip
   end
@@ -292,6 +302,9 @@ class MainFrame < Wx::Frame
     event.skip
   end
   def on_tools_dlg(event)
+    event.skip
+  end
+  def on_update_ui(event)
     event.skip
   end
 end
@@ -356,4 +369,113 @@ $wxDialog_png = Base64.decode64(
 # if the code for this class is re-generated.
 # ***********************************************
 
-end  # end of MainFrame class
+  def on_check_dark_mode(event)
+    if event.get_id == $ID_DARKMODE
+      root = Wx::ConfigBase.get
+      root.write('/Appearance/DarkMode', event.is_checked ? 1 : 0)
+      Wx::message_box("Dark mode is #{event.is_checked ? 'enabled' : 'disabled'}.", 'Dark Mode',
+        Wx::OK | Wx::ICON_INFORMATION, self)
+      Wx::message_box('You must restart the application for the appearance change to take effect.',
+        'Restart Required', Wx::OK | Wx::ICON_INFORMATION, self)
+    end
+  end
+
+  def on_update_ui(event)
+    if event.get_id == $ID_DARKMODE
+      root = Wx::ConfigBase.get
+      dark_mode = root.read('/Appearance/DarkMode')
+      event.check(dark_mode == 1)
+    end
+  end
+
+  def OnBookTestDlg
+    dlg = BookTestDlg.new(self)
+    dlg.show_modal
+    dlg.destroy
+  end
+  
+  def OnCommonDialog(event)
+    event.skip
+  end
+  
+  def OnDlgIssue_956
+    dlg = DlgIssue_956.new(self)
+    dlg.show_modal
+    dlg.destroy
+  end
+  
+  def OnDlgIssue_960
+    dlg = DlgIssue_960.new(self)
+    dlg.show_modal
+    dlg.destroy
+  end
+  
+  def OnMainTestDlg
+    dlg = MainTestDialog.new(self)
+    dlg.show_modal
+    dlg.destroy
+  end
+  
+  def OnPythonDlg(event)
+    dlg = PythonDlg.new(self)
+    dlg.show_modal
+    dlg.destroy
+  end
+  
+  def OnGridSize(event)
+    event.skip
+  end
+  
+  def on_quit(event)
+    close(true)
+  end
+  
+  def OnWizard
+    my_wizard = Wizard.new(self)
+    my_wizard.run_wizard(my_wizard.get_page_area_sizer.get_item(0).get_window)
+    my_wizard.destroy
+  end
+  
+  def on_tools_dlg(event)
+    dlg = ToolBarsDialog.new(self)
+    dlg.show_modal
+    dlg.destroy
+  end
+  
+  def OnBitmapsDlg(event)
+    dlg = BitmapsDlg.new(self)
+    dlg.show_modal
+    dlg.destroy
+  end
+  
+  def on_propsheet_dlg(event)
+    dlg = PropSheetBase.new(self)
+    dlg.show_modal
+    dlg.destroy
+  end
+  
+  def OnDataDlg(event)
+    Wx::message_box('wxRuby does not currently support Dataview controls', 'Information', Wx::OK | Wx::ICON_INFORMATION, self)
+    # dlg = DataDlg.new(self)
+    # dlg.show_modal
+    # dlg.destroy
+  end
+end
+
+class App < Wx::App
+  puts "Ruby version: #{Wx::WXRUBY_VERSION}"
+  def on_init
+    
+    root = Wx::ConfigBase.get
+    dark_mode = root.read('/Appearance/DarkMode')
+    set_appearance(dark_mode ? Wx::App::Appearance::Dark : Wx::App::Appearance::Light)
+
+    frame = MainFrame.new(nil)
+    frame.set_title('Ruby SDI Tests')
+    frame.show
+    set_top_window(frame)
+    true
+  end
+end
+
+App.run

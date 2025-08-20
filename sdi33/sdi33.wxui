@@ -222,6 +222,14 @@
           var_name="menu">
           <node
             class="wxMenuItem"
+            id="ID_DARKMODE"
+            kind="wxITEM_CHECK"
+            label="Dark Mode"
+            var_name="menu_item4"
+            wxEVT_MENU="OnCheckDarkMode[python:on_menu_selection][ruby:on_check_dark_mode]"
+            wxEVT_UPDATE_UI="OnUpdateUI[python:on_update_ui][ruby:on_update_ui]" />
+          <node
+            class="wxMenuItem"
             bitmap="Art;wxART_QUIT|wxART_MENU"
             extra_accels="&quot;ALT+X&quot;"
             help="Quit this program"

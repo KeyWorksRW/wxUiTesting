@@ -68,7 +68,7 @@ class GenericControlsDialog < Wx::Dialog
 
     grid_bag_sizer = Wx::GridBagSizer.new
 
-    @hyperlink = Wx::HyperlinkCtrl.new(self, Wx::ID_ANY, 'Hyperlink', '')
+    @hyperlink = Wx::GenericHyperlinkCtrl.new(self, Wx::ID_ANY, 'Hyperlink', '')
     grid_bag_sizer.add(@hyperlink, Wx::GBPosition.new(0, 0), Wx::GBSpan.new(1, 1),
       Wx::ALL, 5)
 
@@ -134,4 +134,3 @@ end
 # if the code for this class is re-generated.
 # ***********************************************
 
-end  # end of GenericControlsDialog class

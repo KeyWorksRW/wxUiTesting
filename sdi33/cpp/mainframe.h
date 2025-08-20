@@ -37,6 +37,11 @@ namespace wxue_img
 class MainFrame : public drvFrame
 {
 public:
+    enum
+    {
+        ID_DARKMODE = wxID_HIGHEST + 1
+    };
+
     MainFrame() = default;
     MainFrame(wxWindow* parent, wxWindowID id = wxID_ANY, const wxString& title = "SDI Tests", const wxPoint& pos =
         wxDefaultPosition, const wxSize& size = wxSize(500, 300), long style = wxDEFAULT_FRAME_STYLE|wxTAB_TRAVERSAL,
@@ -56,6 +61,7 @@ protected:
 
     void OnBitmapsDlg(wxCommandEvent& event);
     void OnBookTestDlg(wxCommandEvent& event);
+    void OnCheckDarkMode(wxCommandEvent& event);
     void OnCommonDialog(wxCommandEvent& event);
     void OnDataDlg(wxCommandEvent& event);
     void OnDlgIssue_956(wxCommandEvent& event);
@@ -66,6 +72,7 @@ protected:
     void OnPythonDlg(wxCommandEvent& event);
     void OnQuit(wxCommandEvent& event);
     void OnToolsDlg(wxCommandEvent& event);
+    void OnUpdateUI(wxUpdateUIEvent& event);
     void OnWizard(wxCommandEvent& event);
     void OnXrcPythonDlg(wxCommandEvent& event);
 

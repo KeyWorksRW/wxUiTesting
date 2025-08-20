@@ -14,9 +14,12 @@ class MainFrame;
 class MainApp : public wxApp
 {
 public:
-    MainApp() {};
+    MainApp() = default;
 
     MainFrame* GetMainFrame() { return m_mainframe; }
+
+    // Set darkmode to 0 for light, 1 for dark.
+    void SetDarkMode(long darkmode);
 
 protected:
     bool OnInit() override;
