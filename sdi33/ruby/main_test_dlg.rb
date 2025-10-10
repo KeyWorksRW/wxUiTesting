@@ -125,9 +125,9 @@ class MainTestDialog < Wx::Dialog
       Wx::ALL, 5)
 
     @btn_bitmaps = Wx::Button.new(page_4, Wx::ID_ANY, 'Bitmaps')
-    @btn_bitmaps.set_bitmap(wxue_get_bundle($normal_png))
-    @btn_bitmaps.set_bitmap_disabled(wxue_get_bundle($no_hour_png))
-    @btn_bitmaps.set_bitmap_current(wxue_get_bundle($focus_png))
+    @btn_bitmaps.set_bitmap(wxue_get_bundle    ($normal_png))
+    @btn_bitmaps.set_bitmap_disabled(wxue_get_bundle    ($no_hour_png))
+    @btn_bitmaps.set_bitmap_current(wxue_get_bundle    ($focus_png))
     @btn_bitmaps.set_tool_tip(
     'Bitmap should change when mouse is over button, or button is disabled.')
     grid_bag_sizer.add(@btn_bitmaps, Wx::GBPosition.new(0, 2), Wx::GBSpan.new(1,
@@ -135,7 +135,7 @@ class MainTestDialog < Wx::Dialog
 
     @btn_4 = Wx::Button.new(page_4, Wx::ID_ANY, 'Right')
     @btn_4.set_bitmap_position(Wx::RIGHT)
-    @btn_4.set_bitmap(wxue_get_bundle($normal_png))
+    @btn_4.set_bitmap(wxue_get_bundle    ($normal_png))
     @btn_4.set_tool_tip(
     'Bitmap should be on the right side (fails in wxPython 4.2).')
     grid_bag_sizer.add(@btn_4, Wx::GBPosition.new(0, 3), Wx::GBSpan.new(1, 1),
@@ -255,7 +255,7 @@ class MainTestDialog < Wx::Dialog
     @animation_ctrl = Wx::AnimationCtrl.new(static_box_3.get_static_box,
       Wx::ID_ANY, get_animation($clr_hourglass_gif), Wx::DEFAULT_POSITION,
       Wx::DEFAULT_SIZE, Wx::AC_DEFAULT_STYLE)
-    @animation_ctrl.set_inactive_bitmap(wxue_get_bundle($disabled_png))
+    @animation_ctrl.set_inactive_bitmap(wxue_get_bundle    ($disabled_png))
     static_box_3.add(@animation_ctrl, Wx::SizerFlags.new.border(Wx::ALL))
 
     box_sizer_19.add(static_box_3, Wx::SizerFlags.new.border(Wx::ALL))
@@ -713,7 +713,7 @@ class MainTestDialog < Wx::Dialog
     box_sizer_18 = Wx::BoxSizer.new(Wx::HORIZONTAL)
 
     @banner = Wx::BannerWindow.new(page_7, Wx::ID_ANY, Wx::LEFT)
-    @banner.set_bitmap(wxue_get_bundle($wiztest_png))
+    @banner.set_bitmap(wxue_get_bundle    ($wiztest_png))
     @banner.set_text('This is a long title', '')
     box_sizer_18.add(@banner, Wx::SizerFlags.new.border(Wx::ALL))
 
@@ -869,4 +869,3 @@ $clr_hourglass_gif = Base64.decode64(
 # if the code for this class is re-generated.
 # ***********************************************
 
-end  # end of MainTestDialog class

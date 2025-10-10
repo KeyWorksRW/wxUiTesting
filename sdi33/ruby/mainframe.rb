@@ -54,7 +54,7 @@ class MainFrame < Wx::Frame
     @propertyGridManager.set_extra_style(Wx::PG::PG_EX_MODE_BUTTONS)
 
     @propertyGridPage = @propertyGridManager.add_page('Animal Page',
-      wxue_get_bundle($wxPython_1_5x_png, $wxPython_2x_png))
+      wxue_get_bundle    ($wxPython_1_5x_png, $wxPython_2x_png))
 
     @propertyGridItem_7 = @propertyGridPage.append(Wx::PG::PropertyCategory.new(
     'Pets', 'Pets'))
@@ -72,7 +72,7 @@ class MainFrame < Wx::Frame
     'horses', ''))
 
     @propertyGridPage_2 = @propertyGridManager.add_page('Number Page',
-      wxue_get_bundle($english_png))
+      wxue_get_bundle    ($english_png))
 
     @propertyGridItem_6 = @propertyGridPage_2.append(Wx::PG::PropertyCategory.new(
     'Numbers', 'Numbers'))
@@ -138,10 +138,10 @@ class MainFrame < Wx::Frame
 
     menuDialogs = Wx::Menu.new
     menu_item_3 = Wx::MenuItem.new(menuDialogs, Wx::ID_ANY, 'MainTestDlg')
-    menu_item_3.set_bitmap(wxue_get_bundle($debug_32_png))
+    menu_item_3.set_bitmap(wxue_get_bundle    ($debug_32_png))
     menuDialogs.append(menu_item_3)
     menu_item_4 = Wx::MenuItem.new(menuDialogs, Wx::ID_ANY, 'BookTestDlg')
-    menu_item_4.set_bitmap(wxue_get_bundle($wxNotebook_png))
+    menu_item_4.set_bitmap(wxue_get_bundle    ($wxNotebook_png))
     menuDialogs.append(menu_item_4)
     menu_item2 = Wx::MenuItem.new(menuDialogs, Wx::ID_ANY, 'PropSheet')
     _svg_string_ = Zlib::Inflate.inflate(Base64.decode64($face_smile_svg))
@@ -149,17 +149,18 @@ class MainFrame < Wx::Frame
       Wx::Size.new(16, 16)))
     menuDialogs.append(menu_item2)
     menu_item_2 = Wx::MenuItem.new(menuDialogs, Wx::ID_ANY, 'PythonDlg')
-    menu_item_2.set_bitmap(wxue_get_bundle($wxPython_png, $wxPython_1_5x_png, $wxPython_2x_png))
+    menu_item_2.set_bitmap(wxue_get_bundle    ($wxPython_png, $wxPython_1_5x_png,
+      $wxPython_2x_png))
     menuDialogs.append(menu_item_2)
     _menu_tools_dlg2 = Wx::MenuItem.new(menuDialogs, Wx::ID_ANY, 'Tools Dialog',
       'Dialog for testing different types of toolbars', Wx::ITEM_NORMAL)
-    _menu_tools_dlg2.set_bitmap(wxue_get_bundle($wxToolBar_png))
+    _menu_tools_dlg2.set_bitmap(wxue_get_bundle    ($wxToolBar_png))
     menuDialogs.append(_menu_tools_dlg2)
     menuItem3 = Wx::MenuItem.new(menuDialogs, Wx::ID_ANY, 'Wizard')
-    menuItem3.set_bitmap(wxue_get_bundle($wxWizard_png))
+    menuItem3.set_bitmap(wxue_get_bundle    ($wxWizard_png))
     menuDialogs.append(menuItem3)
     menuItem2 = Wx::MenuItem.new(menuDialogs, Wx::ID_ANY, 'Bitmaps')
-    menuItem2.set_bitmap(wxue_get_bundle($normal_png))
+    menuItem2.set_bitmap(wxue_get_bundle    ($normal_png))
     menuDialogs.append(menuItem2)
     menuItem4 = Wx::MenuItem.new(menuDialogs, Wx::ID_ANY, 'Data')
     _svg_string_ = Zlib::Inflate.inflate(Base64.decode64($grid_svg))
@@ -181,13 +182,13 @@ class MainFrame < Wx::Frame
 
     submenu = Wx::Menu.new
     menu_item_5 = Wx::MenuItem.new(submenu, Wx::ID_ANY, 'DlgIssue_956')
-    menu_item_5.set_bitmap(wxue_get_bundle($debug_32_png))
+    menu_item_5.set_bitmap(wxue_get_bundle    ($debug_32_png))
     submenu.append(menu_item_5)
     menu_item_6 = Wx::MenuItem.new(submenu, Wx::ID_ANY, 'DlgIssue_960')
-    menu_item_6.set_bitmap(wxue_get_bundle($Ainsi_c3a7a_se_passe_png))
+    menu_item_6.set_bitmap(wxue_get_bundle    ($Ainsi_c3a7a_se_passe_png))
     submenu.append(menu_item_6)
     submenu_item = menuDialogs.append_sub_menu(submenu, 'Issue Dialogs')
-    submenu_item.set_bitmap(wxue_get_bundle($wxDialog_png))
+    submenu_item.set_bitmap(wxue_get_bundle    ($wxDialog_png))
     menubar.append(menuDialogs, '&Dialogs')
 
     set_menu_bar(menubar)
@@ -204,7 +205,7 @@ class MainFrame < Wx::Frame
     _menu_tools_dlg = Wx::MenuItem.new(tool_dropdown_menu, Wx::ID_ANY,
       'Tools Dialog', 'Dialog for testing different types of toolbars',
       Wx::ITEM_NORMAL)
-    _menu_tools_dlg.set_bitmap(wxue_get_bundle($wxToolBar_png))
+    _menu_tools_dlg.set_bitmap(wxue_get_bundle    ($wxToolBar_png))
     tool_dropdown_menu.append(_menu_tools_dlg)
     tool_dropdown.set_dropdown_menu(tool_dropdown_menu)
     tool_4 = @toolBar.add_tool(Wx::ID_ANY, 'MainTestDlg', wxue_get_bundle($debug_32_png))

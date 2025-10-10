@@ -31,12 +31,12 @@
 #include <wx/textctrl.h>
 #include <wx/tglbtn.h>
 
+#include "popupwin.h"
+
 namespace wxue_ctrl
 {
-class SplitButton;
+    class SplitButton;
 }
-
-#include "popupwin.h"
 
 namespace wxue_img
 {

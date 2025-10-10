@@ -65,14 +65,14 @@ class BitmapsDlg < Wx::Dialog
     static_text6 = Wx::StaticText.new(self, Wx::ID_ANY, 'art')
     grid_sizer.add(static_text6, Wx::SizerFlags.new.border(Wx::ALL))
 
-    bmp = Wx::StaticBitmap.new(self, Wx::ID_ANY, wxue_get_bundle($wxPython_2x_png))
+    bmp = Wx::StaticBitmap.new(self, Wx::ID_ANY, wxue_get_bundle    ($wxPython_2x_png))
     grid_sizer.add(bmp, Wx::SizerFlags.new.border(Wx::ALL))
 
-    bmp2 = Wx::StaticBitmap.new(self, Wx::ID_ANY, wxue_get_bundle($wxPython_1_5x_png,
+    bmp2 = Wx::StaticBitmap.new(self, Wx::ID_ANY, wxue_get_bundle    ($wxPython_1_5x_png,
       $wxPython_2x_png))
     grid_sizer.add(bmp2, Wx::SizerFlags.new.border(Wx::ALL))
 
-    bmp3 = Wx::StaticBitmap.new(self, Wx::ID_ANY, wxue_get_bundle($wxPython_png,
+    bmp3 = Wx::StaticBitmap.new(self, Wx::ID_ANY, wxue_get_bundle    ($wxPython_png,
       $wxPython_1_5x_png, $wxPython_2x_png))
     grid_sizer.add(bmp3, Wx::SizerFlags.new.border(Wx::ALL))
 
@@ -144,4 +144,3 @@ $wxPython_svg = (
 # if the code for this class is re-generated.
 # ***********************************************
 
-end  # end of BitmapsDlg class

@@ -31,15 +31,15 @@ class DlgIssue_960 < Wx::Dialog
 
     box_sizer = Wx::BoxSizer.new(Wx::HORIZONTAL)
 
-    bmp = Wx::StaticBitmap.new(self, Wx::ID_ANY, wxue_get_bundle($img_1_bottom_png))
+    bmp = Wx::StaticBitmap.new(self, Wx::ID_ANY, wxue_get_bundle    ($img_1_bottom_png))
     box_sizer.add(bmp, Wx::SizerFlags.new.border(Wx::ALL))
 
-    bmp_2 = Wx::StaticBitmap.new(self, Wx::ID_ANY, wxue_get_bundle($bottom_1__png))
+    bmp_2 = Wx::StaticBitmap.new(self, Wx::ID_ANY, wxue_get_bundle    ($bottom_1__png))
     box_sizer.add(bmp_2, Wx::SizerFlags.new.border(Wx::ALL))
 
     dlg_sizer.add(box_sizer, Wx::SizerFlags.new.border(Wx::ALL))
 
-    bmp_3 = Wx::StaticBitmap.new(self, Wx::ID_ANY, wxue_get_bundle($Ainsi_c3a7a_se_passe_png))
+    bmp_3 = Wx::StaticBitmap.new(self, Wx::ID_ANY, wxue_get_bundle    ($Ainsi_c3a7a_se_passe_png))
     dlg_sizer.add(bmp_3, Wx::SizerFlags.new.border(Wx::ALL))
 
     stdBtn = create_std_dialog_button_sizer(Wx::OK|Wx::CANCEL)
@@ -56,4 +56,3 @@ class DlgIssue_960 < Wx::Dialog
 # if the code for this class is re-generated.
 # ***********************************************
 
-end  # end of DlgIssue_960 class
