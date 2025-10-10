@@ -19,6 +19,7 @@ class PopupWin : public wxPopupTransientWindow
 {
 public:
     PopupWin(wxWindow* parent, int style = wxBORDER_RAISED);
+
 protected:
 
     // Class member variables

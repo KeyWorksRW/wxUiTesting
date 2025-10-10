@@ -123,9 +123,9 @@ class BookTestDlg < Wx::Dialog
       Wx::DEFAULT_SIZE, Wx::LB_LEFT)
 
     bundle_list = [
-      wxue_get_bundle($english_png),
-      wxue_get_bundle($french_png),
-      wxue_get_bundle($japanese_png)
+      wxue_get_bundle    ($english_png),
+      wxue_get_bundle    ($french_png),
+      wxue_get_bundle    ($japanese_png)
     ]
     @listbook.set_images(bundle_list)
     @listbook.set_min_size(from_dip(Wx::Size.new(400, 400)))
@@ -181,9 +181,9 @@ class BookTestDlg < Wx::Dialog
     @notebook_2 = Wx::Notebook.new(page_4, Wx::ID_ANY)
 
     bundle_list = [
-      wxue_get_bundle($english_png),
-      wxue_get_bundle($french_png),
-      wxue_get_bundle($japanese_png)
+      wxue_get_bundle    ($english_png),
+      wxue_get_bundle    ($french_png),
+      wxue_get_bundle    ($japanese_png)
     ]
     @notebook_2.set_images(bundle_list)
     @notebook_2.set_min_size(from_dip(Wx::Size.new(400, 400)))
@@ -239,9 +239,9 @@ class BookTestDlg < Wx::Dialog
     @toolbook = Wx::Toolbook.new(page_5, Wx::ID_ANY)
 
     bundle_list = [
-      wxue_get_bundle($english_png),
-      wxue_get_bundle($french_png),
-      wxue_get_bundle($japanese_png)
+      wxue_get_bundle    ($english_png),
+      wxue_get_bundle    ($french_png),
+      wxue_get_bundle    ($japanese_png)
     ]
     @toolbook.set_images(bundle_list)
     @toolbook.set_min_size(from_dip(Wx::Size.new(400, 400)))
@@ -297,11 +297,11 @@ class BookTestDlg < Wx::Dialog
     @treebook = Wx::Treebook.new(page, Wx::ID_ANY)
 
     bundle_list = [
-      wxue_get_bundle($english_png),
-      wxue_get_bundle($re_png),
-      wxue_get_bundle($er_png),
-      wxue_get_bundle($french_png),
-      wxue_get_bundle($japanese_png)
+      wxue_get_bundle    ($english_png),
+      wxue_get_bundle    ($re_png),
+      wxue_get_bundle    ($er_png),
+      wxue_get_bundle    ($french_png),
+      wxue_get_bundle    ($japanese_png)
     ]
     @treebook.set_images(bundle_list)
     @treebook.set_min_size(from_dip(Wx::Size.new(400, 400)))
@@ -427,7 +427,7 @@ class BookTestDlg < Wx::Dialog
     box_sizer3 = Wx::BoxSizer.new(Wx::HORIZONTAL)
 
     @btn3 = Wx::Button.new(page4, Wx::ID_ANY, 'English')
-    @btn3.set_bitmap(wxue_get_bundle($english_png))
+    @btn3.set_bitmap(wxue_get_bundle    ($english_png))
     box_sizer3.add(@btn3, Wx::SizerFlags.new.border(Wx::ALL))
 
     @btn4 = Wx::Button.new(page4, Wx::ID_ANY, 'Japanese')

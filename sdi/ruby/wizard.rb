@@ -14,7 +14,7 @@ require 'base64'
 
 class Wizard < Wx::Wizard
   def initialize(parent, id = Wx::ID_ANY, title = 'Wizard Tests',
-                 bitmap = wxue_get_bundle($wiztest_png), pos =
+                 bitmap = wxue_get_bundle    ($wiztest_png), pos =
                  Wx::DEFAULT_POSITION, style = Wx::DEFAULT_DIALOG_STYLE)
 
     super(parent, id, title, bitmap, pos, style)
@@ -94,7 +94,7 @@ class Wizard < Wx::Wizard
     box_sizer2.add(parent_sizer3, Wx::SizerFlags.new.border(Wx::ALL))
     wizPage2.set_sizer_and_fit(box_sizer2)
 
-    wizPage3 = Wx::WizardPageSimple.new(self, nil, nil, wxue_get_bundle($wiztest2_png))
+    wizPage3 = Wx::WizardPageSimple.new(self, nil, nil, wxue_get_bundle    ($wiztest2_png))
 
     box_sizer3 = Wx::BoxSizer.new(Wx::VERTICAL)
 
@@ -116,7 +116,7 @@ class Wizard < Wx::Wizard
 
     box_sizer3.add(box_sizer_6, Wx::SizerFlags.new.expand.border(Wx::ALL))
 
-    bmp = Wx::StaticBitmap.new(wizPage3, Wx::ID_ANY, wxue_get_bundle($hide_png))
+    bmp = Wx::StaticBitmap.new(wizPage3, Wx::ID_ANY, wxue_get_bundle    ($hide_png))
     box_sizer3.add(bmp, Wx::SizerFlags.new.border(Wx::ALL))
     wizPage3.set_sizer_and_fit(box_sizer3)
 

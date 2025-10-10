@@ -16,6 +16,7 @@ class MyPopupMenuBase : public wxMenu
 {
 public:
     MyPopupMenuBase();
+
 protected:
 };
 

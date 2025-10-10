@@ -31,17 +31,19 @@
 #include <wx/textctrl.h>
 #include <wx/tglbtn.h>
 
+#include "popupwin.h"
+
 namespace wxue_ctrl
 {
-class SplitButton;
+    class SplitButton;
 }
-
-#include "popupwin.h"
 
 namespace wxue_img
 {
     // ../art/clr_hourglass.gif
     extern const unsigned char clr_hourglass_gif[2017];
+    // ../art/face-smile.webp
+    extern const unsigned char face_smile_webp[2148];
 }
 
 class CommonCtrls : public wxDialog
@@ -116,6 +118,7 @@ protected:
     wxStaticText* m_staticText11;
     wxStaticText* m_staticText12;
     wxStaticText* m_staticText13;
+    wxStaticText* m_staticText14;
     wxStaticText* m_staticText2;
     wxStaticText* m_staticText3;
     wxStaticText* m_staticText4;

@@ -16,6 +16,7 @@ class MyMenuBarBase : public wxMenuBar
 {
 public:
     MyMenuBarBase(long style = 0);
+
 protected:
 
     // Class member variables

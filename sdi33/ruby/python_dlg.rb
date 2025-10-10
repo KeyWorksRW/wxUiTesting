@@ -58,10 +58,10 @@ class PythonDlg < Wx::Dialog
       Wx::Size.new(32, 32)))
     box_sizer2.add(bmp, Wx::SizerFlags.new.border(Wx::ALL))
 
-    bmp2 = Wx::StaticBitmap.new(self, Wx::ID_ANY, wxue_get_bundle($hide_png))
+    bmp2 = Wx::StaticBitmap.new(self, Wx::ID_ANY, wxue_get_bundle    ($hide_png))
     box_sizer2.add(bmp2, Wx::SizerFlags.new.border(Wx::ALL))
 
-    bmp3 = Wx::StaticBitmap.new(self, Wx::ID_ANY, wxue_get_bundle($timer_png))
+    bmp3 = Wx::StaticBitmap.new(self, Wx::ID_ANY, wxue_get_bundle    ($timer_png))
     box_sizer2.add(bmp3, Wx::SizerFlags.new.border(Wx::ALL))
 
     box_sizer.add(box_sizer2, Wx::SizerFlags.new.border(Wx::ALL))
@@ -79,7 +79,7 @@ class PythonDlg < Wx::Dialog
     @animation_ctrl = Wx::AnimationCtrl.new(static_box_2.get_static_box,
       Wx::ID_ANY, get_animation($clr_hourglass_gif), Wx::DEFAULT_POSITION,
       Wx::DEFAULT_SIZE, Wx::AC_DEFAULT_STYLE)
-    @animation_ctrl.set_inactive_bitmap(wxue_get_bundle($disabled_png))
+    @animation_ctrl.set_inactive_bitmap(wxue_get_bundle    ($disabled_png))
     static_box_2.add(@animation_ctrl, Wx::SizerFlags.new.border(Wx::ALL))
 
     box_sizer3.add(static_box_2, Wx::SizerFlags.new.border(Wx::ALL))
@@ -184,4 +184,3 @@ $timer_png = Base64.decode64(
 # if the code for this class is re-generated.
 # ***********************************************
 
-end  # end of PythonDlg class
