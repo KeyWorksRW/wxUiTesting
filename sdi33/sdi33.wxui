@@ -3078,8 +3078,18 @@
                 var_name="m_staticText_2" />
             </node>
             <node
-              class="wxBitmapComboBox"
-              style="wxCB_READONLY" />
+              class="wxBoxSizer"
+              orientation="wxVERTICAL"
+              var_name="box_sizer4">
+              <node
+                class="wxStaticBitmap"
+                bitmap="Embed;../art/face-smile.webp"
+                var_name="bmp3" />
+              <node
+                class="wxStaticText"
+                label="WEBP image"
+                var_name="m_staticText14" />
+            </node>
             <node
               class="StaticCheckboxBoxSizer"
               checkbox_var_name="m_checkPlayAnimation"
@@ -3097,6 +3107,9 @@
                 animation="Embed;art/clr_hourglass.gif"
                 inactive_bitmap="Embed;disabled.png" />
             </node>
+            <node
+              class="wxBitmapComboBox"
+              style="wxCB_READONLY" />
             <node
               class="CustomControl"
               class_name="SplitButton"
